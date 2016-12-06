@@ -1,21 +1,54 @@
 package rosettacode
 
+import com.thoughtworks.xstream.XStream
+import com.thoughtworks.xstream.io.xml.XppDriver
 import khttp.get
+import java.io.File
 
 fun main(args: Array<String>) {
-    val urls = get("http://rosettacode.org/wiki/Category:Kotlin").text.extractPageUrls()
+    val urls = cached("urls") {
+        get("http://rosettacode.org/wiki/Category:Kotlin").text.extractPageUrls()
+    }
+    val editUrls = cached("editUrls") {
+        urls.map { get(it).text.extractKotlinEditUrl() }
+    }
 
-    urls.take(5)
-        .map { get(it).text.extractKotlinEditUrl() }
-        .forEach { println(get(it).text.extractKotlinSource()) }
+    editUrls.drop(0).take(10)
+        .forEach { url ->
+            val file = File("src/rosettacode/" + url.extractPageName() + ".kt")
+            if (!file.exists()) {
+                val sourceCode = get(url).text.extractKotlinSource()
+                if (sourceCode.trim().isEmpty()) {
+                    throw IllegalStateException(url)
+                }
+                file.writeText(sourceCode)
+            }
+        }
+}
+
+private fun String.extractPageName(): String {
+    return this.replace(Regex(".*title="), "").replace(Regex("&action.*"), "").replace("/", "-")
+}
+
+private fun <T> cached(id: String, f: () -> T): T {
+    val xStream = XStream(XppDriver())
+    val file = File(id + ".xml")
+    if (file.exists()) {
+        @Suppress("UNCHECKED_CAST")
+        return xStream.fromXML(file.readText()) as T
+    } else {
+        val result = f()
+        file.writeText(xStream.toXML(result))
+        return result
+    }
 }
 
 private fun String.extractKotlinSource(): String {
     return split("\n")
-        .map{ it.replace("&lt;", "<") }
-        .dropWhile { !it.contains("<lang Kotlin>") }
-        .takeWhile { !it.contains("</textarea>") }
-        .map { it.replace("<lang Kotlin>", "").replace("</lang>", "") }
+        .map{ it.replace("&lt;", "<").replace("&amp;", "&") }
+        .dropWhile { !it.contains("<lang Kotlin>") && !it.contains("<lang kotlin>") && !it.contains("<lang scala>") }
+        .dropLastWhile { !it.contains("</lang>") }
+        .map { it.replace("<lang Kotlin>", "").replace("<lang kotlin>", "").replace("<lang scala>", "").replace("</lang>", "") }
         .joinToString("\n")
 }
 
