@@ -7,12 +7,12 @@ import java.io.File
 
 fun main(args: Array<String>) {
     val rosettaCodeEntries = cached("codeEntries") {
-        KotlinEditPageUrlsLoader.load().subList(0, 10).map(::CodeEntry)
-    }
+        KotlinEditPageUrlsLoader.load().subList(10, 20).map(::CodeEntry)
+    }.filter{ !exclusions.contains(it.localFile.name) }
 
     rosettaCodeEntries
             .filter{ !it.localFile.exists() }
-            .forEach { it.overwriteLocalSourceCode() }
+            .forEach { it.downloadCodeToLocalFile() }
 
     rosettaCodeEntries
             .filter{ it.localFile.exists() }
@@ -20,12 +20,17 @@ fun main(args: Array<String>) {
             .forEach { log("different: " + it.localFile.name + " -- " + it.url) }
 }
 
+val exclusions = listOf(
+    "Array_concatenation.kt", // need to be combined into one piece of code or add support for downloading multiple files per problem
+    "Associative_array-Creation.kt", // compilation error
+    "Associative_array-Iteration.kt" // compilation error
+)
 
 data class CodeEntry(val url: String, val localFile: File, val sourceCodeOnWeb: String) {
     constructor(url: String): this(url, newLocalFile(url), fetchSourceCode(url))
 
-    fun overwriteLocalSourceCode() {
-        log("Overwritten source in $localFile")
+    fun downloadCodeToLocalFile() {
+        log("Saved source code to $localFile")
         localFile.writeText(sourceCodeOnWeb)
     }
 
