@@ -25,3 +25,5 @@ To add new example:
 - Add example to this project.
 - Make sure it compiles and tests pass.
 - Add example to RosettaCode wiki.
+
+Current CI status: [![Build Status](https://travis-ci.org/dkandalov/rosettacode-kotlin.svg?branch=master)](https://travis-ci.org/dkandalov/kotlin-99)
