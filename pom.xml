@@ -36,6 +36,13 @@
             <artifactId>xstream</artifactId>
             <version>1.4.9</version>
         </dependency>
+
+        <!-- For Active_Directory-Connect.kt -->
+        <dependency>
+            <groupId>org.apache.directory.api</groupId>
+            <artifactId>api-all</artifactId>
+            <version>1.0.0-RC2</version>
+        </dependency>
     </dependencies>
 
     <build>
