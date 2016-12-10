@@ -4,9 +4,9 @@ This is a repository with [Kotlin](https://kotlinlang.org/) source code
 from [RosettaCode wiki](http://rosettacode.org/wiki/Category:Kotlin).
 
 The main motivation for extracting all code into a project is to make sure it actually compiles
-and to make sure it's maintainable (e.g. by applying static analysis and migrating code as language evolves).
+and make it more maintainable (e.g. by applying static analysis and migrating code as language evolves).
 
-This project is intended to be like a wiki with executable code.
+This project is intended to be like a wiki.
 Therefore, you are more than welcome to contribute.
 All pull requests are accepted.
 
@@ -26,4 +26,5 @@ To add new example:
 - Make sure it compiles and tests pass.
 - Add example to RosettaCode wiki.
 
-Current CI status: [![Build Status](https://travis-ci.org/dkandalov/rosettacode-kotlin.svg?branch=master)](https://travis-ci.org/dkandalov/kotlin-99)
+### CI status
+[![Build Status](https://travis-ci.org/dkandalov/rosettacode-kotlin.svg?branch=master)](https://travis-ci.org/dkandalov/rosettacode-kotlin)
