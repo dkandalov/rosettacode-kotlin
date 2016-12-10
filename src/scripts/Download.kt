@@ -92,7 +92,9 @@ object KotlinEditPageUrlsLoader {
     }
 }
 
-val log: (Any?) -> Unit = System.out::println
+val log: (Any?) -> Unit = {
+    System.out.println(it)
+}
 
 fun <T> cached(id: String, f: () -> T): T {
     val xStream = XStream(XppDriver())

@@ -10,17 +10,13 @@
     <properties>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
-        <kotlin.version>1.1-M02</kotlin.version>
+        <kotlin.version>1.0.5</kotlin.version>
     </properties>
 
     <repositories>
         <repository>
             <id>jcenter</id>
             <url>http://jcenter.bintray.com/</url>
-        </repository>
-        <repository>
-            <id>bintray-kotlin-eap</id>
-            <url>http://dl.bintray.com/kotlin/kotlin-eap-1.1</url>
         </repository>
     </repositories>
 
