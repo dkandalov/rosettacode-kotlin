@@ -18,6 +18,10 @@
             <id>jcenter</id>
             <url>http://jcenter.bintray.com/</url>
         </repository>
+        <repository>
+            <id>bintray-kotlin-eap</id>
+            <url>http://dl.bintray.com/kotlin/kotlin-eap-1.1</url>
+        </repository>
     </repositories>
 
     <dependencies>
