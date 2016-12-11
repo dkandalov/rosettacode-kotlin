@@ -7,7 +7,7 @@ import java.io.File
 
 fun main(args: Array<String>) {
     val rosettaCodeEntries = cached("codeEntries") {
-        KotlinEditPageUrlsLoader.load().subList(10, 20).map(::CodeEntry)
+        KotlinEditPageUrlsLoader.load().subList(21, 30).map(::CodeEntry)
     }.filter{ !exclusions.contains(it.localFile.name) }
 
     rosettaCodeEntries
@@ -23,7 +23,10 @@ fun main(args: Array<String>) {
 val exclusions = listOf(
     "Array_concatenation.kt", // need to be combined into one piece of code or add support for downloading multiple files per problem
     "Associative_array-Creation.kt", // compilation error
-    "Associative_array-Iteration.kt" // compilation error
+    "Associative_array-Iteration.kt", // compilation error
+    "Bernoulli_numbers.kt",
+    "Boolean_values.kt", // because there is no code
+    "Catalan_numbers.kt" // net.openhft.koloboke.collect.map.hash.HashIntDoubleMaps.*
 )
 
 data class CodeEntry(val url: String, val localFile: File, val sourceCodeOnWeb: String) {
@@ -96,6 +99,10 @@ val log: (Any?) -> Unit = {
     System.out.println(it)
 }
 
+/**
+ * Caches result of function `f` in xml file.
+ * The main reason for this is to speed up execution.
+ */
 fun <T> cached(id: String, f: () -> T): T {
     val xStream = XStream(XppDriver())
     val file = File(id + ".xml")
