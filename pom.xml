@@ -50,6 +50,13 @@
             <artifactId>commons-math3</artifactId>
             <version>3.3</version>
         </dependency>
+
+        <!-- For RIPEMD-160.kt -->
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>1.55</version>
+        </dependency>
     </dependencies>
 
     <build>
