@@ -7,17 +7,17 @@ import java.io.File
 
 fun main(args: Array<String>) {
     val rosettaCodeEntries = cached("codeEntries") {
-        KotlinEditPageUrlsLoader.load().subList(21, 40).flatMap{ CodeSnippet.create(it) }
+        KotlinEditPageUrlsLoader.load().drop(90).flatMap{ CodeSnippet.create(it) }
     }.filter{ !exclusions.contains(it.localFile.name) }
 
     rosettaCodeEntries
-            .filter{ !it.localFile.exists() }
-            .forEach { it.downloadCodeToLocalFile() }
+        .filter{ !it.localFile.exists() }
+        .forEach { it.downloadCodeToLocalFile() }
 
     rosettaCodeEntries
-            .filter{ it.localFile.exists() }
-            .filter { it.localFile.readText().trim() != it.sourceCodeOnWeb.trim() }
-            .forEach { log("different: " + it.localFile.name + " -- " + it.editPageUrl) }
+        .filter{ it.localFile.exists() }
+        .filter { it.localFile.readText().trim() != it.sourceCodeOnWeb.trim() }
+        .forEach { log("different: " + it.localFile.name + " -- " + it.editPageUrl) }
 }
 
 val exclusions = listOf(
@@ -26,7 +26,8 @@ val exclusions = listOf(
     "Associative_array-Iteration.kt", // compilation error
     "Boolean_values.kt", // because there is no code
     "Create_a_two-dimensional_array_at_runtime.kt", // https://youtrack.jetbrains.com/issue/KT-15196
-    "Catalan_numbers.kt" // net.openhft.koloboke.collect.map.hash.HashIntDoubleMaps.*
+    "Catalan_numbers.kt", // net.openhft.koloboke.collect.map.hash.HashIntDoubleMaps.*
+    "Read_a_configuration_file.kt" // doesn't compile
 )
 
 data class CodeSnippet(val editPageUrl: String, val localFile: File, val sourceCodeOnWeb: String, val index: Int) {
@@ -117,6 +118,8 @@ val log: (Any?) -> Unit = {
 /**
  * Caches result of function `f` in xml file.
  * The main reason for this is to speed up execution.
+ *
+ * To "invalidate" cached value modify or remove xml file.
  */
 fun <T> cached(id: String, f: () -> T): T {
     val xStream = XStream(XppDriver())
