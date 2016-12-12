@@ -43,6 +43,13 @@
             <artifactId>api-all</artifactId>
             <version>1.0.0-RC2</version>
         </dependency>
+
+        <!-- For Bernoulli_numbers.kt -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>3.3</version>
+        </dependency>
     </dependencies>
 
     <build>
