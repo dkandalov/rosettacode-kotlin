@@ -22,7 +22,7 @@ To help importing examples from RosettaCode:
 - Run `Download.kt`, check that downloaded files are compilable, add them to git, commit and send a pull request.
 
 To add new example:
-- Add example to this project.
+- Add example to this project (it might be a good idea to use `<lang scala>` tag because kotlin doesn't have syntax highlighting at the moment).
 - Make sure it compiles and tests pass.
 - Add example to RosettaCode wiki.
 
