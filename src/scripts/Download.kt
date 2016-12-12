@@ -7,7 +7,7 @@ import java.io.File
 
 fun main(args: Array<String>) {
     val rosettaCodeEntries = cached("codeEntries") {
-        KotlinEditPageUrlsLoader.load().subList(21, 30).map(::CodeEntry)
+        KotlinEditPageUrlsLoader.load().subList(21, 40).flatMap{ CodeSnippet.create(it) }
     }.filter{ !exclusions.contains(it.localFile.name) }
 
     rosettaCodeEntries
@@ -17,45 +17,60 @@ fun main(args: Array<String>) {
     rosettaCodeEntries
             .filter{ it.localFile.exists() }
             .filter { it.localFile.readText().trim() != it.sourceCodeOnWeb.trim() }
-            .forEach { log("different: " + it.localFile.name + " -- " + it.url) }
+            .forEach { log("different: " + it.localFile.name + " -- " + it.editPageUrl) }
 }
 
 val exclusions = listOf(
     "Array_concatenation.kt", // need to be combined into one piece of code or add support for downloading multiple files per problem
     "Associative_array-Creation.kt", // compilation error
     "Associative_array-Iteration.kt", // compilation error
-    "Bernoulli_numbers.kt",
     "Boolean_values.kt", // because there is no code
+    "Create_a_two-dimensional_array_at_runtime.kt", // https://youtrack.jetbrains.com/issue/KT-15196
     "Catalan_numbers.kt" // net.openhft.koloboke.collect.map.hash.HashIntDoubleMaps.*
 )
 
-data class CodeEntry(val url: String, val localFile: File, val sourceCodeOnWeb: String) {
-    constructor(url: String): this(url, newLocalFile(url), fetchSourceCode(url))
-
+data class CodeSnippet(val editPageUrl: String, val localFile: File, val sourceCodeOnWeb: String, val index: Int) {
     fun downloadCodeToLocalFile() {
         log("Saved source code to $localFile")
         localFile.writeText(sourceCodeOnWeb)
     }
 
     companion object {
-        private fun newLocalFile(url: String) = File("src/" + url.extractPageName() + ".kt")
+        fun create(url: String): List<CodeSnippet> {
+            val codeSnippets = fetchCodeSnippets(url)
+            val localFiles = if (codeSnippets.isEmpty()) {
+                emptyList<File>()
+            } else {
+                listOf(File("src/" + url.extractPageName() + ".kt")) +
+                    1.rangeTo(codeSnippets.size - 1).map { File("src/${url.extractPageName()}-$it.kt") }
+            }
+            return localFiles.zip(codeSnippets).mapIndexed { i, it ->
+                CodeSnippet(url, it.first, it.second, i)
+            }
+        }
 
         private fun String.extractPageName(): String {
             return replace(Regex(".*title="), "").replace(Regex("&action.*"), "").replace("/", "-")
         }
 
-        private fun fetchSourceCode(url: String): String {
+        private fun fetchCodeSnippets(url: String): List<String> {
             log("Fetching source code from $url")
-            return get(url).text.extractKotlinSource()
+            return get(url).text.split("\n").extractKotlinSource()
         }
 
-        private fun String.extractKotlinSource(): String {
-            return split("\n")
-                .map{ it.replace("&lt;", "<").replace("&amp;", "&") }
-                .dropWhile { !it.contains("<lang Kotlin>") && !it.contains("<lang kotlin>") && !it.contains("<lang scala>") }
-                .dropLastWhile { !it.contains("</lang>") }
-                .map { it.replace("<lang Kotlin>", "").replace("<lang kotlin>", "").replace("<lang scala>", "").replace("</lang>", "") }
-                .joinToString("\n")
+        private fun List<String>.extractKotlinSource(): List<String> {
+            if (isEmpty()) return emptyList()
+
+            val lines = map { it.replace("&lt;", "<").replace("&amp;", "&") }
+                    .dropWhile { !it.contains("<lang Kotlin>") && !it.contains("<lang kotlin>") && !it.contains("<lang scala>") }
+            val srcLineCount = lines.indexOfFirst { it.contains("</lang>") } + 1
+            if (srcLineCount == 0) return emptyList()
+
+            val sourceCode = lines.take(srcLineCount)
+                    .map { it.replace("<lang Kotlin>", "").replace("<lang kotlin>", "").replace("<lang scala>", "").replace("</lang>", "") }
+                    .joinToString("\n")
+
+            return listOf(sourceCode) + lines.drop(srcLineCount).extractKotlinSource()
         }
     }
 }
