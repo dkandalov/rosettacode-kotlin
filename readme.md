@@ -13,7 +13,7 @@ evolves).
 This project is intended to be like a wiki.  You are, therefore, more than welcome to contribute.  All pull
 requests will be considered.
 
-## How to contribute?
+### How to contribute?
 
 You will need to fork the repository on GitHub and then clone that repository to your working computer – the
 usual GitHub workflow.
@@ -22,15 +22,15 @@ Once you have your local clone, you will need to build the download script that 
 from Rosetta Code. For the moment it is easiest just to build all the code in the repository (this will
 happen eventually so why not do it now).
 
-If you use [Gradle](https://www.gradle.org) then:
+If you want to use [Gradle](https://www.gradle.org) then:
 
-- `gradle classes`
-- `gradle download`
+- `./gradlew classes`
+- `./gradlew download`
 
 should do nicely. Or you can execute `scripts/Download.kt` from within an IDE that understands executing
 Kotlin programs.
 
-If you use [Maven](http://www.maven.org) then:
+If you want to use [Maven](http://www.maven.org) then:
 
 - `mvn compile`.
 - execute `scripts/Download.kt` – to date the only was of doing this is from within an IDE that understands
