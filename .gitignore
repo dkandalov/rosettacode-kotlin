@@ -1,0 +1,7 @@
+/.idea/
+/build/
+/.gradle/
+/urls.xml
+/codeEntries.xml
+/editPageUrls.xml
+*~
