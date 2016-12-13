@@ -4,25 +4,28 @@ import com.thoughtworks.xstream.XStream
 import com.thoughtworks.xstream.io.xml.XppDriver
 import khttp.get
 import java.io.File
+import java.util.*
 import java.util.stream.Collectors
+import java.util.stream.Stream
+import java.util.stream.StreamSupport
 
 fun main(args: Array<String>) {
     val rosettaCodeEntries =
         cached("codeEntries") {
             KotlinEditPageUrlsLoader.load()
-                .parallelStream().flatMap{ CodeSnippet.create(it).stream() }
+                .toParallelStream().flatMap{ CodeSnippet.create(it).toStream() }
                 .collect(Collectors.toList<CodeSnippet>())
         }
         .filter{ !exclusions.contains(it.localFile.name) }
 
     rosettaCodeEntries
         .filter{ !it.localFile.exists() }
-        .forEach { it.downloadCodeToLocalFile() }
+        .forEach{ it.writeCodeToLocalFile() }
 
     rosettaCodeEntries
         .filter{ it.localFile.exists() }
-        .filter { it.localFile.readText().trim() != it.sourceCodeOnWeb.trim() }
-        .forEach { log("different: " + it.localFile.name + " -- " + it.editPageUrl) }
+        .filter{ it.localFile.readText().trimmedLines() != it.sourceCodeOnWeb.trimmedLines() }
+        .forEach{ log("different: " + it.localFile.name + " -- " + it.editPageUrl) }
 }
 
 val exclusions = listOf(
@@ -33,7 +36,7 @@ val exclusions = listOf(
 )
 
 data class CodeSnippet(val editPageUrl: String, val localFile: File, val sourceCodeOnWeb: String, val index: Int) {
-    fun downloadCodeToLocalFile() {
+    fun writeCodeToLocalFile() {
         log("Saved source code to $localFile")
         localFile.writeText(sourceCodeOnWeb)
     }
@@ -137,4 +140,19 @@ fun <T> cached(id: String, f: () -> T): T {
         log("Done")
         return result
     }
+}
+
+
+// Need this because default java methods don't work in kotlin 1.0.5
+private fun <E> Collection<E>.toStream(): Stream<E> {
+    return StreamSupport.stream(Spliterators.spliterator<E>(this, 0), false)
+}
+
+// Need this because default java methods don't work in kotlin 1.0.5
+private fun <E> Collection<E>.toParallelStream(): Stream<E> {
+    return StreamSupport.stream(Spliterators.spliterator<E>(this, 0), true)
+}
+
+private fun String.trimmedLines(): List<String> {
+    return this.trim().split("\n").map(String::trim)
 }
