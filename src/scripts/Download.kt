@@ -4,11 +4,16 @@ import com.thoughtworks.xstream.XStream
 import com.thoughtworks.xstream.io.xml.XppDriver
 import khttp.get
 import java.io.File
+import java.util.stream.Collectors
 
 fun main(args: Array<String>) {
-    val rosettaCodeEntries = cached("codeEntries") {
-        KotlinEditPageUrlsLoader.load().drop(90).flatMap{ CodeSnippet.create(it) }
-    }.filter{ !exclusions.contains(it.localFile.name) }
+    val rosettaCodeEntries =
+        cached("codeEntries") {
+            KotlinEditPageUrlsLoader.load()
+                .parallelStream().flatMap{ CodeSnippet.create(it).stream() }
+                .collect(Collectors.toList<CodeSnippet>())
+        }
+        .filter{ !exclusions.contains(it.localFile.name) }
 
     rosettaCodeEntries
         .filter{ !it.localFile.exists() }
@@ -21,10 +26,7 @@ fun main(args: Array<String>) {
 }
 
 val exclusions = listOf(
-    "Array_concatenation.kt", // need to be combined into one piece of code or add support for downloading multiple files per problem
-    "Associative_array-Creation.kt", // compilation error
-    "Associative_array-Iteration.kt", // compilation error
-    "Boolean_values.kt", // because there is no code
+    "Boolean_values.kt", // ignore because there is no code
     "Create_a_two-dimensional_array_at_runtime.kt", // https://youtrack.jetbrains.com/issue/KT-15196
     "Catalan_numbers.kt", // net.openhft.koloboke.collect.map.hash.HashIntDoubleMaps.*
     "Read_a_configuration_file.kt" // doesn't compile
