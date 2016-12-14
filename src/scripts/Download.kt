@@ -37,8 +37,9 @@ val exclusions = listOf(
 
 data class CodeSnippet(val editPageUrl: String, val localFile: File, val sourceCodeOnWeb: String, val index: Int) {
     fun writeCodeToLocalFile() {
-        log("Saved source code to $localFile")
+        localFile.parentFile.mkdirs()
         localFile.writeText(sourceCodeOnWeb)
+        log("Saved source code to $localFile")
     }
 
     companion object {
@@ -56,7 +57,7 @@ data class CodeSnippet(val editPageUrl: String, val localFile: File, val sourceC
         }
 
         private fun String.extractPageName(): String {
-            return replace(Regex(".*title="), "").replace(Regex("&action.*"), "").replace("/", "-")
+            return replace(Regex(".*title="), "").replace(Regex("&action.*"), "").replace("/", "-").replace("%27", "")
         }
 
         private fun fetchCodeSnippets(url: String): List<String> {
