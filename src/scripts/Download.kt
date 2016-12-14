@@ -10,9 +10,9 @@ import java.util.stream.Stream
 import java.util.stream.StreamSupport
 
 fun main(args: Array<String>) {
-    val rosettaCodeEntries =
+    val codeEntries =
         cached("codeEntries") {
-            KotlinEditPageUrlsLoader.load()
+            EditPageUrlsLoader.load()
                 .toParallelStream().flatMap{ CodeSnippet.create(it).toStream() }
                 .collect(Collectors.toList<CodeSnippet>())
         }
@@ -20,13 +20,13 @@ fun main(args: Array<String>) {
             exclusions.none{ codeSnippet.editPageUrl.contains(it) }
         }
 
-    rosettaCodeEntries
+    codeEntries
         .filter{ !it.sourceCodeExistsLocally() }
         .forEach{ it.writeCodeToLocalFile() }
 
-    rosettaCodeEntries
+    codeEntries
         .filter{ it.sourceCodeExistsLocally() && it.localSourceCodeIsDifferentFromWeb() }
-        .forEach{ log("Source code has differences: " + it) }
+        .forEach{ log("Source code has differences at snippet index: ${it.index}; url: ${it.editPageUrl}") }
 }
 
 val exclusions = listOf(
@@ -36,10 +36,19 @@ val exclusions = listOf(
     "Read_a_configuration_file" // doesn't compile
 )
 
-data class CodeSnippet(val editPageUrl: String, val localFile: File, val sourceCodeOnWeb: String, val index: Int) {
+data class CodeSnippet(val editPageUrl: String, val sourceCodeOnWeb: String, val index: Int) {
+    private val localFile = localFile()
+    private val snippetPackageName = snippetPackageName()
+
     fun writeCodeToLocalFile() {
         localFile.parentFile.mkdirs()
-        localFile.writeText(sourceCodeOnWeb)
+
+        val sourceCode = sourceCodeOnWeb.let {
+            if (it.trim().startsWith("package ")) it
+            else "package $snippetPackageName\n\n" + it
+        }
+        localFile.writeText(sourceCode)
+
         log("Saved source code to $localFile")
     }
 
@@ -48,7 +57,20 @@ data class CodeSnippet(val editPageUrl: String, val localFile: File, val sourceC
     }
 
     fun localSourceCodeIsDifferentFromWeb(): Boolean {
+        fun String.trimmedLines() = replace("package $snippetPackageName\n", "")
+                .trim().split("\n").map(String::trim)
         return localFile.readText().trimmedLines() != sourceCodeOnWeb.trimmedLines()
+    }
+
+    private fun localFile(): File {
+        val fileName = editPageUrl.extractPageName()
+        val postfix = if (index == 0) "" else "-$index"
+        return File("src/$fileName$postfix.kt")
+    }
+
+    private fun snippetPackageName(): String {
+        val postfix = if (index == 0) "" else "_$index"
+        return editPageUrl.extractPageName().replace("-", "_").toLowerCase() + postfix
     }
 
     override fun toString(): String {
@@ -56,26 +78,18 @@ data class CodeSnippet(val editPageUrl: String, val localFile: File, val sourceC
     }
 
     companion object {
-        fun create(url: String): List<CodeSnippet> {
-            val codeSnippets = fetchCodeSnippets(url)
-            val localFiles = if (codeSnippets.isEmpty()) {
-                emptyList<File>()
-            } else {
-                listOf(File("src/" + url.extractPageName() + ".kt")) +
-                    1.rangeTo(codeSnippets.size - 1).map { File("src/${url.extractPageName()}-$it.kt") }
-            }
-            return localFiles.zip(codeSnippets).mapIndexed { i, it ->
-                CodeSnippet(url, it.first, it.second, i)
-            }
+        fun create(editPageUrl: String): List<CodeSnippet> {
+            val codeSnippets = fetchCodeSnippets(editPageUrl)
+            return codeSnippets.mapIndexed { i, it -> CodeSnippet(editPageUrl, it, i) }
         }
 
         private fun String.extractPageName(): String {
             return replace(Regex(".*title="), "").replace(Regex("&action.*"), "").replace("/", "-").replace("%27", "")
         }
 
-        private fun fetchCodeSnippets(url: String): List<String> {
-            log("Fetching source code from $url")
-            return get(url).text.split("\n").extractKotlinSource()
+        private fun fetchCodeSnippets(editPageUrl: String): List<String> {
+            log("Fetching source code from $editPageUrl")
+            return get(editPageUrl).text.split("\n").extractKotlinSource()
         }
 
         private fun List<String>.extractKotlinSource(): List<String> {
@@ -95,7 +109,7 @@ data class CodeSnippet(val editPageUrl: String, val localFile: File, val sourceC
     }
 }
 
-object KotlinEditPageUrlsLoader {
+object EditPageUrlsLoader {
     fun load(): List<String> {
         val urls = cached("urls") {
             get("http://rosettacode.org/wiki/Category:Kotlin").text.extractProblemPageUrls()
@@ -165,8 +179,4 @@ private fun <E> Collection<E>.toStream(): Stream<E> {
 // Need this because default java methods don't work in kotlin 1.0.5
 private fun <E> Collection<E>.toParallelStream(): Stream<E> {
     return StreamSupport.stream(Spliterators.spliterator<E>(this, 0), true)
-}
-
-private fun String.trimmedLines(): List<String> {
-    return this.trim().split("\n").map(String::trim)
 }
