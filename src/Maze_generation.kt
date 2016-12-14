@@ -1,6 +1,8 @@
-class Maze_generator(val x: Int, val y: Int) {
+class MazeGenerator(val x: Int, val y: Int) {
+    private val maze = Array(x) { IntArray(y) }
+
     fun generate(cx: Int, cy: Int) {
-        arrayOf(*DIR.values()).shuffle().forEach {
+        Direction.values().shuffle().forEach {
             val nx = cx + it.dx
             val ny = cy + it.dy
             if (between(nx, x) && between(ny, y) && maze[nx][ny] == 0) {
@@ -29,10 +31,10 @@ class Maze_generator(val x: Int, val y: Int) {
         println('+')
     }
 
-    private enum class DIR(val bit: Int, val dx: Int, val dy: Int) {
+    private enum class Direction(val bit: Int, val dx: Int, val dy: Int) {
         N(1, 0, -1), S(2, 0, 1), E(4, 1, 0),W(8, -1, 0);
 
-        var opposite: DIR? = null
+        var opposite: Direction? = null
 
         companion object {
             init {
@@ -45,14 +47,12 @@ class Maze_generator(val x: Int, val y: Int) {
     }
 
     private fun between(v: Int, upper: Int) = v >= 0 && v < upper
-
-    private val maze = Array(x) { IntArray(y) }
 }
 
 fun main(args: Array<String>) {
     val x = if (args.size >= 1) args[0].toInt() else 8
     val y = if (args.size == 2) args[1].toInt() else 8
-    with(Maze_generator(x, y)) {
+    with(MazeGenerator(x, y)) {
         generate(0, 0)
         display()
     }

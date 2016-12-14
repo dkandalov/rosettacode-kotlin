@@ -1,4 +1,3 @@
-
 val romanNumerals = mapOf(
     1000 to "M",
     900 to "CM",
@@ -20,14 +19,14 @@ fun encode(number: Int): String? {
         return null
     }
     var num = number
-    val buffer = StringBuffer()
+    var result = ""
     for ((multiple, numeral) in romanNumerals.entries) {
         while (num >= multiple) {
             num -= multiple
-            buffer.append(numeral)
+            result += numeral
         }
     }
-    return buffer.toString()
+    return result
 }
 
 fun main(args: Array<String>) {

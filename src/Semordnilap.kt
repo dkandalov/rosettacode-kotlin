@@ -1,9 +1,9 @@
 import java.io.File
 
-fun semordnilap() {
-    val words = File("unixdict.txt").readLines().toSet()
-    val pairs = words.asSequence().map { it to it.reversed() } // Pair(word, reversed word)
-            .filter { it.first < it.second && it.second in words }.toList() // avoid dupes+palindromes, find matches
+fun main(args: Array<String>) {
+    val words = File("/usr/share/dict/words").readLines().toSet()
+    val pairs = words.map { Pair(it, it.reversed()) }
+            .filter { it.first < it.second && it.second in words } // avoid dupes+palindromes, find matches
     println("Found ${pairs.size} semordnilap pairs")
     println(pairs.take(5))
 }
