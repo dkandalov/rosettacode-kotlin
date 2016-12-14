@@ -16,23 +16,24 @@ fun main(args: Array<String>) {
                 .toParallelStream().flatMap{ CodeSnippet.create(it).toStream() }
                 .collect(Collectors.toList<CodeSnippet>())
         }
-        .filter{ !exclusions.contains(it.localFile.name) }
+        .filter { codeSnippet ->
+            exclusions.none{ codeSnippet.editPageUrl.contains(it) }
+        }
 
     rosettaCodeEntries
-        .filter{ !it.localFile.exists() }
+        .filter{ !it.sourceCodeExistsLocally() }
         .forEach{ it.writeCodeToLocalFile() }
 
     rosettaCodeEntries
-        .filter{ it.localFile.exists() }
-        .filter{ it.localFile.readText().trimmedLines() != it.sourceCodeOnWeb.trimmedLines() }
-        .forEach{ log("different: " + it.localFile.name + " -- " + it.editPageUrl) }
+        .filter{ it.sourceCodeExistsLocally() && it.localSourceCodeIsDifferentFromWeb() }
+        .forEach{ log("Source code has differences: " + it) }
 }
 
 val exclusions = listOf(
-    "Boolean_values.kt", // ignore because there is no code
-    "Create_a_two-dimensional_array_at_runtime.kt", // https://youtrack.jetbrains.com/issue/KT-15196
-    "Catalan_numbers.kt", // net.openhft.koloboke.collect.map.hash.HashIntDoubleMaps.*
-    "Read_a_configuration_file.kt" // doesn't compile
+    "Boolean_values", // ignore because there is no code
+    "Create_a_two-dimensional_array_at_runtime", // https://youtrack.jetbrains.com/issue/KT-15196
+    "Catalan_numbers", // net.openhft.koloboke.collect.map.hash.HashIntDoubleMaps.*
+    "Read_a_configuration_file" // doesn't compile
 )
 
 data class CodeSnippet(val editPageUrl: String, val localFile: File, val sourceCodeOnWeb: String, val index: Int) {
@@ -40,6 +41,18 @@ data class CodeSnippet(val editPageUrl: String, val localFile: File, val sourceC
         localFile.parentFile.mkdirs()
         localFile.writeText(sourceCodeOnWeb)
         log("Saved source code to $localFile")
+    }
+
+    fun sourceCodeExistsLocally(): Boolean {
+        return localFile.exists()
+    }
+
+    fun localSourceCodeIsDifferentFromWeb(): Boolean {
+        return localFile.readText().trimmedLines() != sourceCodeOnWeb.trimmedLines()
+    }
+
+    override fun toString(): String {
+        return "$editPageUrl - $index"
     }
 
     companion object {
