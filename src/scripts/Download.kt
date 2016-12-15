@@ -13,7 +13,6 @@ fun main(args: Array<String>) {
     val exclusions = listOf(
             "Boolean_values", // ignore because there is no code
             "Create_a_two-dimensional_array_at_runtime", // https://youtrack.jetbrains.com/issue/KT-15196
-            "Catalan_numbers", // net.openhft.koloboke.collect.map.hash.HashIntDoubleMaps.*
             "Read_a_configuration_file" // doesn't compile
     )
     val codeEntries = loadKotlinCodeEntries(exclusions)
