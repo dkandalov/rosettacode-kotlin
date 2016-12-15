@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<meta charset="UTF-8"/>
+<title>Category:Kotlin - Rosetta Code</title>
+<script type="text/javascript">
+//<![CDATA[
+try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:0,byc:0,owlid:"cf",bag2:1,mirage2:0,oracle:0,paths:{cloudflare:"/cdn-cgi/nexp/dok3v=1613a3a185/"},atok:"a583006972e34980972fddfc4853b1f8",petok:"243ab086787fc7222cab3ce900598e93ec795473-1481835916-1800",zone:"rosettacode.org",rocket:"0",apps:{"ga_key":{"ua":"UA-1219419-1","ga_bs":"2"}}}];!function(a,b){a=document.createElement("script"),b=document.getElementsByTagName("script")[0],a.async=!0,a.src="//ajax.cloudflare.com/cdn-cgi/nexp/dok3v=f2befc48d1/cloudflare.min.js",b.parentNode.insertBefore(a,b)}()}}catch(e){};
+//]]>
+</script>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+mw.config.set({"wgCanonicalNamespace":"Category","wgCanonicalSpecialPageName":!1,"wgNamespaceNumber":14,"wgPageName":"Category:Kotlin","wgTitle":"Kotlin","wgCurRevisionId":198253,"wgRevisionId":198253,"wgArticleId":11088,"wgIsArticle":!0,"wgIsRedirect":!1,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Typing/Checking/Static","Programming Languages"],"wgBreakFrames":!1,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Category:Kotlin","wgRelevantArticleId":11088,"wgIsProbablyEditable":!0,"wgRestrictionEdit":[],"wgRestrictionMove":[],"sfgAutocompleteValues":[],"sfgAutocompleteOnAllChars":!1,
+"sfgFieldProperties":[],"sfgDependentFields":[],"sfgShowOnSelect":[],"sfgScriptPath":"/mw/extensions/SemanticForms","sdgDownArrowImage":"/mw/extensions/SemanticDrilldown/skins/down-arrow.png","sdgRightArrowImage":"/mw/extensions/SemanticDrilldown/skins/right-arrow.png"});mw.loader.implement("user.options",function($,jQuery){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens",function($,jQuery){mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\"});});mw.loader.load(["ext.smw.style","ext.smw.tooltips","mediawiki.page.startup","mediawiki.legacy.wikibits"]);
+} );</script>
+<link rel="stylesheet" href="/mw/load.php?debug=false&amp;lang=en&amp;modules=ext.bootstrap.styles%7Cmediawiki.action.view.categoryPage.styles%7Cmediawiki.helplink&amp;only=styles&amp;skin=chameleon"/>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="/mw/load.php?debug=false&amp;lang=en&amp;modules=site&amp;only=styles&amp;skin=chameleon"/>
+<style>a:lang(ar),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}</style>
+<script async="" src="/mw/load.php?debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=chameleon"></script>
+<meta name="generator" content="MediaWiki 1.26.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="ExportRDF" type="application/rdf+xml" title="Category:Kotlin" href="/mw/index.php?title=Special:ExportRDF/Category:Kotlin&amp;xmlmime=rdf"/>
+<link rel="alternate" type="application/x-wiki" title="Edit" href="/mw/index.php?title=Category:Kotlin&amp;action=edit"/>
+<link rel="edit" title="Edit" href="/mw/index.php?title=Category:Kotlin&amp;action=edit"/>
+<link rel="shortcut icon" href="/favicon.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="/mw/opensearch_desc.php" title="Rosetta Code (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://rosettacode.org/mw/api.php?action=rsd"/>
+<link rel="copyright" href="http://www.gnu.org/licenses/fdl-1.2.html"/>
+<link rel="alternate" type="application/atom+xml" title="Rosetta Code Atom feed" href="/mw/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+<script type="text/javascript">
+/* <![CDATA[ */
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-1219419-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+(function(b){(function(a){"__CF"in b&&"DJS"in b.__CF?b.__CF.DJS.push(a):"addEventListener"in b?b.addEventListener("load",a,!1):b.attachEvent("onload",a)})(function(){"FB"in b&&"Event"in FB&&"subscribe"in FB.Event&&(FB.Event.subscribe("edge.create",function(a){_gaq.push(["_trackSocial","facebook","like",a])}),FB.Event.subscribe("edge.remove",function(a){_gaq.push(["_trackSocial","facebook","unlike",a])}),FB.Event.subscribe("message.send",function(a){_gaq.push(["_trackSocial","facebook","send",a])}));"twttr"in b&&"events"in twttr&&"bind"in twttr.events&&twttr.events.bind("tweet",function(a){if(a){var b;if(a.target&&a.target.nodeName=="IFRAME")a:{if(a=a.target.src){a=a.split("#")[0].match(/[^?=&]+=([^&]*)?/g);b=0;for(var c;c=a[b];++b)if(c.indexOf("url")===0){b=unescape(c.split("=")[1]);break a}}b=void 0}_gaq.push(["_trackSocial","twitter","tweet",b])}})})})(window);
+/* ]]> */
+</script>
+</head>
+<body class="mediawiki ltr sitedir-ltr ns-14 ns-subject page-Category_Kotlin layout-standard skin-chameleon action-view">
+<div class="container">
+<div class="row">
+<div class="col-lg-3">
+ 
+<div id="p-logo" class="p-logo" role="banner">
+<a href="/wiki/Rosetta_Code" title="Visit the main page"><img src="/mw/title.png" alt="Rosetta Code"/></a>
+</div>
+</div>
+<div class="col-lg-9">
+<div class="row">
+<div class="col-lg-12">
+ 
+<div class="p-personal pull-right" id="p-personal">
+<ul class="p-personal-tools list-inline pull-right">
+<li id="pt-createaccount"><a href="/mw/index.php?title=Special:UserLogin&amp;returnto=Category%3AKotlin&amp;type=signup" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li>
+<li id="pt-login"><a href="/mw/index.php?title=Special:UserLogin&amp;returnto=Category%3AKotlin" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>
+</ul>
+<div class="newtalk-notifier">
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-12">
+ 
+<div id="p-search" class="p-search pull-right" role="search">
+<form id="searchform" class="mw-search form-inline" action="/mw/index.php">
+<input type="hidden" name="title" value="Special:Search"/>
+<div class="input-group">
+<input name="search" placeholder="Search" title="Search Rosetta Code [f]" accesskey="f" id="searchInput" class="form-control"/>
+<div class="input-group-btn">
+<button value="Go" id="searchGoButton" name="go" title="Go to a page with this exact name if it exists" type="submit" class="searchGoButton btn btn-default"><span class="glyphicon glyphicon-share-alt"></span></button><button value="Search" id="mw-searchButton" name="fulltext" title="Search the pages for this text" type="submit" class="mw-searchButton btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-12">
+ 
+<nav class="navbar navbar-default p-navbar" role="navigation" id="mw-navigation">
+<div class="container-fluid"><div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mw-navigation-collapse">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+</div>
+<div class="collapse navbar-collapse" id="mw-navigation-collapse"><ul class="nav navbar-nav">
+ 
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <b class="caret"></b></a>
+<ul class="dropdown-menu p-Community" id="p-Community">
+<li id="n-Twitter"><a href="http://twitter.com/rosettacode" rel="nofollow">Twitter</a></li>
+<li id="n-Chat.2FIRC"><a href="/wiki/Special:WebChat">Chat/IRC</a></li>
+<li id="n-Planet"><a href="http://rosettacode.org/planet" rel="nofollow">Planet</a></li>
+<li id="n-The-Village-Pump"><a href="/wiki/Rosetta_Code:Village_Pump">The Village Pump</a></li>
+<li id="n-Finances"><a href="/wiki/Rosetta_Code:Finances">Finances</a></li>
+</ul>
+</li>
+ 
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown">Explore <b class="caret"></b></a>
+<ul class="dropdown-menu p-Explore" id="p-Explore">
+<li id="n-Languages"><a href="/wiki/Category:Programming_Languages">Languages</a></li>
+<li id="n-Tasks"><a href="/wiki/Category:Programming_Tasks">Tasks</a></li>
+<li id="n-recentchanges"><a href="/wiki/Special:RecentChanges" title="A list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li>
+<li id="n-Similar-sites"><a href="/wiki/Help:Similar_Sites">Similar sites</a></li>
+<li id="n-randompage"><a href="/wiki/Special:Random" title="Load a random page [x]" accesskey="x">Random page</a></li>
+</ul>
+</li></ul>
+</div> 
+</div>
+</nav>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-12">
+ 
+<ul class="p-contentnavigation list-inline text-center" id="p-contentnavigation">
+ 
+<li id="p-namespaces">
+<ul class="list-inline">
+<li id="ca-nstab-category" class="selected"><a href="/wiki/Category:Kotlin" title="View the category page [c]" accesskey="c" class="selected">Category</a></li>
+<li id="ca-talk" class="new"><a href="/mw/index.php?title=Category_talk:Kotlin&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t" class="new">Discussion</a></li>
+</ul>
+</li>
+ 
+<li id="p-views">
+<ul class="list-inline">
+<li id="ca-edit"><a href="/mw/index.php?title=Category:Kotlin&amp;action=edit" title="Edit this page [e]" accesskey="e">Edit</a></li>
+<li id="ca-history"><a href="/mw/index.php?title=Category:Kotlin&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-12">
+</div>
+</div>
+<div class="row">
+<div class="col-lg-12">
+ 
+<div id="content" class="mw-body"><a id="top"></a>
+<div id="mw-js-message" style="display:none;"></div>
+<div class="contentHeader">
+ 
+<h1 id="firstHeading" class="firstHeading">Category:Kotlin</h1>
+ 
+<div id="siteSub">From Rosetta Code</div><div id="jump-to-nav" class="mw-jump">Jump to:<a href="#mw-navigation">navigation</a>, <a href="#p-search">search</a></div>
+</div><div id="bodyContent">
+ 
+<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="infobox" style="width: 2in"><div class="floatleft"><a href="/wiki/Category:Solutions_by_Programming_Language" title="Category:Solutions by Programming Language"><img alt="Language" src="/mw/images/thumb/2/27/Rcode-button-language-crushed.png/64px-Rcode-button-language-crushed.png" width="64" height="64" srcset="/mw/images/thumb/2/27/Rcode-button-language-crushed.png/96px-Rcode-button-language-crushed.png 1.5x, /mw/images/thumb/2/27/Rcode-button-language-crushed.png/128px-Rcode-button-language-crushed.png 2x"/></a></div><b>Kotlin</b><br/> This <b>programming language</b> may be used to instruct a computer to perform a task.
+<table style="text-align: left; font-size: 75%; background: transparent;">
+<tr>
+<th><a rel="nofollow" class="external text" href="http://kotlinlang.org">Official website</a>
+</th></tr></table>
+<table style="text-align: left; font-size: 75%; background: transparent;">
+<tr>
+<th><a href="/wiki/Category:Typing/Checking" title="Category:Typing/Checking">Type checking</a>:
+</th>
+<td>Static
+</td></tr>
+<tr>
+<th>See Also:
+</th>
+<td>
+<ul><li><a rel="nofollow" class="external text" href="http://hopl.info/findlanguages2.prx?language=Kotlin&amp;which=byname">Kotlin on the HOPL</a></li></ul>
+<p><br/>
+</p>
+</td></tr></table>
+Listed below are all of the tasks on Rosetta Code which have been solved using Kotlin.</div><div class="infobox" style="width: 2in"><big><b>Your Help Needed</b></big><br/>If you know <b>Kotlin</b>, please write code for some of the <a href="/wiki/Reports:Tasks_not_implemented_in_Kotlin" title="Reports:Tasks not implemented in Kotlin">tasks not implemented in <b>Kotlin</b></a>.</div>Kotlin is the codename for a statically-typed <a href="/wiki/JVM" title="JVM" class="mw-redirect">JVM</a>-targeted programming language developed by JetBrains and intended for industrial use.
+ 
+ 
+ 
+<div lang="en" dir="ltr"><div id="mw-pages">
+<h2>Pages in category "Kotlin"</h2>
+<p>The following 117 pages are in this category, out of 117 total.
+</p><div lang="en" dir="ltr" class="mw-content-ltr"><div class="mw-category"><div class="mw-category-group"><h3>1</h3>
+<ul><li><a href="/wiki/100_doors" title="100 doors">100 doors</a></li></ul></div><div class="mw-category-group"><h3>2</h3>
+<ul><li><a href="/wiki/2048" title="2048">2048</a></li>
+<li><a href="/wiki/24_game" title="24 game">24 game</a></li></ul></div><div class="mw-category-group"><h3>9</h3>
+<ul><li><a href="/wiki/9_billion_names_of_God_the_integer" title="9 billion names of God the integer">9 billion names of God the integer</a></li>
+<li><a href="/wiki/99_Bottles_of_Beer" title="99 Bottles of Beer">99 Bottles of Beer</a></li></ul></div><div class="mw-category-group"><h3>A</h3>
+<ul><li><a href="/wiki/ABC_Problem" title="ABC Problem">ABC Problem</a></li>
+<li><a href="/wiki/Ackermann_function" title="Ackermann function">Ackermann function</a></li>
+<li><a href="/wiki/Active_Directory/Connect" title="Active Directory/Connect">Active Directory/Connect</a></li>
+<li><a href="/wiki/Align_columns" title="Align columns">Align columns</a></li>
+<li><a href="/wiki/Almost_prime" title="Almost prime">Almost prime</a></li>
+<li><a href="/wiki/Animate_a_pendulum" title="Animate a pendulum">Animate a pendulum</a></li>
+<li><a href="/wiki/Apply_a_callback_to_an_array" title="Apply a callback to an array">Apply a callback to an array</a></li>
+<li><a href="/wiki/Array_concatenation" title="Array concatenation">Array concatenation</a></li>
+<li><a href="/wiki/Array_length" title="Array length">Array length</a></li>
+<li><a href="/wiki/Arrays" title="Arrays">Arrays</a></li>
+<li><a href="/wiki/Associative_array/Creation" title="Associative array/Creation">Associative array/Creation</a></li>
+<li><a href="/wiki/Associative_array/Iteration" title="Associative array/Iteration">Associative array/Iteration</a></li>
+<li><a href="/wiki/Averages/Arithmetic_mean" title="Averages/Arithmetic mean">Averages/Arithmetic mean</a></li>
+<li><a href="/wiki/Averages/Median" title="Averages/Median">Averages/Median</a></li>
+<li><a href="/wiki/Averages/Pythagorean_means" title="Averages/Pythagorean means">Averages/Pythagorean means</a></li></ul></div><div class="mw-category-group"><h3>B</h3>
+<ul><li><a href="/wiki/Benford%27s_law" title="Benford's law">Benford's law</a></li>
+<li><a href="/wiki/Bernoulli_numbers" title="Bernoulli numbers">Bernoulli numbers</a></li>
+<li><a href="/wiki/Best_shuffle" title="Best shuffle">Best shuffle</a></li>
+<li><a href="/wiki/Binary_search" title="Binary search">Binary search</a></li>
+<li><a href="/wiki/Boolean_values" title="Boolean values">Boolean values</a></li></ul></div><div class="mw-category-group"><h3>C</h3>
+<ul><li><a href="/wiki/Calendar" title="Calendar">Calendar</a></li>
+<li><a href="/wiki/Carmichael_3_strong_pseudoprimes" title="Carmichael 3 strong pseudoprimes">Carmichael 3 strong pseudoprimes</a></li>
+<li><a href="/wiki/Catalan_numbers" title="Catalan numbers">Catalan numbers</a></li>
+<li><a href="/wiki/Color_of_a_screen_pixel" title="Color of a screen pixel">Color of a screen pixel</a></li>
+<li><a href="/wiki/Command-line_arguments" title="Command-line arguments">Command-line arguments</a></li>
+<li><a href="/wiki/Copy_a_string" title="Copy a string">Copy a string</a></li>
+<li><a href="/wiki/Create_a_two-dimensional_array_at_runtime" title="Create a two-dimensional array at runtime">Create a two-dimensional array at runtime</a></li></ul></div><div class="mw-category-group"><h3>D</h3>
+<ul><li><a href="/wiki/Discordian_date" title="Discordian date">Discordian date</a></li>
+<li><a href="/wiki/Dot_product" title="Dot product">Dot product</a></li></ul></div><div class="mw-category-group"><h3>E</h3>
+<ul><li><a href="/wiki/Emirp_primes" title="Emirp primes">Emirp primes</a></li>
+<li><a href="/wiki/Empty_program" title="Empty program">Empty program</a></li>
+<li><a href="/wiki/Empty_string" title="Empty string">Empty string</a></li></ul></div><div class="mw-category-group"><h3>F</h3>
+<ul><li><a href="/wiki/Factorial" title="Factorial">Factorial</a></li>
+<li><a href="/wiki/Fast_Fourier_transform" title="Fast Fourier transform">Fast Fourier transform</a></li>
+<li><a href="/wiki/Fibonacci_sequence" title="Fibonacci sequence">Fibonacci sequence</a></li>
+<li><a href="/wiki/FizzBuzz" title="FizzBuzz">FizzBuzz</a></li>
+<li><a href="/wiki/Floyd%27s_triangle" title="Floyd's triangle">Floyd's triangle</a></li>
+<li><a href="/wiki/Function_definition" title="Function definition">Function definition</a></li></ul></div><div class="mw-category-group"><h3>G</h3>
+<ul><li><a href="/wiki/Generate_Chess960_starting_position" title="Generate Chess960 starting position">Generate Chess960 starting position</a></li>
+<li><a href="/wiki/Greatest_common_divisor" title="Greatest common divisor">Greatest common divisor</a></li>
+<li><a href="/wiki/GUI_component_interaction" title="GUI component interaction">GUI component interaction</a></li></ul></div><div class="mw-category-group"><h3>H</h3>
+<ul><li><a href="/wiki/Hailstone_sequence" title="Hailstone sequence">Hailstone sequence</a></li>
+<li><a href="/wiki/Hamming_numbers" title="Hamming numbers">Hamming numbers</a></li>
+<li><a href="/wiki/Haversine_formula" title="Haversine formula">Haversine formula</a></li>
+<li><a href="/wiki/Hello_world/Graphical" title="Hello world/Graphical">Hello world/Graphical</a></li>
+<li><a href="/wiki/Hello_world/Newline_omission" title="Hello world/Newline omission">Hello world/Newline omission</a></li>
+<li><a href="/wiki/Hello_world/Text" title="Hello world/Text">Hello world/Text</a></li>
+<li><a href="/wiki/Heronian_triangles" title="Heronian triangles">Heronian triangles</a></li>
+<li><a href="/wiki/Higher-order_functions" title="Higher-order functions">Higher-order functions</a></li>
+<li><a href="/wiki/Hofstadter_Figure-Figure_sequences" title="Hofstadter Figure-Figure sequences">Hofstadter Figure-Figure sequences</a></li>
+<li><a href="/wiki/Hough_transform" title="Hough transform">Hough transform</a></li>
+<li><a href="/wiki/Huffman_coding" title="Huffman coding">Huffman coding</a></li></ul></div><div class="mw-category-group"><h3>I</h3>
+<ul><li><a href="/wiki/Infinity" title="Infinity">Infinity</a></li>
+<li><a href="/wiki/Inheritance/Multiple" title="Inheritance/Multiple">Inheritance/Multiple</a></li>
+<li><a href="/wiki/Integer_comparison" title="Integer comparison">Integer comparison</a></li></ul></div><div class="mw-category-group"><h3>J</h3>
+<ul><li><a href="/wiki/Jaro_distance" title="Jaro distance">Jaro distance</a></li>
+<li><a href="/wiki/Jensen%27s_Device" title="Jensen's Device">Jensen's Device</a></li></ul></div><div class="mw-category-group"><h3>K</h3>
+<ul><li><a href="/wiki/Kaprekar_numbers" title="Kaprekar numbers">Kaprekar numbers</a></li>
+<li><a href="/wiki/Knight%27s_tour" title="Knight's tour">Knight's tour</a></li>
+<li><a href="/wiki/Knuth_shuffle" title="Knuth shuffle">Knuth shuffle</a></li></ul></div><div class="mw-category-group"><h3>L</h3>
+<ul><li><a href="/wiki/Largest_int_from_concatenated_ints" title="Largest int from concatenated ints">Largest int from concatenated ints</a></li>
+<li><a href="/wiki/Leap_year" title="Leap year">Leap year</a></li>
+<li><a href="/wiki/Least_common_multiple" title="Least common multiple">Least common multiple</a></li>
+<li><a href="/wiki/Literals/Floating_point" title="Literals/Floating point">Literals/Floating point</a></li>
+<li><a href="/wiki/Long_multiplication" title="Long multiplication">Long multiplication</a></li>
+<li><a href="/wiki/Loops/Break" title="Loops/Break">Loops/Break</a></li>
+<li><a href="/wiki/Loops/For" title="Loops/For">Loops/For</a></li>
+<li><a href="/wiki/Loops/Nested" title="Loops/Nested">Loops/Nested</a></li></ul></div><div class="mw-category-group"><h3>M</h3>
+<ul><li><a href="/wiki/Maze_generation" title="Maze generation">Maze generation</a></li>
+<li><a href="/wiki/Middle_three_digits" title="Middle three digits">Middle three digits</a></li>
+<li><a href="/wiki/Morse_code" title="Morse code">Morse code</a></li>
+<li><a href="/wiki/Multifactorial" title="Multifactorial">Multifactorial</a></li></ul></div><div class="mw-category-group"><h3>N</h3>
+<ul><li><a href="/wiki/N%27th" title="N'th">N'th</a></li>
+<li><a href="/wiki/Numeric_error_propagation" title="Numeric error propagation">Numeric error propagation</a></li>
+<li><a href="/wiki/Numerical_integration/Gauss-Legendre_Quadrature" title="Numerical integration/Gauss-Legendre Quadrature">Numerical integration/Gauss-Legendre Quadrature</a></li></ul></div><div class="mw-category-group"><h3>O</h3>
+<ul><li><a href="/wiki/Operator_precedence" title="Operator precedence">Operator precedence</a></li>
+<li><a href="/wiki/Ordered_words" title="Ordered words">Ordered words</a></li></ul></div><div class="mw-category-group"><h3>P</h3>
+<ul><li><a href="/wiki/Pascal%27s_triangle" title="Pascal's triangle">Pascal's triangle</a></li>
+<li><a href="/wiki/Pernicious_numbers" title="Pernicious numbers">Pernicious numbers</a></li>
+<li><a href="/wiki/Priority_queue" title="Priority queue">Priority queue</a></li></ul></div><div class="mw-category-group"><h3>R</h3>
+<ul><li><a href="/wiki/Ray-casting_algorithm" title="Ray-casting algorithm">Ray-casting algorithm</a></li>
+<li><a href="/wiki/Read_a_configuration_file" title="Read a configuration file">Read a configuration file</a></li>
+<li><a href="/wiki/Read_entire_file" title="Read entire file">Read entire file</a></li>
+<li><a href="/wiki/Remove_duplicate_elements" title="Remove duplicate elements">Remove duplicate elements</a></li>
+<li><a href="/wiki/Repeat_a_string" title="Repeat a string">Repeat a string</a></li>
+<li><a href="/wiki/Reverse_a_string" title="Reverse a string">Reverse a string</a></li>
+<li><a href="/wiki/RIPEMD-160" title="RIPEMD-160">RIPEMD-160</a></li>
+<li><a href="/wiki/Roman_numerals/Encode" title="Roman numerals/Encode">Roman numerals/Encode</a></li>
+<li><a href="/wiki/Roots_of_a_quadratic_function" title="Roots of a quadratic function">Roots of a quadratic function</a></li>
+<li><a href="/wiki/Roots_of_unity" title="Roots of unity">Roots of unity</a></li>
+<li><a href="/wiki/Rosetta_Code/Rank_languages_by_popularity" title="Rosetta Code/Rank languages by popularity">Rosetta Code/Rank languages by popularity</a></li>
+<li><a href="/wiki/Rot-13" title="Rot-13">Rot-13</a></li></ul></div><div class="mw-category-group"><h3>S</h3>
+<ul><li><a href="/wiki/Semordnilap" title="Semordnilap">Semordnilap</a></li>
+<li><a href="/wiki/Sierpinski_triangle/Graphical" title="Sierpinski triangle/Graphical">Sierpinski triangle/Graphical</a></li>
+<li><a href="/wiki/Sieve_of_Eratosthenes" title="Sieve of Eratosthenes">Sieve of Eratosthenes</a></li>
+<li><a href="/wiki/Singly-linked_list/Traversal" title="Singly-linked list/Traversal">Singly-linked list/Traversal</a></li>
+<li><a href="/wiki/Sort_using_a_custom_comparator" title="Sort using a custom comparator">Sort using a custom comparator</a></li>
+<li><a href="/wiki/Sorting_algorithms/Bubble_sort" title="Sorting algorithms/Bubble sort">Sorting algorithms/Bubble sort</a></li>
+<li><a href="/wiki/Sorting_algorithms/Insertion_sort" title="Sorting algorithms/Insertion sort">Sorting algorithms/Insertion sort</a></li>
+<li><a href="/wiki/Sorting_algorithms/Merge_sort" title="Sorting algorithms/Merge sort">Sorting algorithms/Merge sort</a></li>
+<li><a href="/wiki/Sorting_algorithms/Quicksort" title="Sorting algorithms/Quicksort">Sorting algorithms/Quicksort</a></li>
+<li><a href="/wiki/Sorting_algorithms/Selection_sort" title="Sorting algorithms/Selection sort">Sorting algorithms/Selection sort</a></li>
+<li><a href="/wiki/Sparkline_in_unicode" title="Sparkline in unicode">Sparkline in unicode</a></li>
+<li><a href="/wiki/Stable_marriage_problem" title="Stable marriage problem">Stable marriage problem</a></li>
+<li><a href="/wiki/String_append" title="String append">String append</a></li>
+<li><a href="/wiki/String_concatenation" title="String concatenation">String concatenation</a></li></ul></div><div class="mw-category-group"><h3>T</h3>
+<ul><li><a href="/wiki/The_Twelve_Days_of_Christmas" title="The Twelve Days of Christmas">The Twelve Days of Christmas</a></li>
+<li><a href="/wiki/Tokenize_a_string" title="Tokenize a string">Tokenize a string</a></li>
+<li><a href="/wiki/Tree_traversal" title="Tree traversal">Tree traversal</a></li>
+<li><a href="/wiki/Truncatable_primes" title="Truncatable primes">Truncatable primes</a></li></ul></div><div class="mw-category-group"><h3>U</h3>
+<ul><li><a href="/wiki/Ulam_spiral_(for_primes)" title="Ulam spiral (for primes)">Ulam spiral (for primes)</a></li></ul></div><div class="mw-category-group"><h3>W</h3>
+<ul><li><a href="/wiki/Window_creation" title="Window creation">Window creation</a></li></ul></div></div></div>
+</div></div></div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="http://rosettacode.org/mw/index.php?title=Category:Kotlin&amp;oldid=198253">http://rosettacode.org/mw/index.php?title=Category:Kotlin&amp;oldid=198253</a>"</div>
+</div>
+ 
+<div id='catlinks' class='catlinks'><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="/wiki/Category:Typing/Checking/Static" title="Category:Typing/Checking/Static">Typing/Checking/Static</a></li><li><a href="/wiki/Category:Programming_Languages" title="Category:Programming Languages">Programming Languages</a></li></ul></div></div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-12">
+ 
+<nav class="navbar navbar-default p-tb " id="p-tb">
+<ul class="nav navbar-nav small">
+<li id="t-whatlinkshere"><a href="/wiki/Special:WhatLinksHere/Category:Kotlin" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
+<li id="t-recentchangeslinked"><a href="/wiki/Special:RecentChangesLinked/Category:Kotlin" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+<li id="t-specialpages"><a href="/wiki/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li>
+<li id="t-print"><a href="/mw/index.php?title=Category:Kotlin&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>
+<li id="t-permalink"><a href="/mw/index.php?title=Category:Kotlin&amp;oldid=198253" title="Permanent link to this revision of the page">Permanent link</a></li>
+<li id="t-info"><a href="/mw/index.php?title=Category:Kotlin&amp;action=info" title="More information about this page">Page information</a></li>
+<li id="t-smwbrowselink"><a href="/wiki/Special:Browse/Category:Kotlin" rel="smw-browse">Browse properties</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-12">
+ 
+<ul class="footer-info list-unstyled small" id="footer-info">
+ 
+<li> This page was last modified on 28 January 2015, at 21:07.</li>
+<li>Content is available under <a class="external" rel="nofollow" href="http://www.gnu.org/licenses/fdl-1.2.html">GNU Free Documentation License 1.2</a> unless otherwise noted.</li>
+</ul>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-6">
+ 
+<ul class="list-inline footer-places " id="footer-places">
+<li><small><a href="/wiki/Rosetta_Code:Privacy_policy" title="Rosetta Code:Privacy policy">Privacy policy</a></small></li>
+<li><small><a href="/wiki/Rosetta_Code:About" title="Rosetta Code:About">About Rosetta Code</a></small></li>
+<li><small><a href="/wiki/Rosetta_Code:General_disclaimer" title="Rosetta Code:General disclaimer">Disclaimers</a></small></li>
+</ul>
+</div>
+<div class="col-lg-6">
+ 
+<ul class="list-inline pull-right footer-icons " id="footer-icons">
+ 
+<li><a href="http://www.gnu.org/licenses/fdl-1.2.html"><img src="/mw/resources/assets/licenses/gnu-fdl.png" alt="GNU Free Documentation License 1.2" width="88" height="31"/></a></li>
+ 
+<li><a href="//www.mediawiki.org/"><img src="/mw/resources/assets/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/mw/resources/assets/poweredby_mediawiki_132x47.png 1.5x, /mw/resources/assets/poweredby_mediawiki_176x62.png 2x" width="88" height="31"/></a></li>
+<li><a href="https://www.semantic-mediawiki.org/wiki/Semantic_MediaWiki"><img src="/mw/extensions/SemanticMediaWiki/includes/../resources/images/smw_button.png" alt="Powered by Semantic MediaWiki" width="88" height="31"/></a></li>
+</ul>
+</div>
+</div>
+</div><script>window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+mw.loader.state({"user":"ready","user.groups":"ready"});mw.loader.load(["mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.bootstrap.scripts"]);
+} );</script>
+<script type="text/javascript">/* CloudFlare analytics upgrade */
+</script>
+<script>window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+mw.config.set({"wgBackendResponseTime":415});
+} );</script></body>
+</html>

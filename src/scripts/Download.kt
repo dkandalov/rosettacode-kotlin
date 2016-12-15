@@ -12,7 +12,7 @@ import java.util.stream.StreamSupport
 fun main(args: Array<String>) {
     val codeEntries =
         cached("codeEntries") {
-            EditPageUrlsLoader.load()
+            loadEditPageUrls()
                 .toParallelStream().flatMap{ CodeSnippet.create(it).toStream() }
                 .collect(Collectors.toList<CodeSnippet>())
         }
@@ -110,48 +110,46 @@ data class CodeSnippet(val editPageUrl: String, val sourceCodeOnWeb: String, val
 }
 
 data class LanguagePage(val html: String) {
-    fun extractProblemPageUrls(): List<String> {
+    fun extractTaskPageUrls(): List<String> {
         val linesWithHref = html.split("\n")
                 .dropWhile { !it.contains("<h2>Pages in category \"Kotlin\"</h2>") }
                 .takeWhile { !it.contains("<div class=\"printfooter\">") }
                 .filter { it.contains("href") }
 
-        return linesWithHref.map{ extractUrl(it) }
-    }
-
-    private fun extractUrl(it: String): String {
-        val s = it.replaceFirst(Regex(".*href=\""), "").replaceFirst(Regex("\".*"), "")
-        return "http://rosettacode.org/$s"
+        return linesWithHref.map{ it.extractUrl() }
     }
 
     companion object {
-        fun get(url: String = "http://rosettacode.org/wiki/Category:Kotlin"): LanguagePage {
-            return LanguagePage(khttp.get(url).text)
-        }
+        fun get(url: String = "http://rosettacode.org/wiki/Category:Kotlin") = LanguagePage(khttp.get(url).text)
     }
 }
 
-object EditPageUrlsLoader {
-    fun load(): List<String> {
-        val kotlinPage = cached("kotlinPage") { LanguagePage.get() }
-        return cached("editPageUrls") {
-            kotlinPage.extractProblemPageUrls().map {
-                log(it)
-                get(it).text.extractKotlinEditUrl()
-            }
-        }
-    }
-
-    private fun String.extractKotlinEditUrl(): String {
-        val s = split("\n")
+data class TaskPage(val html: String) {
+    internal fun extractKotlinEditUrl(): String {
+        val s = html.split("\n")
                 .dropWhile { !it.contains("<span class=\"mw-headline\" id=\"Kotlin\">") }
                 .find { it.contains("<a href=\"/mw/") }!!
-        return extractUrl(s).replace("&amp;", "&")
+
+        return s.extractUrl().replace("&amp;", "&")
     }
 
-    private fun extractUrl(it: String): String {
-        val s = it.replaceFirst(Regex(".*href=\""), "").replaceFirst(Regex("\".*"), "")
-        return "http://rosettacode.org/$s"
+    companion object {
+        fun get(url: String): TaskPage = TaskPage(khttp.get(url).text)
+    }
+}
+
+private fun String.extractUrl(): String {
+    val s = replaceFirst(Regex(".*href=\""), "").replaceFirst(Regex("\".*"), "")
+    return "http://rosettacode.org/$s"
+}
+
+fun loadEditPageUrls(): List<String> {
+    val kotlinPage = cached("kotlinPage") { LanguagePage.get() }
+    return cached("editPageUrls") {
+        kotlinPage.extractTaskPageUrls().map {
+            log("Loading $it")
+            TaskPage.get(it).extractKotlinEditUrl()
+        }
     }
 }
 
