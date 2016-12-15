@@ -17,39 +17,53 @@ fun main(args: Array<String>) {
     )
     val codeEntries = loadKotlinCodeEntries(exclusions)
 
-    codeEntries
-        .filter{ !it.sourceCodeExistsLocally() }
-        .forEach{ it.writeCodeToLocalFile() }
+    codeEntries.filter{ !it.sourceCodeExistsLocally() }.apply {
+        if (isNotEmpty()) {
+            log("There are some tasks which only exist on rosetta code website. They will be downloaded.")
+            forEach {
+                it.writeCodeToLocalFile()
+                log("Saved source code to ${it.localFile}")
+            }
+        } else {
+            log("All tasks from rosetta code website exist in local files.")
+        }
+    }
 
-    codeEntries
-        .filter{ it.sourceCodeExistsLocally() && it.localSourceCodeIsDifferentFromWeb() }
-        .forEach{ log("Source code has differences at snippet index: ${it.index}; url: ${it.editPageUrl}") }
+    codeEntries.filter{ it.sourceCodeExistsLocally() && it.localSourceCodeIsDifferentFromWeb() }.apply {
+        if (isNotEmpty()) {
+            forEach{ log("Source code has differences at snippet index: ${it.index}; url: ${it.editPageUrl}") }
+        } else {
+            log("There are no differences between code in local files and rosetta code website.")
+        }
+    }
 }
 
 private fun loadKotlinCodeEntries(exclusions: List<String>): List<CodeSnippet> {
     val kotlinPage = cached("kotlinPage") { LanguagePage.get() }
     val editPageUrls = cached("editPageUrls") {
         kotlinPage.extractTaskPageUrls().parallel().map {
-            log("Loading $it")
+            log("Getting edit page urls from $it")
             TaskPage.get(it).extractKotlinEditUrl()
         }.toList()
     }
 
-    val tasksSourceCode = editPageUrls.parallel().map {
-        log("Fetching source code from $it")
-        Pair(it, get(it).text)
-    }.toList()
+    val tasksSourceCode = cached("tasksSourceCode") {
+        editPageUrls.parallel().map {
+            log("Getting source code from $it")
+            Pair(it, get(it).text)
+        }.toList()
+    }
 
-    val codeEntries = cached("codeEntries") {
-            tasksSourceCode.flatMap { CodeSnippet.create(it.first, it.second) }
-        }.filter { codeSnippet ->
-            exclusions.none { codeSnippet.editPageUrl.contains(it) }
-        }
-    return codeEntries
+    val codeSnippets = tasksSourceCode
+            .flatMap { CodeSnippet.create(it.first, it.second) }
+            .filter { codeSnippet ->
+                exclusions.none { codeSnippet.editPageUrl.contains(it) }
+            }
+    return codeSnippets
 }
 
 data class CodeSnippet(val editPageUrl: String, val sourceCodeOnWeb: String, val index: Int) {
-    private val localFile = localFile()
+    val localFile = localFile()
     private val snippetPackageName = snippetPackageName()
 
     fun writeCodeToLocalFile() {
@@ -60,8 +74,6 @@ data class CodeSnippet(val editPageUrl: String, val sourceCodeOnWeb: String, val
             else "package $snippetPackageName\n\n" + it
         }
         localFile.writeText(sourceCode)
-
-        log("Saved source code to $localFile")
     }
 
     fun sourceCodeExistsLocally(): Boolean {
@@ -172,14 +184,13 @@ private val xStream = XStream(XppDriver())
 fun <T> cached(id: String, f: () -> T): T {
     val file = File(id + ".xml")
     if (file.exists()) {
-        log("Using cached value of '$id'")
+        log("// Using cached value of '$id'")
         @Suppress("UNCHECKED_CAST")
         return xStream.fromXML(file.readText()) as T
     } else {
-        log("Recalculating value of '$id'")
+        log("// Recalculating value of '$id'")
         val result = f()
         file.writeText(xStream.toXML(result))
-        log("Done")
         return result
     }
 }
