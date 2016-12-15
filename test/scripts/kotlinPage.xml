@@ -1,0 +1,371 @@
+<string>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot; dir=&quot;ltr&quot; class=&quot;client-nojs&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;/&gt;
+&lt;title&gt;Category:Kotlin - Rosetta Code&lt;/title&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+//&lt;![CDATA[
+try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:0,byc:0,owlid:&quot;cf&quot;,bag2:1,mirage2:0,oracle:0,paths:{cloudflare:&quot;/cdn-cgi/nexp/dok3v=1613a3a185/&quot;},atok:&quot;efef62894ab2514d9e6a375dbafc7c1b&quot;,petok:&quot;553f73464ef1cee7c761bbd40e561e9116178ef3-1481826504-1800&quot;,zone:&quot;rosettacode.org&quot;,rocket:&quot;0&quot;,apps:{&quot;ga_key&quot;:{&quot;ua&quot;:&quot;UA-1219419-1&quot;,&quot;ga_bs&quot;:&quot;2&quot;}}}];!function(a,b){a=document.createElement(&quot;script&quot;),b=document.getElementsByTagName(&quot;script&quot;)[0],a.async=!0,a.src=&quot;//ajax.cloudflare.com/cdn-cgi/nexp/dok3v=f2befc48d1/cloudflare.min.js&quot;,b.parentNode.insertBefore(a,b)}()}}catch(e){};
+//]]&gt;
+&lt;/script&gt;
+&lt;script&gt;document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, &quot;$1client-js$2&quot; );&lt;/script&gt;
+&lt;script&gt;window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+mw.config.set({&quot;wgCanonicalNamespace&quot;:&quot;Category&quot;,&quot;wgCanonicalSpecialPageName&quot;:!1,&quot;wgNamespaceNumber&quot;:14,&quot;wgPageName&quot;:&quot;Category:Kotlin&quot;,&quot;wgTitle&quot;:&quot;Kotlin&quot;,&quot;wgCurRevisionId&quot;:198253,&quot;wgRevisionId&quot;:198253,&quot;wgArticleId&quot;:11088,&quot;wgIsArticle&quot;:!0,&quot;wgIsRedirect&quot;:!1,&quot;wgAction&quot;:&quot;view&quot;,&quot;wgUserName&quot;:null,&quot;wgUserGroups&quot;:[&quot;*&quot;],&quot;wgCategories&quot;:[&quot;Typing/Checking/Static&quot;,&quot;Programming Languages&quot;],&quot;wgBreakFrames&quot;:!1,&quot;wgPageContentLanguage&quot;:&quot;en&quot;,&quot;wgPageContentModel&quot;:&quot;wikitext&quot;,&quot;wgSeparatorTransformTable&quot;:[&quot;&quot;,&quot;&quot;],&quot;wgDigitTransformTable&quot;:[&quot;&quot;,&quot;&quot;],&quot;wgDefaultDateFormat&quot;:&quot;dmy&quot;,&quot;wgMonthNames&quot;:[&quot;&quot;,&quot;January&quot;,&quot;February&quot;,&quot;March&quot;,&quot;April&quot;,&quot;May&quot;,&quot;June&quot;,&quot;July&quot;,&quot;August&quot;,&quot;September&quot;,&quot;October&quot;,&quot;November&quot;,&quot;December&quot;],&quot;wgMonthNamesShort&quot;:[&quot;&quot;,&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;,&quot;Apr&quot;,&quot;May&quot;,&quot;Jun&quot;,&quot;Jul&quot;,&quot;Aug&quot;,&quot;Sep&quot;,&quot;Oct&quot;,&quot;Nov&quot;,&quot;Dec&quot;],&quot;wgRelevantPageName&quot;:&quot;Category:Kotlin&quot;,&quot;wgRelevantArticleId&quot;:11088,&quot;wgIsProbablyEditable&quot;:!0,&quot;wgRestrictionEdit&quot;:[],&quot;wgRestrictionMove&quot;:[],&quot;sfgAutocompleteValues&quot;:[],&quot;sfgAutocompleteOnAllChars&quot;:!1,
+&quot;sfgFieldProperties&quot;:[],&quot;sfgDependentFields&quot;:[],&quot;sfgShowOnSelect&quot;:[],&quot;sfgScriptPath&quot;:&quot;/mw/extensions/SemanticForms&quot;,&quot;sdgDownArrowImage&quot;:&quot;/mw/extensions/SemanticDrilldown/skins/down-arrow.png&quot;,&quot;sdgRightArrowImage&quot;:&quot;/mw/extensions/SemanticDrilldown/skins/right-arrow.png&quot;});mw.loader.implement(&quot;user.options&quot;,function($,jQuery){mw.user.options.set({&quot;variant&quot;:&quot;en&quot;});});mw.loader.implement(&quot;user.tokens&quot;,function($,jQuery){mw.user.tokens.set({&quot;editToken&quot;:&quot;+\\&quot;,&quot;patrolToken&quot;:&quot;+\\&quot;,&quot;watchToken&quot;:&quot;+\\&quot;});});mw.loader.load([&quot;ext.smw.style&quot;,&quot;ext.smw.tooltips&quot;,&quot;mediawiki.page.startup&quot;,&quot;mediawiki.legacy.wikibits&quot;]);
+} );&lt;/script&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/mw/load.php?debug=false&amp;amp;lang=en&amp;amp;modules=ext.bootstrap.styles%7Cmediawiki.action.view.categoryPage.styles%7Cmediawiki.helplink&amp;amp;only=styles&amp;amp;skin=chameleon&quot;/&gt;
+&lt;meta name=&quot;ResourceLoaderDynamicStyles&quot; content=&quot;&quot;/&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/mw/load.php?debug=false&amp;amp;lang=en&amp;amp;modules=site&amp;amp;only=styles&amp;amp;skin=chameleon&quot;/&gt;
+&lt;style&gt;a:lang(ar),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}&lt;/style&gt;
+&lt;script async=&quot;&quot; src=&quot;/mw/load.php?debug=false&amp;amp;lang=en&amp;amp;modules=startup&amp;amp;only=scripts&amp;amp;skin=chameleon&quot;&gt;&lt;/script&gt;
+&lt;meta name=&quot;generator&quot; content=&quot;MediaWiki 1.26.2&quot;/&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;/&gt;
+&lt;link rel=&quot;ExportRDF&quot; type=&quot;application/rdf+xml&quot; title=&quot;Category:Kotlin&quot; href=&quot;/mw/index.php?title=Special:ExportRDF/Category:Kotlin&amp;amp;xmlmime=rdf&quot;/&gt;
+&lt;link rel=&quot;alternate&quot; type=&quot;application/x-wiki&quot; title=&quot;Edit&quot; href=&quot;/mw/index.php?title=Category:Kotlin&amp;amp;action=edit&quot;/&gt;
+&lt;link rel=&quot;edit&quot; title=&quot;Edit&quot; href=&quot;/mw/index.php?title=Category:Kotlin&amp;amp;action=edit&quot;/&gt;
+&lt;link rel=&quot;shortcut icon&quot; href=&quot;/favicon.ico&quot;/&gt;
+&lt;link rel=&quot;search&quot; type=&quot;application/opensearchdescription+xml&quot; href=&quot;/mw/opensearch_desc.php&quot; title=&quot;Rosetta Code (en)&quot;/&gt;
+&lt;link rel=&quot;EditURI&quot; type=&quot;application/rsd+xml&quot; href=&quot;http://rosettacode.org/mw/api.php?action=rsd&quot;/&gt;
+&lt;link rel=&quot;copyright&quot; href=&quot;http://www.gnu.org/licenses/fdl-1.2.html&quot;/&gt;
+&lt;link rel=&quot;alternate&quot; type=&quot;application/atom+xml&quot; title=&quot;Rosetta Code Atom feed&quot; href=&quot;/mw/index.php?title=Special:RecentChanges&amp;amp;feed=atom&quot;/&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+/* &lt;![CDATA[ */
+var _gaq = _gaq || [];
+_gaq.push([&apos;_setAccount&apos;, &apos;UA-1219419-1&apos;]);
+_gaq.push([&apos;_trackPageview&apos;]);
+
+(function() {
+var ga = document.createElement(&apos;script&apos;); ga.type = &apos;text/javascript&apos;; ga.async = true;
+ga.src = (&apos;https:&apos; == document.location.protocol ? &apos;https://ssl&apos; : &apos;http://www&apos;) + &apos;.google-analytics.com/ga.js&apos;;
+var s = document.getElementsByTagName(&apos;script&apos;)[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+(function(b){(function(a){&quot;__CF&quot;in b&amp;&amp;&quot;DJS&quot;in b.__CF?b.__CF.DJS.push(a):&quot;addEventListener&quot;in b?b.addEventListener(&quot;load&quot;,a,!1):b.attachEvent(&quot;onload&quot;,a)})(function(){&quot;FB&quot;in b&amp;&amp;&quot;Event&quot;in FB&amp;&amp;&quot;subscribe&quot;in FB.Event&amp;&amp;(FB.Event.subscribe(&quot;edge.create&quot;,function(a){_gaq.push([&quot;_trackSocial&quot;,&quot;facebook&quot;,&quot;like&quot;,a])}),FB.Event.subscribe(&quot;edge.remove&quot;,function(a){_gaq.push([&quot;_trackSocial&quot;,&quot;facebook&quot;,&quot;unlike&quot;,a])}),FB.Event.subscribe(&quot;message.send&quot;,function(a){_gaq.push([&quot;_trackSocial&quot;,&quot;facebook&quot;,&quot;send&quot;,a])}));&quot;twttr&quot;in b&amp;&amp;&quot;events&quot;in twttr&amp;&amp;&quot;bind&quot;in twttr.events&amp;&amp;twttr.events.bind(&quot;tweet&quot;,function(a){if(a){var b;if(a.target&amp;&amp;a.target.nodeName==&quot;IFRAME&quot;)a:{if(a=a.target.src){a=a.split(&quot;#&quot;)[0].match(/[^?=&amp;]+=([^&amp;]*)?/g);b=0;for(var c;c=a[b];++b)if(c.indexOf(&quot;url&quot;)===0){b=unescape(c.split(&quot;=&quot;)[1]);break a}}b=void 0}_gaq.push([&quot;_trackSocial&quot;,&quot;twitter&quot;,&quot;tweet&quot;,b])}})})})(window);
+/* ]]&gt; */
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body class=&quot;mediawiki ltr sitedir-ltr ns-14 ns-subject page-Category_Kotlin layout-standard skin-chameleon action-view&quot;&gt;
+&lt;div class=&quot;container&quot;&gt;
+&lt;div class=&quot;row&quot;&gt;
+&lt;div class=&quot;col-lg-3&quot;&gt;
+ 
+&lt;div id=&quot;p-logo&quot; class=&quot;p-logo&quot; role=&quot;banner&quot;&gt;
+&lt;a href=&quot;/wiki/Rosetta_Code&quot; title=&quot;Visit the main page&quot;&gt;&lt;img src=&quot;/mw/title.png&quot; alt=&quot;Rosetta Code&quot;/&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;col-lg-9&quot;&gt;
+&lt;div class=&quot;row&quot;&gt;
+&lt;div class=&quot;col-lg-12&quot;&gt;
+ 
+&lt;div class=&quot;p-personal pull-right&quot; id=&quot;p-personal&quot;&gt;
+&lt;ul class=&quot;p-personal-tools list-inline pull-right&quot;&gt;
+&lt;li id=&quot;pt-createaccount&quot;&gt;&lt;a href=&quot;/mw/index.php?title=Special:UserLogin&amp;amp;returnto=Category%3AKotlin&amp;amp;type=signup&quot; title=&quot;You are encouraged to create an account and log in; however, it is not mandatory&quot;&gt;Create account&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;pt-login&quot;&gt;&lt;a href=&quot;/mw/index.php?title=Special:UserLogin&amp;amp;returnto=Category%3AKotlin&quot; title=&quot;You are encouraged to log in; however, it is not mandatory [o]&quot; accesskey=&quot;o&quot;&gt;Log in&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;newtalk-notifier&quot;&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+&lt;div class=&quot;col-lg-12&quot;&gt;
+ 
+&lt;div id=&quot;p-search&quot; class=&quot;p-search pull-right&quot; role=&quot;search&quot;&gt;
+&lt;form id=&quot;searchform&quot; class=&quot;mw-search form-inline&quot; action=&quot;/mw/index.php&quot;&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;title&quot; value=&quot;Special:Search&quot;/&gt;
+&lt;div class=&quot;input-group&quot;&gt;
+&lt;input name=&quot;search&quot; placeholder=&quot;Search&quot; title=&quot;Search Rosetta Code [f]&quot; accesskey=&quot;f&quot; id=&quot;searchInput&quot; class=&quot;form-control&quot;/&gt;
+&lt;div class=&quot;input-group-btn&quot;&gt;
+&lt;button value=&quot;Go&quot; id=&quot;searchGoButton&quot; name=&quot;go&quot; title=&quot;Go to a page with this exact name if it exists&quot; type=&quot;submit&quot; class=&quot;searchGoButton btn btn-default&quot;&gt;&lt;span class=&quot;glyphicon glyphicon-share-alt&quot;&gt;&lt;/span&gt;&lt;/button&gt;&lt;button value=&quot;Search&quot; id=&quot;mw-searchButton&quot; name=&quot;fulltext&quot; title=&quot;Search the pages for this text&quot; type=&quot;submit&quot; class=&quot;mw-searchButton btn btn-default&quot;&gt;&lt;span class=&quot;glyphicon glyphicon-search&quot;&gt;&lt;/span&gt;&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/form&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+&lt;div class=&quot;col-lg-12&quot;&gt;
+ 
+&lt;nav class=&quot;navbar navbar-default p-navbar&quot; role=&quot;navigation&quot; id=&quot;mw-navigation&quot;&gt;
+&lt;div class=&quot;container-fluid&quot;&gt;&lt;div class=&quot;navbar-header&quot;&gt;
+&lt;button type=&quot;button&quot; class=&quot;navbar-toggle collapsed&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#mw-navigation-collapse&quot;&gt;
+&lt;span class=&quot;sr-only&quot;&gt;Toggle navigation&lt;/span&gt;
+&lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;div class=&quot;collapse navbar-collapse&quot; id=&quot;mw-navigation-collapse&quot;&gt;&lt;ul class=&quot;nav navbar-nav&quot;&gt;
+ 
+&lt;li class=&quot;dropdown&quot;&gt;
+&lt;a href=&quot;#&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;Community &lt;b class=&quot;caret&quot;&gt;&lt;/b&gt;&lt;/a&gt;
+&lt;ul class=&quot;dropdown-menu p-Community&quot; id=&quot;p-Community&quot;&gt;
+&lt;li id=&quot;n-Twitter&quot;&gt;&lt;a href=&quot;http://twitter.com/rosettacode&quot; rel=&quot;nofollow&quot;&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;n-Chat.2FIRC&quot;&gt;&lt;a href=&quot;/wiki/Special:WebChat&quot;&gt;Chat/IRC&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;n-Planet&quot;&gt;&lt;a href=&quot;http://rosettacode.org/planet&quot; rel=&quot;nofollow&quot;&gt;Planet&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;n-The-Village-Pump&quot;&gt;&lt;a href=&quot;/wiki/Rosetta_Code:Village_Pump&quot;&gt;The Village Pump&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;n-Finances&quot;&gt;&lt;a href=&quot;/wiki/Rosetta_Code:Finances&quot;&gt;Finances&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+ 
+&lt;li class=&quot;dropdown&quot;&gt;
+&lt;a href=&quot;#&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;Explore &lt;b class=&quot;caret&quot;&gt;&lt;/b&gt;&lt;/a&gt;
+&lt;ul class=&quot;dropdown-menu p-Explore&quot; id=&quot;p-Explore&quot;&gt;
+&lt;li id=&quot;n-Languages&quot;&gt;&lt;a href=&quot;/wiki/Category:Programming_Languages&quot;&gt;Languages&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;n-Tasks&quot;&gt;&lt;a href=&quot;/wiki/Category:Programming_Tasks&quot;&gt;Tasks&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;n-recentchanges&quot;&gt;&lt;a href=&quot;/wiki/Special:RecentChanges&quot; title=&quot;A list of recent changes in the wiki [r]&quot; accesskey=&quot;r&quot;&gt;Recent changes&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;n-Similar-sites&quot;&gt;&lt;a href=&quot;/wiki/Help:Similar_Sites&quot;&gt;Similar sites&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;n-randompage&quot;&gt;&lt;a href=&quot;/wiki/Special:Random&quot; title=&quot;Load a random page [x]&quot; accesskey=&quot;x&quot;&gt;Random page&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;&lt;/ul&gt;
+&lt;/div&gt; 
+&lt;/div&gt;
+&lt;/nav&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+&lt;div class=&quot;col-lg-12&quot;&gt;
+ 
+&lt;ul class=&quot;p-contentnavigation list-inline text-center&quot; id=&quot;p-contentnavigation&quot;&gt;
+ 
+&lt;li id=&quot;p-namespaces&quot;&gt;
+&lt;ul class=&quot;list-inline&quot;&gt;
+&lt;li id=&quot;ca-nstab-category&quot; class=&quot;selected&quot;&gt;&lt;a href=&quot;/wiki/Category:Kotlin&quot; title=&quot;View the category page [c]&quot; accesskey=&quot;c&quot; class=&quot;selected&quot;&gt;Category&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;ca-talk&quot; class=&quot;new&quot;&gt;&lt;a href=&quot;/mw/index.php?title=Category_talk:Kotlin&amp;amp;action=edit&amp;amp;redlink=1&quot; rel=&quot;discussion&quot; title=&quot;Discussion about the content page [t]&quot; accesskey=&quot;t&quot; class=&quot;new&quot;&gt;Discussion&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+ 
+&lt;li id=&quot;p-views&quot;&gt;
+&lt;ul class=&quot;list-inline&quot;&gt;
+&lt;li id=&quot;ca-edit&quot;&gt;&lt;a href=&quot;/mw/index.php?title=Category:Kotlin&amp;amp;action=edit&quot; title=&quot;Edit this page [e]&quot; accesskey=&quot;e&quot;&gt;Edit&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;ca-history&quot;&gt;&lt;a href=&quot;/mw/index.php?title=Category:Kotlin&amp;amp;action=history&quot; title=&quot;Past revisions of this page [h]&quot; accesskey=&quot;h&quot;&gt;History&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+&lt;div class=&quot;col-lg-12&quot;&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+&lt;div class=&quot;col-lg-12&quot;&gt;
+ 
+&lt;div id=&quot;content&quot; class=&quot;mw-body&quot;&gt;&lt;a id=&quot;top&quot;&gt;&lt;/a&gt;
+&lt;div id=&quot;mw-js-message&quot; style=&quot;display:none;&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;contentHeader&quot;&gt;
+ 
+&lt;h1 id=&quot;firstHeading&quot; class=&quot;firstHeading&quot;&gt;Category:Kotlin&lt;/h1&gt;
+ 
+&lt;div id=&quot;siteSub&quot;&gt;From Rosetta Code&lt;/div&gt;&lt;div id=&quot;jump-to-nav&quot; class=&quot;mw-jump&quot;&gt;Jump to:&lt;a href=&quot;#mw-navigation&quot;&gt;navigation&lt;/a&gt;, &lt;a href=&quot;#p-search&quot;&gt;search&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;div id=&quot;bodyContent&quot;&gt;
+ 
+&lt;div id=&quot;mw-content-text&quot; lang=&quot;en&quot; dir=&quot;ltr&quot; class=&quot;mw-content-ltr&quot;&gt;&lt;div class=&quot;infobox&quot; style=&quot;width: 2in&quot;&gt;&lt;div class=&quot;floatleft&quot;&gt;&lt;a href=&quot;/wiki/Category:Solutions_by_Programming_Language&quot; title=&quot;Category:Solutions by Programming Language&quot;&gt;&lt;img alt=&quot;Language&quot; src=&quot;/mw/images/thumb/2/27/Rcode-button-language-crushed.png/64px-Rcode-button-language-crushed.png&quot; width=&quot;64&quot; height=&quot;64&quot; srcset=&quot;/mw/images/thumb/2/27/Rcode-button-language-crushed.png/96px-Rcode-button-language-crushed.png 1.5x, /mw/images/thumb/2/27/Rcode-button-language-crushed.png/128px-Rcode-button-language-crushed.png 2x&quot;/&gt;&lt;/a&gt;&lt;/div&gt;&lt;b&gt;Kotlin&lt;/b&gt;&lt;br/&gt; This &lt;b&gt;programming language&lt;/b&gt; may be used to instruct a computer to perform a task.
+&lt;table style=&quot;text-align: left; font-size: 75%; background: transparent;&quot;&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;a rel=&quot;nofollow&quot; class=&quot;external text&quot; href=&quot;http://kotlinlang.org&quot;&gt;Official website&lt;/a&gt;
+&lt;/th&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;table style=&quot;text-align: left; font-size: 75%; background: transparent;&quot;&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;a href=&quot;/wiki/Category:Typing/Checking&quot; title=&quot;Category:Typing/Checking&quot;&gt;Type checking&lt;/a&gt;:
+&lt;/th&gt;
+&lt;td&gt;Static
+&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;th&gt;See Also:
+&lt;/th&gt;
+&lt;td&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a rel=&quot;nofollow&quot; class=&quot;external text&quot; href=&quot;http://hopl.info/findlanguages2.prx?language=Kotlin&amp;amp;which=byname&quot;&gt;Kotlin on the HOPL&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+&lt;p&gt;&lt;br/&gt;
+&lt;/p&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+Listed below are all of the tasks on Rosetta Code which have been solved using Kotlin.&lt;/div&gt;&lt;div class=&quot;infobox&quot; style=&quot;width: 2in&quot;&gt;&lt;big&gt;&lt;b&gt;Your Help Needed&lt;/b&gt;&lt;/big&gt;&lt;br/&gt;If you know &lt;b&gt;Kotlin&lt;/b&gt;, please write code for some of the &lt;a href=&quot;/wiki/Reports:Tasks_not_implemented_in_Kotlin&quot; title=&quot;Reports:Tasks not implemented in Kotlin&quot;&gt;tasks not implemented in &lt;b&gt;Kotlin&lt;/b&gt;&lt;/a&gt;.&lt;/div&gt;Kotlin is the codename for a statically-typed &lt;a href=&quot;/wiki/JVM&quot; title=&quot;JVM&quot; class=&quot;mw-redirect&quot;&gt;JVM&lt;/a&gt;-targeted programming language developed by JetBrains and intended for industrial use.
+ 
+ 
+ 
+&lt;div lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;&lt;div id=&quot;mw-pages&quot;&gt;
+&lt;h2&gt;Pages in category &quot;Kotlin&quot;&lt;/h2&gt;
+&lt;p&gt;The following 117 pages are in this category, out of 117 total.
+&lt;/p&gt;&lt;div lang=&quot;en&quot; dir=&quot;ltr&quot; class=&quot;mw-content-ltr&quot;&gt;&lt;div class=&quot;mw-category&quot;&gt;&lt;div class=&quot;mw-category-group&quot;&gt;&lt;h3&gt;1&lt;/h3&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/wiki/100_doors&quot; title=&quot;100 doors&quot;&gt;100 doors&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div class=&quot;mw-category-group&quot;&gt;&lt;h3&gt;2&lt;/h3&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/wiki/2048&quot; title=&quot;2048&quot;&gt;2048&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/24_game&quot; title=&quot;24 game&quot;&gt;24 game&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div class=&quot;mw-category-group&quot;&gt;&lt;h3&gt;9&lt;/h3&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/wiki/9_billion_names_of_God_the_integer&quot; title=&quot;9 billion names of God the integer&quot;&gt;9 billion names of God the integer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/99_Bottles_of_Beer&quot; title=&quot;99 Bottles of Beer&quot;&gt;99 Bottles of Beer&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div class=&quot;mw-category-group&quot;&gt;&lt;h3&gt;A&lt;/h3&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/wiki/ABC_Problem&quot; title=&quot;ABC Problem&quot;&gt;ABC Problem&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Ackermann_function&quot; title=&quot;Ackermann function&quot;&gt;Ackermann function&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Active_Directory/Connect&quot; title=&quot;Active Directory/Connect&quot;&gt;Active Directory/Connect&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Align_columns&quot; title=&quot;Align columns&quot;&gt;Align columns&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Almost_prime&quot; title=&quot;Almost prime&quot;&gt;Almost prime&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Animate_a_pendulum&quot; title=&quot;Animate a pendulum&quot;&gt;Animate a pendulum&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Apply_a_callback_to_an_array&quot; title=&quot;Apply a callback to an array&quot;&gt;Apply a callback to an array&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Array_concatenation&quot; title=&quot;Array concatenation&quot;&gt;Array concatenation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Array_length&quot; title=&quot;Array length&quot;&gt;Array length&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Arrays&quot; title=&quot;Arrays&quot;&gt;Arrays&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Associative_array/Creation&quot; title=&quot;Associative array/Creation&quot;&gt;Associative array/Creation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Associative_array/Iteration&quot; title=&quot;Associative array/Iteration&quot;&gt;Associative array/Iteration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Averages/Arithmetic_mean&quot; title=&quot;Averages/Arithmetic mean&quot;&gt;Averages/Arithmetic mean&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Averages/Median&quot; title=&quot;Averages/Median&quot;&gt;Averages/Median&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Averages/Pythagorean_means&quot; title=&quot;Averages/Pythagorean means&quot;&gt;Averages/Pythagorean means&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div class=&quot;mw-category-group&quot;&gt;&lt;h3&gt;B&lt;/h3&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/wiki/Benford%27s_law&quot; title=&quot;Benford&apos;s law&quot;&gt;Benford&apos;s law&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Bernoulli_numbers&quot; title=&quot;Bernoulli numbers&quot;&gt;Bernoulli numbers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Best_shuffle&quot; title=&quot;Best shuffle&quot;&gt;Best shuffle&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Binary_search&quot; title=&quot;Binary search&quot;&gt;Binary search&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Boolean_values&quot; title=&quot;Boolean values&quot;&gt;Boolean values&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div class=&quot;mw-category-group&quot;&gt;&lt;h3&gt;C&lt;/h3&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/wiki/Calendar&quot; title=&quot;Calendar&quot;&gt;Calendar&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Carmichael_3_strong_pseudoprimes&quot; title=&quot;Carmichael 3 strong pseudoprimes&quot;&gt;Carmichael 3 strong pseudoprimes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Catalan_numbers&quot; title=&quot;Catalan numbers&quot;&gt;Catalan numbers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Color_of_a_screen_pixel&quot; title=&quot;Color of a screen pixel&quot;&gt;Color of a screen pixel&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Command-line_arguments&quot; title=&quot;Command-line arguments&quot;&gt;Command-line arguments&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Copy_a_string&quot; title=&quot;Copy a string&quot;&gt;Copy a string&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Create_a_two-dimensional_array_at_runtime&quot; title=&quot;Create a two-dimensional array at runtime&quot;&gt;Create a two-dimensional array at runtime&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div class=&quot;mw-category-group&quot;&gt;&lt;h3&gt;D&lt;/h3&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/wiki/Discordian_date&quot; title=&quot;Discordian date&quot;&gt;Discordian date&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Dot_product&quot; title=&quot;Dot product&quot;&gt;Dot product&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div class=&quot;mw-category-group&quot;&gt;&lt;h3&gt;E&lt;/h3&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/wiki/Emirp_primes&quot; title=&quot;Emirp primes&quot;&gt;Emirp primes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Empty_program&quot; title=&quot;Empty program&quot;&gt;Empty program&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Empty_string&quot; title=&quot;Empty string&quot;&gt;Empty string&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div class=&quot;mw-category-group&quot;&gt;&lt;h3&gt;F&lt;/h3&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/wiki/Factorial&quot; title=&quot;Factorial&quot;&gt;Factorial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Fast_Fourier_transform&quot; title=&quot;Fast Fourier transform&quot;&gt;Fast Fourier transform&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Fibonacci_sequence&quot; title=&quot;Fibonacci sequence&quot;&gt;Fibonacci sequence&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/FizzBuzz&quot; title=&quot;FizzBuzz&quot;&gt;FizzBuzz&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Floyd%27s_triangle&quot; title=&quot;Floyd&apos;s triangle&quot;&gt;Floyd&apos;s triangle&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Function_definition&quot; title=&quot;Function definition&quot;&gt;Function definition&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div class=&quot;mw-category-group&quot;&gt;&lt;h3&gt;G&lt;/h3&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/wiki/Generate_Chess960_starting_position&quot; title=&quot;Generate Chess960 starting position&quot;&gt;Generate Chess960 starting position&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Greatest_common_divisor&quot; title=&quot;Greatest common divisor&quot;&gt;Greatest common divisor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/GUI_component_interaction&quot; title=&quot;GUI component interaction&quot;&gt;GUI component interaction&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div class=&quot;mw-category-group&quot;&gt;&lt;h3&gt;H&lt;/h3&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/wiki/Hailstone_sequence&quot; title=&quot;Hailstone sequence&quot;&gt;Hailstone sequence&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Hamming_numbers&quot; title=&quot;Hamming numbers&quot;&gt;Hamming numbers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Haversine_formula&quot; title=&quot;Haversine formula&quot;&gt;Haversine formula&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Hello_world/Graphical&quot; title=&quot;Hello world/Graphical&quot;&gt;Hello world/Graphical&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Hello_world/Newline_omission&quot; title=&quot;Hello world/Newline omission&quot;&gt;Hello world/Newline omission&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Hello_world/Text&quot; title=&quot;Hello world/Text&quot;&gt;Hello world/Text&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Heronian_triangles&quot; title=&quot;Heronian triangles&quot;&gt;Heronian triangles&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Higher-order_functions&quot; title=&quot;Higher-order functions&quot;&gt;Higher-order functions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Hofstadter_Figure-Figure_sequences&quot; title=&quot;Hofstadter Figure-Figure sequences&quot;&gt;Hofstadter Figure-Figure sequences&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Hough_transform&quot; title=&quot;Hough transform&quot;&gt;Hough transform&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Huffman_coding&quot; title=&quot;Huffman coding&quot;&gt;Huffman coding&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div class=&quot;mw-category-group&quot;&gt;&lt;h3&gt;I&lt;/h3&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/wiki/Infinity&quot; title=&quot;Infinity&quot;&gt;Infinity&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Inheritance/Multiple&quot; title=&quot;Inheritance/Multiple&quot;&gt;Inheritance/Multiple&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Integer_comparison&quot; title=&quot;Integer comparison&quot;&gt;Integer comparison&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div class=&quot;mw-category-group&quot;&gt;&lt;h3&gt;J&lt;/h3&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/wiki/Jaro_distance&quot; title=&quot;Jaro distance&quot;&gt;Jaro distance&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Jensen%27s_Device&quot; title=&quot;Jensen&apos;s Device&quot;&gt;Jensen&apos;s Device&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div class=&quot;mw-category-group&quot;&gt;&lt;h3&gt;K&lt;/h3&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/wiki/Kaprekar_numbers&quot; title=&quot;Kaprekar numbers&quot;&gt;Kaprekar numbers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Knight%27s_tour&quot; title=&quot;Knight&apos;s tour&quot;&gt;Knight&apos;s tour&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Knuth_shuffle&quot; title=&quot;Knuth shuffle&quot;&gt;Knuth shuffle&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div class=&quot;mw-category-group&quot;&gt;&lt;h3&gt;L&lt;/h3&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/wiki/Largest_int_from_concatenated_ints&quot; title=&quot;Largest int from concatenated ints&quot;&gt;Largest int from concatenated ints&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Leap_year&quot; title=&quot;Leap year&quot;&gt;Leap year&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Least_common_multiple&quot; title=&quot;Least common multiple&quot;&gt;Least common multiple&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Literals/Floating_point&quot; title=&quot;Literals/Floating point&quot;&gt;Literals/Floating point&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Long_multiplication&quot; title=&quot;Long multiplication&quot;&gt;Long multiplication&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Loops/Break&quot; title=&quot;Loops/Break&quot;&gt;Loops/Break&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Loops/For&quot; title=&quot;Loops/For&quot;&gt;Loops/For&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Loops/Nested&quot; title=&quot;Loops/Nested&quot;&gt;Loops/Nested&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div class=&quot;mw-category-group&quot;&gt;&lt;h3&gt;M&lt;/h3&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/wiki/Maze_generation&quot; title=&quot;Maze generation&quot;&gt;Maze generation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Middle_three_digits&quot; title=&quot;Middle three digits&quot;&gt;Middle three digits&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Morse_code&quot; title=&quot;Morse code&quot;&gt;Morse code&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Multifactorial&quot; title=&quot;Multifactorial&quot;&gt;Multifactorial&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div class=&quot;mw-category-group&quot;&gt;&lt;h3&gt;N&lt;/h3&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/wiki/N%27th&quot; title=&quot;N&apos;th&quot;&gt;N&apos;th&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Numeric_error_propagation&quot; title=&quot;Numeric error propagation&quot;&gt;Numeric error propagation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Numerical_integration/Gauss-Legendre_Quadrature&quot; title=&quot;Numerical integration/Gauss-Legendre Quadrature&quot;&gt;Numerical integration/Gauss-Legendre Quadrature&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div class=&quot;mw-category-group&quot;&gt;&lt;h3&gt;O&lt;/h3&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/wiki/Operator_precedence&quot; title=&quot;Operator precedence&quot;&gt;Operator precedence&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Ordered_words&quot; title=&quot;Ordered words&quot;&gt;Ordered words&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div class=&quot;mw-category-group&quot;&gt;&lt;h3&gt;P&lt;/h3&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/wiki/Pascal%27s_triangle&quot; title=&quot;Pascal&apos;s triangle&quot;&gt;Pascal&apos;s triangle&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Pernicious_numbers&quot; title=&quot;Pernicious numbers&quot;&gt;Pernicious numbers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Priority_queue&quot; title=&quot;Priority queue&quot;&gt;Priority queue&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div class=&quot;mw-category-group&quot;&gt;&lt;h3&gt;R&lt;/h3&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/wiki/Ray-casting_algorithm&quot; title=&quot;Ray-casting algorithm&quot;&gt;Ray-casting algorithm&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Read_a_configuration_file&quot; title=&quot;Read a configuration file&quot;&gt;Read a configuration file&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Read_entire_file&quot; title=&quot;Read entire file&quot;&gt;Read entire file&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Remove_duplicate_elements&quot; title=&quot;Remove duplicate elements&quot;&gt;Remove duplicate elements&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Repeat_a_string&quot; title=&quot;Repeat a string&quot;&gt;Repeat a string&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Reverse_a_string&quot; title=&quot;Reverse a string&quot;&gt;Reverse a string&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/RIPEMD-160&quot; title=&quot;RIPEMD-160&quot;&gt;RIPEMD-160&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Roman_numerals/Encode&quot; title=&quot;Roman numerals/Encode&quot;&gt;Roman numerals/Encode&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Roots_of_a_quadratic_function&quot; title=&quot;Roots of a quadratic function&quot;&gt;Roots of a quadratic function&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Roots_of_unity&quot; title=&quot;Roots of unity&quot;&gt;Roots of unity&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Rosetta_Code/Rank_languages_by_popularity&quot; title=&quot;Rosetta Code/Rank languages by popularity&quot;&gt;Rosetta Code/Rank languages by popularity&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Rot-13&quot; title=&quot;Rot-13&quot;&gt;Rot-13&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div class=&quot;mw-category-group&quot;&gt;&lt;h3&gt;S&lt;/h3&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/wiki/Semordnilap&quot; title=&quot;Semordnilap&quot;&gt;Semordnilap&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Sierpinski_triangle/Graphical&quot; title=&quot;Sierpinski triangle/Graphical&quot;&gt;Sierpinski triangle/Graphical&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Sieve_of_Eratosthenes&quot; title=&quot;Sieve of Eratosthenes&quot;&gt;Sieve of Eratosthenes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Singly-linked_list/Traversal&quot; title=&quot;Singly-linked list/Traversal&quot;&gt;Singly-linked list/Traversal&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Sort_using_a_custom_comparator&quot; title=&quot;Sort using a custom comparator&quot;&gt;Sort using a custom comparator&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Sorting_algorithms/Bubble_sort&quot; title=&quot;Sorting algorithms/Bubble sort&quot;&gt;Sorting algorithms/Bubble sort&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Sorting_algorithms/Insertion_sort&quot; title=&quot;Sorting algorithms/Insertion sort&quot;&gt;Sorting algorithms/Insertion sort&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Sorting_algorithms/Merge_sort&quot; title=&quot;Sorting algorithms/Merge sort&quot;&gt;Sorting algorithms/Merge sort&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Sorting_algorithms/Quicksort&quot; title=&quot;Sorting algorithms/Quicksort&quot;&gt;Sorting algorithms/Quicksort&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Sorting_algorithms/Selection_sort&quot; title=&quot;Sorting algorithms/Selection sort&quot;&gt;Sorting algorithms/Selection sort&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Sparkline_in_unicode&quot; title=&quot;Sparkline in unicode&quot;&gt;Sparkline in unicode&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Stable_marriage_problem&quot; title=&quot;Stable marriage problem&quot;&gt;Stable marriage problem&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/String_append&quot; title=&quot;String append&quot;&gt;String append&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/String_concatenation&quot; title=&quot;String concatenation&quot;&gt;String concatenation&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div class=&quot;mw-category-group&quot;&gt;&lt;h3&gt;T&lt;/h3&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/wiki/The_Twelve_Days_of_Christmas&quot; title=&quot;The Twelve Days of Christmas&quot;&gt;The Twelve Days of Christmas&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Tokenize_a_string&quot; title=&quot;Tokenize a string&quot;&gt;Tokenize a string&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Tree_traversal&quot; title=&quot;Tree traversal&quot;&gt;Tree traversal&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/wiki/Truncatable_primes&quot; title=&quot;Truncatable primes&quot;&gt;Truncatable primes&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div class=&quot;mw-category-group&quot;&gt;&lt;h3&gt;U&lt;/h3&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/wiki/Ulam_spiral_(for_primes)&quot; title=&quot;Ulam spiral (for primes)&quot;&gt;Ulam spiral (for primes)&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div class=&quot;mw-category-group&quot;&gt;&lt;h3&gt;W&lt;/h3&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/wiki/Window_creation&quot; title=&quot;Window creation&quot;&gt;Window creation&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;printfooter&quot;&gt;
+Retrieved from &quot;&lt;a dir=&quot;ltr&quot; href=&quot;http://rosettacode.org/mw/index.php?title=Category:Kotlin&amp;amp;oldid=198253&quot;&gt;http://rosettacode.org/mw/index.php?title=Category:Kotlin&amp;amp;oldid=198253&lt;/a&gt;&quot;&lt;/div&gt;
+&lt;/div&gt;
+ 
+&lt;div id=&apos;catlinks&apos; class=&apos;catlinks&apos;&gt;&lt;div id=&quot;mw-normal-catlinks&quot; class=&quot;mw-normal-catlinks&quot;&gt;&lt;a href=&quot;/wiki/Special:Categories&quot; title=&quot;Special:Categories&quot;&gt;Categories&lt;/a&gt;: &lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/wiki/Category:Typing/Checking/Static&quot; title=&quot;Category:Typing/Checking/Static&quot;&gt;Typing/Checking/Static&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;/wiki/Category:Programming_Languages&quot; title=&quot;Category:Programming Languages&quot;&gt;Programming Languages&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+&lt;div class=&quot;col-lg-12&quot;&gt;
+ 
+&lt;nav class=&quot;navbar navbar-default p-tb &quot; id=&quot;p-tb&quot;&gt;
+&lt;ul class=&quot;nav navbar-nav small&quot;&gt;
+&lt;li id=&quot;t-whatlinkshere&quot;&gt;&lt;a href=&quot;/wiki/Special:WhatLinksHere/Category:Kotlin&quot; title=&quot;A list of all wiki pages that link here [j]&quot; accesskey=&quot;j&quot;&gt;What links here&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;t-recentchangeslinked&quot;&gt;&lt;a href=&quot;/wiki/Special:RecentChangesLinked/Category:Kotlin&quot; title=&quot;Recent changes in pages linked from this page [k]&quot; accesskey=&quot;k&quot;&gt;Related changes&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;t-specialpages&quot;&gt;&lt;a href=&quot;/wiki/Special:SpecialPages&quot; title=&quot;A list of all special pages [q]&quot; accesskey=&quot;q&quot;&gt;Special pages&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;t-print&quot;&gt;&lt;a href=&quot;/mw/index.php?title=Category:Kotlin&amp;amp;printable=yes&quot; rel=&quot;alternate&quot; title=&quot;Printable version of this page [p]&quot; accesskey=&quot;p&quot;&gt;Printable version&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;t-permalink&quot;&gt;&lt;a href=&quot;/mw/index.php?title=Category:Kotlin&amp;amp;oldid=198253&quot; title=&quot;Permanent link to this revision of the page&quot;&gt;Permanent link&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;t-info&quot;&gt;&lt;a href=&quot;/mw/index.php?title=Category:Kotlin&amp;amp;action=info&quot; title=&quot;More information about this page&quot;&gt;Page information&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;t-smwbrowselink&quot;&gt;&lt;a href=&quot;/wiki/Special:Browse/Category:Kotlin&quot; rel=&quot;smw-browse&quot;&gt;Browse properties&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+&lt;div class=&quot;col-lg-12&quot;&gt;
+ 
+&lt;ul class=&quot;footer-info list-unstyled small&quot; id=&quot;footer-info&quot;&gt;
+ 
+&lt;li&gt; This page was last modified on 28 January 2015, at 21:07.&lt;/li&gt;
+&lt;li&gt;Content is available under &lt;a class=&quot;external&quot; rel=&quot;nofollow&quot; href=&quot;http://www.gnu.org/licenses/fdl-1.2.html&quot;&gt;GNU Free Documentation License 1.2&lt;/a&gt; unless otherwise noted.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+&lt;div class=&quot;col-lg-6&quot;&gt;
+ 
+&lt;ul class=&quot;list-inline footer-places &quot; id=&quot;footer-places&quot;&gt;
+&lt;li&gt;&lt;small&gt;&lt;a href=&quot;/wiki/Rosetta_Code:Privacy_policy&quot; title=&quot;Rosetta Code:Privacy policy&quot;&gt;Privacy policy&lt;/a&gt;&lt;/small&gt;&lt;/li&gt;
+&lt;li&gt;&lt;small&gt;&lt;a href=&quot;/wiki/Rosetta_Code:About&quot; title=&quot;Rosetta Code:About&quot;&gt;About Rosetta Code&lt;/a&gt;&lt;/small&gt;&lt;/li&gt;
+&lt;li&gt;&lt;small&gt;&lt;a href=&quot;/wiki/Rosetta_Code:General_disclaimer&quot; title=&quot;Rosetta Code:General disclaimer&quot;&gt;Disclaimers&lt;/a&gt;&lt;/small&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;col-lg-6&quot;&gt;
+ 
+&lt;ul class=&quot;list-inline pull-right footer-icons &quot; id=&quot;footer-icons&quot;&gt;
+ 
+&lt;li&gt;&lt;a href=&quot;http://www.gnu.org/licenses/fdl-1.2.html&quot;&gt;&lt;img src=&quot;/mw/resources/assets/licenses/gnu-fdl.png&quot; alt=&quot;GNU Free Documentation License 1.2&quot; width=&quot;88&quot; height=&quot;31&quot;/&gt;&lt;/a&gt;&lt;/li&gt;
+ 
+&lt;li&gt;&lt;a href=&quot;//www.mediawiki.org/&quot;&gt;&lt;img src=&quot;/mw/resources/assets/poweredby_mediawiki_88x31.png&quot; alt=&quot;Powered by MediaWiki&quot; srcset=&quot;/mw/resources/assets/poweredby_mediawiki_132x47.png 1.5x, /mw/resources/assets/poweredby_mediawiki_176x62.png 2x&quot; width=&quot;88&quot; height=&quot;31&quot;/&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.semantic-mediawiki.org/wiki/Semantic_MediaWiki&quot;&gt;&lt;img src=&quot;/mw/extensions/SemanticMediaWiki/includes/../resources/images/smw_button.png&quot; alt=&quot;Powered by Semantic MediaWiki&quot; width=&quot;88&quot; height=&quot;31&quot;/&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;script&gt;window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+mw.loader.state({&quot;user&quot;:&quot;ready&quot;,&quot;user.groups&quot;:&quot;ready&quot;});mw.loader.load([&quot;mediawiki.action.view.postEdit&quot;,&quot;site&quot;,&quot;mediawiki.user&quot;,&quot;mediawiki.hidpi&quot;,&quot;mediawiki.page.ready&quot;,&quot;mediawiki.searchSuggest&quot;,&quot;ext.bootstrap.scripts&quot;]);
+} );&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;/* CloudFlare analytics upgrade */
+&lt;/script&gt;
+&lt;script&gt;window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+mw.config.set({&quot;wgBackendResponseTime&quot;:433});
+} );&lt;/script&gt;&lt;/body&gt;
+&lt;/html&gt;</string>

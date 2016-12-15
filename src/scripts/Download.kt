@@ -109,13 +109,33 @@ data class CodeSnippet(val editPageUrl: String, val sourceCodeOnWeb: String, val
     }
 }
 
+data class LanguagePage(val html: String) {
+    fun extractProblemPageUrls(): List<String> {
+        val linesWithHref = html.split("\n")
+                .dropWhile { !it.contains("<h2>Pages in category \"Kotlin\"</h2>") }
+                .takeWhile { !it.contains("<div class=\"printfooter\">") }
+                .filter { it.contains("href") }
+
+        return linesWithHref.map{ extractUrl(it) }
+    }
+
+    private fun extractUrl(it: String): String {
+        val s = it.replaceFirst(Regex(".*href=\""), "").replaceFirst(Regex("\".*"), "")
+        return "http://rosettacode.org/$s"
+    }
+
+    companion object {
+        fun get(url: String = "http://rosettacode.org/wiki/Category:Kotlin"): LanguagePage {
+            return LanguagePage(khttp.get(url).text)
+        }
+    }
+}
+
 object EditPageUrlsLoader {
     fun load(): List<String> {
-        val urls = cached("urls") {
-            get("http://rosettacode.org/wiki/Category:Kotlin").text.extractProblemPageUrls()
-        }
+        val kotlinPage = cached("kotlinPage") { LanguagePage.get() }
         return cached("editPageUrls") {
-            urls.map {
+            kotlinPage.extractProblemPageUrls().map {
                 log(it)
                 get(it).text.extractKotlinEditUrl()
             }
@@ -129,15 +149,6 @@ object EditPageUrlsLoader {
         return extractUrl(s).replace("&amp;", "&")
     }
 
-    private fun String.extractProblemPageUrls(): List<String> {
-        val linesWithHref = split("\n")
-                .dropWhile { !it.contains("<h2>Pages in category \"Kotlin\"</h2>") }
-                .takeWhile { !it.contains("<div class=\"printfooter\">") }
-                .filter { it.contains("href") }
-
-        return linesWithHref.map{ extractUrl(it) }
-    }
-
     private fun extractUrl(it: String): String {
         val s = it.replaceFirst(Regex(".*href=\""), "").replaceFirst(Regex("\".*"), "")
         return "http://rosettacode.org/$s"
@@ -148,6 +159,8 @@ val log: (Any?) -> Unit = {
     System.out.println(it)
 }
 
+private val xStream = XStream(XppDriver())
+
 /**
  * Caches result of function `f` in xml file.
  * The main reason for this is to speed up execution.
@@ -155,7 +168,6 @@ val log: (Any?) -> Unit = {
  * To "invalidate" cached value modify or remove xml file.
  */
 fun <T> cached(id: String, f: () -> T): T {
-    val xStream = XStream(XppDriver())
     val file = File(id + ".xml")
     if (file.exists()) {
         log("Using cached value of '$id'")
