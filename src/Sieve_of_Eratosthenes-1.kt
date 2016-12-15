@@ -1,4 +1,6 @@
-fun primesOdds1(rng: Int): Iterable<Int> {
+package sieve_of_eratosthenes_1
+
+fun primesOdds(rng: Int): Iterable<Int> {
     val topi = (rng - 3) shr 1
     val lstw = topi shr 5
     val sqrtndx = (Math.sqrt(rng.toDouble()).toInt() - 3) shr 1
@@ -34,7 +36,7 @@ fun primesOdds1(rng: Int): Iterable<Int> {
 }
 
 fun main(args: Array<String>) {
-    primesOdds1(100).forEach { print("$it ") }
+    primesOdds(100).forEach { print("$it ") }
     println()
-    println(primesOdds1(1000000).count())
+    println(primesOdds(1000000).count())
 }

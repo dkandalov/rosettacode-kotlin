@@ -1,4 +1,6 @@
-fun primesOdds2(rng: Int): Iterable<Int> {
+package sieve_of_eratosthenes_2
+
+fun primesOdds(rng: Int): Iterable<Int> {
     val topi = (rng - 3) / 2 //convert to nearest index
     val size = topi / 32 + 1 //word size to include index
     val sqrtndx = (Math.sqrt(rng.toDouble()).toInt() - 3) / 2
