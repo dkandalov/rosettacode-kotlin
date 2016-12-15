@@ -79,32 +79,14 @@ data class CodeSnippet(val editPageUrl: String, val sourceCodeOnWeb: String, val
 
     companion object {
         fun create(editPageUrl: String): List<CodeSnippet> {
-            val codeSnippets = fetchCodeSnippets(editPageUrl)
-            return codeSnippets.mapIndexed { i, it -> CodeSnippet(editPageUrl, it, i) }
+            log("Fetching source code from $editPageUrl")
+            return EditTaskPage(get(editPageUrl).text)
+                    .extractKotlinSource()
+                    .mapIndexed { i, it -> CodeSnippet(editPageUrl, it, i) }
         }
 
         private fun String.extractPageName(): String {
             return replace(Regex(".*title="), "").replace(Regex("&action.*"), "").replace("/", "-").replace("%27", "")
-        }
-
-        private fun fetchCodeSnippets(editPageUrl: String): List<String> {
-            log("Fetching source code from $editPageUrl")
-            return get(editPageUrl).text.split("\n").extractKotlinSource()
-        }
-
-        private fun List<String>.extractKotlinSource(): List<String> {
-            if (isEmpty()) return emptyList()
-
-            val lines = map { it.replace("&lt;", "<").replace("&amp;", "&") }
-                    .dropWhile { !it.contains("<lang Kotlin>") && !it.contains("<lang kotlin>") && !it.contains("<lang scala>") }
-            val srcLineCount = lines.indexOfFirst { it.contains("</lang>") } + 1
-            if (srcLineCount == 0) return emptyList()
-
-            val sourceCode = lines.take(srcLineCount)
-                    .map { it.replace("<lang Kotlin>", "").replace("<lang kotlin>", "").replace("<lang scala>", "").replace("</lang>", "") }
-                    .joinToString("\n")
-
-            return listOf(sourceCode) + lines.drop(srcLineCount).extractKotlinSource()
         }
     }
 }
@@ -138,12 +120,33 @@ data class TaskPage(val html: String) {
     }
 }
 
+data class EditTaskPage(val html: String) {
+    fun extractKotlinSource(): List<String> {
+        return html.split("\n").extractKotlinSource()
+    }
+
+    private fun List<String>.extractKotlinSource(): List<String> {
+        if (isEmpty()) return emptyList()
+
+        val lines = map { it.replace("&lt;", "<").replace("&amp;", "&") }
+                .dropWhile { !it.contains("<lang Kotlin>") && !it.contains("<lang kotlin>") && !it.contains("<lang scala>") }
+        val srcLineCount = lines.indexOfFirst { it.contains("</lang>") } + 1
+        if (srcLineCount == 0) return emptyList()
+
+        val sourceCode = lines.take(srcLineCount)
+                .map { it.replace("<lang Kotlin>", "").replace("<lang kotlin>", "").replace("<lang scala>", "").replace("</lang>", "") }
+                .joinToString("\n")
+
+        return listOf(sourceCode) + lines.drop(srcLineCount).extractKotlinSource()
+    }
+}
+
 private fun String.extractUrl(): String {
     val s = replaceFirst(Regex(".*href=\""), "").replaceFirst(Regex("\".*"), "")
     return "http://rosettacode.org/$s"
 }
 
-fun loadEditPageUrls(): List<String> {
+private fun loadEditPageUrls(): List<String> {
     val kotlinPage = cached("kotlinPage") { LanguagePage.get() }
     return cached("editPageUrls") {
         kotlinPage.extractTaskPageUrls().map {

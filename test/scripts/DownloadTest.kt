@@ -1,12 +1,13 @@
 package scripts
 
 import io.kotlintest.specs.StringSpec
+import khttp.get
 import java.io.File
 
 class DownloadTest: StringSpec() {
     init {
-        "extract task  page urls from Kotlin page" {
-            val html = File("./test/scripts/kotlin_page.txt").readText()
+        "extract task page urls from Kotlin page" {
+            val html = "kotlin-page.txt".readText()
             val urls = LanguagePage(html).extractTaskPageUrls()
 
             urls should containInAnyOrder(
@@ -20,9 +21,49 @@ class DownloadTest: StringSpec() {
         }
 
         "extract edit page urls from task page" {
-            val html = File("./test/scripts/24_game_page.txt").readText()
+            val html = "array-concatenation-page.txt".readText()
             val url = TaskPage(html).extractKotlinEditUrl()
-            url shouldBe "http://rosettacode.org//mw/index.php?title=24_game&action=edit&section=39"
+            url shouldBe "http://rosettacode.org//mw/index.php?title=Array_concatenation&action=edit&section=70"
         }
+
+        "extract code snippets from task edit page" {
+            val html = "array-concatenation-edit-page.txt".readText()
+            val codeSnippets = EditTaskPage(html).extractKotlinSource()
+            codeSnippets shouldBe listOf(
+                """
+                |fun main(args: Array<String>) {
+                |    val a: Array<Int> = arrayOf(1, 2, 3) // initialise a
+                |    val b: Array<Int> = arrayOf(4, 5, 6) // initialise b
+                |    val c: Array<Int> = (a.toList() + b.toList()).toTypedArray()
+                |    println(c)
+                |}
+                """,
+                """
+                |fun arrayConcat(a: Array<Any>, b: Array<Any>): Array<Any> {
+                |    return Array(a.size + b.size, { if (it in a.indices) a[it] else b[it - a.size] })
+                |}
+                """,
+                """
+                |fun main(args: Array<String>) {
+                |    val a: Collection<Int> = listOf(1, 2, 3) // initialise a
+                |    val b: Collection<Int> = listOf(4, 5, 6) // initialise b
+                |    val c: Collection<Int> = a + b
+                |    println(c)
+                |}
+                """
+            ).map{ it.asCode() }
+        }
+    }
+
+    private fun String.asCode() = trimMargin().trim()
+
+    private fun String.readText() = File("./test/scripts/$this").readText()
+
+    @Suppress("unused") // Temporarily add this method to test class "init" to update test data.
+    private fun downloadPagesForTestInput() {
+        val basePath = "./test/scripts/"
+        File("$basePath/kotlin-page.txt").writeText(get("http://rosettacode.org/wiki/Category:Kotlin").text)
+        File("$basePath/array-concatenation-page.txt").writeText(get("http://rosettacode.org/wiki/Array_concatenation").text)
+        File("$basePath/array-concatenation-edit-page.txt").writeText(get("http://rosettacode.org//mw/index.php?title=Array_concatenation&action=edit&section=70").text)
     }
 }
