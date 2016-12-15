@@ -4,15 +4,11 @@ package amicable_pairs
 
 fun sumProperDivisors(n: Int): Int {
     if (n < 2) return 0
-    var sum = 0
-    for(i in 1..n/2) {
-        if ((n % i) == 0) sum += i
-    }
-    return sum
+    return (1..n/2).filter{ (n % it) == 0 }.sum()
 }
 
-fun main(args: Array<String>) { 
-    var sum = IntArray(20000, { sumProperDivisors(it) } )
+fun main(args: Array<String>) {
+    val sum = IntArray(20000, { sumProperDivisors(it) } )
     println("The pairs of amicable numbers below 20,000 are:\n")
     var m: Int
     for(n in 2..19998) {

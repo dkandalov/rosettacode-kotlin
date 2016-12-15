@@ -10,18 +10,14 @@ fun listProperDivisors(limit: Int) {
             println("(None)")
             continue
         }
-        for(j in 1..i/2) if (i % j == 0) print(" $j")
+        (1..i/2).filter{ i % it == 0 }.forEach { print(" $it") }
         println()
     }
 }
 
 fun countProperDivisors(n: Int): Int {
     if (n < 2) return 0
-    var count = 0
-    for(i in 1..n/2) {
-        if ((n % i) == 0) count++
-    }
-    return count
+    return (1..n/2).count { (n % it) == 0 }
 }
 
 fun main(args: Array<String>) { 
@@ -30,7 +26,7 @@ fun main(args: Array<String>) {
     println()
     var count: Int
     var maxCount = 0
-    var most: MutableList<Int> = mutableListOf(1)
+    val most: MutableList<Int> = mutableListOf(1)
     for (n in 2..20000) {
         count = countProperDivisors(n)
         if (count == maxCount)
