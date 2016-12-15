@@ -10,15 +10,13 @@ import java.util.stream.Stream
 import java.util.stream.StreamSupport
 
 fun main(args: Array<String>) {
-    val codeEntries =
-        cached("codeEntries") {
-            loadEditPageUrls()
-                .toParallelStream().flatMap{ CodeSnippet.create(it).toStream() }
-                .collect(Collectors.toList<CodeSnippet>())
-        }
-        .filter { codeSnippet ->
-            exclusions.none{ codeSnippet.editPageUrl.contains(it) }
-        }
+    val exclusions = listOf(
+            "Boolean_values", // ignore because there is no code
+            "Create_a_two-dimensional_array_at_runtime", // https://youtrack.jetbrains.com/issue/KT-15196
+            "Catalan_numbers", // net.openhft.koloboke.collect.map.hash.HashIntDoubleMaps.*
+            "Read_a_configuration_file" // doesn't compile
+    )
+    val codeEntries = loadKotlinCodeEntries(exclusions)
 
     codeEntries
         .filter{ !it.sourceCodeExistsLocally() }
@@ -29,12 +27,27 @@ fun main(args: Array<String>) {
         .forEach{ log("Source code has differences at snippet index: ${it.index}; url: ${it.editPageUrl}") }
 }
 
-val exclusions = listOf(
-    "Boolean_values", // ignore because there is no code
-    "Create_a_two-dimensional_array_at_runtime", // https://youtrack.jetbrains.com/issue/KT-15196
-    "Catalan_numbers", // net.openhft.koloboke.collect.map.hash.HashIntDoubleMaps.*
-    "Read_a_configuration_file" // doesn't compile
-)
+private fun loadKotlinCodeEntries(exclusions: List<String>): List<CodeSnippet> {
+    val kotlinPage = cached("kotlinPage") { LanguagePage.get() }
+    val editPageUrls = cached("editPageUrls") {
+        kotlinPage.extractTaskPageUrls().parallel().map {
+            log("Loading $it")
+            TaskPage.get(it).extractKotlinEditUrl()
+        }.toList()
+    }
+
+    val tasksSourceCode = editPageUrls.parallel().map {
+        log("Fetching source code from $it")
+        Pair(it, get(it).text)
+    }.toList()
+
+    val codeEntries = cached("codeEntries") {
+            tasksSourceCode.flatMap { CodeSnippet.create(it.first, it.second) }
+        }.filter { codeSnippet ->
+            exclusions.none { codeSnippet.editPageUrl.contains(it) }
+        }
+    return codeEntries
+}
 
 data class CodeSnippet(val editPageUrl: String, val sourceCodeOnWeb: String, val index: Int) {
     private val localFile = localFile()
@@ -78,9 +91,8 @@ data class CodeSnippet(val editPageUrl: String, val sourceCodeOnWeb: String, val
     }
 
     companion object {
-        fun create(editPageUrl: String): List<CodeSnippet> {
-            log("Fetching source code from $editPageUrl")
-            return EditTaskPage(get(editPageUrl).text)
+        fun create(editPageUrl: String, editPageText: String): List<CodeSnippet> {
+            return EditTaskPage(editPageText)
                     .extractKotlinSource()
                     .mapIndexed { i, it -> CodeSnippet(editPageUrl, it, i) }
         }
@@ -146,16 +158,6 @@ private fun String.extractUrl(): String {
     return "http://rosettacode.org/$s"
 }
 
-private fun loadEditPageUrls(): List<String> {
-    val kotlinPage = cached("kotlinPage") { LanguagePage.get() }
-    return cached("editPageUrls") {
-        kotlinPage.extractTaskPageUrls().map {
-            log("Loading $it")
-            TaskPage.get(it).extractKotlinEditUrl()
-        }
-    }
-}
-
 val log: (Any?) -> Unit = {
     System.out.println(it)
 }
@@ -183,13 +185,11 @@ fun <T> cached(id: String, f: () -> T): T {
     }
 }
 
-
 // Need this because default java methods don't work in kotlin 1.0.5
-private fun <E> Collection<E>.toStream(): Stream<E> {
-    return StreamSupport.stream(Spliterators.spliterator<E>(this, 0), false)
+private fun <E> Collection<E>.parallel(): Stream<E> {
+    return StreamSupport.stream(Spliterators.spliterator<E>(this, 0), true)
 }
 
-// Need this because default java methods don't work in kotlin 1.0.5
-private fun <E> Collection<E>.toParallelStream(): Stream<E> {
-    return StreamSupport.stream(Spliterators.spliterator<E>(this, 0), true)
+private fun <E> Stream<E>.toList(): List<E> {
+    return collect(Collectors.toList<E>())
 }
