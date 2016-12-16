@@ -1,4 +1,4 @@
-package `maze_generator`
+package `maze_generation`
 
 import java.util.*
 
