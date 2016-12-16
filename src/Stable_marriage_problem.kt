@@ -1,3 +1,5 @@
+package `stable_marriage_problem`
+
 import java.util.*
 
 class People(val map: Map<String, Array<String>>) {

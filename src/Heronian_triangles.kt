@@ -1,3 +1,5 @@
+package `heronian_triangles`
+
 import java.util.*
 
 object Heron {

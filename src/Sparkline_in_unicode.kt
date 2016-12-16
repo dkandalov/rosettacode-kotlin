@@ -1,3 +1,5 @@
+package `sparkline_in_unicode`
+
 internal val bars = "▁▂▃▄▅▆▇█"
 internal val n = bars.length - 1
 

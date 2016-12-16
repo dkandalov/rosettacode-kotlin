@@ -1,3 +1,5 @@
+package `averages_median`
+
 fun median(l: List<Double>) = l.sorted().let { (it[it.size / 2] + it[(it.size - 1) / 2]) / 2 }
 
 fun main(args: Array<String>) {

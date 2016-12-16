@@ -1,3 +1,5 @@
+package `100_doors`
+
 fun oneHundredDoors(): List<Int> {
     val doors = BooleanArray(100, { false })
 

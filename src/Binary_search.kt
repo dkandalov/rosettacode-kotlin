@@ -1,3 +1,5 @@
+package `binary_search`
+
 fun <T : Comparable<T>> Array<T>.iterativeBinarySearch(target: T): Int {
     var hi = size - 1
     var lo = 0

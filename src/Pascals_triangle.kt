@@ -1,3 +1,5 @@
+package `pascals_triangle`
+
 fun pas(rows: Int) {
     for (i in 0..rows - 1) {
         for (j in 0..i)

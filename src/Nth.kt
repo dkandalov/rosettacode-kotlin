@@ -1,3 +1,5 @@
+package `nth`
+
 fun Int.ordinalAbbrev() =
         if (this % 100 / 10 == 1) "th"
         else when (this % 10) { 1 -> "st" 2 -> "nd" 3 -> "rd" else -> "th" }

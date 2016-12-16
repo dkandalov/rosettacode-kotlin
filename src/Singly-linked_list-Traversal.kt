@@ -1,3 +1,5 @@
+package `singly_linked_list_traversal`
+
 fun main(args: Array<String>) {
     val list = IntRange(1, 50).toList()
 

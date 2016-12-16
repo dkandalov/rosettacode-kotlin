@@ -1,3 +1,5 @@
+package `sorting_algorithms_insertion_sort`
+
 fun insertionSort(array: IntArray) {
     for (index in 1 until array.size) {
         val value = array[index]

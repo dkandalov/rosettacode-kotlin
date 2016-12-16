@@ -1,3 +1,5 @@
+package `huffman_coding`
+
 import java.util.*
 
 abstract class HuffmanTree(var freq: Int) : Comparable<HuffmanTree> {

@@ -1,4 +1,4 @@
-package sieve_of_eratosthenes_1
+package `sieve_of_eratosthenes_1`
 
 fun primesOdds(rng: Int): Iterable<Int> {
     val topi = (rng - 3) shr 1

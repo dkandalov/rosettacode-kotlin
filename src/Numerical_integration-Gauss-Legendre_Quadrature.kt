@@ -1,3 +1,5 @@
+package `numerical_integration_gauss_legendre_quadrature`
+
 import java.lang.Math.*
 
 class Legendre(val N: Int) {

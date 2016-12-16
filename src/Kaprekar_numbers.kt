@@ -1,3 +1,5 @@
+package `kaprekar_numbers`
+
 import java.lang.Long.*
 
 fun String.splitAt(idx: Int): Array<String> {

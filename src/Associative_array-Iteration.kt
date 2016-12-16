@@ -1,3 +1,5 @@
+package `associative_array_iteration`
+
 fun main(a: Array<String>) {
     val map = mapOf("hello" to 1, "world" to 2, "!" to 3)
 

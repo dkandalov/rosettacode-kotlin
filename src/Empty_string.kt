@@ -1,3 +1,5 @@
+package `empty_string`
+
 fun main(args: Array<String>) {
     val s = ""
     println(s.isEmpty())    // true

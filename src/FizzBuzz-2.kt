@@ -1,3 +1,5 @@
+package `fizzbuzz_2`
+
 fun fizzBuzz2() {
     fun fizz(x: Pair<Int, StringBuilder>) = if(x.first % 3 == 0) x.apply { second.append("Fizz") } else x
     fun buzz(x: Pair<Int, StringBuilder>) = if(x.first % 5 == 0) x.apply { second.append("Buzz") } else x

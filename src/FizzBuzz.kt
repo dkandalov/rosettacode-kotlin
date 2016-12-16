@@ -1,3 +1,5 @@
+package `fizzbuzz`
+
 fun fizzBuzz() {
     for (i in 1..100) {
         when {

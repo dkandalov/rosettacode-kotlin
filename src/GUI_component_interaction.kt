@@ -1,3 +1,5 @@
+package `gui_component_interaction`
+
 import java.awt.GridLayout
 import java.awt.event.ActionEvent
 import java.awt.event.ActionListener

@@ -1,3 +1,5 @@
+package `hello_world_graphical`
+
 import java.awt.*
 import javax.swing.*
 

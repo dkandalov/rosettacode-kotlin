@@ -1,3 +1,5 @@
+package `99_bottles_of_beer`
+
 fun main(args: Array<String>) {
     for (i in 99.downTo(1)) {
         println("${i} bottles of beer on the wall")

@@ -1,3 +1,5 @@
+package `floyds_triangle`
+
 fun main(args: Array<String>) = args.forEach { Triangle(it.toInt()) }
 
 internal class Triangle(n: Int) {

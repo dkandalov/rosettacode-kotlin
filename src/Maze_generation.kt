@@ -1,3 +1,7 @@
+package `maze_generator`
+
+import java.util.*
+
 class MazeGenerator(val x: Int, val y: Int) {
     private val maze = Array(x) { IntArray(y) }
 
@@ -29,6 +33,12 @@ class MazeGenerator(val x: Int, val y: Int) {
         // draw the bottom line
         for (j in 0..x - 1) print("+---")
         println('+')
+    }
+
+    inline private fun <reified T> Array<T>.shuffle(): Array<T> {
+        val list = toMutableList()
+        Collections.shuffle(list)
+        return list.toTypedArray()
     }
 
     private enum class Direction(val bit: Int, val dx: Int, val dy: Int) {

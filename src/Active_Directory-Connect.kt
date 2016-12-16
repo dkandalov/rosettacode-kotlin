@@ -1,3 +1,5 @@
+package `active_directory_connect`
+
 import org.apache.directory.api.ldap.model.exception.LdapException
 import org.apache.directory.ldap.client.api.LdapNetworkConnection
 import java.io.IOException

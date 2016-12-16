@@ -1,4 +1,4 @@
-package sieve_of_eratosthenes_3
+package `sieve_of_eratosthenes_3`
 
 fun primesOdds(rng: Int): Iterable<Int> {
     val topi = (rng - 3) / 2 //convert to nearest index

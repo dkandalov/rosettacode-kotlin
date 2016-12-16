@@ -1,3 +1,5 @@
+package `sorting_algorithms_selection_sort`
+
 fun <T : Comparable<T>> Array<T>.selection_sort() {
     for (i in 0..size - 2) {
         var k = i

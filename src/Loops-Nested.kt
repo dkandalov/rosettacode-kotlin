@@ -1,3 +1,5 @@
+package `loops_nested`
+
 import java.util.Random
 
 fun main(args: Array<String>) {

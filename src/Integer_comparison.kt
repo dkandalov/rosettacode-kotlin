@@ -1,3 +1,5 @@
+package `integer_comparison`
+
 fun main(args: Array<String>) {
     val n1 = readLine()!!.toLong()
     val n2 = readLine()!!.toLong()

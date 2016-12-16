@@ -1,3 +1,5 @@
+package `arrays`
+
 fun main(x: Array<String>) {
     var a = arrayOf(1, 2, 3, 4)
     println(a.asList())

@@ -1,3 +1,4 @@
+package `higher_order_functions_1`
 
 inline fun higherOrderFunction(x: Int, y: Int, function: (Int, Int) -> Int) = function(x, y)
 

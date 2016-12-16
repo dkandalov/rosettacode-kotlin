@@ -1,3 +1,5 @@
+package `animate_a_pendulum`
+
 import java.awt.*
 import java.util.concurrent.*
 import javax.swing.*

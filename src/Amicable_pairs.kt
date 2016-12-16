@@ -1,4 +1,4 @@
-package amicable_pairs
+package `amicable_pairs`
 
 // version 1.0.5-2
 

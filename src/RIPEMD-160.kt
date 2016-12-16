@@ -1,3 +1,4 @@
+package `ripemd_160`
 
 import org.bouncycastle.crypto.digests.RIPEMD160Digest
 import org.bouncycastle.util.encoders.Hex

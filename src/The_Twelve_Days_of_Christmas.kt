@@ -1,3 +1,5 @@
+package `the_twelve_days_of_christmas`
+
 enum class Day {
     first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth, eleventh, twelfth;
     val header = "On the " + this + " day of Christmas, my true love sent to me\n\t"

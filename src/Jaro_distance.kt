@@ -1,3 +1,5 @@
+package `jaro_distance`
+
 object Jaro {
     fun distance(s1: String, s2: String): Double {
         val s1_len = s1.length

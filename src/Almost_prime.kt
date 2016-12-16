@@ -1,3 +1,5 @@
+package `almost_prime`
+
 fun Int.k_prime(x: Int): Boolean {
     var n = x
     var f = 0

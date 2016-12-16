@@ -1,3 +1,5 @@
+package `bernoulli_numbers`
+
 import org.apache.commons.math3.fraction.BigFraction
 
 object Bernoulli {

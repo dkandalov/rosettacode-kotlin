@@ -1,3 +1,5 @@
+package `function_definition`
+
 // One-liner
 fun multiply(a: Int, b: Int) = a * b
 

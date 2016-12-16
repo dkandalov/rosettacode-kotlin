@@ -1,3 +1,5 @@
+package `dot_product`
+
 fun dot(v1: Array<Double>, v2: Array<Double>) = 
 	v1.zip(v2).map { it.first * it.second }.reduce { a, b -> a + b }
 

@@ -1,3 +1,5 @@
+package `sorting_algorithms_merge_sort`
+
 fun mergeSort(list: List<Int>): List<Int> {
     if (list.size <= 1) {
         return list

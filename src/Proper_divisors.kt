@@ -1,4 +1,4 @@
-package proper_divisors
+package `proper_divisors`
 
 // version 1.0.5-2
 

@@ -1,11 +1,12 @@
-import java.awt.image.*
+package `hough_transform`
+
+import java.awt.image.BufferedImage
 import java.io.File
-import javax.imageio.*
+import javax.imageio.ImageIO
 
 internal class ArrayData(val dataArray: IntArray, val width: Int, val height: Int) {
 
-    constructor(width: Int, height: Int) : this(IntArray(width * height), width, height) {
-    }
+    constructor(width: Int, height: Int) : this(IntArray(width * height), width, height)
 
     operator fun get(x: Int, y: Int) = dataArray[y * width + x]
 

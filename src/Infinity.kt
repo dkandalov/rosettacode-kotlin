@@ -1,3 +1,5 @@
+package `infinity`
+
 fun main(args: Array<String>) {
     val p = Double.POSITIVE_INFINITY // +∞
     println(p.isInfinite()) // true

@@ -1,3 +1,5 @@
+package `window_creation`
+
 import javax.swing.JFrame
 
 fun main(args : Array<String>) {

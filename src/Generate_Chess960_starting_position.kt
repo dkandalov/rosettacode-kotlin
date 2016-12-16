@@ -1,3 +1,5 @@
+package `generate_chess960_starting_position`
+
 object Chess960 : Iterable<String> {
     override fun iterator() = patterns.iterator()
 

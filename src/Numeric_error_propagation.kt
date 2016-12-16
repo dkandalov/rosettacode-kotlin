@@ -1,3 +1,5 @@
+package `numeric_error_propagation`
+
 import java.lang.Math.*
 
 data class Approx(val ν: Double, val σ: Double = 0.0) {

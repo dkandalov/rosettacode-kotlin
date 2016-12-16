@@ -1,3 +1,5 @@
+package `multifactorial`
+
 fun multifactorial(n: Long, d: Int) : Long {
     val r = n % d
     return (1..n).filter { it % d == r } .reduce { i, p -> i * p }

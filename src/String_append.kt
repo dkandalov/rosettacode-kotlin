@@ -1,3 +1,5 @@
+package `string_append`
+
 fun main(args: Array<String>) {
     var s = "a"
     s += "b"

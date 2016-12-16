@@ -1,3 +1,5 @@
+package `tree_traversal_1`
+
 fun main(args: Array<String>) {
     data class Node(val v: Int, var left: Node? = null, var right: Node? = null) {
         override fun toString() = " $v"

@@ -1,3 +1,5 @@
+package `color_of_a_screen_pixel`
+
 import java.awt.Color
 import java.awt.MouseInfo
 import java.awt.Robot

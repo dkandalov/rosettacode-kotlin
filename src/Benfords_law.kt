@@ -1,3 +1,5 @@
+package `benfords_law`
+
 import java.math.BigInteger
 
 interface NumberGenerator {

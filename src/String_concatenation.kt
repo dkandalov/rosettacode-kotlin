@@ -1,3 +1,5 @@
+package `string_concatenation`
+
 fun main(args: Array<String>) {
     val s1 = "James"
     val s2 = "Bond"

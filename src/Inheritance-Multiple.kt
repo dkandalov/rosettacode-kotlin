@@ -1,3 +1,5 @@
+package `inheritance_multiple`
+
 interface Camera {
     val numberOfLenses : Int
 }

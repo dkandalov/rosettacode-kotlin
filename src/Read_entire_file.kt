@@ -1,3 +1,5 @@
+package `read_entire_file`
+
 import java.io.File
 
 fun main(args: Array<String>) {

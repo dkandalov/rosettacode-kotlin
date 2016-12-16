@@ -1,3 +1,5 @@
+package `factorial`
+
 fun facti(n: Int) = when {
     n < 0 -> throw IllegalArgumentException("negative numbers not allowed")
     else -> {

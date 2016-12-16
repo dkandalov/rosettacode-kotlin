@@ -1,3 +1,5 @@
+package `priority_queue`
+
 import java.util.PriorityQueue
 
 internal data class Task(val priority: Int, val name: String) : Comparable<Task> {

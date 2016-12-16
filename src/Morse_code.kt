@@ -1,3 +1,5 @@
+package `morse_code`
+
 import javax.sound.sampled.AudioFormat
 import javax.sound.sampled.AudioSystem
 

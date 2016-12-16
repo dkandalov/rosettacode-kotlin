@@ -1,3 +1,5 @@
+package `carmichael_3_strong_pseudoprimes`
+
 fun Int.isPrime(): Boolean {
     when {
         this == 2 -> return true

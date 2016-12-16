@@ -1,3 +1,5 @@
+package `associative_array_creation`
+
 fun main(args: Array<String>) {
     // map definition:
     val map = mapOf("foo" to 5,

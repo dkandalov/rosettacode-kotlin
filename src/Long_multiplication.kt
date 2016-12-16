@@ -1,3 +1,5 @@
+package `long_multiplication`
+
 fun String.toDigits() = mapIndexed { i, c ->
     if (!c.isDigit())
         throw IllegalArgumentException("Invalid digit $c found at position $i")

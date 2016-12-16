@@ -1,3 +1,5 @@
+package `roots_of_a_quadratic_function`
+
 import java.lang.Math.*
 
 data class Equation(val a: Double, val b: Double, val c: Double) {

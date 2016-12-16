@@ -1,3 +1,5 @@
+package `sierpinski_triangle_graphical`
+
 import javax.swing.*
 import java.awt.*
 

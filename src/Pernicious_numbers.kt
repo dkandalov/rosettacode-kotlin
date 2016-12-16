@@ -1,4 +1,4 @@
-package pernicious_numbers
+package `pernicious_numbers`
 
 //  version 1.0.5-2
 

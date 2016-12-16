@@ -1,3 +1,5 @@
+package `knuth_shuffle`
+
 object Knuth {
     internal val gen = java.util.Random()
 }

@@ -69,8 +69,8 @@ data class CodeSnippet(val editPageUrl: String, val sourceCodeOnWeb: String, val
     fun writeCodeToLocalFile() {
         localFile.parentFile.mkdirs()
 
-        val sourceCode = sourceCodeOnWeb.let {
-            if (it.trim().startsWith("package ")) it
+        val sourceCode = sourceCodeOnWeb.trim().let {
+            if (it.startsWith("package ")) it
             else "package $snippetPackageName\n\n" + it
         }
         localFile.writeText(sourceCode)
@@ -93,8 +93,11 @@ data class CodeSnippet(val editPageUrl: String, val sourceCodeOnWeb: String, val
     }
 
     private fun snippetPackageName(): String {
-        val postfix = if (index == 0) "" else "_$index"
-        return editPageUrl.extractPageName().replace("-", "_").toLowerCase() + postfix
+        // Lowercase because it is "kind of java convention".
+        // Replace "-" because of https://youtrack.jetbrains.com/issue/KT-15288
+        val packageName = editPageUrl.extractPageName().toLowerCase().replace("-", "_")
+        val postfix = if (index == 0) "" else "_$index" // Add postfix to avoid name conflicts within the same task.
+        return "`$packageName$postfix`" // Wrap in "`" so that (almost) any string is still a valid package name.
     }
 
     override fun toString(): String {

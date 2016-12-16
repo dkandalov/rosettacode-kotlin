@@ -1,3 +1,5 @@
+package `averages_pythagorean_means`
+
 fun Collection<Double>.geometricMean() =
         if (isEmpty())
             Double.NaN

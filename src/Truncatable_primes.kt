@@ -1,4 +1,4 @@
-package truncatable_primes
+package `truncatable_primes`
 
 //  version 1.0.5-2
 

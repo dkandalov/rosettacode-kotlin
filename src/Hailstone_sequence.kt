@@ -1,3 +1,5 @@
+package `hailstone_sequence`
+
 import java.util.ArrayDeque
 
 fun hailstone(n: Int): ArrayDeque<Int> {

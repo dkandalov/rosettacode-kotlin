@@ -1,3 +1,5 @@
+package `rosetta_code_rank_languages_by_popularity`
+
 import java.net.URL
 import java.io.*
 
