@@ -42,7 +42,7 @@ private fun loadKotlinCodeEntries(exclusions: List<String>): List<CodeSnippet> {
     val kotlinPage = cached("kotlinPage") { LanguagePage.get() }
     val editPageUrls = cached("editPageUrls") {
         kotlinPage.extractTaskPageUrls().parallel().map {
-            log("Getting edit page urls from $it")
+            log("Getting edit page url from $it")
             TaskPage.get(it).extractKotlinEditUrl()
         }.toList()
     }
@@ -185,7 +185,7 @@ private val xStream = XStream(XppDriver())
  * To "invalidate" cached value modify or remove xml file.
  */
 fun <T> cached(id: String, f: () -> T): T {
-    val file = File(id + ".xml")
+    val file = File(".cache/$id.xml")
     if (file.exists()) {
         log("// Using cached value of '$id'")
         @Suppress("UNCHECKED_CAST")
@@ -193,6 +193,7 @@ fun <T> cached(id: String, f: () -> T): T {
     } else {
         log("// Recalculating value of '$id'")
         val result = f()
+        file.parentFile.mkdirs()
         file.writeText(xStream.toXML(result))
         return result
     }
