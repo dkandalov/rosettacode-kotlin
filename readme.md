@@ -26,21 +26,25 @@ If you want to use [Gradle](https://www.gradle.org), then `./gradlew classes`.
 
 If you want to use [Maven](http://www.maven.org), then `mvn compile`.
 
-### Step 2: Sync local tasks with rosetta code website
+### Step 2: Sync this repository with Rosetta Code website
 
-You will need to run a script which checks that list of Kotlin tasks in repository 
-is the same as the list of Kotlin tasks on Rosetta Code website. There are several ways to do it:
- - in Gradle run `./gradlew sync`.  
- - in Maven... at the moment there is no way to run it from Maven.
+You will need to run a script which checks that Kotlin code in repository 
+is still the same as Kotlin code on Rosetta Code website. There are several ways to do it:
  - run `scripts/SyncWithRosettaCode.kt` from within an IDE that understands executing Kotlin programs.
+ - in Maven there is current no way to run the script.
+ - in Gradle run `./gradlew sync`.  
 
-The script will attempt to download tasks which were added on Rosetta Code website but were not yet added to github.
-If there are any differences between repository and Rosetta Code website, they will be reported by script.
-Please fix them and send a pull request.
+Possible outputs from the script:
+ - source code matches perfectly. Move on to the next step :)
+ - some code exist on Roseeta Code website but doesn't exist in git repository. The script will automatically download source code. You will need to manually compile them, add to git, commit and send pull request.
+ - some code exist in git repository but doesn't exist on Rosetta Code website. There is currently no functionality to upload code to website, so it has to be done manually.
+ - source code for some tasks exist in both git repository and the website, but has different content. In this case you will need to manully find what the difference is, and modify repository or website to keep code in sync.
 
-Note that the script will cache some of the data downloaded from web into `.cache` directory.
-This was done to avoid hitting Rosetta Code on every run.
-Therefore, you might need to manually invalidate the cache by running `rm -rf .cache`.
+Files downloaded by the script will have additional `package task_name` line which might not exist on Rosetta Code website. 
+This is to avoid name clashes between different tasks. This line won't be considered when diffing repository and website code.
+If you use IDE to edit Kotlin code, it might report that package name doesn't match file directory. It's suggested to disable this inspection for this project. 
+
+Note that the script will cache some of the data downloaded from web into `.cache` directory (this is to avoid hitting Rosetta Code on every run). Therefore, you might need to **manually invalidate the cache** by running `rm -rf .cache`.
 
 ### Step 3: Add/modify tasks
 
@@ -54,4 +58,4 @@ Therefore, you might need to manually invalidate the cache by running `rm -rf .c
 
 ### Step 4: Profit
 
-TBD
+Congratulations! You have just contributed to the World Wide Web!! :octocat:
