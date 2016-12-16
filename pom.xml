@@ -29,7 +29,7 @@
             <version>${kotlin.version}</version>
         </dependency>
 
-        <!-- For scripts/Download.kt -->
+        <!-- For scripts/SyncWithRosettaCode.kt -->
         <dependency>
             <groupId>khttp</groupId>
             <artifactId>khttp</artifactId>

@@ -17,7 +17,7 @@ repositories {
 
 dependencies {
   compile 'org.jetbrains.kotlin:kotlin-stdlib:1.0.+'
-  // For scripts/Download.kt
+  // For scripts/SyncWithRosettaCode.kt
   compile 'khttp:khttp:0.1.+'
   compile 'com.thoughtworks.xstream:xstream:1.4.+'
   // For Active_Directory-Connect.kt
@@ -37,14 +37,14 @@ sourceSets {
 /*
 task compileDownload(type: KotlinCompile) {
     source = sourceSets.main.java.srcDirs
-    include 'scripts/Download.kt'
+    include 'scripts/SyncWithRosettaCode.kt'
     classpath = sourceSets.main.compileClasspath
     destinationDir = sourceSets.main.output.classesDir
 }
 */
 
-task download(type: JavaExec, dependsOn: 'classes') {
-    main = 'scripts.DownloadKt'
+task sync(type: JavaExec, dependsOn: 'classes') {
+    main = 'scripts.SyncWithRosettaCodeKt'
     classpath = sourceSets.main.runtimeClasspath
 }
 

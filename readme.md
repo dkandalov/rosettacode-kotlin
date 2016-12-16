@@ -13,38 +13,49 @@ evolves).
 This project is intended to be like a wiki.  You are, therefore, more than welcome to contribute.  All pull
 requests will be considered.
 
-### How to contribute?
+
+## How to contribute?
+
+### Step 1: Fork, clone and compile
 
 You will need to fork the repository on GitHub and then clone that repository to your working computer – the
 usual GitHub workflow.
 
-Once you have your local clone, you will need to build the download script that refreshes the repository
-from Rosetta Code. For the moment it is easiest just to build all the code in the repository (this will
-happen eventually so why not do it now).
+Once you have your local clone, make sure the project compiles 
+(it's good to make sure you can compile the project yourself even if it's green in CI server).
 
-If you want to use [Gradle](https://www.gradle.org) then:
+If you want to use [Gradle](https://www.gradle.org), then `./gradlew classes`.
 
-- `./gradlew classes`
-- `./gradlew download`
+If you want to use [Maven](http://www.maven.org), then `mvn compile`.
 
-should do nicely. Or you can execute `scripts/Download.kt` from within an IDE that understands executing
-Kotlin programs.
+### Step 2: Sync local tasks with rosetta code website
 
-If you want to use [Maven](http://www.maven.org) then:
+You will need to run a script which checks that list of Kotlin tasks in repository 
+is the same as the list of Kotlin tasks on Rosetta Code website.
+  
+There are several to do it:
+ - in Gradle run `./gradlew sync`.  
+ - in Maven... at the moment there is no way to run it from Maven.
+ - run `scripts/SyncWithRosettaCode.kt` from within an IDE that understands executing Kotlin programs.
 
-- `mvn compile`.
-- execute `scripts/Download.kt` – to date the only was of doing this is from within an IDE that understands
-executing Kotlin programs.
+The script will attempt to download tasks which were added on Rosetta Code website but were not yet added to github.
+If there are any differences between repository and Rosetta Code website, they will be reported by script.
+Please fix them and send a pull request.
 
-Then you should check that all the code, old and possibly new, compiles. So either `gradle classes` or `mvn compile`
+Note that the script will cache some of the data downloaded from web into `.cache` directory.
+This was done to avoid hitting Rosetta Code on every run.
+Therefore, you might need to invalidate the cache manually by running `rm -rf .cache`.   
 
-If there are updated or new classes, you should create a pull request for all successfully compiling
-changes. For compilation errors either fix the problem on Rosetta Code or raise an issue on this project.
+### Step 3: Add/modify tasks
+
+- Make changes and check that project still compiles (and tests pass).
+- Commit, push and send pull request.
+- Make your changes on Rosetta Code website.
+  This is currently a manual step, i.e. there is automated way to upload modifications.
+  (It might be a good idea to use `<lang scala>` tag because Kotlin doesn't have syntax highlighting at the moment.)
+- Rerun `SyncWithRosettaCode.kt` script to make sure repository is still in sync with website. 
 
 
-To add new example yourself:
+### Step 4: Profit
 
-- Add example to this project (it might be a good idea to use `<lang scala>` tag because kotlin doesn't have
-  syntax highlighting at the moment).
-- Make sure it compiles and ideally has some tests.
-- Commit, send pull request, and add example to the RosettaCode wiki.
+TBD

@@ -15,56 +15,79 @@ fun main(args: Array<String>) {
             "Create_a_two-dimensional_array_at_runtime", // https://youtrack.jetbrains.com/issue/KT-15196
             "Read_a_configuration_file" // doesn't compile
     )
-    val codeEntries = loadKotlinCodeEntries(exclusions)
+    val codeSnippets = loadCodeSnippets(exclusions)
 
-    codeEntries.filter{ !it.sourceCodeExistsLocally() }.apply {
+    codeSnippets.filter{ !it.existsLocally() }.apply {
         if (isNotEmpty()) {
-            log("There are some tasks which only exist on rosetta code website. They will be downloaded.")
+            log(">>> There are some tasks which only exist on rosetta code website.\n" +
+                "They will be downloaded. If they compile ok, please add them to git repository.")
             forEach {
                 it.writeCodeToLocalFile()
-                log("Saved source code to ${it.localFile}")
+                log("Saved source code to ${it.localFilePath}")
             }
         } else {
-            log("All tasks from rosetta code website exist in local files.")
+            log(">>> All tasks from rosetta code website exist in local files.")
         }
     }
 
-    codeEntries.filter{ it.sourceCodeExistsLocally() && it.localSourceCodeIsDifferentFromWeb() }.apply {
+    codeSnippets.filter{ !it.existsOnWeb() }.apply {
         if (isNotEmpty()) {
-            forEach{ log("Source code has differences at snippet index: ${it.index}; url: ${it.editPageUrl}") }
+            log(">>> There are some tasks which only exist locally.\n" +
+                "It might be because you just added a task or someone removed task from the website.\n" +
+                "See the list of files below. Please make necessary changes to keep repository in sync with website.")
+            forEach { log("Saved source code to ${it.localFilePath}") }
         } else {
-            log("There are no differences between code in local files and rosetta code website.")
+            log(">>> All tasks from local files exist on rosetta code website.")
+        }
+    }
+
+    codeSnippets.filter{ it.existsLocally() && it.existsOnWeb() && it.localCodeIsDifferentFromWeb() }.apply {
+        if (isNotEmpty()) {
+            log(">>> There are some tasks which have different source code locally and on rosetta code website.\n" +
+                "Please make necessary changes to keep repository in sync with website.")
+            forEach{ log("Differences at snippet index: ${it.index}; url: ${it.editPageUrl}") }
+        } else {
+            log(">>> There are no differences between code in local files and rosetta code website.")
         }
     }
 }
 
-private fun loadKotlinCodeEntries(exclusions: List<String>): List<CodeSnippet> {
+private fun loadCodeSnippets(exclusions: List<String>): List<CodeSnippet> {
     val kotlinPage = cached("kotlinPage") { LanguagePage.get() }
     val editPageUrls = cached("editPageUrls") {
         kotlinPage.extractTaskPageUrls().parallel().map {
             log("Getting edit page url from $it")
-            TaskPage.get(it).extractKotlinEditUrl()
+            TaskPage.get(it).extractKotlinEditPageUrl()
         }.toList()
     }
 
     val tasksSourceCode = cached("tasksSourceCode") {
         editPageUrls.parallel().map {
             log("Getting source code from $it")
-            Pair(it, get(it).text)
+            Pair(it, get(it.value).text)
         }.toList()
     }
 
     val codeSnippets = tasksSourceCode
             .flatMap { CodeSnippet.create(it.first, it.second) }
             .filter { codeSnippet ->
-                exclusions.none { codeSnippet.editPageUrl.contains(it) }
+                exclusions.none { codeSnippet.editPageUrl.value.contains(it) }
             }
-    return codeSnippets
+
+    val localCodeSnippets = File("src").listFiles()
+            .filter { !it.isDirectory && it.extension == "kt" }
+            .filter { file -> codeSnippets.none { it.localFilePath == file.path } }
+            .map{ CodeSnippet(EditPageUrl.none, "", -1, it.path) }
+
+    return codeSnippets + localCodeSnippets
 }
 
-data class CodeSnippet(val editPageUrl: String, val sourceCodeOnWeb: String, val index: Int) {
-    val localFile = localFile()
+data class CodeSnippet(val editPageUrl: EditPageUrl, val sourceCodeOnWeb: String, val index: Int, val localFilePath: String) {
+    private val localFile = File(localFilePath)
     private val snippetPackageName = snippetPackageName()
+
+    constructor(editPageUrl: EditPageUrl, sourceCodeOnWeb: String, index: Int):
+            this(editPageUrl, sourceCodeOnWeb, index, localFileName(editPageUrl, index))
 
     fun writeCodeToLocalFile() {
         localFile.parentFile.mkdirs()
@@ -76,20 +99,14 @@ data class CodeSnippet(val editPageUrl: String, val sourceCodeOnWeb: String, val
         localFile.writeText(sourceCode)
     }
 
-    fun sourceCodeExistsLocally(): Boolean {
-        return localFile.exists()
-    }
+    fun existsLocally() = localFile.exists()
 
-    fun localSourceCodeIsDifferentFromWeb(): Boolean {
+    fun existsOnWeb() = editPageUrl != EditPageUrl.none
+
+    fun localCodeIsDifferentFromWeb(): Boolean {
         fun String.trimmedLines() = replace("package $snippetPackageName\n", "")
                 .trim().split("\n").map(String::trim)
         return localFile.readText().trimmedLines() != sourceCodeOnWeb.trimmedLines()
-    }
-
-    private fun localFile(): File {
-        val fileName = editPageUrl.extractPageName()
-        val postfix = if (index == 0) "" else "-$index"
-        return File("src/$fileName$postfix.kt")
     }
 
     private fun snippetPackageName(): String {
@@ -105,14 +122,16 @@ data class CodeSnippet(val editPageUrl: String, val sourceCodeOnWeb: String, val
     }
 
     companion object {
-        fun create(editPageUrl: String, editPageText: String): List<CodeSnippet> {
+        fun create(url: EditPageUrl, editPageText: String): List<CodeSnippet> {
             return EditTaskPage(editPageText)
                     .extractKotlinSource()
-                    .mapIndexed { i, it -> CodeSnippet(editPageUrl, it, i) }
+                    .mapIndexed { i, it -> CodeSnippet(url, it, i) }
         }
 
-        private fun String.extractPageName(): String {
-            return replace(Regex(".*title="), "").replace(Regex("&action.*"), "").replace("/", "-").replace("%27", "")
+        private fun localFileName(editPageUrl: EditPageUrl, index: Int): String {
+            val fileName = editPageUrl.extractPageName()
+            val postfix = if (index == 0) "" else "-$index"
+            return "src/$fileName$postfix.kt"
         }
     }
 }
@@ -132,13 +151,25 @@ data class LanguagePage(val html: String) {
     }
 }
 
+data class EditPageUrl(val value: String) {
+    fun extractPageName(): String {
+        return value.replace(Regex(".*title="), "").replace(Regex("&action.*"), "").replace("/", "-").replace("%27", "")
+    }
+
+    override fun toString() = value
+
+    companion object {
+        val none = EditPageUrl("")
+    }
+}
+
 data class TaskPage(val html: String) {
-    internal fun extractKotlinEditUrl(): String {
+    internal fun extractKotlinEditPageUrl(): EditPageUrl {
         val s = html.split("\n")
                 .dropWhile { !it.contains("<span class=\"mw-headline\" id=\"Kotlin\">") }
                 .find { it.contains("<a href=\"/mw/") }!!
 
-        return s.extractUrl().replace("&amp;", "&")
+        return EditPageUrl(s.extractUrl().replace("&amp;", "&"))
     }
 
     companion object {
