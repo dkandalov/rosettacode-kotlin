@@ -20,7 +20,7 @@ requests will be considered.
 
 You will need to fork the repository on GitHub and then clone that repository to your working computer – the
 usual GitHub workflow. Once you have your local clone, make sure the project compiles 
-(it's good to make sure you can compile the project yourself even if it's green in CI server).
+(it's good to check you can compile the project yourself even if it's green in CI server).
 
 If you want to use [Gradle](https://www.gradle.org), then `./gradlew classes`.
 
