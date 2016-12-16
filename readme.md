@@ -35,10 +35,10 @@ is still the same as Kotlin code on Rosetta Code website. There are several ways
  - in Gradle run `./gradlew sync`.  
 
 Possible outputs from the script:
- - source code matches perfectly. Move on to the next step :)
- - some code exist on Roseeta Code website but doesn't exist in git repository. The script will automatically download source code. You will need to manually compile them, add to git, commit and send pull request.
- - some code exist in git repository but doesn't exist on Rosetta Code website. There is currently no functionality to upload code to website, so it has to be done manually.
- - source code for some tasks exist in both git repository and the website, but has different content. In this case you will need to manully find what the difference is, and modify repository or website to keep code in sync.
+ - all source code files matche perfectly. Move on to the next step :)
+ - source code exists on Rosetta Code website but doesn't exist in git repository. The script will automatically download source code. But you will need to compile it, add to git, commit and send a pull request.
+ - source code exists in git repository but doesn't exist on Rosetta Code website. There is currently no functionality to upload code to website, so it has to be done manually.
+ - source code exists in both git repository and the website, but has different content. In this case you will need to manully find what the difference is, and modify repository or website to keep code in sync.
 
 Files downloaded by the script will have additional `package task_name` line which might not exist on Rosetta Code website. 
 This is to avoid name clashes between different tasks. This line won't be considered when diffing repository and website code.
