@@ -51,8 +51,8 @@ Note that the script will cache some of the data downloaded from web into `.cach
 - Make changes and check that project still compiles (and tests pass).
 - Commit, push and send pull request.
 - Make your changes on Rosetta Code website.
-  This is currently a manual step, i.e. there is automated way to upload modifications.
-  (It might be a good idea to use `<lang scala>` tag because Kotlin doesn't have syntax highlighting at the moment.)
+  This is currently a manual step, i.e. there is no automated way to upload modifications.
+  (It might be a good idea to use `<lang scala>` tag because Kotlin doesn't have syntax highlighting on Rosetta Code website at the moment.)
 - Rerun `SyncWithRosettaCode.kt` script to make sure repository is still in sync with website. 
 
 
