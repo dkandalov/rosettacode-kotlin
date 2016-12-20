@@ -153,7 +153,11 @@ data class LanguagePage(val html: String) {
 
 data class EditPageUrl(val value: String) {
     fun extractPageName(): String {
-        return value.replace(Regex(".*title="), "").replace(Regex("&action.*"), "").replace("/", "-").replace("%27", "")
+        return value.replace(Regex(".*title="), "")
+                .replace(Regex("&action.*"), "")
+                .replace("/", "-")
+                .replace("%27", "")
+                .replace("%2B", "-plus-")
     }
 
     override fun toString() = value
