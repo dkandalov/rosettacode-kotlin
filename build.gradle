@@ -43,6 +43,11 @@ task compileDownload(type: KotlinCompile) {
 }
 */
 
+task clearCache(type: JavaExec, dependsOn: 'classes') {
+    main = 'scripts.ClearLocalWebCacheKt'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
 task sync(type: JavaExec, dependsOn: 'classes') {
     main = 'scripts.SyncWithRosettaCodeKt'
     classpath = sourceSets.main.runtimeClasspath

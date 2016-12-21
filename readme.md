@@ -34,6 +34,9 @@ is still the same as Kotlin code on Rosetta Code website. There are several ways
  - in Maven there is current no way to run the script.
  - in Gradle run `./gradlew sync`.  
 
+Note that the script will cache some of the data downloaded from web into `.cache` directory (this is to speed up running the script second time and avoid hitting Rosetta Code on every run). 
+Therefore, you might need to **manually invalidate the cache** by running `rm -rf .cache`, `./gradlew clearCache` or `scripts/ClearLocalWebCache.kt`.
+
 Possible outputs from the script:
  - all source code files match perfectly. You can move to the next step :)
  - source code exists on Rosetta Code website but doesn't exist in git repository. The script will automatically download source code. But you will need to compile it, add to git, commit and send a pull request.
@@ -44,7 +47,6 @@ Files downloaded by the script will have additional `package task_name` line whi
 This is to avoid name clashes between different tasks. This line won't be considered when diffing repository and website code.
 If you use IDE to edit Kotlin code, it might report that package name doesn't match file directory. It's suggested to disable this inspection for this project. 
 
-Note that the script will cache some of the data downloaded from web into `.cache` directory (this is to avoid hitting Rosetta Code on every run). Therefore, you might need to **manually invalidate the cache** by running `rm -rf .cache`.
 
 ### Step 3: Add/modify tasks
 
