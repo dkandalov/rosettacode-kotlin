@@ -1,15 +1,17 @@
 package `integer_sequence`
 
-// version 1.0.5-2
-
 import java.math.BigInteger
 
+// version 1.0.5-2
+
 fun main(args: Array<String>) {
-    var bi = BigInteger.ZERO
-    val limit = BigInteger.valueOf(100000) // stop after 100,000 iterations, say
-    while(true) {
-        bi = bi + BigInteger.ONE
-        println(bi)
-        if (bi.compareTo(limit) == 0) return     
+    // print until 2147483647
+    (0..Int.MAX_VALUE).forEach { println(it) }
+
+    // print forever
+    var n = BigInteger.ZERO
+    while (true) {
+        println(n)
+        n += BigInteger.ONE
     }
 }
