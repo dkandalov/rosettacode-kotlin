@@ -1,0 +1,13 @@
+package `loops_continue`
+
+// version 1.0.6
+
+fun main(args: Array<String>) {
+    for(i in 1 .. 10) {
+        if (i % 5 == 0) { 
+            println(i)
+            continue
+        }
+        print("$i, ")
+    }
+}
