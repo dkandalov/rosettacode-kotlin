@@ -34,8 +34,9 @@ is still the same as Kotlin code on Rosetta Code website. There are several ways
  - in Maven there is current no way to run the script.
  - in Gradle run `./gradlew sync`.  
 
-Note that the script will cache some of the data downloaded from web into `.cache` directory (this is to speed up running the script second time and avoid hitting Rosetta Code on every run). 
-Therefore, you might need to **manually invalidate the cache** by running `rm -rf .cache`, `./gradlew clearCache` or `scripts/ClearLocalWebCache.kt`.
+Note that the script caches data downloaded from web into `.cache` directory.
+You can run the script without clearing cache using `./gradlew syncDirty` or `scripts/SyncWithRosettaCodeDirty.kt`.
+This will make script execution faster but changes from RosettaCode website might be missed.
 
 Possible outputs from the script:
  - all source code files match perfectly. You can move to the next step :)
