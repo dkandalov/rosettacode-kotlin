@@ -14,8 +14,7 @@ fun syncRepoWithRosettaCodeWebsite() {
             "Boolean_values", // ignore because there is no code
             "Create_a_two-dimensional_array_at_runtime", // https://youtrack.jetbrains.com/issue/KT-15196
             "Draw_a_rotating_cube", // https://youtrack.jetbrains.com/issue/KT-15560 (for kotlin 1.1-M04)
-            "Draw_a_cuboid", // https://youtrack.jetbrains.com/issue/KT-15560 (for kotlin 1.1-M04)
-            "Read_a_configuration_file" // doesn't compile
+            "Draw_a_cuboid" // https://youtrack.jetbrains.com/issue/KT-15560 (for kotlin 1.1-M04)
     )
     val codeSnippets = loadCodeSnippets(exclusions)
 
