@@ -2,7 +2,7 @@ package `date_format`
 
 // version 1.0.6
 
-import java.util.*
+import java.util.GregorianCalendar
 
 fun main(args: Array<String>) {
     val now = GregorianCalendar()
