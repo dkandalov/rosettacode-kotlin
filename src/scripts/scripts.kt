@@ -4,17 +4,17 @@ import com.thoughtworks.xstream.XStream
 import com.thoughtworks.xstream.io.xml.XppDriver
 import khttp.get
 import java.io.File
-import java.util.*
+import java.util.Spliterators
 import java.util.stream.Collectors
 import java.util.stream.Stream
 import java.util.stream.StreamSupport
 
 fun syncRepoWithRosettaCodeWebsite() {
     val exclusions = listOf(
-            "Boolean_values", // ignore because there is no code
-            "Create_a_two-dimensional_array_at_runtime", // https://youtrack.jetbrains.com/issue/KT-15196
-            "Draw_a_rotating_cube", // https://youtrack.jetbrains.com/issue/KT-15560 (for kotlin 1.1-M04)
-            "Draw_a_cuboid" // https://youtrack.jetbrains.com/issue/KT-15560 (for kotlin 1.1-M04)
+            "Boolean_values" // ignored because there is no code
+//            "Create_a_two-dimensional_array_at_runtime", // https://youtrack.jetbrains.com/issue/KT-15196 (fixed in 1.1.0-beta-17)
+//            "Draw_a_rotating_cube", // https://youtrack.jetbrains.com/issue/KT-15560 (fixed in 1.1.0-beta-17)
+//            "Draw_a_cuboid" // https://youtrack.jetbrains.com/issue/KT-15560 (fixed in 1.1.0-beta-17)
     )
     val codeSnippets = loadCodeSnippets(exclusions)
 
