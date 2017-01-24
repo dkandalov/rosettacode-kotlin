@@ -11,7 +11,8 @@ import java.util.stream.StreamSupport
 
 fun syncRepoWithRosettaCodeWebsite() {
     val exclusions = listOf(
-            "Boolean_values" // ignored because there is no code
+            "Boolean_values", // ignored because there is no code
+            "interactive_programming" // ignored because there is no code
 //            "Create_a_two-dimensional_array_at_runtime", // https://youtrack.jetbrains.com/issue/KT-15196 (fixed in 1.1.0-beta-17)
 //            "Draw_a_rotating_cube", // https://youtrack.jetbrains.com/issue/KT-15560 (fixed in 1.1.0-beta-17)
 //            "Draw_a_cuboid" // https://youtrack.jetbrains.com/issue/KT-15560 (fixed in 1.1.0-beta-17)
