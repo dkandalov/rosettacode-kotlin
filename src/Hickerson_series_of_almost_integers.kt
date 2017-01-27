@@ -5,10 +5,10 @@ package `hickerson_series_of_almost_integers`
 import java.math.*
 
 object Hickerson {
-    private val ln2 = "0.693147180559945309417232121458" 
+    private const val LN2 = "0.693147180559945309417232121458"
 
     fun almostInteger(n: Int): Boolean {
-        val a = BigDecimal(ln2).pow(n + 1) * BigDecimal(2)
+        val a = BigDecimal(LN2).pow(n + 1) * BigDecimal(2)
         var nn = n
         var f = n.toLong() 
         while (--nn > 1) f *= nn

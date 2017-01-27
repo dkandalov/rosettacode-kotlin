@@ -14,7 +14,7 @@ import javax.swing.JFrame
 import javax.swing.JPanel
 import javax.swing.SwingUtilities
 
-class Cuboid(): JPanel() {
+class Cuboid: JPanel() {
     private val nodes = arrayOf(
         doubleArrayOf(-1.0, -1.0, -1.0),
         doubleArrayOf(-1.0, -1.0,  1.0),
@@ -51,14 +51,14 @@ class Cuboid(): JPanel() {
         scale(80.0, 120.0, 160.0)
         rotateCube(Math.PI / 5.0, Math.PI / 9.0)
         addMouseListener(object: MouseAdapter() {            
-            override public fun mousePressed(e: MouseEvent) {
+            override fun mousePressed(e: MouseEvent) {
                 mouseX = e.x
                 mouseY = e.y
             }
         })
  
         addMouseMotionListener(object: MouseAdapter() {          
-            override public fun mouseDragged(e: MouseEvent) {
+            override fun mouseDragged(e: MouseEvent) {
                 prevMouseX = mouseX
                 prevMouseY = mouseY
                 mouseX = e.x

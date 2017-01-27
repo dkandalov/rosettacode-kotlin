@@ -46,7 +46,7 @@ fun main(args: Array<String>) {
             sign *= -1
         }
     }
-    // generate primes under 50
+    // generate primes under 62
     var p = 2
     val primes = mutableListOf<Int>()
     do {
