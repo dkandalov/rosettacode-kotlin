@@ -17,6 +17,8 @@ repositories {
 
 dependencies {
   compile 'org.jetbrains.kotlin:kotlin-stdlib:1.0.+'
+  // For Break_OO_privacy.kt and Reflection-List_properties.kt
+  compile 'org.jetbrains.kotlin:kotlin-reflect:1.0.+'
   // For scripts/SyncWithRosettaCode.kt
   compile 'khttp:khttp:0.1.+'
   compile 'com.thoughtworks.xstream:xstream:1.4.+'
