@@ -10,10 +10,9 @@
     <properties>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
-        <!-- Note that latest versions of Kotlin might not work in TravisCI
+        <!-- Note that latest pre-release versions of Kotlin might not work in TravisCI
              because TravisCI only searches for dependencies in central maven repository and ignores all other repositories. -->
-        <kotlin.version>1.0.6</kotlin.version>
-        <!--<kotlin.version>1.1.0-beta-38</kotlin.version>-->
+        <kotlin.version>1.1.0</kotlin.version>
     </properties>
 
     <repositories>
