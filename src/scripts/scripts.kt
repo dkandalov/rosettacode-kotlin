@@ -4,25 +4,21 @@ import com.thoughtworks.xstream.XStream
 import com.thoughtworks.xstream.io.xml.XppDriver
 import khttp.get
 import java.io.File
-import java.util.Spliterators
-import java.util.stream.Collectors
-import java.util.stream.Stream
-import java.util.stream.StreamSupport
+import java.util.*
+import java.util.stream.*
+
+private val exclusions = listOf(
+    "Boolean_values", // ignored because there is no code
+    "Interactive_programming" // ignored because there is no code
+)
 
 fun syncRepoWithRosettaCodeWebsite() {
-    val exclusions = listOf(
-            "Boolean_values", // ignored because there is no code
-            "Interactive_programming" // ignored because there is no code
-//            "Create_a_two-dimensional_array_at_runtime", // https://youtrack.jetbrains.com/issue/KT-15196 (fixed in 1.1.0-beta-17)
-//            "Draw_a_rotating_cube", // https://youtrack.jetbrains.com/issue/KT-15560 (fixed in 1.1.0-beta-17)
-//            "Draw_a_cuboid" // https://youtrack.jetbrains.com/issue/KT-15560 (fixed in 1.1.0-beta-17)
-    )
     val codeSnippets = loadCodeSnippets(exclusions)
 
     codeSnippets.filter { !it.existsLocally() }.apply {
         if (isNotEmpty()) {
             log(">>> There are some tasks which only exist on rosetta code website.\n" +
-                        "They will be downloaded. If they compile ok, please add them to git repository.")
+                "They will be downloaded. If they compile ok, please add them to git repository.")
             forEach {
                 it.writeCodeToLocalFile()
                 log("Saved source code to ${it.localFilePath}")
@@ -35,8 +31,8 @@ fun syncRepoWithRosettaCodeWebsite() {
     codeSnippets.filter { !it.existsOnWeb() }.apply {
         if (isNotEmpty()) {
             log(">>> There are some tasks which only exist locally.\n" +
-                        "It might be because you just added a task or someone removed task from the website.\n" +
-                        "See the list of files below. Please make necessary changes to keep repository in sync with website.")
+                "It might be because you just added a task or someone removed task from the website.\n" +
+                "See the list of files below. Please make necessary changes to keep repository in sync with website.")
             forEach { log("Saved source code to ${it.localFilePath}") }
         } else {
             log(">>> All tasks from local files exist on rosetta code website.")
@@ -46,7 +42,7 @@ fun syncRepoWithRosettaCodeWebsite() {
     codeSnippets.filter { it.existsLocally() && it.existsOnWeb() && it.localCodeIsDifferentFromWeb() }.apply {
         if (isNotEmpty()) {
             log(">>> There are some tasks which have different source code locally and on rosetta code website.\n" +
-                        "Please make necessary changes to keep repository in sync with website.")
+                "Please make necessary changes to keep repository in sync with website.")
             forEach { log("Differences at snippet index: ${it.index}; url: ${it.editPageUrl}") }
         } else {
             log(">>> There are no differences between code in local files and rosetta code website.")
