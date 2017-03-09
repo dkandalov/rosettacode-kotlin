@@ -3,6 +3,7 @@ package scripts
 import com.thoughtworks.xstream.XStream
 import com.thoughtworks.xstream.io.xml.XppDriver
 import khttp.get
+import khttp.structures.cookie.CookieJar
 import java.io.File
 import java.util.*
 import java.util.stream.*
@@ -49,6 +50,30 @@ fun syncRepoWithRosettaCodeWebsite() {
         }
     }
 }
+
+data class LoginPage(val html: String, val cookies: CookieJar) {
+    fun login(userName: String, password: String): CookieJar {
+        val loginToken = Regex("<input type=\"hidden\" value=\"(.+?)\"").find(html)!!.groups[1]!!.value
+        val response = khttp.post(
+                url = "http://rosettacode.org/mw/index.php?title=Special:UserLogin&action=submitlogin&type=login&returnto=Rosetta+Code",
+                data = mapOf(
+                        "wpName" to userName,
+                        "wpPassword" to password,
+                        "wpLoginAttempt" to "Log in",
+                        "wpLoginToken" to loginToken
+                ),
+                cookies = cookies + mapOf("rosettacodeUserName" to userName.replace(' ', '+')) // TODO use encode
+        )
+        return response.cookies
+    }
+
+    companion object {
+        fun get(url: String = "http://rosettacode.org/wiki/Special:UserLogin") = khttp.get(url).let {
+            LoginPage(it.text, it.cookies)
+        }
+    }
+}
+
 
 fun loadCodeSnippets(exclusions: List<String>): List<CodeSnippet> {
     val kotlinPage = cached("kotlinPage") { LanguagePage.get() }
