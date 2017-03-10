@@ -18,7 +18,7 @@ private val exclusions = listOf(
 fun syncRepoWithRosettaCodeWebsite() {
     val snippetStorage = loadCodeSnippets(exclusions)
 
-    snippetStorage.localSnippets.apply {
+    snippetStorage.onlyWebSnippets.apply {
         if (isNotEmpty()) {
             log(">>> There are some tasks which only exist on rosetta code website.\n" +
                 "They will be downloaded. If they compile ok, please add them to git repository.")
@@ -31,7 +31,7 @@ fun syncRepoWithRosettaCodeWebsite() {
         }
     }
 
-    snippetStorage.webSnippets.apply {
+    snippetStorage.onlyLocalSnippets.apply {
         if (isNotEmpty()) {
             log(">>> There are some tasks which only exist locally.\n" +
                 "It might be because you just added a task or someone removed task from the website.\n" +
@@ -85,8 +85,16 @@ fun loadCodeSnippets(exclusions: List<String>): CodeSnippetStorage {
 }
 
 data class CodeSnippetStorage(val webSnippets: List<CodeSnippet>, val localSnippets: List<CodeSnippet>) {
+    private val snippets = webSnippets + localSnippets
+
+    val onlyLocalSnippets: List<CodeSnippet>
+        get() = snippets.filter { !it.existsOnWeb() }
+
+    val onlyWebSnippets: List<CodeSnippet>
+        get() = snippets.filter { !it.existsLocally() }
+
     val snippetsWithDiffs: List<CodeSnippet>
-        get() = (webSnippets + localSnippets).filter { it.existsLocally() && it.existsOnWeb() && it.localCodeIsDifferentFromWeb() }
+        get() = snippets.filter { it.existsLocally() && it.existsOnWeb() && it.localCodeIsDifferentFromWeb() }
 }
 
 data class LoginPage(val html: String, val cookies: CookieJar) {
