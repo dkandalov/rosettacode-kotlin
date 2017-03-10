@@ -8,9 +8,7 @@ import khttp.structures.cookie.CookieJar
 import java.io.File
 import java.net.URLEncoder
 import java.util.*
-import java.util.stream.Collectors
-import java.util.stream.Stream
-import java.util.stream.StreamSupport
+import java.util.stream.*
 
 private val exclusions = listOf(
     "Boolean_values", // ignored because there is no code
@@ -18,9 +16,9 @@ private val exclusions = listOf(
 )
 
 fun syncRepoWithRosettaCodeWebsite() {
-    val codeSnippets = loadCodeSnippets(exclusions)
+    val snippetStorage = loadCodeSnippets(exclusions)
 
-    codeSnippets.filter { !it.existsLocally() }.apply {
+    snippetStorage.localSnippets.apply {
         if (isNotEmpty()) {
             log(">>> There are some tasks which only exist on rosetta code website.\n" +
                 "They will be downloaded. If they compile ok, please add them to git repository.")
@@ -33,7 +31,7 @@ fun syncRepoWithRosettaCodeWebsite() {
         }
     }
 
-    codeSnippets.filter { !it.existsOnWeb() }.apply {
+    snippetStorage.webSnippets.apply {
         if (isNotEmpty()) {
             log(">>> There are some tasks which only exist locally.\n" +
                 "It might be because you just added a task or someone removed task from the website.\n" +
@@ -44,7 +42,7 @@ fun syncRepoWithRosettaCodeWebsite() {
         }
     }
 
-    codeSnippets.filter { it.existsLocally() && it.existsOnWeb() && it.localCodeIsDifferentFromWeb() }.apply {
+    snippetStorage.snippetsWithDiffs.apply {
         if (isNotEmpty()) {
             log(">>> There are some tasks which have different source code locally and on rosetta code website.\n" +
                 "Please make necessary changes to keep repository in sync with website.")
@@ -56,7 +54,7 @@ fun syncRepoWithRosettaCodeWebsite() {
 }
 
 
-fun loadCodeSnippets(exclusions: List<String>): List<CodeSnippet> {
+fun loadCodeSnippets(exclusions: List<String>): CodeSnippetStorage {
     val kotlinPage = cached("kotlinPage") { LanguagePage.get() }
     val editPageUrls = cached("editPageUrls") {
         kotlinPage.extractTaskPageUrls().parallel().map {
@@ -73,7 +71,7 @@ fun loadCodeSnippets(exclusions: List<String>): List<CodeSnippet> {
     }
 
     val codeSnippets = editPages
-            .flatMap { CodeSnippet.create(it) }
+            .flatMap { it.extractCodeSnippets() }
             .filter { (editPageUrl) ->
                 exclusions.none { editPageUrl.value.contains(it) }
             }
@@ -83,9 +81,13 @@ fun loadCodeSnippets(exclusions: List<String>): List<CodeSnippet> {
             .filter { file -> codeSnippets.none { it.localFilePath == file.path } }
             .map{ CodeSnippet(EditPageUrl.none, "", -1, it.path) }
 
-    return codeSnippets + localCodeSnippets
+    return CodeSnippetStorage(codeSnippets, localCodeSnippets)
 }
 
+data class CodeSnippetStorage(val webSnippets: List<CodeSnippet>, val localSnippets: List<CodeSnippet>) {
+    val snippetsWithDiffs: List<CodeSnippet>
+        get() = (webSnippets + localSnippets).filter { it.existsLocally() && it.existsOnWeb() && it.localCodeIsDifferentFromWeb() }
+}
 
 data class LoginPage(val html: String, val cookies: CookieJar) {
     fun login(userName: String, password: String): CookieJar {
@@ -150,12 +152,6 @@ data class CodeSnippet(val editPageUrl: EditPageUrl, val sourceCodeOnWeb: String
     }
 
     companion object {
-        fun create(editPage: EditPage): List<CodeSnippet> {
-            return editPage
-                    .extractKotlinSource()
-                    .mapIndexed { i, it -> CodeSnippet(editPage.url, it, i) }
-        }
-
         private fun localFileName(editPageUrl: EditPageUrl, index: Int): String {
             val fileName = editPageUrl.extractPageName()
             val postfix = if (index == 0) "" else "-$index"
@@ -228,6 +224,10 @@ data class EditPage(val url: EditPageUrl, val html: String) {
                 .joinToString("\n")
 
         return listOf(sourceCode) + lines.drop(srcLineCount).extractKotlinSource()
+    }
+
+    fun extractCodeSnippets(): List<CodeSnippet> {
+        return extractKotlinSource().mapIndexed { i, it -> CodeSnippet(url, it, i) }
     }
 }
 
