@@ -8,7 +8,9 @@ import khttp.structures.cookie.CookieJar
 import java.io.File
 import java.net.URLEncoder
 import java.util.*
-import java.util.stream.*
+import java.util.stream.Collectors
+import java.util.stream.Stream
+import java.util.stream.StreamSupport
 
 private val exclusions = listOf(
     "Boolean_values", // ignored because there is no code
@@ -63,15 +65,15 @@ fun loadCodeSnippets(exclusions: List<String>): List<CodeSnippet> {
         }.toList()
     }
 
-    val tasksSourceCode = cached("tasksSourceCode") {
+    val editPages = cached("editPages") {
         editPageUrls.parallel().map {
             log("Getting source code from $it")
-            Pair(it, get(it.value).text)
+            EditPage(it, get(it.value).text)
         }.toList()
     }
 
-    val codeSnippets = tasksSourceCode
-            .flatMap { CodeSnippet.create(it.first, it.second) }
+    val codeSnippets = editPages
+            .flatMap { CodeSnippet.create(it) }
             .filter { (editPageUrl) ->
                 exclusions.none { editPageUrl.value.contains(it) }
             }
@@ -148,10 +150,10 @@ data class CodeSnippet(val editPageUrl: EditPageUrl, val sourceCodeOnWeb: String
     }
 
     companion object {
-        fun create(url: EditPageUrl, editPageText: String): List<CodeSnippet> {
-            return EditTaskPage(editPageText)
+        fun create(editPage: EditPage): List<CodeSnippet> {
+            return editPage
                     .extractKotlinSource()
-                    .mapIndexed { i, it -> CodeSnippet(url, it, i) }
+                    .mapIndexed { i, it -> CodeSnippet(editPage.url, it, i) }
         }
 
         private fun localFileName(editPageUrl: EditPageUrl, index: Int): String {
@@ -208,7 +210,7 @@ data class TaskPage(val html: String) {
     }
 }
 
-data class EditTaskPage(val html: String) {
+data class EditPage(val url: EditPageUrl, val html: String) {
     fun extractKotlinSource(): List<String> {
         return html.split("\n").extractKotlinSource()
     }
