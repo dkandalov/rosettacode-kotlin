@@ -28,7 +28,7 @@ class SyncWithRosettaCodeTest: StringSpec() {
 
         "extract code snippets from task edit page" {
             val html = "array-concatenation-edit-page.txt".readText()
-            val codeSnippets = EditTaskPage(html).extractKotlinSource()
+            val codeSnippets = EditPage(EditPageUrl.none, html).extractKotlinSource()
             codeSnippets shouldBe listOf(
                 """
                 |fun main(args: Array<String>) {
