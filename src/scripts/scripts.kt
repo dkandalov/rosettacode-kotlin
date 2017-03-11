@@ -8,6 +8,7 @@ import khttp.structures.cookie.CookieJar
 import java.io.File
 import java.net.URLEncoder
 import java.util.*
+import java.util.concurrent.atomic.AtomicInteger
 import java.util.stream.*
 
 private val exclusions = listOf(
@@ -23,8 +24,8 @@ fun syncRepoWithRosettaCodeWebsite() {
             log(">>> There are some tasks which only exist on rosetta code website.\n" +
                 "They will be downloaded. If they compile ok, please add them to git repository.")
             forEach {
-                it.writeCodeToLocalFile()
-                log("Saved source code to ${it.localFilePath}")
+                val codeSnippet = it.writeCodeToLocalFile()
+                log("Saved source code to ${codeSnippet.filePath}")
             }
         } else {
             log(">>> All tasks from rosetta code website exist in local files.")
@@ -36,7 +37,7 @@ fun syncRepoWithRosettaCodeWebsite() {
             log(">>> There are some tasks which only exist locally.\n" +
                 "It might be because you just added a task or someone removed task from the website.\n" +
                 "See the list of files below. Please make necessary changes to keep repository in sync with website.")
-            forEach { log("Saved source code to ${it.localFilePath}") }
+            forEach { log(it.filePath) }
         } else {
             log(">>> All tasks from local files exist on rosetta code website.")
         }
@@ -46,7 +47,7 @@ fun syncRepoWithRosettaCodeWebsite() {
         if (isNotEmpty()) {
             log(">>> There are some tasks which have different source code locally and on rosetta code website.\n" +
                 "Please make necessary changes to keep repository in sync with website.")
-            forEach { log("Differences at snippet index: ${it.index}; url: ${it.editPageUrl}") }
+            forEach { log("Differences in: ${it.second!!.filePath}; url: ${it.first.editPageUrl}") }
         } else {
             log(">>> There are no differences between code in local files and rosetta code website.")
         }
@@ -78,23 +79,26 @@ fun loadCodeSnippets(exclusions: List<String>): CodeSnippetStorage {
 
     val localCodeSnippets = File("src").listFiles()
             .filter { !it.isDirectory && it.extension == "kt" }
-            .filter { file -> codeSnippets.none { it.localFilePath == file.path } }
-            .map{ CodeSnippet(EditPageUrl.none, "", -1, it.path) }
+            .map{ LocalCodeSnippet(it.path) }
 
     return CodeSnippetStorage(codeSnippets, localCodeSnippets)
 }
 
-data class CodeSnippetStorage(val webSnippets: List<CodeSnippet>, val localSnippets: List<CodeSnippet>) {
-    private val snippets = webSnippets + localSnippets
+private fun <T, R> Stream<T>.mapIndexed(f: (index: Int, T) -> R): Stream<R> {
+    val i = AtomicInteger()
+    return map{ f(i.getAndIncrement(), it) }
+}
 
-    val onlyLocalSnippets: List<CodeSnippet>
-        get() = snippets.filter { !it.existsOnWeb() }
+data class CodeSnippetStorage(val webSnippets: List<CodeSnippet>, val localSnippets: List<LocalCodeSnippet>) {
+    val onlyLocalSnippets: List<LocalCodeSnippet>
+        get() = localSnippets.filter { local -> webSnippets.none{ local.id == it.id } }
 
     val onlyWebSnippets: List<CodeSnippet>
-        get() = snippets.filter { !it.existsLocally() }
+        get() = webSnippets.filter{ web -> localSnippets.none{ web.id == it.id } }
 
-    val snippetsWithDiffs: List<CodeSnippet>
-        get() = snippets.filter { it.existsLocally() && it.existsOnWeb() && it.localCodeIsDifferentFromWeb() }
+    val snippetsWithDiffs: List<Pair<CodeSnippet, LocalCodeSnippet?>>
+        get() = webSnippets.map{ web -> Pair(web, localSnippets.find{ web.id == it.id }) }
+                .filter{ (web, local) -> local != null && web.hasDifferentSourceCodeTo(local) }
 }
 
 data class LoginPage(val html: String, val cookies: CookieJar) {
@@ -120,14 +124,19 @@ data class LoginPage(val html: String, val cookies: CookieJar) {
     }
 }
 
-data class CodeSnippet(val editPageUrl: EditPageUrl, val sourceCodeOnWeb: String, val index: Int, val localFilePath: String) {
-    private val localFile = File(localFilePath)
+data class LocalCodeSnippet(val filePath: String) {
+    val id: String = File(filePath).name
+    
+    fun readCode() = File(filePath).readText()
+}
+
+data class CodeSnippet(val editPageUrl: EditPageUrl, val sourceCodeOnWeb: String, val index: Int) {
     private val snippetPackageName = snippetPackageName()
+    private val fileName = localFileName(editPageUrl, index)
+    val id: String = fileName
 
-    constructor(editPageUrl: EditPageUrl, sourceCodeOnWeb: String, index: Int):
-            this(editPageUrl, sourceCodeOnWeb, index, localFileName(editPageUrl, index))
-
-    fun writeCodeToLocalFile() {
+    fun writeCodeToLocalFile(): LocalCodeSnippet {
+        val localFile = File("src/$fileName")
         localFile.parentFile.mkdirs()
 
         val sourceCode = sourceCodeOnWeb.trim().let {
@@ -135,16 +144,13 @@ data class CodeSnippet(val editPageUrl: EditPageUrl, val sourceCodeOnWeb: String
             else "package $snippetPackageName\n\n" + it
         }
         localFile.writeText(sourceCode)
+
+        return LocalCodeSnippet(localFile.path)
     }
 
-    fun existsLocally() = localFile.exists()
-
-    fun existsOnWeb() = editPageUrl != EditPageUrl.none
-
-    fun localCodeIsDifferentFromWeb(): Boolean {
-        fun String.trimmedLines() = replace("package $snippetPackageName\n", "")
-                .trim().split("\n").map(String::trim)
-        return localFile.readText().trimmedLines() != sourceCodeOnWeb.trimmedLines()
+    fun hasDifferentSourceCodeTo(localCodeSnippet: LocalCodeSnippet): Boolean {
+        fun String.trimmedLines() = replace("package $snippetPackageName\n", "").trim().split("\n").map(String::trim)
+        return localCodeSnippet.readCode().trimmedLines() != sourceCodeOnWeb.trimmedLines()
     }
 
     private fun snippetPackageName(): String {
@@ -163,7 +169,7 @@ data class CodeSnippet(val editPageUrl: EditPageUrl, val sourceCodeOnWeb: String
         private fun localFileName(editPageUrl: EditPageUrl, index: Int): String {
             val fileName = editPageUrl.extractPageName()
             val postfix = if (index == 0) "" else "-$index"
-            return "src/$fileName$postfix.kt"
+            return "$fileName$postfix.kt"
         }
     }
 }
