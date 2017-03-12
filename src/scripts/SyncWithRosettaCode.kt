@@ -1,6 +1,6 @@
 package scripts
 
 fun main(args: Array<String>) {
-    clearLocalWebCache()
+    clearLocalWebCache(excluding = "loginCookieJar.xml")
     syncRepoWithRosettaCodeWebsite()
 }

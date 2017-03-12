@@ -7,6 +7,9 @@ import khttp.post
 import khttp.structures.cookie.CookieJar
 import java.io.File
 import java.net.URLEncoder
+import java.time.Instant
+import java.time.OffsetDateTime
+import java.time.format.DateTimeFormatter
 import java.util.concurrent.atomic.AtomicReference
 import java.util.stream.Collectors
 import java.util.stream.Stream
@@ -15,6 +18,48 @@ private val exclusions = listOf(
     "Boolean_values", // ignored because there is no code
     "Interactive_programming" // ignored because there is no code
 )
+
+fun pushLocalChangesToRosettaCode() {
+    val snippetStorage = loadCodeSnippets(exclusions)
+    snippetStorage.snippetsWithDiffs.apply {
+        if (isEmpty()) return log(">>> Nothing to push. There are no differences between code in local files and rosetta code website.")
+
+        first().let { (web, local) ->
+            var cookieJar = cached("loginCookieJar") { loginAndGetCookies() }
+            if (cookieJar.hasExpiredEntries()) {
+                cookieJar = cached("loginCookieJar", replace = true) { loginAndGetCookies() }
+            }
+            if (cookieJar.isEmpty()) return
+
+            val editPage = EditPage.get(web.editPageUrl, cookieJar)
+            println(editPage.html.contains(">Log in<"))
+            println(editPage.html.contains(">Log out<"))
+
+            editPage.submitCodeChange(local.readCode())
+        }
+    }
+}
+
+private fun CookieJar.hasExpiredEntries(now: Instant = Instant.now()): Boolean {
+    return entries
+        .map { it.value.split("; ").find { it.startsWith("expires=") } }
+        .filterNotNull()
+        .any {
+            val s = it.replace("expires=", "").replace("-", " ")
+            val dateTime = OffsetDateTime.parse(s, DateTimeFormatter.RFC_1123_DATE_TIME)
+            // Exclude year 1970 because there are some cookies which have timestamp just after 1970
+            dateTime.year > 1970 && dateTime.toInstant() <= now
+        }
+}
+
+private fun loginAndGetCookies(): CookieJar {
+    val (userName, password) = showLoginDialog() ?: return CookieJar()
+    if (userName.isNullOrEmpty() || password.isNullOrEmpty()) {
+        log("Please specify non-empty user name and password to be able to login into RosettaCode website.")
+        return CookieJar()
+    }
+    return LoginPage.get().login(userName, password)
+}
 
 fun syncRepoWithRosettaCodeWebsite() {
     val snippetStorage = loadCodeSnippets(exclusions)
@@ -67,7 +112,7 @@ fun loadCodeSnippets(exclusions: List<String>): CodeSnippetStorage {
     val editPages = cached("editPages") {
         editPageUrls.mapParallelWithProgress { it, progress ->
             log("Getting source code from $it ($progress)")
-            EditPage(it, get(it.value).text)
+            EditPage.get(it)
         }
     }
 
@@ -92,13 +137,23 @@ data class CodeSnippetStorage(val webSnippets: List<CodeSnippet>, val localSnipp
     val onlyWebSnippets: List<CodeSnippet>
         get() = webSnippets.filter{ web -> localSnippets.none{ web.id == it.id } }
 
-    val snippetsWithDiffs: List<Pair<CodeSnippet, LocalCodeSnippet?>>
-        get() = webSnippets.map{ web -> Pair(web, localSnippets.find{ web.id == it.id }) }
-                .filter{ (web, local) -> local != null && web.hasDifferentSourceCodeTo(local) }
+    val snippetsWithDiffs: List<Pair<CodeSnippet, LocalCodeSnippet>>
+        get() = webSnippets
+            .map{ web ->
+                val local = localSnippets.find { web.id == it.id }
+                if (local != null) Pair(web, local) else null
+            }
+            .filterNotNull()
+            .filter{ (web, local) -> web.hasDifferentSourceCodeTo(local) }
 }
+
+class FailedToLogin(message: String) : RuntimeException(message)
 
 data class LoginPage(val html: String, val cookies: CookieJar) {
     fun login(userName: String, password: String): CookieJar {
+        if (html.isLoggedIn()) return cookies
+        if (html.contains("I'm not a robot")) throw FailedToLogin("Can't login right now because login page has 'I'm not a robot' capture.")
+
         val loginToken = Regex("<input type=\"hidden\" value=\"(.+?)\"").find(html)!!.groups[1]!!.value
         val response = post(
                 url = "http://rosettacode.org/mw/index.php?title=Special:UserLogin&action=submitlogin&type=login&returnto=Rosetta+Code",
@@ -110,12 +165,15 @@ data class LoginPage(val html: String, val cookies: CookieJar) {
                 ),
                 cookies = cookies + mapOf("rosettacodeUserName" to URLEncoder.encode(userName, "UTF-8"))
         )
+        if (!response.text.isLoggedIn()) throw FailedToLogin("statusCode = ${response.statusCode}")
         return response.cookies
     }
 
+    private fun String.isLoggedIn() = !contains(">Log in<") && contains(">Log out<") // Checking for "Log in" link in the top right corner of the web page.
+
     companion object {
-        fun get(url: String = "http://rosettacode.org/wiki/Special:UserLogin") = khttp.get(url).let {
-            LoginPage(it.text, it.cookies)
+        fun get(url: String = "http://rosettacode.org/wiki/Special:UserLogin") = khttp.get(url).run {
+            LoginPage(text, cookies)
         }
     }
 }
@@ -239,6 +297,14 @@ data class EditPage(val url: EditPageUrl, val html: String) {
     fun extractCodeSnippets(): List<CodeSnippet> {
         return extractKotlinSource().mapIndexed { i, it -> CodeSnippet(url, it, i) }
     }
+
+    fun submitCodeChange(newCode: String): Any {
+        throw UnsupportedOperationException("not implemented") // TODO
+    }
+
+    companion object {
+        fun get(url: EditPageUrl, cookieJar: CookieJar = CookieJar()) = EditPage(url, get(url.value, cookies = cookieJar).text)
+    }
 }
 
 private fun String.extractUrl(): String {
@@ -258,9 +324,9 @@ private val xStream = XStream(XppDriver())
  *
  * To "invalidate" cached value modify or remove xml file.
  */
-fun <T> cached(id: String, f: () -> T): T {
+fun <T> cached(id: String, replace: Boolean = false, f: () -> T): T {
     val file = File(".cache/$id.xml")
-    if (file.exists()) {
+    if (file.exists() && !replace) {
         log("// Using cached value of '$id'")
         @Suppress("UNCHECKED_CAST")
         return xStream.fromXML(file.readText()) as T
@@ -273,10 +339,10 @@ fun <T> cached(id: String, f: () -> T): T {
     }
 }
 
-fun clearLocalWebCache() {
+fun clearLocalWebCache(vararg excluding: String = emptyArray()) {
     val cacheDir = ".cache"
     log(">>> Deleting files from $cacheDir")
-    File(cacheDir).listFiles().forEach {
+    File(cacheDir).listFiles().filterNot { excluding.contains(it.name) }.forEach {
         val wasDeleted = it.delete()
         if (wasDeleted) {
             log("Deleted ${it.name}")
