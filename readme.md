@@ -1,5 +1,6 @@
 
 [![Build Status](https://travis-ci.org/dkandalov/rosettacode-kotlin.svg?branch=master)](https://travis-ci.org/dkandalov/rosettacode-kotlin)
+[![Gitter chat](https://badges.gitter.im/rosetta-code-kotlin/chat.svg)](https://gitter.im/rosetta-code-kotlin/Lobby)
 
 ## Rosetta Code Kotlin examples
 
