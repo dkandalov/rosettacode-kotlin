@@ -24,7 +24,7 @@ fun pushLocalChangesToRosettaCode() {
     snippetStorage.snippetsWithDiffs.apply {
         if (isEmpty()) return log(">>> Nothing to push. There are no differences between code in local files and rosetta code website.")
 
-        first().let { (web, local) ->
+        first().let { (webSnippet, localSnippet) ->
             var cookieJar = cached("loginCookieJar") { loginAndGetCookies() }
             if (cookieJar.hasExpiredEntries()) {
                 log("Login cookies has expired entries. Please login to RosettaCode website again.")
@@ -32,11 +32,7 @@ fun pushLocalChangesToRosettaCode() {
             }
             if (cookieJar.isEmpty()) return
 
-            val editPage = EditPage.get(web.editPageUrl, cookieJar)
-            println(editPage.html.contains(">Log in<"))
-            println(editPage.html.contains(">Log out<"))
-
-            editPage.submitCodeChange(local.readCode())
+            webSnippet.submitCodeChange(localSnippet.readCode(), cookieJar)
         }
     }
 }
@@ -190,6 +186,13 @@ data class CodeSnippet(val editPageUrl: EditPageUrl, val sourceCodeOnWeb: String
     private val fileName = localFileName(editPageUrl, index)
     val id: String = fileName
 
+    fun submitCodeChange(newCode: String, cookieJar: CookieJar) {
+        val editPage = EditPage.get(editPageUrl, cookieJar)
+        editPage.submitCodeChange(newCode, index, cookieJar)
+
+        throw UnsupportedOperationException("not implemented") // TODO
+    }
+
     fun writeCodeToLocalFile(): LocalCodeSnippet {
         val localFile = File("src/$fileName")
         localFile.parentFile.mkdirs()
@@ -272,32 +275,52 @@ data class TaskPage(val html: String) {
 }
 
 data class EditPage(val url: EditPageUrl, val html: String) {
+    private val openingTags = listOf("<lang Kotlin>", "<lang kotlin>", "<lang scala>").run {
+        this + this.map{ it.escapeTags() }
+    }
+    private val closingTags = listOf("</lang>", "&lt;/lang>")
+
     fun extractKotlinSource(): List<String> {
-        return html.split("\n").extractKotlinSource()
+        return textAreaContent().extractKotlinSource().map{ it.unEscapeTags() }
     }
 
-    private fun List<String>.extractKotlinSource(): List<String> {
-        if (isEmpty()) return emptyList()
+    private fun String.extractKotlinSource(startFrom: Int = 0): List<String> {
+        val i1 = find(startFrom, 20) { s -> openingTags.any{ tag -> s.startsWith(tag) }} ?: return emptyList()
+        val i2 = find(i1, ">") ?: return emptyList()
+        val i3 = find(i2, 20) { s -> closingTags.any{ tag -> s.startsWith(tag) }} ?: return emptyList()
 
-        val lines = map { it.replace("&lt;", "<").replace("&amp;", "&") }
-                .dropWhile { !it.contains("<lang Kotlin>") && !it.contains("<lang kotlin>") && !it.contains("<lang scala>") }
-        val srcLineCount = lines.indexOfFirst { it.contains("</lang>") } + 1
-        if (srcLineCount == 0) return emptyList()
-
-        val sourceCode = lines.take(srcLineCount)
-                .map { it.replace("<lang Kotlin>", "").replace("<lang kotlin>", "").replace("<lang scala>", "").replace("</lang>", "") }
-                .joinToString("\n")
-
-        return listOf(sourceCode) + lines.drop(srcLineCount).extractKotlinSource()
+        return listOf(substring(i2 + 1, i3)) + extractKotlinSource(i3)
     }
 
     fun extractCodeSnippets(): List<CodeSnippet> {
         return extractKotlinSource().mapIndexed { i, it -> CodeSnippet(url, it, i) }
     }
 
-    fun submitCodeChange(newCode: String): Any {
+    fun submitCodeChange(newCode: String, index: Int, cookieJar: CookieJar): Any {
         throw UnsupportedOperationException("not implemented") // TODO
     }
+
+    fun textAreaContent(): String {
+        val i1 = html.find(0, "id=\"wpTextbox1\"") ?: return ""
+        val i2 = html.find(i1, ">") ?: return ""
+        val i3 = html.find(i2, "</textarea>") ?: return ""
+        return html.substring(i2 + 1, i3)
+    }
+
+    private fun String.find(from: Int, s: String): Int? {
+        val i = indexOf(s, from)
+        return if (i == -1) null else i
+    }
+
+    private fun String.find(from: Int, viewSize: Int, predicate: (String) -> Boolean): Int? {
+        return from.until(length).find { i ->
+            val endIndex = i + viewSize
+            predicate(substring(i, Math.min(endIndex, length)))
+        }
+    }
+
+    private fun String.unEscapeTags() = replace("&lt;", "<")
+    private fun String.escapeTags() = replace("<", "&lt;")
 
     companion object {
         fun get(url: EditPageUrl, cookieJar: CookieJar = CookieJar()) = EditPage(url, get(url.value, cookies = cookieJar).text)
