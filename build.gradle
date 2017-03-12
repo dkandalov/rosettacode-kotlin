@@ -51,7 +51,7 @@ task compileDownload(type: KotlinCompile) {
 */
 
 task pull(type: JavaExec, dependsOn: 'classes') {
-    main = 'scripts.PullFromRosettaCode'
+    main = 'scripts.PullFromRosettaCodeKt'
     classpath = sourceSets.main.runtimeClasspath
 }
 
