@@ -27,16 +27,16 @@ If you want to use [Gradle](https://www.gradle.org), then `./gradlew classes`.
 
 If you want to use [Maven](http://www.maven.org), then `mvn compile`.
 
-### Step 2: Sync this repository with Rosetta Code website
+### Step 2: Pull code from Rosetta Code website
 
 You will need to run a script which checks that Kotlin code in repository 
 is still the same as Kotlin code on Rosetta Code website. There are several ways to do it:
- - run `scripts/SyncWithRosettaCode.kt` from within an IDE that understands executing Kotlin programs.
+ - in Gradle run `./gradlew pull`.  
  - in Maven there is current no way to run the script.
- - in Gradle run `./gradlew sync`.  
+ - in IDE run `scripts/PullFromRosettaCode.kt`.
 
 Note that the script caches data downloaded from web into `.cache` directory.
-You can run the script without clearing cache using `./gradlew syncDirty` or `scripts/SyncWithRosettaCodeDirty.kt`.
+You can run the script without clearing cache using `./gradlew pullDirty` or `scripts/PullFromRosettaCodeDirty.kt`.
 This will make script execution faster but changes from RosettaCode website might be missed.
 
 Possible outputs from the script:
@@ -57,7 +57,7 @@ If you use IDE to edit Kotlin code, it might report that package name doesn't ma
 - Make your changes on Rosetta Code website.
   This is currently a manual step, i.e. there is no automated way to upload modifications.
   (It might be a good idea to use `<lang scala>` tag because Kotlin doesn't have syntax highlighting on Rosetta Code website at the moment.)
-- Rerun `SyncWithRosettaCode.kt` script to make sure repository is still in sync with website. 
+- Rerun `PullFromRosettaCode.kt` script to make sure repository is still in sync with website. 
 
 
 ### Step 4: Profit

@@ -47,7 +47,7 @@
             <version>${kotlin.version}</version>
         </dependency>
 
-        <!-- For scripts/SyncWithRosettaCode.kt -->
+        <!-- For scripts/PullFromRosettaCode.kt -->
         <dependency>
             <groupId>khttp</groupId>
             <artifactId>khttp</artifactId>

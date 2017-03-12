@@ -24,7 +24,7 @@ dependencies {
     compile 'org.jetbrains.kotlin:kotlin-stdlib:1.1.+'
     // For Break_OO_privacy.kt and Reflection-List_properties.kt
     compile 'org.jetbrains.kotlin:kotlin-reflect:1.1.+'
-    // For scripts/SyncWithRosettaCode.kt
+    // For scripts/PullFromRosettaCode.kt
     compile 'khttp:khttp:0.1.+'
     compile 'com.thoughtworks.xstream:xstream:1.4.+'
     // For Active_Directory-Connect.kt
@@ -44,19 +44,24 @@ sourceSets {
 /*
 task compileDownload(type: KotlinCompile) {
     source = sourceSets.main.java.srcDirs
-    include 'scripts/SyncWithRosettaCode.kt'
+    include 'scripts/PullFromRosettaCode.kt'
     classpath = sourceSets.main.compileClasspath
     destinationDir = sourceSets.main.output.classesDir
 }
 */
 
-task sync(type: JavaExec, dependsOn: 'classes') {
-    main = 'scripts.SyncWithRosettaCodeKt'
+task pull(type: JavaExec, dependsOn: 'classes') {
+    main = 'scripts.PullFromRosettaCode'
     classpath = sourceSets.main.runtimeClasspath
 }
 
-task syncDirty(type: JavaExec, dependsOn: 'classes') {
-    main = 'scripts.SyncWithRosettaCodeDirtyKt'
+task pullDirty(type: JavaExec, dependsOn: 'classes') {
+    main = 'scripts.PullFromRosettaCodeDirtyKt'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task push(type: JavaExec, dependsOn: 'classes') {
+    main = 'scripts.PushToRosettaCodeKt'
     classpath = sourceSets.main.runtimeClasspath
 }
 

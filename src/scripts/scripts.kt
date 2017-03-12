@@ -27,6 +27,7 @@ fun pushLocalChangesToRosettaCode() {
         first().let { (web, local) ->
             var cookieJar = cached("loginCookieJar") { loginAndGetCookies() }
             if (cookieJar.hasExpiredEntries()) {
+                log("Login cookies has expired entries. Please login to RosettaCode website again.")
                 cookieJar = cached("loginCookieJar", replace = true) { loginAndGetCookies() }
             }
             if (cookieJar.isEmpty()) return
@@ -61,7 +62,7 @@ private fun loginAndGetCookies(): CookieJar {
     return LoginPage.get().login(userName, password)
 }
 
-fun syncRepoWithRosettaCodeWebsite() {
+fun pullFromRosettaCodeWebsite() {
     val snippetStorage = loadCodeSnippets(exclusions)
 
     snippetStorage.onlyWebSnippets.apply {
@@ -92,7 +93,7 @@ fun syncRepoWithRosettaCodeWebsite() {
         if (isNotEmpty()) {
             log(">>> There are some tasks which have different source code locally and on rosetta code website.\n" +
                 "Please make necessary changes to keep repository in sync with website.")
-            forEach { log("Differences in: ${it.second!!.filePath}\nurl: ${it.first.editPageUrl}") }
+            forEach { log("Differences in: ${it.second.filePath}\nurl: ${it.first.editPageUrl}") }
         } else {
             log(">>> There are no differences between code in local files and rosetta code website.")
         }
@@ -254,10 +255,6 @@ data class EditPageUrl(val value: String) {
     }
 
     override fun toString() = value
-
-    companion object {
-        val none = EditPageUrl("")
-    }
 }
 
 data class TaskPage(val html: String) {

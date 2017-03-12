@@ -4,7 +4,7 @@ import io.kotlintest.specs.StringSpec
 import khttp.get
 import java.io.File
 
-class SyncWithRosettaCodeTest: StringSpec() {
+class PullFromRosettaCodeTest : StringSpec() {
     init {
         "extract task page urls from Kotlin page" {
             val html = "kotlin-page.txt".readText()
@@ -28,7 +28,7 @@ class SyncWithRosettaCodeTest: StringSpec() {
 
         "extract code snippets from task edit page" {
             val html = "array-concatenation-edit-page.txt".readText()
-            val codeSnippets = EditPage(EditPageUrl.none, html).extractKotlinSource()
+            val codeSnippets = EditPage(EditPageUrl(""), html).extractKotlinSource()
             codeSnippets shouldBe listOf(
                 """
                 |fun main(args: Array<String>) {
