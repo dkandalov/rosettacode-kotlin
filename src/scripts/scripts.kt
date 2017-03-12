@@ -7,9 +7,9 @@ import khttp.post
 import khttp.structures.cookie.CookieJar
 import java.io.File
 import java.net.URLEncoder
-import java.util.*
-import java.util.concurrent.atomic.AtomicInteger
-import java.util.stream.*
+import java.util.concurrent.atomic.AtomicReference
+import java.util.stream.Collectors
+import java.util.stream.Stream
 
 private val exclusions = listOf(
     "Boolean_values", // ignored because there is no code
@@ -47,7 +47,7 @@ fun syncRepoWithRosettaCodeWebsite() {
         if (isNotEmpty()) {
             log(">>> There are some tasks which have different source code locally and on rosetta code website.\n" +
                 "Please make necessary changes to keep repository in sync with website.")
-            forEach { log("Differences in: ${it.second!!.filePath}; url: ${it.first.editPageUrl}") }
+            forEach { log("Differences in: ${it.second!!.filePath}\nurl: ${it.first.editPageUrl}") }
         } else {
             log(">>> There are no differences between code in local files and rosetta code website.")
         }
@@ -58,17 +58,17 @@ fun syncRepoWithRosettaCodeWebsite() {
 fun loadCodeSnippets(exclusions: List<String>): CodeSnippetStorage {
     val kotlinPage = cached("kotlinPage") { LanguagePage.get() }
     val editPageUrls = cached("editPageUrls") {
-        kotlinPage.extractTaskPageUrls().parallel().map {
-            log("Getting edit page url from $it")
-            TaskPage.get(it).extractKotlinEditPageUrl()
-        }.toList()
+        kotlinPage.extractTaskPageUrls().mapParallelWithProgress { url, progress ->
+            log("Getting edit page url from $url ($progress)")
+            TaskPage.get(url).extractKotlinEditPageUrl()
+        }
     }
 
     val editPages = cached("editPages") {
-        editPageUrls.parallel().map {
-            log("Getting source code from $it")
+        editPageUrls.mapParallelWithProgress { it, progress ->
+            log("Getting source code from $it ($progress)")
             EditPage(it, get(it.value).text)
-        }.toList()
+        }
     }
 
     val codeSnippets = editPages
@@ -84,10 +84,6 @@ fun loadCodeSnippets(exclusions: List<String>): CodeSnippetStorage {
     return CodeSnippetStorage(codeSnippets, localCodeSnippets)
 }
 
-private fun <T, R> Stream<T>.mapIndexed(f: (index: Int, T) -> R): Stream<R> {
-    val i = AtomicInteger()
-    return map{ f(i.getAndIncrement(), it) }
-}
 
 data class CodeSnippetStorage(val webSnippets: List<CodeSnippet>, val localSnippets: List<LocalCodeSnippet>) {
     val onlyLocalSnippets: List<LocalCodeSnippet>
@@ -290,9 +286,17 @@ fun clearLocalWebCache() {
     }
 }
 
-// Need this because default java methods don't work in kotlin 1.0.5
-private fun <E> Collection<E>.parallel(): Stream<E> {
-    return StreamSupport.stream(Spliterators.spliterator<E>(this, 0), true)
+data class Progress(val i: Int, val total: Int) {
+    fun next() = copy(i = i + 1)
+    override fun toString() = "$i of $total"
+}
+
+private fun <T, R> List<T>.mapParallelWithProgress(f: (T, Progress) -> R): List<R> {
+    val progressRef = AtomicReference(Progress(0, size))
+    return parallelStream().map {
+        val progress = progressRef.updateAndGet { it.next() }
+        f(it, progress)
+    }.toList()
 }
 
 private fun <E> Stream<E>.toList(): List<E> {
