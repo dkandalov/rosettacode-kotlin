@@ -4,7 +4,10 @@ import com.thoughtworks.xstream.XStream
 import com.thoughtworks.xstream.io.xml.XppDriver
 import khttp.get
 import khttp.post
+import khttp.responses.Response
 import khttp.structures.cookie.CookieJar
+import scripts.EditPageUrl.Companion.asFileName
+import scripts.EditPageUrl.Companion.asPackageName
 import java.io.File
 import java.net.URLEncoder
 import java.time.Instant
@@ -34,7 +37,7 @@ fun pushLocalChangesToRosettaCode() {
 
             webSnippet.submitCodeChange(localSnippet.readCode(), cookieJar)
 
-            // TODO check result and invalidate cache if successful
+            TODO() // TODO check result and invalidate cache if successful
         }
     }
 }
@@ -188,11 +191,9 @@ data class CodeSnippet(val editPageUrl: EditPageUrl, val sourceCodeOnWeb: String
     private val fileName = localFileName(editPageUrl, index)
     val id: String = fileName
 
-    fun submitCodeChange(newCode: String, cookieJar: CookieJar) {
+    fun submitCodeChange(newCode: String, cookieJar: CookieJar): Response {
         val editPage = EditPage.get(editPageUrl, cookieJar)
-        editPage.submitCodeChange(newCode, index, cookieJar)
-
-        throw UnsupportedOperationException("not implemented") // TODO
+        return editPage.submitCodeChange(newCode, index, cookieJar)
     }
 
     fun writeCodeToLocalFile(): LocalCodeSnippet {
@@ -214,9 +215,7 @@ data class CodeSnippet(val editPageUrl: EditPageUrl, val sourceCodeOnWeb: String
     }
 
     private fun snippetPackageName(): String {
-        // Lowercase because it is "kind of java convention".
-        // Replace "-" because of https://youtrack.jetbrains.com/issue/KT-15288
-        val packageName = editPageUrl.extractPageName().toLowerCase().replace("-", "_")
+        val packageName = editPageUrl.pageId().asPackageName()
         val postfix = if (index == 0) "" else "_$index" // Add postfix to avoid name conflicts within the same task.
         return "`$packageName$postfix`" // Wrap in "`" so that (almost) any string is still a valid package name.
     }
@@ -227,7 +226,7 @@ data class CodeSnippet(val editPageUrl: EditPageUrl, val sourceCodeOnWeb: String
 
     companion object {
         private fun localFileName(editPageUrl: EditPageUrl, index: Int): String {
-            val fileName = editPageUrl.extractPageName()
+            val fileName = editPageUrl.pageId().asFileName()
             val postfix = if (index == 0) "" else "-$index"
             return "$fileName$postfix.kt"
         }
@@ -250,16 +249,24 @@ data class LanguagePage(val html: String) {
 }
 
 data class EditPageUrl(val value: String) {
-    fun extractPageName(): String {
-        return value.replace(Regex(".*title="), "")
-                .replace(Regex("&action.*"), "")
-                // replace some characters below because they cannot be or hard to use in file name
-                .replace("/", "-")
-                .replace("%27", "")
-                .replace("%2B", "-plus-")
+    fun pageId(): String {
+        return value.replace(Regex(".*title="), "").replace(Regex("&action.*"), "")
     }
 
     override fun toString() = value
+
+    companion object {
+        /**
+         * Replace some characters because they are not "friendly" to be used as file name.
+         */
+        fun String.asFileName() = replace("/", "-").replace("%27", "").replace("%2B", "-plus-")
+
+        /**
+         * Lowercase because it is "kind of java convention".
+         * Replace "-" because of https://youtrack.jetbrains.com/issue/KT-15288
+         */
+        fun String.asPackageName() = asFileName().toLowerCase().replace("-", "_")
+    }
 }
 
 data class TaskPage(val html: String) {
@@ -299,13 +306,52 @@ data class EditPage(val url: EditPageUrl, val html: String) {
         return extractKotlinSource().mapIndexed { i, it -> CodeSnippet(url, it, i) }
     }
 
-    fun submitCodeChange(newCode: String, index: Int, cookieJar: CookieJar): Any {
-        val html = textAreaContent()
-        val ranges = html.sourceCodeRanges()
-        val range = if (index < ranges.size - 1) ranges[index] else IntRange(html.length, html.length)
-        textAreaContent().replaceRange(range, newCode.escapeTags())
+    fun submitCodeChange(newCode: String, index: Int, cookieJar: CookieJar): Response {
+        fun String.valueOfTag(tagName: String): String {
+            val i1 = indexOf("name=\"$tagName\"")
+            if (i1 == -1) return ""
+            var i2 = lastIndexOf("value=\"", i1)
+            if (i2 == -1) return "" else i2 += "value=\"".length
+            val i3 = indexOf("\"", i2)
+            if (i3 == -1) return ""
+            return substring(i2, i3)
+        }
 
-        throw UnsupportedOperationException("not implemented") // TODO
+        val updatedContent = textAreaContent().run {
+            val ranges = sourceCodeRanges()
+            val range = if (index < ranges.size - 1) ranges[index] else IntRange(length, length)
+            replaceRange(range, newCode.escapeTags())
+        }
+
+        val section = html.valueOfTag("wpSection")
+        val startTime = html.valueOfTag("wpStarttime")
+        val editTime = html.valueOfTag("wpEdittime")
+        val changeSummary = "/* {{header|Kotlin}} */ Updated example see https://github.com/dkandalov/rosettacode-kotlin for details"
+        val parentRevId = html.valueOfTag("parentRevId") 
+        val oldId = html.valueOfTag("oldid")
+        val autoSummary = html.valueOfTag("wpAutoSummary")
+        val editToken = html.valueOfTag("wpEditToken")
+
+        return khttp.post(
+            url = "/mw/index.php?title=${url.pageId()}&action=submit",
+            cookies = cookieJar,
+            data = mapOf(
+                    "wpAntispam" to "",
+                    "wpSection" to section,
+                    "wpStarttime" to startTime,
+                    "wpEdittime" to editTime,
+                    "wpAutoSummary" to autoSummary,
+                    "oldId" to oldId,
+                    "parentRevId" to parentRevId,
+                    "format" to "text/x-wiki",
+                    "model" to "wikitext",
+                    "wpTextbox1" to updatedContent,
+                    "wpSummary" to changeSummary,
+                    "wpSave" to "Save page",
+                    "wpEditToken" to editToken,
+                    "wpUltimateParam" to "1"
+            )
+        )
     }
 
     fun textAreaContent(): String {

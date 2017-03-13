@@ -2,6 +2,8 @@ package scripts
 
 import io.kotlintest.specs.StringSpec
 import khttp.get
+import scripts.EditPageUrl.Companion.asFileName
+import scripts.EditPageUrl.Companion.asPackageName
 import java.io.File
 
 class PullFromRosettaCodeTest : StringSpec() {
@@ -24,6 +26,19 @@ class PullFromRosettaCodeTest : StringSpec() {
             val html = "array-concatenation-page.txt".readText()
             val url = TaskPage(html).extractKotlinEditPageUrl()
             url shouldBe EditPageUrl("http://rosettacode.org//mw/index.php?title=Array_concatenation&action=edit&section=70")
+        }
+
+        "extract page edit id from url" {
+            EditPageUrl("http://rosettacode.org/mw/index.php?title=Array_concatenation&action=edit&section=70").apply {
+                pageId() shouldBe "Array_concatenation"
+                pageId().asFileName() shouldBe "Array_concatenation"
+                pageId().asPackageName() shouldBe "array_concatenation"
+            }
+            EditPageUrl("http://rosettacode.org/mw/index.php?title=A%2BB&action=submit").apply {
+                pageId() shouldBe "A%2BB"
+                pageId().asFileName() shouldBe "A-plus-B"
+                pageId().asPackageName() shouldBe "a_plus_b"
+            }
         }
 
         "extract code snippets from task edit page" {
