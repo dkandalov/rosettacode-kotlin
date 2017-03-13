@@ -33,6 +33,8 @@ fun pushLocalChangesToRosettaCode() {
             if (cookieJar.isEmpty()) return
 
             webSnippet.submitCodeChange(localSnippet.readCode(), cookieJar)
+
+            // TODO check result and invalidate cache if successful
         }
     }
 }
@@ -281,15 +283,16 @@ data class EditPage(val url: EditPageUrl, val html: String) {
     private val closingTags = listOf("</lang>", "&lt;/lang>")
 
     fun extractKotlinSource(): List<String> {
-        return textAreaContent().extractKotlinSource().map{ it.unEscapeTags() }
+        val html = textAreaContent()
+        return html.sourceCodeRanges().map{ html.substring(it).unEscapeTags() }
     }
 
-    private fun String.extractKotlinSource(startFrom: Int = 0): List<String> {
+    private fun String.sourceCodeRanges(startFrom: Int = 0): List<IntRange> {
         val i1 = find(startFrom, 20) { s -> openingTags.any{ tag -> s.startsWith(tag) }} ?: return emptyList()
         val i2 = find(i1, ">") ?: return emptyList()
         val i3 = find(i2, 20) { s -> closingTags.any{ tag -> s.startsWith(tag) }} ?: return emptyList()
 
-        return listOf(substring(i2 + 1, i3)) + extractKotlinSource(i3)
+        return listOf(IntRange(i2 + 1, i3 - 1)) + sourceCodeRanges(i3 + 1)
     }
 
     fun extractCodeSnippets(): List<CodeSnippet> {
@@ -297,6 +300,11 @@ data class EditPage(val url: EditPageUrl, val html: String) {
     }
 
     fun submitCodeChange(newCode: String, index: Int, cookieJar: CookieJar): Any {
+        val html = textAreaContent()
+        val ranges = html.sourceCodeRanges()
+        val range = if (index < ranges.size - 1) ranges[index] else IntRange(html.length, html.length)
+        textAreaContent().replaceRange(range, newCode.escapeTags())
+
         throw UnsupportedOperationException("not implemented") // TODO
     }
 
