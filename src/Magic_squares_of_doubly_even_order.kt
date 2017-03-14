@@ -1,13 +1,13 @@
 package `magic_squares_of_doubly_even_order`
 
-// version 1.0.6
+// version 1.1.0
 
 fun magicSquareDoublyEven(n: Int): Array<IntArray> {
     if ( n < 4 || n % 4 != 0) 
         throw IllegalArgumentException("Base must be a positive multiple of 4")
 
     // pattern of count-up vs count-down zones
-    val bits = 0b1001011001101001
+    val bits = 0b1001_0110_0110_1001
     val size = n * n
     val mult = n / 4  // how many multiples of 4 
     val result = Array(n) { IntArray(n) }
