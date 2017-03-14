@@ -9,6 +9,7 @@ import khttp.structures.cookie.CookieJar
 import org.apache.commons.lang3.StringEscapeUtils
 import scripts.EditPageUrl.Companion.asFileName
 import scripts.EditPageUrl.Companion.asPackageName
+import scripts.LocalCodeSnippet.Companion.postfixedWith
 import java.io.File
 import java.net.URLEncoder
 import java.time.Instant
@@ -37,7 +38,7 @@ fun pushLocalChangesToRosettaCode() {
 
         first().let { (webSnippet, localSnippet) ->
             // TODO strip package from local code
-            val result = webSnippet.submitCodeChange(localSnippet.readCode(), cookieJar)
+            val result = webSnippet.submitCodeChange(localSnippet.sourceCode, cookieJar)
             TODO() // TODO check result and invalidate cache if successful
         }
     }
@@ -72,7 +73,7 @@ fun pullFromRosettaCodeWebsite() {
             log(">>> There are some tasks which only exist on rosetta code website.\n" +
                 "They will be downloaded. If they compile ok, please add them to git repository.")
             forEach {
-                val codeSnippet = it.writeCodeToLocalFile()
+                val codeSnippet = LocalCodeSnippet.create(it)
                 log("Saved source code to ${codeSnippet.filePath}")
             }
         } else {
@@ -119,7 +120,7 @@ fun loadCodeSnippets(exclusions: List<String>): CodeSnippetStorage {
         }
     }
 
-    val codeSnippets = editPages
+    val webCodeSnippets = editPages
             .flatMap { it.extractCodeSnippets() }
             .filter { (editPageUrl) ->
                 exclusions.none { editPageUrl.value.contains(it) }
@@ -129,25 +130,25 @@ fun loadCodeSnippets(exclusions: List<String>): CodeSnippetStorage {
             .filter { !it.isDirectory && it.extension == "kt" }
             .map{ LocalCodeSnippet(it.path) }
 
-    return CodeSnippetStorage(codeSnippets, localCodeSnippets)
+    return CodeSnippetStorage(webCodeSnippets, localCodeSnippets)
 }
 
 
-data class CodeSnippetStorage(val webSnippets: List<CodeSnippet>, val localSnippets: List<LocalCodeSnippet>) {
+data class CodeSnippetStorage(val webSnippets: List<WebCodeSnippet>, val localSnippets: List<LocalCodeSnippet>) {
     val onlyLocalSnippets: List<LocalCodeSnippet>
         get() = localSnippets.filter { local -> webSnippets.none{ local.id == it.id } }
 
-    val onlyWebSnippets: List<CodeSnippet>
+    val onlyWebSnippets: List<WebCodeSnippet>
         get() = webSnippets.filter{ web -> localSnippets.none{ web.id == it.id } }
 
-    val snippetsWithDiffs: List<Pair<CodeSnippet, LocalCodeSnippet>>
+    val snippetsWithDiffs: List<Pair<WebCodeSnippet, LocalCodeSnippet>>
         get() = webSnippets
             .map{ web ->
                 val local = localSnippets.find { web.id == it.id }
                 if (local != null) Pair(web, local) else null
             }
             .filterNotNull()
-            .filter{ (web, local) -> web.hasDifferentSourceCodeTo(local) }
+            .filter{ (web, local) -> web.sourceCode != local.sourceCode }
 }
 
 class FailedToLogin(message: String) : RuntimeException(message)
@@ -182,55 +183,46 @@ data class LoginPage(val html: String, val cookies: CookieJar) {
 }
 
 data class LocalCodeSnippet(val filePath: String) {
-    val id: String = File(filePath).name
-    
-    fun readCode() = File(filePath).readText()
+    val id = CodeSnippetId(File(filePath).name.replace(".kt", ""))
+    val sourceCode
+        get() = File(filePath).readText().trim().replace(Regex("^package .*\n"), "").trim()
+
+    companion object {
+        fun create(codeSnippet: WebCodeSnippet): LocalCodeSnippet = codeSnippet.run {
+            val sourceCode = sourceCode.trim().let {
+                if (it.startsWith("package ")) it
+                else "package ${codeSnippet.snippetPackageName()}\n\n" + it
+            }
+            val localFile = File("src/${localFileName(editPageUrl, index)}")
+            localFile.parentFile.mkdirs()
+            localFile.writeText(sourceCode)
+            LocalCodeSnippet(localFile.path)
+        }
+
+        private fun localFileName(editPageUrl: EditPageUrl, index: Int) = editPageUrl.pageId().asFileName().postfixedWith(index) + ".kt"
+
+        private fun WebCodeSnippet.snippetPackageName(): String {
+            val packageName = editPageUrl.pageId().asPackageName()
+            val postfix = if (index == 0) "" else "_$index" // Add postfix to avoid name conflicts within the same task.
+            return "`$packageName$postfix`" // Wrap in "`" so that (almost) any string is still a valid package name.
+        }
+
+        fun String.postfixedWith(index: Int): String = if (index == 0) this else "$this-$index"
+    }
 }
 
-data class CodeSnippet(val editPageUrl: EditPageUrl, val sourceCodeOnWeb: String, val index: Int) {
-    private val snippetPackageName = snippetPackageName()
-    private val fileName = localFileName(editPageUrl, index)
-    val id: String = fileName
+data class CodeSnippetId(val value: String)
+
+data class WebCodeSnippet(val editPageUrl: EditPageUrl, val sourceCode: String, val index: Int) {
+    val id = CodeSnippetId(editPageUrl.pageId().asFileName().postfixedWith(index))
 
     fun submitCodeChange(newCode: String, cookieJar: CookieJar): Response {
         val editPage = EditPage.get(editPageUrl, cookieJar)
         return editPage.submitCodeChange(newCode, index, cookieJar)
     }
 
-    fun writeCodeToLocalFile(): LocalCodeSnippet {
-        val localFile = File("src/$fileName")
-        localFile.parentFile.mkdirs()
-
-        val sourceCode = sourceCodeOnWeb.trim().let {
-            if (it.startsWith("package ")) it
-            else "package $snippetPackageName\n\n" + it
-        }
-        localFile.writeText(sourceCode)
-
-        return LocalCodeSnippet(localFile.path)
-    }
-
-    fun hasDifferentSourceCodeTo(localCodeSnippet: LocalCodeSnippet): Boolean {
-        fun String.trimmedLines() = replace("package $snippetPackageName\n", "").trim().split("\n").map(String::trim)
-        return localCodeSnippet.readCode().trimmedLines() != sourceCodeOnWeb.trimmedLines()
-    }
-
-    private fun snippetPackageName(): String {
-        val packageName = editPageUrl.pageId().asPackageName()
-        val postfix = if (index == 0) "" else "_$index" // Add postfix to avoid name conflicts within the same task.
-        return "`$packageName$postfix`" // Wrap in "`" so that (almost) any string is still a valid package name.
-    }
-
     override fun toString(): String {
         return "$editPageUrl - $index"
-    }
-
-    companion object {
-        private fun localFileName(editPageUrl: EditPageUrl, index: Int): String {
-            val fileName = editPageUrl.pageId().asFileName()
-            val postfix = if (index == 0) "" else "-$index"
-            return "$fileName$postfix.kt"
-        }
     }
 }
 
@@ -298,8 +290,8 @@ data class EditPage(val url: EditPageUrl, val html: String) {
         return listOf(IntRange(i2 + 1, i3 - 1)) + sourceCodeRanges(i3 + 1)
     }
 
-    fun extractCodeSnippets(): List<CodeSnippet> {
-        return extractKotlinSource().mapIndexed { i, it -> CodeSnippet(url, it, i) }
+    fun extractCodeSnippets(): List<WebCodeSnippet> {
+        return extractKotlinSource().mapIndexed { i, it -> WebCodeSnippet(url, it.trim(), i) }
     }
 
     fun submitCodeChange(newCode: String, index: Int, cookieJar: CookieJar): Response {
