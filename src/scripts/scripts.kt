@@ -284,20 +284,15 @@ data class TaskPage(val html: String) {
 }
 
 data class EditPage(val url: EditPageUrl, val html: String) {
-    private val openingTags = listOf("<lang Kotlin>", "<lang kotlin>", "<lang scala>").run {
-        this + this.map{ it.escapeTags() }
-    }
-    private val closingTags = listOf("</lang>", "&lt;/lang>")
-
     fun extractKotlinSource(): List<String> {
-        val html = textAreaContent()
-        return html.sourceCodeRanges().map{ html.substring(it).unEscapeTags() }
+        val html = textAreaContent().unEscapeTags()
+        return html.sourceCodeRanges().map{ html.substring(it) }
     }
 
     private fun String.sourceCodeRanges(startFrom: Int = 0): List<IntRange> {
         val i1 = find(startFrom, 20) { s -> openingTags.any{ tag -> s.startsWith(tag) }} ?: return emptyList()
         val i2 = find(i1, ">") ?: return emptyList()
-        val i3 = find(i2, 20) { s -> closingTags.any{ tag -> s.startsWith(tag) }} ?: return emptyList()
+        val i3 = find(i2, closingTag) ?: return emptyList()
 
         return listOf(IntRange(i2 + 1, i3 - 1)) + sourceCodeRanges(i3 + 1)
     }
@@ -317,11 +312,11 @@ data class EditPage(val url: EditPageUrl, val html: String) {
             return substring(i2, i3)
         }
 
-        val updatedContent = textAreaContent().run {
+        val updatedContent = textAreaContent().unEscapeTags().run {
             val ranges = sourceCodeRanges()
             val range = if (index < ranges.size - 1) ranges[index] else IntRange(length, length)
-            replaceRange(range, newCode.escapeTags())
-        }
+            replaceRange(range, newCode)
+        }.escapeTags()
 
         val section = html.valueOfTag("wpSection")
         val startTime = html.valueOfTag("wpStarttime")
@@ -377,6 +372,9 @@ data class EditPage(val url: EditPageUrl, val html: String) {
     private fun String.escapeTags() = replace("<", "&lt;").replace("&", "&amp;")
 
     companion object {
+        private val openingTags = listOf("<lang Kotlin>", "<lang kotlin>", "<lang scala>")
+        private val closingTag = "</lang>"
+
         fun get(url: EditPageUrl, cookieJar: CookieJar = CookieJar()) = EditPage(url, get(url.value, cookies = cookieJar).text)
     }
 }
