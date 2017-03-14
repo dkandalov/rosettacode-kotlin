@@ -35,7 +35,7 @@ fun pushLocalChangesToRosettaCode() {
             }
             if (cookieJar.isEmpty()) return
 
-            webSnippet.submitCodeChange(localSnippet.readCode(), cookieJar)
+            val result = webSnippet.submitCodeChange(localSnippet.readCode(), cookieJar)
 
             TODO() // TODO check result and invalidate cache if successful
         }
@@ -93,8 +93,8 @@ fun pullFromRosettaCodeWebsite() {
     snippetStorage.snippetsWithDiffs.apply {
         if (isNotEmpty()) {
             log(">>> There are some tasks which have different source code locally and on rosetta code website.\n" +
-                "Please make necessary changes to keep repository in sync with website.")
-            forEach { log("Differences in: ${it.second.filePath}\nurl: ${it.first.editPageUrl}") }
+                "Please make necessary changes to keep repository in sync with website.\n")
+            forEach { log("Differences between ${it.second.filePath}\nand ${it.first.editPageUrl}\n") }
         } else {
             log(">>> There are no differences between code in local files and rosetta code website.")
         }
@@ -373,8 +373,8 @@ data class EditPage(val url: EditPageUrl, val html: String) {
         }
     }
 
-    private fun String.unEscapeTags() = replace("&lt;", "<")
-    private fun String.escapeTags() = replace("<", "&lt;")
+    private fun String.unEscapeTags() = replace("&lt;", "<").replace("&amp;", "&")
+    private fun String.escapeTags() = replace("<", "&lt;").replace("&", "&amp;")
 
     companion object {
         fun get(url: EditPageUrl, cookieJar: CookieJar = CookieJar()) = EditPage(url, get(url.value, cookies = cookieJar).text)
