@@ -22,11 +22,12 @@ repositories {
 
 dependencies {
     compile 'org.jetbrains.kotlin:kotlin-stdlib:1.1.+'
-    // For Break_OO_privacy.kt and Reflection-List_properties.kt
-    compile 'org.jetbrains.kotlin:kotlin-reflect:1.1.+'
-    // For scripts/PullFromRosettaCode.kt
+    // For scripts
     compile 'khttp:khttp:0.1.+'
     compile 'com.thoughtworks.xstream:xstream:1.4.+'
+    compile 'org.apache.commons:commons-lang3:3.5'
+    // For Break_OO_privacy.kt and Reflection-List_properties.kt
+    compile 'org.jetbrains.kotlin:kotlin-reflect:1.1.+'
     // For Active_Directory-Connect.kt
     compile 'org.apache.directory.api:api-all:1.0.+'
     // For Bernoulli_numbers.kt

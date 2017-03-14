@@ -6,6 +6,7 @@ import khttp.get
 import khttp.post
 import khttp.responses.Response
 import khttp.structures.cookie.CookieJar
+import org.apache.commons.lang3.StringEscapeUtils
 import scripts.EditPageUrl.Companion.asFileName
 import scripts.EditPageUrl.Companion.asPackageName
 import java.io.File
@@ -27,16 +28,16 @@ fun pushLocalChangesToRosettaCode() {
     snippetStorage.snippetsWithDiffs.apply {
         if (isEmpty()) return log(">>> Nothing to push. There are no differences between code in local files and rosetta code website.")
 
+        var cookieJar = cached("loginCookieJar") { loginAndGetCookies() }
+        if (cookieJar.hasExpiredEntries()) {
+            log("Login cookies has expired entries. Please login to RosettaCode website again.")
+            cookieJar = cached("loginCookieJar", replace = true) { loginAndGetCookies() }
+        }
+        if (cookieJar.isEmpty()) return
+
         first().let { (webSnippet, localSnippet) ->
-            var cookieJar = cached("loginCookieJar") { loginAndGetCookies() }
-            if (cookieJar.hasExpiredEntries()) {
-                log("Login cookies has expired entries. Please login to RosettaCode website again.")
-                cookieJar = cached("loginCookieJar", replace = true) { loginAndGetCookies() }
-            }
-            if (cookieJar.isEmpty()) return
-
+            // TODO strip package from local code
             val result = webSnippet.submitCodeChange(localSnippet.readCode(), cookieJar)
-
             TODO() // TODO check result and invalidate cache if successful
         }
     }
@@ -171,12 +172,12 @@ data class LoginPage(val html: String, val cookies: CookieJar) {
         return response.cookies
     }
 
-    private fun String.isLoggedIn() = !contains(">Log in<") && contains(">Log out<") // Checking for "Log in" link in the top right corner of the web page.
-
     companion object {
         fun get(url: String = "http://rosettacode.org/wiki/Special:UserLogin") = khttp.get(url).run {
             LoginPage(text, cookies)
         }
+
+        fun String.isLoggedIn() = !contains(">Log in<") && contains(">Log out<") // Checking for "Log in" link in the top right corner of the web page.
     }
 }
 
@@ -285,7 +286,7 @@ data class TaskPage(val html: String) {
 
 data class EditPage(val url: EditPageUrl, val html: String) {
     fun extractKotlinSource(): List<String> {
-        val html = textAreaContent().unEscapeTags()
+        val html = textAreaContent().unEscapeXml()
         return html.sourceCodeRanges().map{ html.substring(it) }
     }
 
@@ -312,11 +313,11 @@ data class EditPage(val url: EditPageUrl, val html: String) {
             return substring(i2, i3)
         }
 
-        val updatedContent = textAreaContent().unEscapeTags().run {
+        val updatedContent = textAreaContent().unEscapeXml().run {
             val ranges = sourceCodeRanges()
-            val range = if (index < ranges.size - 1) ranges[index] else IntRange(length, length)
+            val range = if (index <= ranges.size - 1) ranges[index] else IntRange(length, length)
             replaceRange(range, newCode)
-        }.escapeTags()
+        }.escapeXml()
 
         val section = html.valueOfTag("wpSection")
         val startTime = html.valueOfTag("wpStarttime")
@@ -368,8 +369,8 @@ data class EditPage(val url: EditPageUrl, val html: String) {
         }
     }
 
-    private fun String.unEscapeTags() = replace("&lt;", "<").replace("&amp;", "&")
-    private fun String.escapeTags() = replace("<", "&lt;").replace("&", "&amp;")
+    private fun String.unEscapeXml() = StringEscapeUtils.unescapeXml(this)
+    private fun String.escapeXml() = StringEscapeUtils.escapeXml11(this)
 
     companion object {
         private val openingTags = listOf("<lang Kotlin>", "<lang kotlin>", "<lang scala>")
