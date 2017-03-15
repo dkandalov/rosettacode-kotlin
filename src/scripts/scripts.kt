@@ -47,12 +47,12 @@ fun pushLocalChangesToRosettaCode() {
                 log("Failed to push local changes to ${webSnippet.editPageUrl} Status code: ${response.statusCode}")
             }
         }
-        clearLocalWebCache()
+        clearLocalWebCache(excluding = "loginCookieJar.xml")
     }
 
     snippetStorage.onlyLocalSnippets.apply {
         if (isEmpty()) return
-        log("Pushing newly create tasks to RosettaCode is currently not supported.\n" +
+        log(">>> Pushing newly create tasks to RosettaCode is currently not supported.\n" +
             "Therefore, you might want to add the following files manually.")
         forEach { log(it.filePath) }
     }
@@ -325,7 +325,7 @@ data class EditPage(val url: EditPageUrl, val html: String) {
             val ranges = sourceCodeRanges()
             if (index <= ranges.size - 1) replaceRange(ranges[index], newCode)
             else this + newCode
-        }.escapeXml()
+        }.replaceKotlinTagWithScala().escapeXml()
 
         val section = html.valueOfTag("wpSection")
         val startTime = html.valueOfTag("wpStarttime")
@@ -378,7 +378,10 @@ data class EditPage(val url: EditPageUrl, val html: String) {
     }
 
     private fun String.unEscapeXml() = replace("&lt;", "<").replace("&amp;", "&")
-    private fun String.escapeXml() = this // Don't really escape anything because media wiki can do it.
+    private fun String.escapeXml() = this // Don't escape anything because media wiki doesn't like everything escaped and can handle escaping itself anyway.
+    private fun String.replaceKotlinTagWithScala() =
+            // Do this because RosettaCode highlights kotlin as scala better than kotlin as kotlin.
+            replace("<lang kotlin>", "<lang scala>").replace("<lang Kotlin>", "<lang scala>")
 
     companion object {
         private val openingTags = listOf("<lang Kotlin>", "<lang kotlin>", "<lang scala>")
