@@ -6,26 +6,29 @@ import khttp.get
 import khttp.post
 import khttp.responses.Response
 import khttp.structures.cookie.CookieJar
-import org.apache.commons.lang3.StringEscapeUtils
 import scripts.EditPageUrl.Companion.asFileName
 import scripts.EditPageUrl.Companion.asPackageName
 import scripts.LocalCodeSnippet.Companion.postfixedWith
+import scripts.LocalCodeSnippet.Companion.trimPackage
 import java.io.File
 import java.net.URLEncoder
 import java.time.Instant
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
+import java.util.concurrent.Callable
+import java.util.concurrent.ForkJoinPool
 import java.util.concurrent.atomic.AtomicReference
 import java.util.stream.Collectors
 import java.util.stream.Stream
 
-private val exclusions = listOf(
+private val excludedTasks = listOf(
     "Boolean_values", // ignored because there is no code
     "Interactive_programming" // ignored because there is no code
 )
 
 fun pushLocalChangesToRosettaCode() {
-    val snippetStorage = loadCodeSnippets(exclusions)
+    val snippetStorage = loadCodeSnippets(excludedTasks)
+
     snippetStorage.snippetsWithDiffs.apply {
         if (isEmpty()) return log(">>> Nothing to push. There are no differences between code in local files and rosetta code website.")
 
@@ -36,11 +39,22 @@ fun pushLocalChangesToRosettaCode() {
         }
         if (cookieJar.isEmpty()) return
 
-        first().let { (webSnippet, localSnippet) ->
-            // TODO strip package from local code
-            val result = webSnippet.submitCodeChange(localSnippet.sourceCode, cookieJar)
-            TODO() // TODO check result and invalidate cache if successful
+        forEach { (webSnippet, localSnippet) ->
+            val response = webSnippet.submitCodeChange(localSnippet.sourceCode, cookieJar)
+            if (response.statusCode == 200) {
+                log("Pushed local changes to ${webSnippet.editPageUrl}")
+            } else {
+                log("Failed to push local changes to ${webSnippet.editPageUrl} Status code: ${response.statusCode}")
+            }
         }
+        clearLocalWebCache()
+    }
+
+    snippetStorage.onlyLocalSnippets.apply {
+        if (isEmpty()) return
+        log("Pushing newly create tasks to RosettaCode is currently not supported.\n" +
+            "Therefore, you might want to add the following files manually.")
+        forEach { log(it.filePath) }
     }
 }
 
@@ -66,7 +80,7 @@ private fun loginAndGetCookies(): CookieJar {
 }
 
 fun pullFromRosettaCodeWebsite() {
-    val snippetStorage = loadCodeSnippets(exclusions)
+    val snippetStorage = loadCodeSnippets(excludedTasks)
 
     snippetStorage.onlyWebSnippets.apply {
         if (isNotEmpty()) {
@@ -185,7 +199,7 @@ data class LoginPage(val html: String, val cookies: CookieJar) {
 data class LocalCodeSnippet(val filePath: String) {
     val id = CodeSnippetId(File(filePath).name.replace(".kt", ""))
     val sourceCode
-        get() = File(filePath).readText().trim().replace(Regex("^package .*\n"), "").trim()
+        get() = File(filePath).readText().trimPackage()
 
     companion object {
         fun create(codeSnippet: WebCodeSnippet): LocalCodeSnippet = codeSnippet.run {
@@ -208,6 +222,8 @@ data class LocalCodeSnippet(val filePath: String) {
         }
 
         fun String.postfixedWith(index: Int): String = if (index == 0) this else "$this-$index"
+
+        fun String.trimPackage() = trim().replace(Regex("^package .*\n"), "").trim()
     }
 }
 
@@ -290,8 +306,8 @@ data class EditPage(val url: EditPageUrl, val html: String) {
         return listOf(IntRange(i2 + 1, i3 - 1)) + sourceCodeRanges(i3 + 1)
     }
 
-    fun extractCodeSnippets(): List<WebCodeSnippet> {
-        return extractKotlinSource().mapIndexed { i, it -> WebCodeSnippet(url, it.trim(), i) }
+    fun extractCodeSnippets() = extractKotlinSource().mapIndexed { index, code ->
+        WebCodeSnippet(url, code.trimPackage(), index)
     }
 
     fun submitCodeChange(newCode: String, index: Int, cookieJar: CookieJar): Response {
@@ -307,8 +323,8 @@ data class EditPage(val url: EditPageUrl, val html: String) {
 
         val updatedContent = textAreaContent().unEscapeXml().run {
             val ranges = sourceCodeRanges()
-            val range = if (index <= ranges.size - 1) ranges[index] else IntRange(length, length)
-            replaceRange(range, newCode)
+            if (index <= ranges.size - 1) replaceRange(ranges[index], newCode)
+            else this + newCode
         }.escapeXml()
 
         val section = html.valueOfTag("wpSection")
@@ -321,7 +337,7 @@ data class EditPage(val url: EditPageUrl, val html: String) {
         val editToken = html.valueOfTag("wpEditToken")
 
         return khttp.post(
-            url = "/mw/index.php?title=${url.pageId()}&action=submit",
+            url = "https://rosettacode.org/mw/index.php?title=${url.pageId()}&action=submit",
             cookies = cookieJar,
             data = mapOf(
                     "wpAntispam" to "",
@@ -361,8 +377,8 @@ data class EditPage(val url: EditPageUrl, val html: String) {
         }
     }
 
-    private fun String.unEscapeXml() = StringEscapeUtils.unescapeXml(this)
-    private fun String.escapeXml() = StringEscapeUtils.escapeXml11(this)
+    private fun String.unEscapeXml() = replace("&lt;", "<").replace("&amp;", "&")
+    private fun String.escapeXml() = this // Don't really escape anything because media wiki can do it.
 
     companion object {
         private val openingTags = listOf("<lang Kotlin>", "<lang kotlin>", "<lang scala>")
@@ -424,10 +440,13 @@ data class Progress(val i: Int, val total: Int) {
 
 private fun <T, R> List<T>.mapParallelWithProgress(f: (T, Progress) -> R): List<R> {
     val progressRef = AtomicReference(Progress(0, size))
-    return parallelStream().map {
-        val progress = progressRef.updateAndGet { it.next() }
-        f(it, progress)
-    }.toList()
+    val poolSize = 20 // No particular reason for this number. Overall, the process is implied to be IO-bound.
+    return ForkJoinPool(poolSize).submit(Callable {
+        parallelStream().map {
+            val progress = progressRef.updateAndGet { it.next() }
+            f(it, progress)
+        }.toList()
+    }).get()
 }
 
 private fun <E> Stream<E>.toList(): List<E> {

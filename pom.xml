@@ -51,11 +51,6 @@
             <artifactId>xstream</artifactId>
             <version>1.4.9</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.5</version>
-        </dependency>
 
         <!-- For Break_OO_privacy.kt and Reflection-List_properties.kt -->
         <dependency>
