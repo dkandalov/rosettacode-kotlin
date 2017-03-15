@@ -9,6 +9,7 @@ import khttp.structures.cookie.CookieJar
 import scripts.EditPageUrl.Companion.asFileName
 import scripts.EditPageUrl.Companion.asPackageName
 import scripts.LocalCodeSnippet.Companion.postfixedWith
+import scripts.LocalCodeSnippet.Companion.trimLineEnds
 import scripts.LocalCodeSnippet.Companion.trimPackage
 import java.io.File
 import java.net.URLEncoder
@@ -203,7 +204,7 @@ data class LocalCodeSnippet(val filePath: String) {
 
     companion object {
         fun create(codeSnippet: WebCodeSnippet): LocalCodeSnippet = codeSnippet.run {
-            val sourceCode = sourceCode.trim().let {
+            val sourceCode = sourceCode.trim().trimLineEnds().let {
                 if (it.startsWith("package ")) it
                 else "package ${codeSnippet.snippetPackageName()}\n\n" + it
             }
@@ -224,6 +225,10 @@ data class LocalCodeSnippet(val filePath: String) {
         fun String.postfixedWith(index: Int): String = if (index == 0) this else "$this-$index"
 
         fun String.trimPackage() = trim().replace(Regex("^package .*\n"), "").trim()
+
+        // Do this because RosettaCode can have examples with trailing spaces which can show up different to local files,
+        // however, when submitting code without trailing spaces RosettaCode seems to ignore it thinking nothing has changed.
+        fun String.trimLineEnds() = split("\n").map(String::trimEnd).joinToString("")
     }
 }
 
@@ -307,7 +312,7 @@ data class EditPage(val url: EditPageUrl, val html: String) {
     }
 
     fun extractCodeSnippets() = extractKotlinSource().mapIndexed { index, code ->
-        WebCodeSnippet(url, code.trimPackage(), index)
+        WebCodeSnippet(url, code.trimPackage().trimLineEnds(), index)
     }
 
     fun submitCodeChange(newCode: String, index: Int, cookieJar: CookieJar): Response {
