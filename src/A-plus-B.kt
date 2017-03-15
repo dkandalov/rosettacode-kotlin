@@ -7,7 +7,7 @@ fun main(args: Array<String>) {
     while(true) {
         print("Enter two integers separated by space(s) or q to quit: ")
         val input: String = readLine()!!.trim()
-        if (input == "q" || input == "Q") break;
+        if (input == "q" || input == "Q") break
         if (!input.matches(r)) {
             println("Invalid input, try again")
             continue

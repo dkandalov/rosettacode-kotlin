@@ -2,7 +2,9 @@ package `hickerson_series_of_almost_integers`
 
 // version 1.0.6
 
-import java.math.*
+import java.math.BigDecimal
+import java.math.BigInteger
+import java.math.MathContext
 
 object Hickerson {
     private const val LN2 = "0.693147180559945309417232121458"
@@ -14,7 +16,7 @@ object Hickerson {
         while (--nn > 1) f *= nn
         val b = BigDecimal(f).divide(a, MathContext.DECIMAL128)
         val c = b.movePointRight(1).toBigInteger() % BigInteger.TEN
-        return c.toString().matches(Regex("0|9"))
+        return c.toString().matches(Regex("[09]"))
     }
 }
 
