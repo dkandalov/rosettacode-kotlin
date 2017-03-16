@@ -1,8 +1,8 @@
-package scripts
+package scripts.implementation
 
 import io.kotlintest.specs.StringSpec
-import scripts.EditPageUrl.Companion.asFileName
-import scripts.EditPageUrl.Companion.asPackageName
+import scripts.implementation.EditPageUrl.Companion.asFileName
+import scripts.implementation.EditPageUrl.Companion.asPackageName
 
 class EditPageUrlSpec : StringSpec() {
     init {

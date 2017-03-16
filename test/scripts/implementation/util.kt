@@ -1,11 +1,11 @@
-package scripts
+package scripts.implementation
 
 import khttp.get
 import java.io.File
 
 fun String.trimmed() = trimMargin().trim()
 
-fun String.readText() = File("./test/scripts/$this").readText()
+fun String.readText() = File("./test/scripts/implementation/$this").readText()
 
 fun main(args: Array<String>) {
     fun downloadPagesForTestInput() {

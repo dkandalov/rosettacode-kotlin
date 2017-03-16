@@ -1,40 +1,45 @@
-package scripts
+package scripts.implementation
 
 import io.kotlintest.specs.StringSpec
 
 class EditPageSpec : StringSpec() {
     init {
+        val someUrl = EditPageUrl("")
+
         "extract code snippets from task edit page" {
             val html = "array-concatenation-edit-page.txt".readText()
-            val codeSnippets = EditPage(EditPageUrl(""), html).extractKotlinSource()
+            val codeSnippets = EditPage(someUrl, html).extractCodeSnippets()
             codeSnippets shouldBe listOf(
-                """
-                |fun main(args: Array<String>) {
-                |    val a: Array<Int> = arrayOf(1, 2, 3) // initialise a
-                |    val b: Array<Int> = arrayOf(4, 5, 6) // initialise b
-                |    val c: Array<Int> = (a.toList() + b.toList()).toTypedArray()
-                |    println(c)
-                |}
-                """,
-                """
-                |fun arrayConcat(a: Array<Any>, b: Array<Any>): Array<Any> {
-                |    return Array(a.size + b.size, { if (it in a.indices) a[it] else b[it - a.size] })
-                |}
-                """,
-                """
-                |fun main(args: Array<String>) {
-                |    val a: Collection<Int> = listOf(1, 2, 3) // initialise a
-                |    val b: Collection<Int> = listOf(4, 5, 6) // initialise b
-                |    val c: Collection<Int> = a + b
-                |    println(c)
-                |}
-                """
-            ).map{ it.trimmed() }
+                WebCodeSnippet(someUrl,
+                    """
+                    |fun main(args: Array<String>) {
+                    |    val a: Array<Int> = arrayOf(1, 2, 3) // initialise a
+                    |    val b: Array<Int> = arrayOf(4, 5, 6) // initialise b
+                    |    val c: Array<Int> = (a.toList() + b.toList()).toTypedArray()
+                    |    println(c)
+                    |}
+                    """.trimmed(), 0),
+                WebCodeSnippet(someUrl,
+                    """
+                    |fun arrayConcat(a: Array<Any>, b: Array<Any>): Array<Any> {
+                    |    return Array(a.size + b.size, { if (it in a.indices) a[it] else b[it - a.size] })
+                    |}
+                    """.trimmed(), 1),
+                WebCodeSnippet(someUrl,
+                    """
+                    |fun main(args: Array<String>) {
+                    |    val a: Collection<Int> = listOf(1, 2, 3) // initialise a
+                    |    val b: Collection<Int> = listOf(4, 5, 6) // initialise b
+                    |    val c: Collection<Int> = a + b
+                    |    println(c)
+                    |}
+                    """.trimmed(), 2)
+            )
         }
 
         "extract text area from task edit page" {
             val html = "array-concatenation-edit-page.txt".readText()
-            val text = EditPage(EditPageUrl(""), html).textAreaContent().trimmed()
+            val text = EditPage(someUrl, html).textAreaContent().trimmed()
             text shouldBe """
                 |=={{header|Kotlin}}==
                 |There is no operator or standard library function for concatenating &lt;code>Array&lt;/code> types. One option is to convert to &lt;code>Collection&lt;/code>s, concatenate, and convert back:

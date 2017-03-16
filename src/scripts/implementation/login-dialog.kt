@@ -1,4 +1,4 @@
-package scripts
+package scripts.implementation
 
 import java.awt.GridLayout
 import java.awt.event.WindowAdapter
@@ -13,6 +13,9 @@ fun main(args: Array<String>) {
 
 data class Credentials(val userName: String, val password: String)
 
+/**
+ * Use swing UI for getting user name and password because there seems to be no easy way get stdin when running gradle task.
+ */
 fun showLoginDialog(): Credentials? {
     val result = CompletableFuture<Credentials?>()
     JFrame().apply {

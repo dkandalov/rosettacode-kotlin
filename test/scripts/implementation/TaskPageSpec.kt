@@ -1,4 +1,4 @@
-package scripts
+package scripts.implementation
 
 import io.kotlintest.specs.StringSpec
 
