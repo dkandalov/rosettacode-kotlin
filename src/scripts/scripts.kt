@@ -1,18 +1,8 @@
 package scripts
 
-import com.thoughtworks.xstream.XStream
-import com.thoughtworks.xstream.io.xml.XppDriver
 import khttp.structures.cookie.CookieJar
 import scripts.implementation.*
 import java.io.File
-import java.time.Instant
-import java.time.OffsetDateTime
-import java.time.format.DateTimeFormatter
-import java.util.concurrent.Callable
-import java.util.concurrent.ForkJoinPool
-import java.util.concurrent.atomic.AtomicReference
-import java.util.stream.Collectors
-import java.util.stream.Stream
 
 private val excludedTasks = listOf(
     "Boolean_values", // ignored because there is no code
@@ -49,18 +39,6 @@ fun pushLocalChangesToRosettaCode() {
             "Therefore, you might want to add the following files manually.")
         forEach { log(it.filePath) }
     }
-}
-
-private fun CookieJar.hasExpiredEntries(now: Instant = Instant.now()): Boolean {
-    return entries
-        .map { it.value.split("; ").find { it.startsWith("expires=") } }
-        .filterNotNull()
-        .any {
-            val s = it.replace("expires=", "").replace("-", " ")
-            val dateTime = OffsetDateTime.parse(s, DateTimeFormatter.RFC_1123_DATE_TIME)
-            // Exclude year 1970 because there are some cookies which have timestamp just after 1970
-            dateTime.year > 1970 && dateTime.toInstant() <= now
-        }
 }
 
 private fun loginAndGetCookies(): CookieJar {
@@ -138,65 +116,4 @@ fun loadCodeSnippets(exclusions: List<String>): CodeSnippetStorage {
             .map{ LocalCodeSnippet(it.path) }
 
     return CodeSnippetStorage(webCodeSnippets, localCodeSnippets)
-}
-
-
-val log: (Any?) -> Unit = {
-    System.out.println(it)
-}
-
-private val xStream = XStream(XppDriver())
-
-/**
- * Caches result of function `f` in xml file.
- * The main reason for this is to speed up execution.
- *
- * To "invalidate" cached value modify or remove xml file.
- */
-fun <T> cached(id: String, replace: Boolean = false, f: () -> T): T {
-    val file = File(".cache/$id.xml")
-    if (file.exists() && !replace) {
-        log("// Using cached value of '$id'")
-        @Suppress("UNCHECKED_CAST")
-        return xStream.fromXML(file.readText()) as T
-    } else {
-        log("// Recalculating value of '$id'")
-        val result = f()
-        file.parentFile.mkdirs()
-        file.writeText(xStream.toXML(result))
-        return result
-    }
-}
-
-fun clearLocalWebCache(vararg excluding: String = emptyArray()) {
-    val cacheDir = ".cache"
-    log(">>> Deleting files from $cacheDir")
-    File(cacheDir).listFiles().filterNot { excluding.contains(it.name) }.forEach {
-        val wasDeleted = it.delete()
-        if (wasDeleted) {
-            log("Deleted ${it.name}")
-        } else {
-            log("Failed to delete ${it.name}")
-        }
-    }
-}
-
-data class Progress(val i: Int, val total: Int) {
-    fun next() = copy(i = i + 1)
-    override fun toString() = "$i of $total"
-}
-
-private fun <T, R> List<T>.mapParallelWithProgress(f: (T, Progress) -> R): List<R> {
-    val progressRef = AtomicReference(Progress(0, size))
-    val poolSize = 20 // No particular reason for this number. Overall, the process is implied to be IO-bound.
-    return ForkJoinPool(poolSize).submit(Callable {
-        parallelStream().map {
-            val progress = progressRef.updateAndGet { it.next() }
-            f(it, progress)
-        }.toList()
-    }).get()
-}
-
-private fun <E> Stream<E>.toList(): List<E> {
-    return collect(Collectors.toList<E>())
 }

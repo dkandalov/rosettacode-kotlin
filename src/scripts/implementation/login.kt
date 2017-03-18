@@ -1,8 +1,12 @@
 package scripts.implementation
 
+import khttp.structures.cookie.CookieJar
 import java.awt.GridLayout
 import java.awt.event.WindowAdapter
 import java.awt.event.WindowEvent
+import java.time.Instant
+import java.time.OffsetDateTime
+import java.time.format.DateTimeFormatter
 import java.util.concurrent.CompletableFuture
 import javax.swing.*
 
@@ -56,4 +60,16 @@ fun showLoginDialog(): Credentials? {
         isVisible = true
     }
     return result.get()
+}
+
+fun CookieJar.hasExpiredEntries(now: Instant = Instant.now()): Boolean {
+    return entries
+        .map { it.value.split("; ").find { it.startsWith("expires=") } }
+        .filterNotNull()
+        .any {
+            val s = it.replace("expires=", "").replace("-", " ")
+            val dateTime = OffsetDateTime.parse(s, DateTimeFormatter.RFC_1123_DATE_TIME)
+            // Exclude year 1970 because there are some cookies which have timestamp just after 1970
+            dateTime.year > 1970 && dateTime.toInstant() <= now
+        }
 }
