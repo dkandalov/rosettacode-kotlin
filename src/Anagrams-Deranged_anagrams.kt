@@ -2,13 +2,12 @@ package `anagrams_deranged_anagrams`
 
 // version 1.0.6
 
-import java.net.URL
-import java.io.InputStreamReader
 import java.io.BufferedReader
+import java.io.InputStreamReader
+import java.net.URL
 
 fun isDeranged(s1: String, s2: String): Boolean {
-    for (i in 0 until s1.length) if (s1[i] == s2[i]) return false
-    return true
+    return (0 until s1.length).none { s1[it] == s2[it] }
 }
 
 fun main(args: Array<String>) {
@@ -27,12 +26,7 @@ fun main(args: Array<String>) {
             anagrams[key]!!.add(word)
         }
         else {
-            var deranged = true
-            for (w in anagrams[key]!!) 
-                if (!isDeranged(w, word)) {
-                   deranged = false
-                   break
-                }
+            val deranged = anagrams[key]!!.any { isDeranged(it, word) }
             if (deranged) {
                 anagrams[key]!!.add(word)
                 count = Math.max(count, word.length)
@@ -41,5 +35,7 @@ fun main(args: Array<String>) {
         word = reader.readLine()
     }
     reader.close()
-    for (ana in anagrams.values) if (ana.size > 1 && ana[0].length == count) println(ana)
+    anagrams.values
+        .filter { it.size > 1 && it[0].length == count }
+        .forEach { println(it) }
 }

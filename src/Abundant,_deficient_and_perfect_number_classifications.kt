@@ -1,6 +1,6 @@
 package `abundant,_deficient_and_perfect_number_classifications`
 
-// version 1.0.5-2
+// version 1.1
  
 fun sumProperDivisors(n: Int): Int {
     if (n < 2) return 0

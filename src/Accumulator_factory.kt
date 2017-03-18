@@ -1,6 +1,6 @@
 package `accumulator_factory`
 
-// version 1.0.6
+// version 1.1
 
 fun foo(n: Double): (d: Double) -> Double {
     var nn = n

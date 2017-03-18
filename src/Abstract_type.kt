@@ -1,6 +1,6 @@
 package `abstract_type`
 
-// version 1.1.0
+// version 1.1
 
 interface Announcer {
     fun announceType()
@@ -16,7 +16,7 @@ abstract class Animal: Announcer {
 
     // abstract class can contain non-abstract members
     override fun announceType() {
-        println("I am an Aninal")
+        println("I am an Animal")
     }
 }
 

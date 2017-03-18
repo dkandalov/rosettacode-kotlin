@@ -17,7 +17,7 @@ object ABC_block_checker {
     }
 
     private fun Array<String>.canMakeWord(word: String): Boolean {
-        if (word.length == 0)
+        if (word.isEmpty())
             return true
 
         val c = Character.toUpperCase(word.first())

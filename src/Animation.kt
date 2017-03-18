@@ -2,15 +2,14 @@ package `animation`
 
 // version 1.1.0
 
+import java.awt.Dimension
 import java.awt.event.MouseAdapter
 import java.awt.event.MouseEvent
-import java.awt.Dimension
-import java.util.Timer
-import java.util.TimerTask
+import java.util.*
 import javax.swing.JFrame
 import javax.swing.JLabel
 
-class Rotate() : JFrame() {
+class Rotate : JFrame() {
     val text = "Hello World! "
     val label = JLabel(text)
     var rotRight = true
@@ -26,7 +25,7 @@ class Rotate() : JFrame() {
         add(label)
         pack()
         defaultCloseOperation = JFrame.EXIT_ON_CLOSE
-        setVisible(true)
+        isVisible = true
     }
 }
 
