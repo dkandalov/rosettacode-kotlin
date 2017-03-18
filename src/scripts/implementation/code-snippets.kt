@@ -19,7 +19,9 @@ data class CodeSnippetStorage(val webSnippets: List<WebCodeSnippet>, val localSn
                 if (local != null) Pair(web, local) else null
             }
             .filterNotNull()
-            .filter{ (web, local) -> web.sourceCode != local.sourceCode }
+            .filter{ (web, local) ->
+                web.sourceCode != local.sourceCode
+            }
 }
 
 data class CodeSnippetId(val value: String)
@@ -27,7 +29,7 @@ data class CodeSnippetId(val value: String)
 data class LocalCodeSnippet(val filePath: String) {
     val id = CodeSnippetId(File(filePath).name.replace(".kt", ""))
     val sourceCode
-        get() = java.io.File(filePath).readText().trimPackage()
+        get() = File(filePath).readText().trimPackage().trimLineEnds()
 
     companion object {
         fun create(codeSnippet: WebCodeSnippet): LocalCodeSnippet = codeSnippet.run {
@@ -35,7 +37,7 @@ data class LocalCodeSnippet(val filePath: String) {
                 if (it.startsWith("package ")) it
                 else "package ${codeSnippet.snippetPackageName()}\n\n" + it
             }
-            val localFile = java.io.File("src/${localFileName(editPageUrl, index)}")
+            val localFile = File("src/${localFileName(editPageUrl, index)}")
             localFile.parentFile.mkdirs()
             localFile.writeText(sourceCode)
             LocalCodeSnippet(localFile.path)

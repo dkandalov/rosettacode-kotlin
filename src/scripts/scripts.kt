@@ -81,7 +81,7 @@ fun pullFromRosettaCodeWebsite() {
         if (isNotEmpty()) {
             log(">>> There are some tasks which have different source code locally and on rosetta code website.\n" +
                 "Please make necessary changes to keep repository in sync with website.\n")
-            forEach { log("Differences between ${it.second.filePath}\nand ${it.first.editPageUrl}\n") }
+            forEach { log("Differences between ${it.second.filePath} and\n ${it.first.editPageUrl}\n") }
         } else {
             log(">>> There are no differences between code in local files and rosetta code website.")
         }
