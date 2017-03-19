@@ -4,14 +4,12 @@ package `compare_a_list_of_strings`
 
 fun areEqual(strings: Array<String>): Boolean {
     if (strings.size < 2) return true
-    for (i in 1 until strings.size) if (strings[i] != strings[i - 1]) return false
-    return true
+    return (1 until strings.size).none { strings[it] != strings[it - 1] }
 }
 
 fun areAscending(strings: Array<String>): Boolean {
     if (strings.size < 2) return true
-    for (i in 1 until strings.size) if (strings[i] <= strings[i - 1]) return false
-    return true
+    return (1 until strings.size).none { strings[it] <= strings[it - 1] }
 }
 
 // The strings are given in the command line arguments

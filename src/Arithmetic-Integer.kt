@@ -1,13 +1,13 @@
 package `arithmetic_integer`
 
-// version 1.0.5-2
+// version 1.1
 
 fun main(args: Array<String>) {
     val r = Regex("""-?\d+[ ]+-?\d+""")
     while(true) {
         print("Enter two integers separated by space(s) or q to quit: ")
         val input: String = readLine()!!.trim()
-        if (input == "q" || input == "Q") break;
+        if (input == "q" || input == "Q") break
         if (!input.matches(r)) {
             println("Invalid input, try again")
             continue

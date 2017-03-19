@@ -4,7 +4,7 @@ package `conditional_structures`
 
 fun main(args: Array<String>) {
     // conventional 'if/else if/else' statement
-    if (args.size == 0) println("No arguments were supplied")
+    if (args.isEmpty()) println("No arguments were supplied")
     else if (args.size == 1) println("One argument was supplied")
     else println("${args.size} arguments were supplied")
 

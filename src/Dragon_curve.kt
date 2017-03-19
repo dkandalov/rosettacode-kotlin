@@ -26,7 +26,7 @@ class DragonCurve(iter: Int) : JFrame("Dragon Curve") {
             copy.addAll(turnSequence)
             copy.reverse()
             turnSequence.add(1)
-            for (turn in copy) turnSequence.add(-turn)
+            copy.mapTo(turnSequence) { -it }
         }
         return turnSequence
     }
@@ -53,5 +53,5 @@ class DragonCurve(iter: Int) : JFrame("Dragon Curve") {
 }
 
 fun main(args: Array<String>) {
-    DragonCurve(14).setVisible(true)
+    DragonCurve(14).isVisible = true
 }

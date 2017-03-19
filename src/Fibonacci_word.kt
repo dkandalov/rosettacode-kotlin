@@ -5,7 +5,7 @@ package `fibonacci_word`
 fun fibWord(n: Int): String {
     if (n < 1) throw IllegalArgumentException("Argument can't be less than 1")
     if (n == 1) return "1"
-    val words = Array<String>(n){ "" }
+    val words = Array(n){ "" }
     words[0] = "1"
     words[1] = "0"
     for (i in 2 until n) words[i] = words[i - 1] + words[i - 2]

@@ -1,12 +1,11 @@
 package `draw_a_rotating_cube`
 
-// version 1.0.6
+// version 1.1
 
 import java.awt.*
-import java.awt.event.ActionEvent
 import javax.swing.*
 
-class RotatingCube(): JPanel() {
+class RotatingCube : JPanel() {
     private val nodes = arrayOf(
         doubleArrayOf(-1.0, -1.0, -1.0),
         doubleArrayOf(-1.0, -1.0,  1.0),
@@ -95,10 +94,10 @@ fun main(args: Array<String>) {
         val f = JFrame()
         f.defaultCloseOperation = JFrame.EXIT_ON_CLOSE
         f.title = "Rotating cube"
-        f.setResizable(false)
+        f.isResizable = false
         f.add(RotatingCube(), BorderLayout.CENTER)
         f.pack()
         f.setLocationRelativeTo(null)
-        f.setVisible(true)
+        f.isVisible = true
     }
 }

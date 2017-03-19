@@ -1,6 +1,6 @@
 package `validate_international_securities_identification_number`
 
-// version 1.0.6
+// version 1.1
 
 object Isin {
     val r = Regex("^[A-Z]{2}[A-Z0-9]{9}[0-9]$")
@@ -21,8 +21,8 @@ object Isin {
     private fun luhn(s: String): Boolean {
         fun sumDigits(n : Int) =  n / 10 + n % 10        
         val  t = s.reversed()
-        val s1 = t.filterIndexed { i, it -> i % 2 == 0 }.sumBy { it - '0' }
-        val s2 = t.filterIndexed { i, it -> i % 2 == 1 }.map { sumDigits((it - '0') * 2) }.sum() 
+        val s1 = t.filterIndexed { i, _ -> i % 2 == 0 }.sumBy { it - '0' }
+        val s2 = t.filterIndexed { i, _ -> i % 2 == 1 }.map { sumDigits((it - '0') * 2) }.sum()
         return (s1 + s2) % 10 == 0
     }
 }

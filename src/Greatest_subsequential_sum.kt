@@ -1,9 +1,9 @@
 package `greatest_subsequential_sum`
 
-// version 1.0.6
+// version 1.1
 
 fun gss(seq: IntArray): Triple<Int, Int, Int> {
-    if (seq.size == 0) throw IllegalArgumentException("Array cannot be empty")
+    if (seq.isEmpty()) throw IllegalArgumentException("Array cannot be empty")
     var sum: Int
     var maxSum = seq[0]
     var first = 0 

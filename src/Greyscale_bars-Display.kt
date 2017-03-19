@@ -1,11 +1,12 @@
 package `greyscale_bars_display`
 
-// version 1.0.6
+// version 1.1
 
-import javax.swing.*
-import java.awt.*
+import java.awt.Color
+import java.awt.Graphics
+import javax.swing.JFrame
 
-class GreyBars(): JFrame("grey bars example!") {
+class GreyBars : JFrame("grey bars example!") {
     private val w: Int
     private val h: Int
 
@@ -14,7 +15,7 @@ class GreyBars(): JFrame("grey bars example!") {
         h = 320
         setSize(w, h)
         defaultCloseOperation = JFrame.EXIT_ON_CLOSE
-        setVisible(true)
+        isVisible = true
     }
 
     override fun paint(g: Graphics) {

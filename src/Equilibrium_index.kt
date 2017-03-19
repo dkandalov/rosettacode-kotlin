@@ -1,10 +1,10 @@
 package `equilibrium_index`
 
-// version 1.0.6
+// version 1.1
 
 fun equilibriumIndices(a: IntArray): MutableList<Int> {
    val ei = mutableListOf<Int>()
-   if (a.size == 0) return ei // empty list
+   if (a.isEmpty()) return ei // empty list
    val sumAll  = a.sumBy { it }
    var sumLeft = 0
    var sumRight: Int

@@ -1,6 +1,6 @@
 package `flow_control_structures`
 
-// version 1.0.6 (packaged as Control_flow.jar)
+// version 1.0.6
 
 fun main(args: Array<String>) {
     for (i in 0 .. 2) {
@@ -11,6 +11,6 @@ fun main(args: Array<String>) {
         }
     }
     println()
-    if (args.size > 0) throw IllegalArgumentException("No command line arguments should be supplied")
+    if (args.isNotEmpty()) throw IllegalArgumentException("No command line arguments should be supplied")
     println("Goodbye!")  // won't be executed
 }

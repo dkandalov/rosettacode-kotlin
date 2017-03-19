@@ -1,11 +1,9 @@
 package `color_of_a_screen_pixel`
 
-import java.awt.Color
-import java.awt.MouseInfo
-import java.awt.Robot
+import java.awt.*
 
 fun getMouseColor(): Color {
-    val location = MouseInfo.getPointerInfo().getLocation()
+    val location = MouseInfo.getPointerInfo().location
     return getColorAt(location.x, location.y)
 }
 

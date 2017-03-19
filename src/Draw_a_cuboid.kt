@@ -1,18 +1,11 @@
 package `draw_a_cuboid`
 
-// version 1.0.6
+// version 1.1
 
-import java.awt.BorderLayout
-import java.awt.Color
-import java.awt.Dimension
-import java.awt.Graphics
-import java.awt.Graphics2D
-import java.awt.RenderingHints
+import java.awt.*
 import java.awt.event.MouseAdapter
 import java.awt.event.MouseEvent
-import javax.swing.JFrame
-import javax.swing.JPanel
-import javax.swing.SwingUtilities
+import javax.swing.*
 
 class Cuboid: JPanel() {
     private val nodes = arrayOf(
@@ -123,10 +116,10 @@ fun main(args: Array<String>) {
         val f = JFrame()
         f.defaultCloseOperation = JFrame.EXIT_ON_CLOSE
         f.title = "Cuboid"
-        f.setResizable(false)
+        f.isResizable = false
         f.add(Cuboid(), BorderLayout.CENTER)
         f.pack()
         f.setLocationRelativeTo(null)
-        f.setVisible(true)
+        f.isVisible = true
     }
 }

@@ -1,6 +1,6 @@
 package `define_a_primitive_data_type`
 
-// version 1.0.6
+// version 1.1
 
 class TinyInt(i: Int) {       
     private val value = makeTiny(i)
@@ -9,7 +9,7 @@ class TinyInt(i: Int) {
     operator fun minus(other: TinyInt): TinyInt = TinyInt(this.value - other.value)
     operator fun times(other: TinyInt): TinyInt = TinyInt(this.value * other.value)
     operator fun div  (other: TinyInt): TinyInt = TinyInt(this.value / other.value)
-    operator fun mod  (other: TinyInt): TinyInt = TinyInt(this.value % other.value)  
+    operator fun rem  (other: TinyInt): TinyInt = TinyInt(this.value % other.value)
     
     operator fun inc()  = TinyInt(this.value + 1)
     operator fun dec()  = TinyInt(this.value - 1)  

@@ -1,7 +1,8 @@
 package `generic_swap`
 
-// version 1.0.5-2
-fun <T> swap(t1: T, t2: T) = Pair<T, T>(t2, t1)
+// version 1.1
+
+fun <T> swap(t1: T, t2: T) = Pair(t2, t1)
 
 fun main(args: Array<String>) {
     var a = 3

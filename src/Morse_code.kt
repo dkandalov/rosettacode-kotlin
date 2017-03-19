@@ -35,7 +35,7 @@ fun playMorseCode(morseCode: String) = morseCode.forEach { symbol -> beep(symbol
 
 fun beep(durationInMs: Int) {
     val soundBuffer = ByteArray(durationInMs * 8)
-    for ((i, elem) in soundBuffer.withIndex()) {
+    for ((i, _) in soundBuffer.withIndex()) {
         soundBuffer[i] = (Math.sin(i / 8.0 * 2.0 * Math.PI) * 80.0).toByte()
     }
 

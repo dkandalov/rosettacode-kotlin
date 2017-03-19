@@ -6,7 +6,7 @@ import java.awt.*
 import java.awt.Color.*
 import javax.swing.*
 
-class ColourPinstripeDisplay(): JPanel() {
+class ColourPinstripeDisplay : JPanel() {
     private companion object {
         val palette = arrayOf(black, red, green, blue, magenta, cyan, yellow, white)
     }
@@ -17,11 +17,11 @@ class ColourPinstripeDisplay(): JPanel() {
         preferredSize = Dimension(900, 600)
     }
 
-    protected override fun paintComponent(g: Graphics) {
+    override fun paintComponent(g: Graphics) {
         super.paintComponent(g)
         for (b in 1..bands) {
             var colIndex = 0
-            val h = height / bands 
+            val h = height / bands
             for (x in 0 until width step b) {
                 g.color = palette[colIndex % palette.size]                  
                 g.fillRect(x, (b - 1) * h, b, h)
@@ -39,6 +39,6 @@ fun main(args: Array<String>) {
         f.add(ColourPinstripeDisplay(), BorderLayout.CENTER)
         f.pack()
         f.setLocationRelativeTo(null)
-        f.setVisible(true)
+        f.isVisible = true
     }      
 }

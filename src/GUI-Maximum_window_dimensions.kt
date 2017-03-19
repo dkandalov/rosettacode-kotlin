@@ -1,8 +1,8 @@
 package `gui_maximum_window_dimensions`
 
-// version 1.0.6
+// version 1.1
 
-import java.awt.*
+import java.awt.Toolkit
 import javax.swing.JFrame
 
 class Test : JFrame() {
@@ -13,8 +13,8 @@ class Test : JFrame() {
         println("Physical screen size : ${formatOutput(screenSize, r)}")
         val insets = toolkit.getScreenInsets(graphicsConfiguration) 
         println("Insets               : ${formatOutput(insets, r)}") 
-        screenSize.width  -= (insets.left + insets.right);
-        screenSize.height -= (insets.top + insets.bottom);
+        screenSize.width  -= (insets.left + insets.right)
+        screenSize.height -= (insets.top + insets.bottom)
         println("Max available        : ${formatOutput(screenSize, r)}")
     }
 

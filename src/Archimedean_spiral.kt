@@ -5,10 +5,10 @@ package `archimedean_spiral`
 import java.awt.*
 import javax.swing.*
 
-class ArchimedeanSpiral() : JPanel() {
+class ArchimedeanSpiral : JPanel() {
     init {
         preferredSize = Dimension(640, 640)
-        setBackground(Color.white)
+        background = Color.white
     }
 
     private fun drawGrid(g: Graphics2D) {
@@ -55,7 +55,7 @@ class ArchimedeanSpiral() : JPanel() {
         g.drawOval(x, y, 1, 1)
     }
  
-    override protected fun paintComponent(gg: Graphics) {
+    override fun paintComponent(gg: Graphics) {
         super.paintComponent(gg)
         val g = gg as Graphics2D
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON) 
@@ -69,10 +69,10 @@ fun main(args: Array<String>) {
         val f = JFrame()
         f.defaultCloseOperation = JFrame.EXIT_ON_CLOSE
         f.title = "Archimedean Spiral"
-        f.setResizable(false)
+        f.isResizable = false
         f.add(ArchimedeanSpiral(), BorderLayout.CENTER)
         f.pack()
         f.setLocationRelativeTo(null)
-        f.setVisible(true)
+        f.isVisible = true
     }
 }

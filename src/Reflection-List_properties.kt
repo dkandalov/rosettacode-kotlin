@@ -1,9 +1,9 @@
 package `reflection_list_properties`
 
-// version 1.0.6
+// version 1.1
 
-import kotlin.reflect.*
-import kotlin.reflect.jvm.*
+import kotlin.reflect.full.memberProperties
+import kotlin.reflect.jvm.isAccessible
 
 open class BaseExample(val baseProp: String) {
     protected val protectedProp: String = "inherited protected value"

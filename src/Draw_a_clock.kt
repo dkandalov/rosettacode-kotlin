@@ -1,13 +1,12 @@
 package `draw_a_clock`
 
-// version 1.0.6
+// version 1.1
 
 import java.awt.*
-import java.awt.event.*
 import java.time.LocalTime
 import javax.swing.*
 
-class Clock() : JPanel() {
+class Clock : JPanel() {
     private val degrees06: Float = (Math.PI / 30.0).toFloat()
     private val degrees30: Float = degrees06 * 5.0f
     private val degrees90: Float =  degrees30 * 3.0f 
@@ -65,10 +64,10 @@ fun main(args: Array<String>) {
         val f = JFrame()
         f.defaultCloseOperation = JFrame.EXIT_ON_CLOSE
         f.title = "Clock"
-        f.setResizable(false)
+        f.isResizable = false
         f.add(Clock(), BorderLayout.CENTER)
         f.pack()
         f.setLocationRelativeTo(null)
-        f.setVisible(true)
+        f.isVisible = true
     }
 }

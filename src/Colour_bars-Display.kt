@@ -10,7 +10,7 @@ class ColorFrame(width: Int, height: Int): JFrame() {
     init {
         defaultCloseOperation = EXIT_ON_CLOSE
         setSize(width, height)
-        setVisible(true)
+        isVisible = true
     }
 
     override fun paint(g: Graphics) {

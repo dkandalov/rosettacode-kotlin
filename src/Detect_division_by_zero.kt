@@ -1,22 +1,22 @@
 package `detect_division_by_zero`
 
-// version 1.0.5-2
+// version 1.1
 
 fun divideByZero(x: Int, y:Int): Boolean =
     try {
         x / y
         false
-    }
-    catch(e: ArithmeticException) {
+    } catch(e: ArithmeticException) {
         true
     }
-   
+
 fun main(args: Array<String>) {
-    // using 'var' instead of 'val' to suppress compiler 'division by zero' warning
-    var x = 1
-    var y = 0 
-    if (divideByZero(x, y))
+    val x = 1
+    val y = 0
+    if (divideByZero(x, y)) {
         println("Attempted to divide by zero")
-    else
+    } else {
+        @Suppress("DIVISION_BY_ZERO")
         println("$x / $y = ${x / y}")
+    }
 }

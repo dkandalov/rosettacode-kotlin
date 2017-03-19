@@ -1,13 +1,12 @@
 package `determine_if_a_string_is_numeric`
 
-// version 1.0.5-2
+// version 1.1
 
-fun isNumeric(input: String): Boolean = 
+fun isNumeric(input: String): Boolean =
     try {
         input.toDouble()
         true
-    }
-    catch(e: NumberFormatException) {
+    } catch(e: NumberFormatException) {
         false
     }
 

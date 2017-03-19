@@ -57,7 +57,7 @@ object Heron {
         }
     }
 
-    private fun isHeron(h: Double) = h.mod(1) == 0.0 && h > 0
+    private fun isHeron(h: Double) = h.rem(1) == 0.0 && h > 0
 
     private val header = "\nSides           Perimeter   Area"
     private fun format(a: IntArray) = "\n%3d x %3d x %3d %5d %10d".format(a[0], a[1], a[2], a[3], a[4])

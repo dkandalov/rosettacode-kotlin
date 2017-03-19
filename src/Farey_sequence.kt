@@ -1,13 +1,13 @@
 package `farey_sequence`
 
-// version 1.1.0
+// version 1.1
 
 fun farey(n: Int): List<String> {
     var a = 0
     var b = 1
     var c = 1
     var d = n 
-    val f = mutableListOf<String>("$a/$b")
+    val f = mutableListOf("$a/$b")
     while (c <= n) {
         val k = (n + b) / d
         val aa = a

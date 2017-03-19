@@ -23,8 +23,8 @@ fun knightTourFrom(start : Square) = knightTour(listOf(start))
 
 fun main(args : Array<String>) {
     var col = 0
-    for (move in knightTourFrom(Square(1, 1))) {
-        System.out.print("${move.x},${move.y}")
+    for ((x, y) in knightTourFrom(Square(1, 1))) {
+        System.out.print("$x,$y")
         System.out.print(if (col == 7) "\n" else " ")
         col = (col + 1) % 8
     }

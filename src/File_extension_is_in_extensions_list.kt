@@ -1,12 +1,10 @@
 package `file_extension_is_in_extensions_list`
 
-// version 1.1.0
+// version 1.1
 
 /* implicitly allows for extensions containing dots */ 
-fun isFileExtensionListed(fileName: String, extensions: List<String>): Boolean {
-    for (ext in extensions) 
-        if (fileName.toLowerCase().endsWith("." + ext.toLowerCase())) return true
-    return false
+fun String.isFileExtensionListed(extensions: List<String>): Boolean {
+    return extensions.any { toLowerCase().endsWith("." + it.toLowerCase()) }
 }
  
 fun main(args: Array<String>) {
@@ -22,6 +20,7 @@ fun main(args: Array<String>) {
         "MyData_v1.0.bz2"
     )
 
-    for (fileName in fileNames) 
-        println("${fileName.padEnd(19)} -> ${isFileExtensionListed(fileName, extensions)}")
+    for (fileName in fileNames) {
+        println("${fileName.padEnd(19)} -> ${fileName.isFileExtensionListed(extensions)}")
+    }
 }

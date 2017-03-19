@@ -1,6 +1,6 @@
 package `aks_test_for_primes`
 
-// version 1.0.6
+// version 1.1
 
 fun binomial(n: Int, k: Int): Long = when {
     n < 0 || k < 0 -> throw IllegalArgumentException("negative numbers not allowed")
@@ -23,8 +23,7 @@ fun binomial(n: Int, k: Int): Long = when {
 
 fun isPrime(n: Int): Boolean {
     if (n < 2) return false
-    for (k in 1..n-1) if (binomial(n, k) % n.toLong() != 0L) return false
-    return true
+    return (1..n-1).none { binomial(n, it) % n.toLong() != 0L }
 }        
 
 fun main(args: Array<String>) {

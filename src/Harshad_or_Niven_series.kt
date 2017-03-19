@@ -1,6 +1,6 @@
 package `harshad_or_niven_series`
 
-// version 1.0.5-2
+// version 1.1
 
 fun sumDigits(n: Int): Int = when {
         n <= 0 -> 0
@@ -25,7 +25,7 @@ fun main(args: Array<String>) {
     while (true) {
         if (isHarshad(++i)) {
             print("$i ")
-            if (++count == 20) break;
+            if (++count == 20) break
         }
     }
 
