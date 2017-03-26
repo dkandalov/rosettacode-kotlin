@@ -2,13 +2,13 @@ package `towers_of_hanoi`
 
 // version 1.1.0
 
-class Hanoi(private val disks: Int) {
+class Hanoi(disks: Int) {
     private var moves = 0
 
     init {
         println("Towers of Hanoi with $disks disks:\n")
-        move(disks, 'L', 'C', 'R') 
-        println("\nCompleted in $moves moves\n")   
+        move(disks, 'L', 'C', 'R')
+        println("\nCompleted in $moves moves\n")
     }
 
     private fun move(n: Int, from: Char, to: Char, via: Char) {
@@ -21,7 +21,7 @@ class Hanoi(private val disks: Int) {
     }
 }
 
-fun main(args: Array<String>) {    
+fun main(args: Array<String>) {
     Hanoi(3)
     Hanoi(4)
 }

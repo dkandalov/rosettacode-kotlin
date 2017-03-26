@@ -29,8 +29,9 @@ fun zeckendorf(n: Int): String {
         if (fibs[i] <= nn) {
             zr.append('1')
             nn -= fibs[i]
+        } else {
+            zr.append('0')
         }
-        else zr.append('0')
     return zr.toString()
 }
    

@@ -14,7 +14,7 @@ class Bresenham(w: Int, h: Int) : JPanel() {
         background = Color.blue
     }
 
-    override protected fun paintComponent(g: Graphics) {
+    override fun paintComponent(g: Graphics) {
         super.paintComponent(g)
         drawLine(g, 0, 0, 8, 19)   // NNE
         drawLine(g, 0, 0, 19, 8)   // ENE

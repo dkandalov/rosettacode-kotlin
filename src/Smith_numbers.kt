@@ -35,8 +35,7 @@ fun isSmith(n: Int): Boolean {
     if (n < 2) return false
     val factors = getPrimeFactors(n)
     if (factors.size == 1) return false
-    var primeSum = 0
-    for (factor in factors) primeSum += sumDigits(factor)
+    val primeSum = factors.sumBy { sumDigits(it) }
     return sumDigits(n) == primeSum
 } 
 
