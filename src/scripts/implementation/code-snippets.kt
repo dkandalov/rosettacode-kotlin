@@ -1,5 +1,6 @@
 package scripts.implementation
 
+import khttp.structures.cookie.CookieJar
 import scripts.implementation.EditPageUrl.Companion.asFileName
 import scripts.implementation.EditPageUrl.Companion.asPackageName
 import scripts.implementation.LocalCodeSnippet.Companion.postfixedWith
@@ -58,7 +59,7 @@ data class LocalCodeSnippet(val filePath: String) {
 data class WebCodeSnippet(val editPageUrl: EditPageUrl, val sourceCode: String, val index: Int) {
     val id = CodeSnippetId(editPageUrl.pageId().asFileName().postfixedWith(index))
 
-    fun submitCodeChange(newCode: String, cookieJar: khttp.structures.cookie.CookieJar): khttp.responses.Response {
+    fun submitCodeChange(newCode: String, cookieJar: CookieJar): EditPage.SubmitResult {
         val editPage = EditPage.get(editPageUrl, cookieJar)
         return editPage.submitCodeChange(newCode, index, cookieJar)
     }

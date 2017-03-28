@@ -11,7 +11,7 @@ data class LoginPage(val html: String, val cookies: CookieJar) {
 
         val loginToken = Regex("<input type=\"hidden\" value=\"(.+?)\"").find(html)!!.groups[1]!!.value
         val response = post(
-                url = "http://rosettacode.org/mw/index.php?title=Special:UserLogin&action=submitlogin&type=login&returnto=Rosetta+Code",
+                url = "https://rosettacode.org/mw/index.php?title=Special:UserLogin&action=submitlogin&type=login&returnto=Rosetta+Code",
                 data = mapOf(
                         "wpName" to userName,
                         "wpPassword" to password,

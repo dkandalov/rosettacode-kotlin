@@ -1,8 +1,8 @@
 package scripts.implementation
 
-import khttp.post
-import khttp.responses.Response
 import khttp.structures.cookie.CookieJar
+import scripts.implementation.EditPage.SubmitResult.Failure
+import scripts.implementation.EditPage.SubmitResult.Success
 
 data class EditPage(val url: EditPageUrl, val html: String) {
     fun extractCodeSnippets(): List<WebCodeSnippet> {
@@ -12,7 +12,7 @@ data class EditPage(val url: EditPageUrl, val html: String) {
             .mapIndexed { index, code -> WebCodeSnippet.create(url, code, index) }
     }
 
-    fun submitCodeChange(newCode: String, index: Int, cookieJar: CookieJar): Response {
+    fun submitCodeChange(newCode: String, index: Int, cookieJar: CookieJar): SubmitResult {
         fun String.valueOfTag(tagName: String): String {
             val i1 = indexOf("name=\"$tagName\"")
             if (i1 == -1) return ""
@@ -38,26 +38,32 @@ data class EditPage(val url: EditPageUrl, val html: String) {
         val autoSummary = html.valueOfTag("wpAutoSummary")
         val editToken = html.valueOfTag("wpEditToken")
 
-        return post(
+        val hasMissingFields = listOf(section, startTime, editTime, parentRevId, oldId, autoSummary, editTime).any { it.isNullOrEmpty() }
+        if (hasMissingFields) return Failure("some of required fields are missing from edit page")
+
+        val response = khttp.post(
             url = "https://rosettacode.org/mw/index.php?title=${url.pageId()}&action=submit",
             cookies = cookieJar,
             data = mapOf(
-                    "wpAntispam" to "",
-                    "wpSection" to section,
-                    "wpStarttime" to startTime,
-                    "wpEdittime" to editTime,
-                    "wpAutoSummary" to autoSummary,
-                    "oldId" to oldId,
-                    "parentRevId" to parentRevId,
-                    "format" to "text/x-wiki",
-                    "model" to "wikitext",
-                    "wpTextbox1" to updatedContent,
-                    "wpSummary" to changeSummary,
-                    "wpSave" to "Save page",
-                    "wpEditToken" to editToken,
-                    "wpUltimateParam" to "1"
+                "wpAntispam" to "",
+                "wpSection" to section,
+                "wpStarttime" to startTime,
+                "wpEdittime" to editTime,
+                "wpAutoSummary" to autoSummary,
+                "oldId" to oldId,
+                "parentRevId" to parentRevId,
+                "format" to "text/x-wiki",
+                "model" to "wikitext",
+                "wpTextbox1" to updatedContent,
+                "wpSummary" to changeSummary,
+                "wpSave" to "Save page",
+                "wpEditToken" to editToken,
+                "wpUltimateParam" to "1"
             )
         )
+        return if (response.statusCode != 200) Failure(response.statusCode.toString())
+        else if (String(response.content).contains("permissions-errors")) Failure("permission error")
+        else Success
     }
 
     fun textAreaContent(): String {
@@ -98,5 +104,10 @@ data class EditPage(val url: EditPageUrl, val html: String) {
         private fun String.replaceKotlinTagWithScala() =
                 // Do this because RosettaCode highlights kotlin as scala better than kotlin as kotlin.
                 replace("<lang kotlin>", "<lang scala>").replace("<lang Kotlin>", "<lang scala>")
+    }
+
+    sealed class SubmitResult {
+        object Success : SubmitResult()
+        data class Failure(val reason: String) : SubmitResult()
     }
 }

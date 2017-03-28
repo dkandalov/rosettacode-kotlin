@@ -17,17 +17,20 @@ fun pushLocalChangesToRosettaCode() {
 
         var cookieJar = cached("loginCookieJar") { loginAndGetCookies() }
         if (cookieJar.hasExpiredEntries()) {
-            log("Login cookies has expired entries. Please login to RosettaCode website again.")
+            log("Login cookies have expired entries. Please login to RosettaCode website again.")
             cookieJar = cached("loginCookieJar", replace = true) { loginAndGetCookies() }
         }
         if (cookieJar.isEmpty()) return
 
         forEach { (webSnippet, localSnippet) ->
-            val response = webSnippet.submitCodeChange(localSnippet.sourceCode, cookieJar)
-            if (response.statusCode == 200) {
-                log("Pushed local changes to ${webSnippet.editPageUrl}")
-            } else {
-                log("Failed to push local changes to ${webSnippet.editPageUrl} Status code: ${response.statusCode}")
+            val result = webSnippet.submitCodeChange(localSnippet.sourceCode, cookieJar)
+            when (result) {
+                is EditPage.SubmitResult.Success -> {
+                    log("Pushed local changes to ${webSnippet.editPageUrl}")
+                }
+                is EditPage.SubmitResult.Failure -> {
+                    log("Failed to push local changes to ${webSnippet.editPageUrl} (Reason: ${result.reason})")
+                }
             }
         }
         clearLocalWebCache(excluding = "loginCookieJar.xml")
@@ -89,7 +92,7 @@ fun pullFromRosettaCodeWebsite() {
 }
 
 
-fun loadCodeSnippets(exclusions: List<String>): CodeSnippetStorage {
+private fun loadCodeSnippets(exclusions: List<String>): CodeSnippetStorage {
     val kotlinPage = cached("kotlinPage") { LanguagePage.get() }
     val editPageUrls = cached("editPageUrls") {
         kotlinPage.extractTaskPageUrls().mapParallelWithProgress { url, progress ->
