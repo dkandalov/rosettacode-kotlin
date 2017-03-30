@@ -1,10 +1,17 @@
 package scripts.implementation
 
+import com.thoughtworks.xstream.XStream
+import com.thoughtworks.xstream.io.xml.XppDriver
+import java.io.File
+import java.util.concurrent.Callable
+import java.util.concurrent.Executors.newFixedThreadPool
+import java.util.concurrent.atomic.AtomicReference
+
 val log: (Any?) -> Unit = {
     System.out.println(it)
 }
 
-private val xStream = com.thoughtworks.xstream.XStream(com.thoughtworks.xstream.io.xml.XppDriver())
+private val xStream = XStream(XppDriver())
 
 /**
  * Caches result of function `f` in xml file.
@@ -13,7 +20,7 @@ private val xStream = com.thoughtworks.xstream.XStream(com.thoughtworks.xstream.
  * To "invalidate" cached value modify or remove xml file.
  */
 fun <T> cached(id: String, replace: Boolean = false, f: () -> T): T {
-    val file = java.io.File(".cache/$id.xml")
+    val file = File(".cache/$id.xml")
     if (file.exists() && !replace) {
         log("// Using cached value of '$id'")
         @Suppress("UNCHECKED_CAST")
@@ -30,7 +37,7 @@ fun <T> cached(id: String, replace: Boolean = false, f: () -> T): T {
 fun clearLocalWebCache(vararg excluding: String = emptyArray()) {
     val cacheDir = ".cache"
     log(">>> Deleting files from $cacheDir")
-    java.io.File(cacheDir).listFiles().filterNot { excluding.contains(it.name) }.forEach {
+    File(cacheDir).listFiles().ifNull(emptyArray()).filterNot { excluding.contains(it.name) }.forEach {
         val wasDeleted = it.delete()
         if (wasDeleted) {
             log("Deleted ${it.name}")
@@ -46,16 +53,17 @@ data class Progress(val i: Int, val total: Int) {
 }
 
 fun <T, R> List<T>.mapParallelWithProgress(f: (T, Progress) -> R): List<R> {
-    val progressRef = java.util.concurrent.atomic.AtomicReference(Progress(0, size))
-    val poolSize = 20 // No particular reason for this number. Overall, the process is implied to be IO-bound.
-    return java.util.concurrent.ForkJoinPool(poolSize).submit(java.util.concurrent.Callable {
-        parallelStream().map {
-            val progress = progressRef.updateAndGet { it.next() }
-            f(it, progress)
-        }.toList()
-    }).get()
+    val poolSize = 30 // No particular reason for this number. Overall, the process is assumed to be IO-bound.
+    val executor = newFixedThreadPool(poolSize)
+
+    val progressRef = AtomicReference(Progress(0, size))
+    val futures = this.map{ executor.submit(Callable {
+        val progress = progressRef.updateAndGet { it.next() }
+        f(it, progress)
+    })}
+    val result = futures.map { it.get() }
+    executor.shutdown()
+    return result
 }
 
-private fun <E> java.util.stream.Stream<E>.toList(): List<E> {
-    return collect(java.util.stream.Collectors.toList<E>())
-}
+private fun <T> T.ifNull(defaultValue: T): T = if (this == null) defaultValue else this

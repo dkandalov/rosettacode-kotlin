@@ -108,14 +108,14 @@ private fun loadCodeSnippets(exclusions: List<String>): CodeSnippetStorage {
     }
 
     val webCodeSnippets = editPages
-            .flatMap { it.extractCodeSnippets() }
-            .filter { (editPageUrl) ->
-                exclusions.none { editPageUrl.value.contains(it) }
-            }
+        .flatMap { it.extractCodeSnippets() }
+        .filter { (editPageUrl) ->
+            exclusions.none { editPageUrl.value.contains(it) }
+        }
 
     val localCodeSnippets = File("src").listFiles()
-            .filter { !it.isDirectory && it.extension == "kt" }
-            .map{ LocalCodeSnippet(it.path) }
+        .filter { !it.isDirectory && it.extension == "kt" }
+        .map { LocalCodeSnippet(it.path) }
 
     return CodeSnippetStorage(webCodeSnippets, localCodeSnippets)
 }
