@@ -1,7 +1,6 @@
-package scripts
+package scripts.implementation
 
 import khttp.structures.cookie.CookieJar
-import scripts.implementation.*
 import java.io.File
 
 private val excludedTasks = listOf(
@@ -93,18 +92,18 @@ fun pullFromRosettaCodeWebsite() {
 
 
 private fun loadCodeSnippets(exclusions: List<String>): CodeSnippetStorage {
-    val kotlinPage = cached("kotlinPage") { LanguagePage.get() }
+    val kotlinPage = cached("kotlinPage") { LanguagePage.Companion.get() }
     val editPageUrls = cached("editPageUrls") {
         kotlinPage.extractTaskPageUrls().mapParallelWithProgress { url, progress ->
             log("Getting edit page url from $url ($progress)")
-            TaskPage.get(url).extractKotlinEditPageUrl()
+            TaskPage.Companion.get(url).extractKotlinEditPageUrl()
         }
     }
 
     val editPages = cached("editPages") {
         editPageUrls.mapParallelWithProgress { it, progress ->
             log("Getting source code from $it ($progress)")
-            EditPage.get(it)
+            EditPage.Companion.get(it)
         }
     }
 
