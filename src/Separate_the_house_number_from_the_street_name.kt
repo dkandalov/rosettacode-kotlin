@@ -5,8 +5,8 @@ package `separate_the_house_number_from_the_street_name`
 val r = Regex("""\s+""")
 
 fun separateHouseNumber(address: String): Pair<String, String> {   
-    var street: String
-    var house:  String
+    val street: String
+    val house:  String
     val len    = address.length
     val splits = address.split(r)    
     val size   = splits.size

@@ -33,6 +33,6 @@ fun main(args: Array<String>) {
    val fruits5 = mutableSetOf("cherry", "blueberry", "raspberry")
    println("fruits5 : $fruits5\n")
    fruits5 += "guava"
-   println("fruits5 + 'guava'  : ${fruits5}")
+   println("fruits5 + 'guava'  : $fruits5")
    println("fruits5 - 'cherry' : ${fruits5 - "cherry"}")
 }
