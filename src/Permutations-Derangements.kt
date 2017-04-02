@@ -17,39 +17,32 @@ fun <T> permute(input: List<T>): List<List<T>> {
 }
 
 fun derange(input: List<Int>): List<List<Int>> {
-    if (input.size == 0) return listOf(input)
-    val deras = mutableListOf<List<Int>>()
-    for (perm in permute(input)) {
-        var isDera = true
-        for ((i, index) in perm.withIndex()) {
-            if (i == index) {
-                isDera = false
-                break
-            }
-        }
-        if (isDera) deras.add(perm)
+    if (input.isEmpty()) return listOf(input)
+    return permute(input).filter { permutation ->
+        permutation.filterIndexed { i, index -> i == index }.none()
     }
-    return deras
 }
 
-fun subfactorial(n: Int): Long =
+fun subFactorial(n: Int): Long =
     when (n) {
         0 -> 1
         1 -> 0
-        else -> (n - 1) * (subfactorial(n - 1) + subfactorial(n - 2))
+        else -> (n - 1) * (subFactorial(n - 1) + subFactorial(n - 2))
     }
 
 fun main(args: Array<String>) {
     val input = listOf(0, 1, 2, 3)
-    val deras = derange(input)
-    println("There are ${deras.size} derangements of $input, namely:\n")
-    for (dera in deras) println(dera)
+
+    val derangements = derange(input)
+    println("There are ${derangements.size} derangements of $input, namely:\n")
+    derangements.forEach(::println)
+
     println("\nN  Counted   Calculated")
     println("-  -------   ----------")
     for (n in 0..9) {
         val list = List(n) { it }
         val counted = derange(list).size
-        println("%d  %-9d %-9d".format(n, counted, subfactorial(n)))
+        println("%d  %-9d %-9d".format(n, counted, subFactorial(n)))
     }
-    println("\n!20 = ${subfactorial(20)}")
+    println("\n!20 = ${subFactorial(20)}")
 }

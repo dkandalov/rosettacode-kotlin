@@ -43,17 +43,19 @@ val zeros = listOf("zero", "nought", "nil", "none", "nothing")
 
 fun nameToNum(name: String): Long {
     var text = name.trim().toLowerCase()
-    val negative = text.startsWith("minus ")
-    if (negative) text = text.drop(6)
+    val isNegative = text.startsWith("minus ")
+    if (isNegative) text = text.drop(6)
     if (text.startsWith("a ")) text = "one" + text.drop(1)
     val words = text.split(",", "-", " and ", " ").filter { it != "" }
+
     val size = words.size
     if (size == 1 && words[0] in zeros) return 0L
+
     var multiplier = 1L
     var lastNum = 0L
     var sum = 0L
     for (i in size - 1 downTo 0) {
-        var num: Long? = names[words[i]]
+        val num: Long? = names[words[i]]
         if (num == null)
             throw IllegalArgumentException("'${words[i]}' is not a valid number")
         else if (num == lastNum)
@@ -63,28 +65,27 @@ fun nameToNum(name: String): Long {
                 throw IllegalArgumentException("'$name' is not a well formed numeric string")
             multiplier = num
             if (i == 0) sum += multiplier
-        }
-        else if (num >= 100) {
+        } else if (num >= 100) {
             multiplier *= 100
             if (i == 0) sum += multiplier
-        }
-        else if (num >= 20) {
+        } else if (num >= 20) {
             if (lastNum in 10..90)
                 throw IllegalArgumentException("'$name' is not a well formed numeric string")
             sum += num * multiplier
-        }
-        else {
+        } else {
             if (lastNum in 1..90)
                 throw IllegalArgumentException("'$name' is not a well formed numeric string")
             sum += num * multiplier
         }
         lastNum = num
     }
-    if (negative && sum == -sum)
+
+    if (isNegative && sum == -sum)
         return Long.MIN_VALUE
     else if (sum < 0L)
         throw IllegalArgumentException("'$name' is outside the range of a Long integer")
-    return if (negative) -sum else sum
+
+    return if (isNegative) -sum else sum
 }
 
 fun main(args: Array<String>) {
