@@ -23,6 +23,8 @@ data class EditPage(val url: EditPageUrl, val html: String) {
             return substring(i2, i3)
         }
 
+        if (html.contains("class=\"permissions-errors\"")) return Failure("permission error; try removing login cookie")
+
         val updatedContent = textAreaContent().unEscapeXml().run {
             val ranges = sourceCodeRanges()
             if (index <= ranges.size - 1) replaceRange(ranges[index], newCode)
@@ -41,6 +43,9 @@ data class EditPage(val url: EditPageUrl, val html: String) {
         val hasMissingFields = listOf(section, startTime, editTime, parentRevId, oldId, autoSummary, editTime).any { it.isNullOrEmpty() }
         if (hasMissingFields) return Failure("some of required fields are missing from edit page")
 
+        // TODO some pages seem to only work with http instead of https url
+        // E.g. http://rosettacode.org//mw/index.php?title=Sort_an_array_of_composite_structures&action=edit&section=39
+        // and http://rosettacode.org//mw/index.php?title=Zeckendorf_number_representation&action=edit&section=29
         val response = khttp.post(
             url = "https://rosettacode.org/mw/index.php?title=${url.pageId()}&action=submit",
             cookies = cookieJar,
@@ -62,7 +67,7 @@ data class EditPage(val url: EditPageUrl, val html: String) {
             )
         )
         return if (response.statusCode != 200) Failure(response.statusCode.toString())
-        else if (String(response.content).contains("permissions-errors")) Failure("permission error")
+        else if (String(response.content).contains("class=\"permissions-errors\"")) Failure("permission error; try removing login cookie")
         else Success
     }
 

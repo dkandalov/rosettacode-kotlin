@@ -32,7 +32,6 @@ fun pushLocalChangesToRosettaCode() {
                 }
             }
         }
-        clearLocalWebCache(excluding = "loginCookieJar.xml")
     }
 
     snippetStorage.onlyLocalSnippets.apply {
