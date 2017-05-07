@@ -1,6 +1,6 @@
 package `execute_brain****`
 
-// version 1.1.1
+// version 1.1.2
 
 class Brainf__k(val prog: String, val memSize: Int) {
     private val mem = IntArray(memSize)

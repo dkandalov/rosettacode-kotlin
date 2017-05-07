@@ -1,6 +1,6 @@
 package `strip_control_codes_and_extended_characters_from_a_string`
 
-// version 1.1.1
+// version 1.1.2
 
 fun String.strip(extendedChars: Boolean = false): String {
     val sb = StringBuilder()

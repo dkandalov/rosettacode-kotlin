@@ -1,6 +1,6 @@
 package `singly_linked_list_element_insertion`
 
-// version 1.1.1
+// version 1.1.2
 
 class Node<T: Number>(var data: T, var next: Node<T>? = null) {
     override fun toString(): String {

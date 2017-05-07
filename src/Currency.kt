@@ -1,6 +1,6 @@
 package `currency`
 
-// version 1.1.1
+// version 1.1.2
 
 import java.math.BigDecimal
 import java.math.MathContext

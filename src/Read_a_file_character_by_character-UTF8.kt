@@ -1,6 +1,6 @@
 package `read_a_file_character_by_character_utf8`
 
-// version 1.1.1
+// version 1.1.2
 
 import java.io.File
 

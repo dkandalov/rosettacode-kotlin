@@ -1,6 +1,6 @@
 package `short_circuit_evaluation`
 
-// version 1.1.1
+// version 1.1.2
 
 fun a(v: Boolean): Boolean {
     println("'a' called")

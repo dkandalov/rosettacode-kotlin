@@ -1,6 +1,6 @@
 package `hash_join`
 
-// version 1.1.1
+// version 1.1.2
 
 data class A(val age: Int, val name: String)
 

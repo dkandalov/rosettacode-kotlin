@@ -1,6 +1,6 @@
 package `unicode_strings`
 
-// version 1.1.1
+// version 1.1.2
 
 fun main(args: Array<String>) {
     val åäö = "as⃝df̅ ♥♦♣♠ 頰"

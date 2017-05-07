@@ -1,6 +1,6 @@
 package `permutations_derangements`
 
-// version 1.1.1
+// version 1.1.2
 
 fun <T> permute(input: List<T>): List<List<T>> {
     if (input.size == 1) return listOf(input)

@@ -1,6 +1,6 @@
 package `doubly_linked_list_traversal`
 
-// version 1.1.1
+// version 1.1.2
 
 class LinkedList<E> {
     class Node<E>(var data: E, var prev: Node<E>? = null, var next: Node<E>? = null) {

@@ -1,6 +1,6 @@
 package `hofstadter_conway_$10,000_sequence`
 
-// version 1.1.1
+// version 1.1.2
 
 fun main(args: Array<String>) {
     val limit = (1 shl 20) + 1

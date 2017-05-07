@@ -1,6 +1,6 @@
 package `polymorphism`
 
-// version 1.1.1
+// version 1.1.2
 
 open class Point(var x: Int, var y: Int) {
     constructor(): this(0, 0)

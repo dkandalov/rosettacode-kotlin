@@ -1,6 +1,6 @@
 package `runge_kutta_method`
 
-// version 1.1.1
+// version 1.1.2
 
 typealias Y  = (Double) -> Double
 typealias Yd = (Double, Double) -> Double

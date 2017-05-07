@@ -1,6 +1,6 @@
 package `base64_encode_data`
 
-// version 1.1.1
+// version 1.1.2
 
 import java.io.File
 import java.util.Base64

@@ -1,6 +1,6 @@
 package `execute_snusp`
 
-// version 1.1.1
+// version 1.1.2
 
 // requires 5 chars (10 bytes) of data store
 const val hw = """

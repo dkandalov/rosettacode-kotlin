@@ -1,6 +1,6 @@
 package `sorting_algorithms_permutation_sort`
 
-// version 1.1.1
+// version 1.1.2
 
 fun <T : Comparable<T>> isSorted(list: List<T>): Boolean {
     val size = list.size

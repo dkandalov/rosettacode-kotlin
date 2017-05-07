@@ -1,6 +1,6 @@
 package `knapsack_problem_0_1`
 
-// version 1.1.1
+// version 1.1.2
 
 data class Item(val name: String, val weight: Int, val value: Int)
 

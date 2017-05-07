@@ -1,6 +1,6 @@
 package `memory_allocation`
 
-// version 1.1.1
+// version 1.1.2
 
 class MyClass(val myInt: Int) {
     // in theory this method should be called automatically prior to GC

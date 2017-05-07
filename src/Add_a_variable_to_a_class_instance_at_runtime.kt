@@ -1,6 +1,6 @@
 package `add_a_variable_to_a_class_instance_at_runtime`
 
-// version 1.1.1
+// version 1.1.2
 
 class SomeClass {
     val runtimeVariables = mutableMapOf<String, Any>()

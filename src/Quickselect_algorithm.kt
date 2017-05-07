@@ -1,6 +1,6 @@
 package `quickselect_algorithm`
 
-// version 1.1.1
+// version 1.1.2
 
 const val MAX = Int.MAX_VALUE
 val rand = java.util.Random()

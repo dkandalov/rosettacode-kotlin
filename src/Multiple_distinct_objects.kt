@@ -1,6 +1,6 @@
 package `multiple_distinct_objects`
 
-// version 1.1.1
+// version 1.1.2
 
 class Foo {
     val id: Int

@@ -1,6 +1,6 @@
 package `permutations_with_repetitions`
 
-// version 1.1.1
+// version 1.1.2
 
 fun main(args: Array<String>) {
     val n  = 3

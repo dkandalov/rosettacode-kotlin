@@ -1,6 +1,6 @@
 package `miller%e2%80%93rabin_primality_test`
 
-// version 1.1.1
+// version 1.1.2
 
 import java.math.BigInteger
 import java.util.Random

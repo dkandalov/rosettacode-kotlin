@@ -1,6 +1,6 @@
 package `plasma_effect`
 
-// version 1.1.1
+// version 1.1.2
 
 import java.awt.*
 import java.awt.image.BufferedImage

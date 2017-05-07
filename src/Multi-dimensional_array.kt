@@ -1,6 +1,6 @@
 package `multi_dimensional_array`
 
-// version 1.1.1
+// version 1.1.2
 
 fun main(args: Array<String>) {
     // create a regular 4 dimensional array and initialize successive elements to the values 1 to 120

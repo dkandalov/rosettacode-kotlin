@@ -1,6 +1,6 @@
 package `xiaolin_wus_line_algorithm`
 
-// version 1.1.1
+// version 1.1.2
 
 import java.awt.*
 import javax.swing.*

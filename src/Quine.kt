@@ -1,8 +1,8 @@
 package `quine`
 
-// version 1.1.1
+// version 1.1.2
 
-const val F = """// version 1.1.1
+const val F = """// version 1.1.2
 
 const val F = %c%c%c%s%c%c%c
 

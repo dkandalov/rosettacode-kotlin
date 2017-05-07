@@ -1,6 +1,6 @@
 package `symmetric_difference`
 
-// version 1.1.1
+// version 1.1.2
 
 fun main(args: Array<String>) {
     val a = setOf("John", "Bob", "Mary", "Serena")

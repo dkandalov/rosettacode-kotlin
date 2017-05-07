@@ -1,6 +1,6 @@
 package `menu`
 
-// version 1.1.1
+// version 1.1.2
 
 fun menu(list: List<String>): String {
     if (list.isEmpty()) return ""

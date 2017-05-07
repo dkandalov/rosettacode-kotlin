@@ -1,6 +1,6 @@
 package `chebyshev_coefficients`
 
-// version 1.1.1
+// version 1.1.2
 
 typealias DFunc = (Double) -> Double
 

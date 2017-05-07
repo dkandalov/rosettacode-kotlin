@@ -1,6 +1,6 @@
 package `kahan_summation`
 
-// version 1.1.1
+// version 1.1.2
 
 fun kahanSum(vararg fa: Float): Float {
     var sum = 0.0f

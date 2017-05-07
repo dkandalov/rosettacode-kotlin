@@ -1,6 +1,6 @@
 package `euler_method`
 
-// version 1.1.1
+// version 1.1.2
 
 typealias Deriv = (Double) -> Double  // only one parameter needed here
 

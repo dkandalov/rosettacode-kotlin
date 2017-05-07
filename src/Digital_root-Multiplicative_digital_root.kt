@@ -1,6 +1,6 @@
 package `digital_root_multiplicative_digital_root`
 
-// version 1.1.1
+// version 1.1.2
 
 fun multDigitalRoot(n: Int): Pair<Int, Int> = when {
         n < 0   -> throw IllegalArgumentException("Negative numbers not allowed")

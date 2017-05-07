@@ -1,6 +1,6 @@
 package `sum_multiples_of_3_and_5`
 
-// version 1.1.1
+// version 1.1.2
 
 import java.math.BigInteger
 

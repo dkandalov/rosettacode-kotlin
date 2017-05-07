@@ -1,6 +1,6 @@
 package `brace_expansion`
 
-// version 1.1.1
+// version 1.1.2
 
 object BraceExpansion {
     fun expand(s: String) = expandR("", s, "")

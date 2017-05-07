@@ -1,6 +1,6 @@
 package `terminal_control_preserve_screen`
 
-// version 1.1.1
+// version 1.1.2
 
 const val ESC = "\u001B"
 

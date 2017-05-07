@@ -1,6 +1,6 @@
 package `hofstadter_q_sequence`
 
-// version 1.1.1
+// version 1.1.2
 
 fun main(args: Array<String>) {
     val q = IntArray(100_001)

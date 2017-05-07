@@ -1,6 +1,6 @@
 package `doubly_linked_list_element_definition`
 
-// version 1.1.1
+// version 1.1.2
 
 class Node<T: Number>(var data: T, var prev: Node<T>? = null, var next: Node<T>? = null) {
     override fun toString(): String {

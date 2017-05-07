@@ -1,6 +1,6 @@
 package `find_the_intersection_of_two_lines`
 
-// version 1.1.1
+// version 1.1.2
 
 class PointF(val x: Float, val y: Float) {
     override fun toString() = "{$x, $y}"

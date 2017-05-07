@@ -1,6 +1,6 @@
 package `closest_pair_problem`
 
-// version 1.1.1
+// version 1.1.2
 
 typealias Point = Pair<Double, Double>
 

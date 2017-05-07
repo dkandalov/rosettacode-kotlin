@@ -1,6 +1,6 @@
 package `sierpinski_triangle`
 
-// version 1.1.1
+// version 1.1.2
 
 const val ORDER = 4
 const val SIZE  = 1 shl ORDER

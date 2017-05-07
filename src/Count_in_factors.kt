@@ -1,6 +1,6 @@
 package `count_in_factors`
 
-// version 1.1.1
+// version 1.1.2
 
 fun isPrime(n: Int) : Boolean {
     if (n < 2) return false

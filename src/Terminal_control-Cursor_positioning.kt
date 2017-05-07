@@ -1,6 +1,6 @@
 package `terminal_control_cursor_positioning`
 
-// version 1.1.1
+// version 1.1.2
 
 fun main(args: Array<String>) {
     print("\u001Bc") // clear screen first

@@ -1,6 +1,6 @@
 package `soundex`
 
-// version 1.1.1
+// version 1.1.2
 
 fun getCode(c: Char) = when (c) {
     'B', 'F', 'P', 'V' -> "1"

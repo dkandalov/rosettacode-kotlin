@@ -1,6 +1,6 @@
 package `number_names`
 
-// version 1.1.1
+// version 1.1.2
 
 val names = mapOf(
     1 to "one",

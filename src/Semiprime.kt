@@ -1,6 +1,6 @@
 package `semiprime`
 
-// version 1.1.1
+// version 1.1.2
 
 fun isSemiPrime(n: Int): Boolean {
     var nf = 0

@@ -1,6 +1,6 @@
 package `queue_definition`
 
-// version 1.1.1
+// version 1.1.2
 
 import java.util.LinkedList
 

@@ -1,6 +1,6 @@
 package `van_der_corput_sequence`
 
-// version 1.1.1
+// version 1.1.2
 
 data class Rational(val num: Int, val denom: Int)
 

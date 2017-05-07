@@ -1,6 +1,6 @@
 package `continued_fraction`
 
-// version 1.1.1
+// version 1.1.2
 
 typealias Func = (Int) -> IntArray
 

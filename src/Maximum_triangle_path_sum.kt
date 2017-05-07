@@ -1,6 +1,6 @@
 package `maximum_triangle_path_sum`
 
-// version 1.1.1
+// version 1.1.2
 
 val tri = intArrayOf(
     55,

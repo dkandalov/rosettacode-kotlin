@@ -1,6 +1,6 @@
 package `horners_rule_for_polynomial_evaluation`
 
-// version 1.1.1
+// version 1.1.2
 
 fun horner(coeffs: DoubleArray, x: Double): Double {
     var sum = 0.0

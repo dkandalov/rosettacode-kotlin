@@ -1,6 +1,6 @@
 package `first_class_functions_use_numbers_analogously`
 
-// version 1.1.1
+// version 1.1.2
 
 fun multiplier(n1: Double, n2: Double) = { m: Double -> n1 * n2 * m}
 

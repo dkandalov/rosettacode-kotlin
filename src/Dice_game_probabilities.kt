@@ -1,6 +1,6 @@
 package `dice_game_probabilities`
 
-// version 1.1.1
+// version 1.1.2
 
 fun throwDie(nSides: Int, nDice: Int, s: Int, counts: IntArray) {
     if (nDice == 0) {

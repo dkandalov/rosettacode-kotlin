@@ -1,6 +1,6 @@
 package `forward_difference`
 
-// version 1.1.1
+// version 1.1.2
 
 fun forwardDifference(ia: IntArray, order: Int): IntArray {
     if (order < 0) throw IllegalArgumentException("Order must be non-negative")

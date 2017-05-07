@@ -1,6 +1,6 @@
 package `monty_hall_problem`
 
-// version 1.1.1
+// version 1.1.2
 
 import java.util.Random
 

@@ -1,6 +1,6 @@
 package `quaternion_type`
 
-// version 1.1.1
+// version 1.1.2
 
 data class Quaternion(val a: Double, val b: Double, val c: Double, val d: Double) {
     operator fun plus(other: Quaternion): Quaternion {

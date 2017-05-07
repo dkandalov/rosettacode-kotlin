@@ -1,6 +1,6 @@
 package `stack`
 
-// version 1.1.1
+// version 1.1.2
 
 class Stack<E> {
     private val data = mutableListOf<E>()

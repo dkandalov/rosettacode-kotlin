@@ -1,6 +1,6 @@
 package `sorting_algorithms_bogosort`
 
-// version 1.1.1
+// version 1.1.2
 
 const val RAND_MAX = 32768 // big enough for this
 

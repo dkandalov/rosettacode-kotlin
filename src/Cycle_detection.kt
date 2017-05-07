@@ -1,6 +1,6 @@
 package `cycle_detection`
 
-// version 1.1.1
+// version 1.1.2
 
 typealias IntToInt = (Int) -> Int
 

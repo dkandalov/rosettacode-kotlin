@@ -1,6 +1,6 @@
 package `sorting_algorithms_bead_sort`
 
-// version 1.1.1
+// version 1.1.2
 
 fun beadSort(a: IntArray) {
     val n = a.size

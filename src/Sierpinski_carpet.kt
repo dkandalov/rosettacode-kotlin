@@ -1,6 +1,6 @@
 package `sierpinski_carpet`
 
-// version 1.1.1
+// version 1.1.2
 
 fun inCarpet(x: Int, y: Int): Boolean {
     var xx = x

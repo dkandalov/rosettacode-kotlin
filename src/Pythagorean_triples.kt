@@ -1,6 +1,6 @@
 package `pythagorean_triples`
 
-// version 1.1.1
+// version 1.1.2
 
 var total = 0L
 var prim = 0L

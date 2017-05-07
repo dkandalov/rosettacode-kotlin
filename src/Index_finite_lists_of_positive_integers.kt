@@ -1,6 +1,6 @@
 package `index_finite_lists_of_positive_integers`
 
-// version 1.1.1
+// version 1.1.2
 
 import java.math.BigInteger
 

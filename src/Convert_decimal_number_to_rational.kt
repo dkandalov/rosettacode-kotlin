@@ -1,6 +1,6 @@
 package `convert_decimal_number_to_rational`
 
-// version 1.1.1
+// version 1.1.2
 
 class Rational(val num: Long, val den: Long) {
     override fun toString() = "$num/$den"

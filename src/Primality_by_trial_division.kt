@@ -1,6 +1,6 @@
 package `primality_by_trial_division`
 
-// version 1.1.1
+// version 1.1.2
 fun isPrime(n: Int): Boolean {
     if (n < 2) return false
     if (n % 2 == 0) return n == 2

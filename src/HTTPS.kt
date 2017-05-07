@@ -1,6 +1,6 @@
 package `https`
 
-// version 1.1.1
+// version 1.1.2
 import java.net.URL
 import javax.net.ssl.HttpsURLConnection
 import java.io.InputStreamReader

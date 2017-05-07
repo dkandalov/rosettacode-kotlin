@@ -1,6 +1,6 @@
 package `sierpinski_pentagon`
 
-// version 1.1.1
+// version 1.1.2
 
 import java.awt.*
 import java.awt.geom.Path2D

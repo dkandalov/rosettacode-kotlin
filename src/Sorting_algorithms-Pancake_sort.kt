@@ -1,6 +1,6 @@
 package `sorting_algorithms_pancake_sort`
 
-// version 1.1.1
+// version 1.1.2
 
 class PancakeSort(private val a: IntArray) {
     init {

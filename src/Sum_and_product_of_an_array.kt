@@ -1,6 +1,6 @@
 package `sum_and_product_of_an_array`
 
-// version 1.1.1
+// version 1.1.2
 
 fun main(args: Array<String>) {
     val a = intArrayOf(1, 5, 8, 11, 15)

@@ -1,6 +1,6 @@
 package `thue_morse`
 
-// version 1.1.1
+// version 1.1.2
 fun thueMorse(n: Int): String {
     val sb0 = StringBuilder("0")
     val sb1 = StringBuilder("1")

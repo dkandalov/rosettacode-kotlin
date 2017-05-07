@@ -1,6 +1,6 @@
 package `queue_usage`
 
-// version 1.1.1
+// version 1.1.2
 
 import java.util.*
 

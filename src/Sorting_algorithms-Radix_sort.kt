@@ -1,6 +1,6 @@
 package `sorting_algorithms_radix_sort`
 
-// version 1.1.1
+// version 1.1.2
 
 fun radixSort(original: IntArray): IntArray {
     var old = original // Need this to be mutable

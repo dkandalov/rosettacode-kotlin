@@ -1,6 +1,6 @@
 package `partial_function_application`
 
-// version 1.1.1
+// version 1.1.2
 
 typealias Func  = (Int) -> Int
 typealias FuncS = (Func, List<Int>) -> List<Int>

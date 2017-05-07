@@ -1,6 +1,6 @@
 package `singleton`
 
-// version 1.1.1
+// version 1.1.2
 
 object Singleton {
     fun speak() = println("I am a singleton")

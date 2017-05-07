@@ -1,6 +1,6 @@
 package `names_to_numbers`
 
-// version 1.1.1
+// version 1.1.2
 
 val names = mapOf<String, Long>(
     "one" to 1,

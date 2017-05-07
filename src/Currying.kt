@@ -1,6 +1,6 @@
 package `currying`
 
-// version 1.1.1
+// version 1.1.2
 
 fun curriedAdd(x: Int) = { y: Int -> x + y }
 

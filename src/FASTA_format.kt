@@ -1,6 +1,6 @@
 package `fasta_format`
 
-// version 1.1.1
+// version 1.1.2
 
 import java.util.Scanner
 import java.io.File

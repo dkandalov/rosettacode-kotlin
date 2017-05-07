@@ -1,6 +1,6 @@
 package `lzw_compression`
 
-// version 1.1.1
+// version 1.1.2
 
 object Lzw {
     /** Compress a string to a list of output symbols. */

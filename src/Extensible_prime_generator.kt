@@ -1,6 +1,6 @@
 package `extensible_prime_generator`
 
-// version 1.1.1
+// version 1.1.2
 // compiled with flag -Xcoroutines=enable to suppress 'experimental' warning
 
 import kotlin.coroutines.experimental.*

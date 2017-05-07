@@ -1,6 +1,6 @@
 package `terminal_control_unicode_output`
 
-// version 1.1.1
+// version 1.1.2
 
 fun main(args: Array<String>) {
     val supportsUnicode = "UTF" in System.getenv("LANG").toUpperCase()

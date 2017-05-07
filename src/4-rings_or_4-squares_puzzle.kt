@@ -1,6 +1,6 @@
 package `4_rings_or_4_squares_puzzle`
 
-// version 1.1.1
+// version 1.1.2
 
 class FourSquares(
     private val lo: Int,

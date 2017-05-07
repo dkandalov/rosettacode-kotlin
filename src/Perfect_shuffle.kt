@@ -1,6 +1,6 @@
 package `perfect_shuffle`
 
-// version 1.1.1
+// version 1.1.2
 
 fun areSame(a: IntArray, b: IntArray): Boolean {
     for (i in 0 until a.size) if (a[i] != b[i]) return false

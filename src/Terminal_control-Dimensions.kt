@@ -1,6 +1,6 @@
 package `terminal_control_dimensions`
 
-// version 1.1.1
+// version 1.1.2
 
 /*
     I needed to execute the terminal command: 'export COLUMNS LINES'

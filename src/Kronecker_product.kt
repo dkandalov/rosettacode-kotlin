@@ -1,6 +1,6 @@
 package `kronecker_product`
 
-// version 1.1.1 (JVM)
+// version 1.1.2 (JVM)
 
 typealias Matrix = Array<IntArray>
 

@@ -1,6 +1,6 @@
 package `http`
 
-// version 1.1.1
+// version 1.1.2
 
 import java.net.URL
 import java.io.InputStreamReader
