@@ -6,6 +6,9 @@ import java.io.File
 private val excludedTasks = listOf(
     "Address_of_a_variable", // kotlin native
     "Create_an_object_at_a_given_address", // kotlin native
+    "Call_a_foreign-language_function", // kotlin native
+    "Check_input_device_is_a_terminal", // kotlin native
+    "Check_output_device_is_a_terminal", // kotlin native
     "Boolean_values", // ignored because there is no code
     "Interactive_programming" // ignored because there is no code
 )
