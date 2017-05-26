@@ -17,6 +17,12 @@ requests will be considered.
 
 ## How to contribute?
 
+In general, the following things can be improved:
+ - clean up code (e.g. using IDE suggestions)
+ - add unit tests for existing examples
+ - update all examples to the latest version of Kotlin
+
+
 ### Step 1: Fork, clone and compile
 
 You will need to fork the repository on GitHub and then clone that repository to your working computer – the
