@@ -64,13 +64,10 @@ data class WebCodeSnippet(val editPageUrl: EditPageUrl, val sourceCode: String, 
         return editPage.submitCodeChange(newCode, index, cookieJar)
     }
 
-    override fun toString(): String {
-        return "$editPageUrl - $index"
-    }
+    override fun toString() = "$editPageUrl - $index"
 
     companion object {
-        fun create(url: EditPageUrl, code: String, index: Int) =
-                WebCodeSnippet(url, code.trimPackage().trimLineEnds(), index)
+        fun create(url: EditPageUrl, code: String, index: Int) = WebCodeSnippet(url, code.trimLineEnds(), index)
     }
 }
 

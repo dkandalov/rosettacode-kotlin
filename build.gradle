@@ -53,11 +53,13 @@ task compileDownload(type: KotlinCompile) {
 task pull(type: JavaExec, dependsOn: 'classes') {
     main = 'scripts.PullFromRosettaCodeKt'
     classpath = sourceSets.main.runtimeClasspath
+    systemProperties System.properties
 }
 
 task pullDirty(type: JavaExec, dependsOn: 'classes') {
     main = 'scripts.PullFromRosettaCodeDirtyKt'
     classpath = sourceSets.main.runtimeClasspath
+    systemProperties System.properties
 }
 
 task push(type: JavaExec, dependsOn: 'classes') {

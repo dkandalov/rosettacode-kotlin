@@ -56,7 +56,7 @@ private fun loginAndGetCookies(): CookieJar {
     return LoginPage.get().login(userName, password)
 }
 
-fun pullFromRosettaCodeWebsite() {
+fun pullFromRosettaCodeWebsite(overwriteLocalFiles: Boolean = false) {
     val snippetStorage = loadCodeSnippets(excludedTasks)
 
     snippetStorage.onlyWebSnippets.apply {
@@ -85,9 +85,20 @@ fun pullFromRosettaCodeWebsite() {
 
     snippetStorage.snippetsWithDiffs.apply {
         if (isNotEmpty()) {
-            log(">>> There are some tasks which have different source code locally and on rosetta code website.\n" +
-                "Please make necessary changes to keep repository in sync with website.\n")
-            forEach { log("Differences between ${it.second.filePath} and\n ${it.first.editPageUrl}\n") }
+            log(">>> There are some tasks which have different source code locally and on rosetta code website.\n")
+
+            if (overwriteLocalFiles) {
+                log(">>> Local files will updated with content from rosetta code website.\n")
+                forEach { (webCodeSnippet, localCodeSnippet) ->
+                    File(localCodeSnippet.filePath).writeText(webCodeSnippet.sourceCode)
+                    log("Overwritten ${localCodeSnippet.filePath}")
+                }
+            } else {
+                log(">>> Please make necessary changes to keep github repository and rosetta code website in sync.\n")
+                forEach { (webCodeSnippet, localCodeSnippet) ->
+                    log("Differences between ${localCodeSnippet.filePath} and\n ${webCodeSnippet.editPageUrl}\n")
+                }
+            }
         } else {
             log(">>> There are no differences between code in local files and rosetta code website.")
         }

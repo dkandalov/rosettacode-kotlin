@@ -5,5 +5,6 @@ import scripts.implementation.pullFromRosettaCodeWebsite
 
 fun main(args: Array<String>) {
     clearLocalWebCache(excluding = "loginCookieJar.xml")
-    pullFromRosettaCodeWebsite()
+    val overwriteLocalFiles = System.getProperty("overwriteLocalFiles", "false").toBoolean()
+    pullFromRosettaCodeWebsite(overwriteLocalFiles)
 }
