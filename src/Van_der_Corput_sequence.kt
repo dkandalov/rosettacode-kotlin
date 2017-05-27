@@ -13,8 +13,8 @@ fun vdc(n: Int, base: Int): Rational {
         q *= base
         nn /= base
     }
-    var num = p
-    var denom = q
+    val num = p
+    val denom = q
     while (p != 0) {
         nn = p
         p = q % p

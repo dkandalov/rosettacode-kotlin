@@ -1,4 +1,4 @@
-package game24
+package `24_game`
 
 import java.util.*
 

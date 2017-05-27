@@ -1,6 +1,6 @@
 package `guess_the_number_with_feedback`
 
-// version 1.0.5-2
+// version 1.1.2
 
 fun main(args: Array<String>) {
     val rand = java.util.Random()
@@ -11,10 +11,10 @@ fun main(args: Array<String>) {
         print(" Your guess : ")
         guess = readLine()!!.toInt()
         when (guess) {
-            n              ->  { println("Correct, well guessed!") ; return }   
+            n              ->  { println("Correct, well guessed!") ; return }
             in n + 1 .. 20 ->    println("Your guess is higher than the chosen number, try again")
             in 1 .. n - 1  ->    println("Your guess is lower than the chosen number, try again")
             else           ->    println("Your guess is inappropriate, try again")
-        }                 
-    }    
+        }
+    }
 }
