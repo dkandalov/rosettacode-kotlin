@@ -90,7 +90,7 @@ fun pullFromRosettaCodeWebsite(overwriteLocalFiles: Boolean = false) {
             if (overwriteLocalFiles) {
                 log(">>> Local files will updated with content from rosetta code website.\n")
                 forEach { (webCodeSnippet, localCodeSnippet) ->
-                    File(localCodeSnippet.filePath).writeText(webCodeSnippet.sourceCode)
+                    LocalCodeSnippet.create(webCodeSnippet)
                     log("Overwritten ${localCodeSnippet.filePath}")
                 }
             } else {

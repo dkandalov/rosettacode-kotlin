@@ -56,12 +56,6 @@ task pull(type: JavaExec, dependsOn: 'classes') {
     systemProperties System.properties
 }
 
-task pullDirty(type: JavaExec, dependsOn: 'classes') {
-    main = 'scripts.PullFromRosettaCodeDirtyKt'
-    classpath = sourceSets.main.runtimeClasspath
-    systemProperties System.properties
-}
-
 task push(type: JavaExec, dependsOn: 'classes') {
     main = 'scripts.PushToRosettaCodeKt'
     classpath = sourceSets.main.runtimeClasspath
