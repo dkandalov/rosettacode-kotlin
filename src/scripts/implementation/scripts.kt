@@ -128,7 +128,7 @@ private fun loadCodeSnippets(exclusions: List<String>): CodeSnippetStorage {
             exclusions.none { editPageUrl.value.contains(it) }
         }
 
-    val localCodeSnippets = File("src").listFiles()
+    val localCodeSnippets = File(examplesPath).listFiles()
         .filter { !it.isDirectory && it.extension == "kt" }
         .map { LocalCodeSnippet(it.path) }
 

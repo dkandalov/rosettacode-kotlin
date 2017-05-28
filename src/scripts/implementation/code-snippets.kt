@@ -6,6 +6,8 @@ import scripts.implementation.EditPageUrl.Companion.asPackageName
 import scripts.implementation.LocalCodeSnippet.Companion.postfixedWith
 import java.io.File
 
+const val examplesPath: String = "src/examples"
+
 data class CodeSnippetStorage(val webSnippets: List<WebCodeSnippet>, val localSnippets: List<LocalCodeSnippet>) {
     val onlyLocalSnippets: List<LocalCodeSnippet>
         get() = localSnippets.filter { local -> webSnippets.none{ local.id == it.id } }
@@ -38,7 +40,7 @@ data class LocalCodeSnippet(val filePath: String) {
                 if (it.startsWith("package ")) it
                 else "package ${codeSnippet.snippetPackageName()}\n\n" + it
             }
-            val localFile = File("src/${localFileName(editPageUrl, index)}")
+            val localFile = File("$examplesPath/${localFileName(editPageUrl, index)}")
             localFile.parentFile.mkdirs()
             localFile.writeText(sourceCode)
             LocalCodeSnippet(localFile.path)
