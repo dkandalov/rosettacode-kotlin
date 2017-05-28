@@ -2,6 +2,7 @@ package scripts.implementation
 
 import khttp.structures.cookie.CookieJar
 import java.io.File
+import java.net.SocketTimeoutException
 
 private val excludedTasks = listOf(
     "Address_of_a_variable", // kotlin native
@@ -118,7 +119,7 @@ private fun loadCodeSnippets(exclusions: List<String>): CodeSnippetStorage {
     val editPages = cached("editPages") {
         editPageUrls.mapParallelWithProgress { it, progress ->
             log("Getting source code from $it ($progress)")
-            EditPage.Companion.get(it)
+            retry(SocketTimeoutException::class) { EditPage.Companion.get(it) }
         }
     }
 

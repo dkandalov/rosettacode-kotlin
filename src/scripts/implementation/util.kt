@@ -6,6 +6,8 @@ import java.io.File
 import java.util.concurrent.Callable
 import java.util.concurrent.Executors.newFixedThreadPool
 import java.util.concurrent.atomic.AtomicReference
+import kotlin.reflect.KClass
+import kotlin.reflect.full.isSubclassOf
 
 val log: (Any?) -> Unit = {
     System.out.println(it)
@@ -64,6 +66,19 @@ fun <T, R> List<T>.mapParallelWithProgress(f: (T, Progress) -> R): List<R> {
     val result = futures.map { it.get() }
     executor.shutdown()
     return result
+}
+
+fun <T> retry(exceptionClass: KClass<out Exception>, retries: Int = 3, f: () -> T): T {
+    return try {
+        f()
+    } catch(e: Exception) {
+        if (retries == 1) throw IllegalStateException("Exceeded amount of retries", e)
+        if (e.javaClass.kotlin.isSubclassOf(exceptionClass)) {
+            retry(exceptionClass, retries - 1, f)
+        } else {
+            throw e
+        }
+    }
 }
 
 private fun <T> T.ifNull(defaultValue: T): T = if (this == null) defaultValue else this
