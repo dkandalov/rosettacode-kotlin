@@ -10,6 +10,8 @@ private val excludedTasks = listOf(
     "Call_a_foreign-language_function", // kotlin native
     "Check_input_device_is_a_terminal", // kotlin native
     "Check_output_device_is_a_terminal", // kotlin native
+    "Machine_code", // kotlin native
+    "Terminal_control-Positional_read", // kotlin native
     "Boolean_values", // ignored because there is no code
     "Interactive_programming" // ignored because there is no code
 )
