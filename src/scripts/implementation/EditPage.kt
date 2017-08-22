@@ -40,7 +40,7 @@ data class EditPage(val url: EditPageUrl, val html: String) {
         val autoSummary = html.valueOfTag("wpAutoSummary")
         val editToken = html.valueOfTag("wpEditToken")
 
-        val hasMissingFields = listOf(section, startTime, editTime, parentRevId, oldId, autoSummary, editTime).any { it.isNullOrEmpty() }
+        val hasMissingFields = listOf(section, startTime, editTime, parentRevId, oldId, autoSummary, editTime).any { it.isEmpty() }
         if (hasMissingFields) return Failure("some of required fields are missing from edit page")
 
         // TODO some pages seem to only work with http instead of https url

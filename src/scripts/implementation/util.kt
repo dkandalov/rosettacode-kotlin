@@ -81,4 +81,4 @@ fun <T> retry(exceptionClass: KClass<out Exception>, retries: Int = 3, f: () -> 
     }
 }
 
-private fun <T> T.ifNull(defaultValue: T): T = if (this == null) defaultValue else this
+private fun <T> T.ifNull(defaultValue: T): T = this ?: defaultValue

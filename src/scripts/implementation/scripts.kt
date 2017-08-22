@@ -52,7 +52,7 @@ fun pushLocalChangesToRosettaCode() {
 
 private fun loginAndGetCookies(): CookieJar {
     val (userName, password) = showLoginDialog() ?: return CookieJar()
-    if (userName.isNullOrEmpty() || password.isNullOrEmpty()) {
+    if (userName.isEmpty() || password.isEmpty()) {
         log("Please specify non-empty user name and password to be able to login into RosettaCode website.")
         return CookieJar()
     }

@@ -8,7 +8,10 @@ import java.io.File
 
 const val examplesPath: String = "src/examples"
 
-data class CodeSnippetStorage(val webSnippets: List<WebCodeSnippet>, val localSnippets: List<LocalCodeSnippet>) {
+data class CodeSnippetStorage(
+    private val webSnippets: List<WebCodeSnippet>,
+    private val localSnippets: List<LocalCodeSnippet>
+) {
     val onlyLocalSnippets: List<LocalCodeSnippet>
         get() = localSnippets.filter { local -> webSnippets.none{ local.id == it.id } }
 
