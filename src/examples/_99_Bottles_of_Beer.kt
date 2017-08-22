@@ -1,4 +1,4 @@
-package `99_bottles_of_beer`
+package `_99_bottles_of_beer`
 
 fun main(args: Array<String>) {
     for (i in 99.downTo(1)) {

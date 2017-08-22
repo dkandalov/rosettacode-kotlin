@@ -1,4 +1,4 @@
-package `9_billion_names_of_god_the_integer`
+package `_9_billion_names_of_god_the_integer`
 
 import java.lang.Math.min
 import java.math.BigInteger

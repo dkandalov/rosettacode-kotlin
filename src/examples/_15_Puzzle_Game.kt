@@ -1,4 +1,4 @@
-package `15_puzzle_game`
+package `_15_puzzle_game`
 
 // version 1.1.3
 

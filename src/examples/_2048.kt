@@ -1,4 +1,4 @@
-package `2048`
+package `_2048`
 
 import java.io.BufferedReader
 import java.io.InputStreamReader
