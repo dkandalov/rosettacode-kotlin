@@ -10,8 +10,10 @@ data class EditPageUrl(val value: String) {
         /**
          * Replace some characters because they are not "friendly" to be used as file name.
          */
-        fun String.asFileName() =
-            replace("/", "-").replace("%27", "").replace("%2B", "-plus-")
+        fun String.asFileName() = replace("/", "-")
+            .replace("%27", "")
+            .replace("%2B", "-plus-")
+            .replace(".", "")
             .let { if (it.matches(Regex("\\d+.*"))) "_$it" else it } // workaround for https://youtrack.jetbrains.com/issue/KT-10494
 
         /**

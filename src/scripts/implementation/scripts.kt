@@ -5,6 +5,10 @@ import java.io.File
 import java.net.SocketTimeoutException
 
 private val excludedTasks = listOf(
+    "matrix_NG,_Contined_Fraction_N", // because of https://youtrack.jetbrains.com/issue/KT-10494
+    "Calendar_-_for_%22REAL%22_programmers-1", // TODO
+    "Calendar_-_for_%22REAL%22_programmers-2", // TODO
+    "Calendar_-_for_%22REAL%22_programmers", // TODO
     "Address_of_a_variable", // kotlin native
     "Create_an_object_at_a_given_address", // kotlin native
     "Call_a_foreign-language_function", // kotlin native
@@ -13,7 +17,8 @@ private val excludedTasks = listOf(
     "Machine_code", // kotlin native
     "Terminal_control-Positional_read", // kotlin native
     "Boolean_values", // ignored because there is no code
-    "Interactive_programming" // ignored because there is no code
+    "Interactive_programming", // ignored because there is no code
+    "Positional_read" // kotlin native
 )
 
 fun pushLocalChangesToRosettaCode() {
