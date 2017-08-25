@@ -17,10 +17,7 @@ class CodeSnippetsSpec : StringSpec() {
             localCodeSnippet.sourceCode shouldEqual "class A {}"
 
             val webCodeSnippet = WebCodeSnippet.create(EditPageUrl(""), code, 0)
-            webCodeSnippet.sourceCode shouldEqual "\n" +
-                "package abc\n" +
-                "  class A {}\n" +
-                "\n"
+            webCodeSnippet.sourceCode shouldEqual "class A {}"
         }
     }
 }
