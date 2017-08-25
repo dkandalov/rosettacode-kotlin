@@ -72,7 +72,7 @@ data class WebCodeSnippet(val editPageUrl: EditPageUrl, val sourceCode: String, 
     override fun toString() = "$editPageUrl - $index"
 
     companion object {
-        fun create(url: EditPageUrl, code: String, index: Int) = WebCodeSnippet(url, code.trimLineEnds(), index)
+        fun create(url: EditPageUrl, code: String, index: Int) = WebCodeSnippet(url, code.trim().trimLineEnds(), index)
     }
 }
 

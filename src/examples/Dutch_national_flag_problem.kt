@@ -2,7 +2,7 @@ package `dutch_national_flag_problem`
 
 // version 1.1.2
 
-import java.util.*
+import java.util.Random
 
 enum class DutchColors { RED, WHITE, BLUE }
 
