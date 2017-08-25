@@ -2,7 +2,7 @@ package `_24_game_solve`
 
 // version 1.1.3
 
-import java.util.*
+import java.util.Random
 
 const val N_CARDS = 4
 const val SOLVE_GOAL = 24

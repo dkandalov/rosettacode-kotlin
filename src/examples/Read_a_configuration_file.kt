@@ -12,7 +12,7 @@ data class Configuration(val map: Map<String, Any?>) {
 }
 
 fun main(args: Array<String>) {
-    val lines = Files.readAllLines(Paths.get("configuration.txt"), StandardCharsets.UTF_8)
+    val lines = Files.readAllLines(Paths.get("src/configuration.txt"), StandardCharsets.UTF_8)
     val keyValuePairs = lines.map{ it.trim() }
             .filterNot { it.isEmpty() }
             .filterNot(::commentedOut)

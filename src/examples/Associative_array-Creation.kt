@@ -24,5 +24,5 @@ fun main(args: Array<String>) {
     println()
 
     // iterate over key, value pairs:
-    for ((k, v) in map.entries) println("$k => $v")
+    for ((k, v) in map) println("$k => $v")
 }

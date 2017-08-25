@@ -2,7 +2,7 @@ package `permutations_rank_of_a_permutation`
 
 // version 1.1.2
 
-import java.util.*
+import java.util.Random
 
 fun IntArray.swap(i: Int, j: Int) {
     val temp = this[i]

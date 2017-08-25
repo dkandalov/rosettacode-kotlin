@@ -2,21 +2,56 @@ package `dutch_national_flag_problem`
 
 // version 1.1.2
 
-import java.util.Random
+import java.util.*
+
+enum class DutchColors { RED, WHITE, BLUE }
+
+fun Array<DutchColors>.swap(i: Int, j: Int) {
+    val temp = this[i]
+    this[i] = this[j]
+    this[j] = temp
+}
+
+fun Array<DutchColors>.sort() {
+    var lo = 0
+    var mid = 0
+    var hi = this.lastIndex
+
+    while (mid <= hi) {
+        when (this[mid]) {
+            DutchColors.RED   -> this.swap(lo++, mid++)
+            DutchColors.WHITE -> mid++
+            DutchColors.BLUE  -> this.swap(mid, hi--)
+        }
+    }
+}
+
+fun Array<DutchColors>.isSorted(): Boolean {
+    for (i in 1 until this.size) {
+        if (this[i].ordinal < this[i - 1].ordinal) return false
+    }
+    return true
+}
 
 const val NUM_BALLS = 9
 
-val colorMap = mapOf(0 to "RED", 1 to "WHITE", 2 to "BLUE")
-
 fun main(args: Array<String>) {
     val r = Random()
-    val balls = IntArray(NUM_BALLS)
-    balls[0] = 1 + r.nextInt(2) // ensures first ball is 1 or 2 and so can't be RED
-    for (i in 1 until NUM_BALLS) balls[i] = r.nextInt(3)
+    val balls  = Array<DutchColors>(NUM_BALLS) { DutchColors.RED }
+    val colors = DutchColors.values()
+
+    // give balls random colors whilst ensuring they're not already sorted
+    do {
+        for (i in 0 until NUM_BALLS) balls[i] = colors[r.nextInt(3)]
+    }
+    while (balls.isSorted())
+
     // print the colors of the balls before sorting
-    println("Before sorting : ${balls.map { colorMap[it] }}")
-    // sort the balls in natural order
+    println("Before sorting : ${balls.contentToString()}")
+
+    // sort the balls in DutchColors order
     balls.sort()
+
     // print the colors of the balls after sorting
-    println("After sorting  : ${balls.map { colorMap[it] }}")
+    println("After sorting  : ${balls.contentToString()}")
 }

@@ -6,7 +6,7 @@ import javax.sound.sampled.AudioSystem
 val morseCode = hashMapOf(
         'a' to ".-", 'b' to "-...", 'c' to "-.-.",
         'd' to "-..", 'e' to ".", 'f' to "..-.",
-        'g' to "--.", 'h' to "....", 'i' to "",
+        'g' to "--.", 'h' to "....", 'i' to "..",
         'j' to ".---", 'k' to "-.-", 'l' to ".-..",
         'm' to "--", 'n' to "-.", 'o' to "---",
         'p' to ".--.", 'q' to "--.-", 'r' to ".-.",

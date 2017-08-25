@@ -32,7 +32,7 @@ class Frac : Comparable<Frac> {
             nn = -nn
             dd = -dd
         }
-        val g = gcd(nn, dd)
+        val g = Math.abs(gcd(nn, dd))
         if (g > 1) {
             nn /= g
             dd /= g
