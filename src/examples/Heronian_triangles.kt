@@ -1,6 +1,6 @@
 package `heronian_triangles`
 
-import java.util.*
+import java.util.ArrayList
 
 object Heron {
     private val n = 200
@@ -21,7 +21,7 @@ object Heron {
 
         sort(l)
         print("\n\nFirst ten when ordered by increasing area, then perimeter:" + header)
-        for (i in 0..10 - 1) {
+        for (i in 0 until 10) {
             print(format(l[i]))
         }
         val a = 210
@@ -47,7 +47,7 @@ object Heron {
         var swapped = true
         while (swapped) {
             swapped = false
-            for (i in 1..l.size - 1)
+            for (i in 1 until l.size)
                 if (l[i][4] < l[i - 1][4] || l[i][4] == l[i - 1][4] && l[i][3] < l[i - 1][3]) {
                     val temp = l[i]
                     l[i] = l[i - 1]

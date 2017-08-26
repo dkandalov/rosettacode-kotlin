@@ -1,12 +1,12 @@
 package `emirp_primes`
 
-//  version 1.0.5-2
+//  version 1.1.4
 
 fun isPrime(n: Int) : Boolean {
     if (n < 2) return false 
     if (n % 2 == 0) return n == 2
     if (n % 3 == 0) return n == 3
-    var d : Int = 5
+    var d = 5
     while (d * d <= n) {
         if (n % d == 0) return false
         d += 2

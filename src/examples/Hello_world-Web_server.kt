@@ -1,9 +1,7 @@
 package `hello_world_web_server`
 
-// version 1.1.2
-
-import java.net.ServerSocket
 import java.io.PrintWriter
+import java.net.ServerSocket
 
 fun main(args: Array<String>) {
     val listener = ServerSocket(8080)

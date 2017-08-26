@@ -1,14 +1,14 @@
 package `egyptian_division`
 
-// version 1.1.3
+// version 1.1.4
 
 data class DivMod(val quotient: Int, val remainder: Int)
 
 fun egyptianDivide(dividend: Int, divisor: Int): DivMod {
     require (dividend >= 0 && divisor > 0)
     if (dividend < divisor) return DivMod(0, dividend)
-    val powersOfTwo = mutableListOf<Int>(1)
-    val doublings = mutableListOf<Int>(divisor)
+    val powersOfTwo = mutableListOf(1)
+    val doublings = mutableListOf(divisor)
     var doubling = divisor
     while (true) {
        doubling *= 2

@@ -1,10 +1,24 @@
 package `honeycombs`
 
-// version 1.1.2
+// version 1.1.4
 
-import java.awt.*
-import java.awt.event.*
-import javax.swing.*
+import java.awt.BasicStroke
+import java.awt.BorderLayout
+import java.awt.Color
+import java.awt.Dimension
+import java.awt.Font
+import java.awt.Graphics
+import java.awt.Graphics2D
+import java.awt.Polygon
+import java.awt.RenderingHints
+import java.awt.event.KeyAdapter
+import java.awt.event.KeyEvent
+import java.awt.event.MouseAdapter
+import java.awt.event.MouseEvent
+import java.awt.event.WindowEvent
+import javax.swing.JFrame
+import javax.swing.JPanel
+import javax.swing.SwingUtilities
 
 class Honeycombs : JPanel() {
     private val comb: Array<Hexagon?> = arrayOfNulls(20)
@@ -128,7 +142,7 @@ fun main(args: Array<String>) {
             title = "Honeycombs"
             isResizable = false
             pack()
-            setLocationRelativeTo(null);
+            setLocationRelativeTo(null)
             isVisible = true
         }
     }

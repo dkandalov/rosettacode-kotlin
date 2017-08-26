@@ -1,6 +1,6 @@
 package `dutch_national_flag_problem`
 
-// version 1.1.2
+// version 1.1.4
 
 import java.util.Random
 
@@ -27,17 +27,15 @@ fun Array<DutchColors>.sort() {
 }
 
 fun Array<DutchColors>.isSorted(): Boolean {
-    for (i in 1 until this.size) {
-        if (this[i].ordinal < this[i - 1].ordinal) return false
-    }
-    return true
+    return (1 until this.size)
+        .none { this[it].ordinal < this[it - 1].ordinal }
 }
 
 const val NUM_BALLS = 9
 
 fun main(args: Array<String>) {
     val r = Random()
-    val balls  = Array<DutchColors>(NUM_BALLS) { DutchColors.RED }
+    val balls  = Array(NUM_BALLS) { DutchColors.RED }
     val colors = DutchColors.values()
 
     // give balls random colors whilst ensuring they're not already sorted

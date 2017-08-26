@@ -1,7 +1,5 @@
 package `hello_world_line_printer`
 
-// version 1.1.2
-
 import java.io.File
 
 fun main(args: Array<String>) {

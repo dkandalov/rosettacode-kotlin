@@ -43,8 +43,8 @@ internal class ArrayData(val dataArray: IntArray, val width: Int, val height: In
     fun writeOutputImage(filename: String) {
         val max = dataArray.max()!!
         val image = BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB)
-        for (y in 0..height - 1)
-            for (x in 0..width - 1) {
+        for (y in 0 until height)
+            for (x in 0 until width) {
                 val n = Math.min(Math.round(this[x, y] * 255.0 / max).toInt(), 255)
                 image.setRGB(x, height - 1 - y, n shl 16 or (n shl 8) or 0x90 or -0x01000000)
             }
@@ -62,7 +62,7 @@ internal class ArrayData(val dataArray: IntArray, val width: Int, val height: In
             if (i != 4) {
                 val newx = x + i % 3 - 1
                 val newy = y + i / 3 - 1
-                if (newx >= 0 && newx < width && newy >= 0 && newy < height
+                if (newx in 0..(width - 1) && newy >= 0 && newy < height
                         && Math.abs(get(newx, newy) - centerValue) >= minContrast)
                     return true
             }
@@ -77,8 +77,8 @@ internal fun readInputFromImage(filename: String): ArrayData {
     val rgbData = image.getRGB(0, 0, w, h, null, 0, w)
     // flip y axis when reading image
     val array = ArrayData(w, h)
-    for (y in 0..h - 1)
-        for (x in 0..w - 1) {
+    for (y in 0 until h)
+        for (x in 0 until w) {
             var rgb = rgbData[y * w + x]
             rgb = ((rgb and 0xFF0000).ushr(16) * 0.30 + (rgb and 0xFF00).ushr(8) * 0.59 + (rgb and 0xFF) * 0.11).toInt()
             array[x, h - 1 - y] = rgb

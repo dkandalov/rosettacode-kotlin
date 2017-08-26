@@ -1,6 +1,6 @@
 package `dynamic_variable_names`
 
-// version 1.0.6
+// version 1.1.4
 
 fun main(args: Array<String>) {
     var n: Int
@@ -13,7 +13,7 @@ fun main(args: Array<String>) {
     val map = mutableMapOf<String, Int>()
     var name: String
     var value: Int
-    var i: Int = 1
+    var i = 1
     println("OK, enter the variable names and their values, below")   
     do {
         println("\n  Variable $i")

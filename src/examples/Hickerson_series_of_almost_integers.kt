@@ -1,6 +1,6 @@
 package `hickerson_series_of_almost_integers`
 
-// version 1.0.6
+// version 1.1.4
 
 import java.math.BigDecimal
 import java.math.BigInteger

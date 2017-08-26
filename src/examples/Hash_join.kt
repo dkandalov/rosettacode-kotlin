@@ -1,7 +1,5 @@
 package `hash_join`
 
-// version 1.1.2
-
 data class A(val age: Int, val name: String)
 
 data class B(val character: String, val nemesis: String)
@@ -12,8 +10,7 @@ fun hashJoin(tableA: List<A>, tableB: List<B>): List<C> {
     val mm = tableB.groupBy { it.character }
     val tableC = mutableListOf<C>()
     for (a in tableA) {
-        val value = mm[a.name]
-        if (value == null) continue
+        val value = mm[a.name] ?: continue
         for (b in value) tableC.add(C(a, b))
     }
     return tableC.toList()

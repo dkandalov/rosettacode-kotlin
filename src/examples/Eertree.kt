@@ -1,6 +1,6 @@
 package `eertree`
 
-// version 1.1.3
+// version 1.1.4
 
 class Node {
     val edges = mutableMapOf<Char, Node>()  // edges (or forward links)
@@ -8,7 +8,7 @@ class Node {
     var len = 0                             // the length of the node
 }
 
-class Eertree(val str: String) {
+class Eertree(str: String) {
     val nodes = mutableListOf<Node>()
 
     private val rto = Node()                // odd length root node, or node -1

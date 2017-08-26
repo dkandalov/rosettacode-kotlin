@@ -1,8 +1,12 @@
 package `horizontal_sundial_calculations`
 
-import java.lang.Math.*
+import java.lang.Math.atan2
+import java.lang.Math.cos
+import java.lang.Math.sin
+import java.lang.Math.toDegrees
+import java.lang.Math.toRadians
 
-// version 1.1.2
+// version 1.1.4
 
 fun main(args: Array<String>) {
     println("Please enter the following in degrees:")

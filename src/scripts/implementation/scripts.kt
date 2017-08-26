@@ -27,7 +27,7 @@ fun pushLocalChangesToRosettaCode() {
         if (isEmpty()) return log(">>> Nothing to push. There are no differences between code in local files and rosetta code website.")
 
         var cookieJar = cached("loginCookieJar") { loginAndGetCookies() }
-        if (cookieJar.hasExpiredEntries()) {
+        if (cookieJar.isEmpty() || cookieJar.hasExpiredEntries()) {
             log("Login cookies have expired entries. Please login to RosettaCode website again.")
             cookieJar = cached("loginCookieJar", replace = true) { loginAndGetCookies() }
         }

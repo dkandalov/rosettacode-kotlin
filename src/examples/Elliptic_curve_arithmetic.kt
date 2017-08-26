@@ -1,6 +1,6 @@
 package `elliptic_curve_arithmetic`
 
-// version 1.1.2
+// version 1.1.4
 
 const val C = 7
 
