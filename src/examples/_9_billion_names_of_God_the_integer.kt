@@ -2,7 +2,7 @@ package `_9_billion_names_of_god_the_integer`
 
 import java.lang.Math.min
 import java.math.BigInteger
-import java.util.*
+import java.util.ArrayList
 import java.util.Arrays.asList
 
 fun namesOfGod(n: Int): List<BigInteger> {
@@ -21,7 +21,7 @@ fun namesOfGod(n: Int): List<BigInteger> {
     return cache[n]
 }
 
-fun row(n: Int) = namesOfGod(n).let { r -> (0..n - 1).map { r[it + 1] - r[it] } }
+fun row(n: Int) = namesOfGod(n).let { r -> (0 until n).map { r[it + 1] - r[it] } }
 
 fun main(args: Array<String>) {
     println("Rows:")

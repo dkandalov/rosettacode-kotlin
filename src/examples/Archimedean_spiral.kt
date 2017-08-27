@@ -1,7 +1,5 @@
 package `archimedean_spiral`
 
-// version 1.1.0
-
 import java.awt.*
 import javax.swing.*
 

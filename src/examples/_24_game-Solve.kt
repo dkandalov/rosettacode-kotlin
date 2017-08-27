@@ -85,7 +85,7 @@ fun solve(ea: Array<Expr?>, len: Int): Boolean {
 }
 
 fun solve24(n: IntArray) =
-    solve (Array<Expr?>(N_CARDS) { Expr(value = n[it]) }, N_CARDS)
+    solve (Array(N_CARDS) { Expr(value = n[it]) }, N_CARDS)
 
 fun main(args: Array<String>) {
     val r = Random()

@@ -1,46 +1,31 @@
 package `arithmetic_complex`
 
-// version 1.0.5-2
+class Complex(private val real: Double, private val imag: Double) {
+    operator fun plus(other: Complex) = Complex(real + other.real, imag + other.imag)
 
-class Complex(val real: Double, val imag: Double) {
-    operator fun plus(other: Complex): Complex {
-        return Complex(this.real + other.real, this.imag + other.imag)
-    }
-
-    operator fun times(other: Complex): Complex {
-        return Complex(this.real * other.real - this.imag * other.imag,
-                       this.real * other.imag + this.imag * other.real)
-    }
+    operator fun times(other: Complex) = Complex(
+        real * other.real - imag * other.imag,
+        real * other.imag + imag * other.real
+    )
 
     fun inv(): Complex {
-        val denom : Double = this.real * this.real + this.imag * this.imag
-        return Complex(this.real / denom, -this.imag / denom)
+        val denom = real * real + imag * imag
+        return Complex(real / denom, -imag / denom)
     }
 
-    operator fun unaryMinus() : Complex {
-        return Complex(-this.real, -this.imag)
-    }    
+    operator fun unaryMinus() = Complex(-real, -imag)
 
-    operator fun minus(other: Complex): Complex {
-        return this + (-other)
-    }
+    operator fun minus(other: Complex) = this + (-other)
 
-    operator fun div(other: Complex): Complex {
-        return this * other.inv()
-    }
+    operator fun div(other: Complex) = this * other.inv()
 
-    fun conj(): Complex {
-        return Complex(this.real, -this.imag)
-    }
+    fun conj() = Complex(real, -imag)
 
-    override fun toString(): String {
-        if (this.imag >= 0.0) 
-            return "${this.real} + ${this.imag}i" 
-        else 
-            return "${this.real} - ${-this.imag}i"
-    }
+    override fun toString() =
+        if (imag >= 0.0) "$real + ${imag}i"
+        else "$real - ${-imag}i"
 }
-   
+
 fun main(args: Array<String>) {
     val x = Complex(1.0, 3.0)
     val y = Complex(5.0, 2.0)

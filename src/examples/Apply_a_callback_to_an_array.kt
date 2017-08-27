@@ -1,7 +1,7 @@
 package `apply_a_callback_to_an_array`
 
 fun main(args: Array<String>) {
-    val array = arrayOf(1,2,3,4,5,6,7,8,9,10)  // build
+    val array = arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)  // build
     val function = { i: Int -> i * i } // function to apply
     val list = array.map { function(it) } // process each item
     println(list) // print results

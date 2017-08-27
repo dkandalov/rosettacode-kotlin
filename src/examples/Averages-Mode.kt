@@ -1,6 +1,5 @@
 package `averages_mode`
 
-// version 1.0.6
 fun <T> modeOf(a: Array<T>) {
     val sortedByFreq = a.groupBy { it }.entries.sortedByDescending { it.value.size }
     val maxFreq = sortedByFreq.first().value.size

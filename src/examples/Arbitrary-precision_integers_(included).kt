@@ -1,7 +1,5 @@
 package `arbitrary_precision_integers_(included)`
 
-// version 1.0.5-2
-
 import java.math.BigInteger
 
 fun main(args: Array<String>) {

@@ -1,7 +1,5 @@
 package `anonymous_recursion`
 
-// version 1.1.2
-
 fun fib(n: Int): Int {
    require(n >= 0)
    fun fib1(k: Int, a: Int, b: Int): Int =

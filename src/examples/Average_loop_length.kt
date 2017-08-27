@@ -1,7 +1,5 @@
 package `average_loop_length`
 
-// version 1.0.6
-
 const val NMAX  = 20
 const val TESTS = 1000000
 val rand = java.util.Random()
@@ -21,7 +19,7 @@ fun avg(n: Int): Double {
 }
 
 fun ana(n: Int): Double {
-    var nn = n.toDouble()
+    val nn = n.toDouble()
     var term = 1.0
     var sum = 1.0
     for (i in n - 1 downTo 1) {

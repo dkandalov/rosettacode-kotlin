@@ -2,10 +2,12 @@ package `associative_array_creation`
 
 fun main(args: Array<String>) {
     // map definition:
-    val map = mapOf("foo" to 5,
-                    "bar" to 10,
-                    "baz" to 15,
-                    "foo" to 6)
+    val map = mapOf(
+        "foo" to 5,
+        "bar" to 10,
+        "baz" to 15,
+        "foo" to 6
+    )
 
     // retrieval:
     println(map["foo"]) // => 6

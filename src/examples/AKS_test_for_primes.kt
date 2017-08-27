@@ -23,7 +23,7 @@ fun binomial(n: Int, k: Int): Long = when {
 
 fun isPrime(n: Int): Boolean {
     if (n < 2) return false
-    return (1..n-1).none { binomial(n, it) % n.toLong() != 0L }
+    return (1 until n).none { binomial(n, it) % n.toLong() != 0L }
 }        
 
 fun main(args: Array<String>) {

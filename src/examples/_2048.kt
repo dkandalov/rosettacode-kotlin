@@ -65,9 +65,9 @@ fun waitForValidInput(): String {
 fun isValidInput(input: String): Boolean = arrayOf("a", "s", "d", "w").contains(input)
 
 fun waitForInput(): String {
-    val br = BufferedReader(InputStreamReader(System.`in`))
+    val reader = BufferedReader(InputStreamReader(System.`in`))
     println("Direction?  ")
-    return br.readLine()
+    return reader.readLine()
 }
 
 fun manipulateGrid(grid: Array<Array<Int>>, input: String): Array<Array<Int>> = when (input) {
@@ -127,39 +127,31 @@ fun shiftCellsDown(grid: Array<Array<Int>>): Array<Array<Int>> {
 fun mergeAndOrganizeCells(row: Array<Int>): Array<Int> = organize(merge(row.copyOf()))
 
 fun merge(row: Array<Int>, idxToMatch: Int = 0, idxToCompare: Int = 1): Array<Int> {
-    if (idxToMatch >= row.size)
-        return row
-    if (idxToCompare >= row.size)
-        return merge(row, idxToMatch + 1, idxToMatch + 2)
-    if (row[idxToMatch] == 0)
-        return merge(row, idxToMatch + 1, idxToMatch + 2)
+    if (idxToMatch >= row.size) return row
+    if (idxToCompare >= row.size) return merge(row, idxToMatch + 1, idxToMatch + 2)
+    if (row[idxToMatch] == 0) return merge(row, idxToMatch + 1, idxToMatch + 2)
 
-    if (row[idxToMatch] == row[idxToCompare]) {
+    return if (row[idxToMatch] == row[idxToCompare]) {
         row[idxToMatch] *= 2
         row[idxToCompare] = 0
-
-        return merge(row, idxToMatch + 1, idxToMatch + 2)
+        merge(row, idxToMatch + 1, idxToMatch + 2)
     } else {
-        return if (row[idxToCompare] != 0) merge(row, idxToMatch + 1, idxToMatch + 2)
+        if (row[idxToCompare] != 0) merge(row, idxToMatch + 1, idxToMatch + 2)
         else merge(row, idxToMatch, idxToCompare + 1)
     }
 }
 
 fun organize(row: Array<Int>, idxToMatch: Int = 0, idxToCompare: Int = 1): Array<Int> {
-    if (idxToMatch >= row.size)
-        return row
-    if (idxToCompare >= row.size)
-        return organize(row, idxToMatch + 1, idxToMatch + 2)
-    if (row[idxToMatch] != 0)
-        return organize(row, idxToMatch + 1, idxToMatch + 2)
+    if (idxToMatch >= row.size) return row
+    if (idxToCompare >= row.size) return organize(row, idxToMatch + 1, idxToMatch + 2)
+    if (row[idxToMatch] != 0) return organize(row, idxToMatch + 1, idxToMatch + 2)
 
-    if (row[idxToCompare] != 0) {
+    return if (row[idxToCompare] != 0) {
         row[idxToMatch] = row[idxToCompare]
         row[idxToCompare] = 0
-
-        return organize(row, idxToMatch + 1, idxToMatch + 2)
+        organize(row, idxToMatch + 1, idxToMatch + 2)
     } else {
-        return organize(row, idxToMatch, idxToCompare + 1)
+        organize(row, idxToMatch, idxToCompare + 1)
     }
 }
 

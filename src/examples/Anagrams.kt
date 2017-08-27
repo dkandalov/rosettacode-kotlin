@@ -1,7 +1,5 @@
 package `anagrams`
 
-// version 1.0.6
-
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.URL
@@ -17,7 +15,7 @@ fun main(args: Array<String>) {
         val chars = word.toCharArray()
         chars.sort()
         val key = chars.joinToString("")
-        if (!anagrams.containsKey(key)) anagrams.put(key, mutableListOf<String>())
+        if (!anagrams.containsKey(key)) anagrams.put(key, mutableListOf())
         anagrams[key]!!.add(word)
         count = Math.max(count, anagrams[key]!!.size)
         word = reader.readLine()

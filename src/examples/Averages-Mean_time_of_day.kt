@@ -1,7 +1,5 @@
 package `averages_mean_time_of_day`
 
-// version 1.0.6
-
 fun meanAngle(angles: DoubleArray): Double {
     val sinSum = angles.sumByDouble {  Math.sin(it * Math.PI / 180.0) }
     val cosSum = angles.sumByDouble {  Math.cos(it * Math.PI / 180.0) }

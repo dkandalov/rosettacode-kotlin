@@ -22,9 +22,9 @@ fun main(args: Array<String>) {
         print("Which variable do you want to inspect ? ")
         val name = readLine()!!
         val value = sc.runtimeVariables[name]
-        if (value == null)
+        if (value == null) {
             println("There is no variable of that name, try again")
-        else {
+        } else {
             println("Its value is '${sc.runtimeVariables[name]}'")
             return
         }

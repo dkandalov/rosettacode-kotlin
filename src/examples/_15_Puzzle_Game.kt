@@ -2,12 +2,21 @@ package `_15_puzzle_game`
 
 // version 1.1.3
 
-import java.awt.*
-import java.awt.event.*
+import java.awt.BorderLayout
+import java.awt.Color
+import java.awt.Dimension
+import java.awt.Font
+import java.awt.Graphics
+import java.awt.Graphics2D
+import java.awt.RenderingHints
+import java.awt.event.MouseAdapter
+import java.awt.event.MouseEvent
 import java.util.Random
-import javax.swing.*
+import javax.swing.JFrame
+import javax.swing.JPanel
+import javax.swing.SwingUtilities
 
-class FifteenPuzzle(val dim: Int, val margin: Int) : JPanel() {
+class FifteenPuzzle(dim: Int, val margin: Int) : JPanel() {
 
     private val rand = Random()
     private val tiles = IntArray(16)
@@ -18,7 +27,8 @@ class FifteenPuzzle(val dim: Int, val margin: Int) : JPanel() {
     init {
         preferredSize = Dimension(dim, dim)
         background = Color.white
-        foreground = Color(0x6495ED) // cornflowerblue
+        val cornflowerBlue = 0x6495ED
+        foreground = Color(cornflowerBlue)
         font = Font("SansSerif", Font.BOLD, 60)
 
         addMouseListener(object : MouseAdapter() {
@@ -57,13 +67,13 @@ class FifteenPuzzle(val dim: Int, val margin: Int) : JPanel() {
                 tiles[r] = tiles[n]
                 tiles[n] = tmp
             }
-        }
-        while (!isSolvable())
+        } while (!isSolvable())
     }
 
     private fun reset() {
-        for (i in 0 until tiles.size)
+        for (i in 0 until tiles.size) {
             tiles[i] = (i + 1) % tiles.size
+        }
         blankPos = 15
     }
 
@@ -78,9 +88,9 @@ class FifteenPuzzle(val dim: Int, val margin: Int) : JPanel() {
     private fun isSolvable(): Boolean {
         var countInversions = 0
         for (i in 0 until 15) {
-            for (j in 0 until i) {
-                if (tiles[j] > tiles[i]) countInversions++
-            }
+            (0 until i)
+                .filter { tiles[it] > tiles[i] }
+                .forEach { countInversions++ }
         }
         return countInversions % 2 == 0
     }
@@ -120,7 +130,7 @@ class FifteenPuzzle(val dim: Int, val margin: Int) : JPanel() {
         super.paintComponent(gg)
         val g = gg as Graphics2D
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                           RenderingHints.VALUE_ANTIALIAS_ON)
+            RenderingHints.VALUE_ANTIALIAS_ON)
         drawGrid(g)
     }
 }

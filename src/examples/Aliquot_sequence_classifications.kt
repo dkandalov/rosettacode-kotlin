@@ -8,9 +8,11 @@ const val THRESHOLD = 1L shl 47
 
 fun sumProperDivisors(n: Long): Long {
     if (n < 2L) return 0L
-    var sqrt = Math.sqrt(n.toDouble()).toLong()
-    var sum = 1L
-    for (i in 2L..sqrt) if (n % i == 0L) sum += i + n / i
+    val sqrt = Math.sqrt(n.toDouble()).toLong()
+    var sum = 1L + (2L..sqrt)
+        .filter { n % it == 0L }
+        .map { it + n / it }
+        .sum()
     if (sqrt * sqrt == n) sum -= sqrt
     return sum
 }
@@ -18,7 +20,7 @@ fun sumProperDivisors(n: Long): Long {
 fun classifySequence(k: Long): Classification {
     require(k > 0)
     var last = k
-    val seq = mutableListOf<Long>(k)
+    val seq = mutableListOf(k)
     while (true) {
         last = sumProperDivisors(last)
         seq.add(last)

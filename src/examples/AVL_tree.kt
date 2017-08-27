@@ -1,7 +1,5 @@
 package `avl_tree`
 
-// version 1.0.6
-
 class AvlTree {
     private var root: Node? = null
    
@@ -107,7 +105,7 @@ class AvlTree {
             if (b.parent!!.right == a) 
                 b.parent!!.right = b
             else 
-                b.parent!!.left = b;
+                b.parent!!.left = b
         }
         setBalance(a, b) 
         return b
@@ -132,7 +130,7 @@ class AvlTree {
         for (n in nodes) n.balance = height(n.right) - height(n.left)
     }
 
-    public fun printKey() {
+    fun printKey() {
         printKey(root)
         println()
     }
@@ -143,9 +141,9 @@ class AvlTree {
             print("${n.key} ")
             printKey(n.right)
         }
-    } 
-    
-    public fun printBalance() {
+    }
+
+    fun printBalance() {
         printBalance(root)
         println()
     }

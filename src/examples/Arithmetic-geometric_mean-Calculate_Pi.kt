@@ -1,7 +1,5 @@
 package `arithmetic_geometric_mean_calculate_pi`
 
-// version 1.0.6
-
 import java.math.BigDecimal
 import java.math.MathContext
 
