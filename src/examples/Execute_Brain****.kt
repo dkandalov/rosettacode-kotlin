@@ -2,7 +2,7 @@ package `execute_brain****`
 
 // version 1.1.2
 
-class Brainf__k(val prog: String, val memSize: Int) {
+class Brainf__k(val prog: String, memSize: Int) {
     private val mem = IntArray(memSize)
     private var ip = 0
     private var dp = 0

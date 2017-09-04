@@ -67,7 +67,7 @@ fun main(args: Array<String>) {
         do {
             print("Enter row number or column letter to be flipped: ")
             val input = readLine()!!
-            val ch = if (input.length > 0) input[0].toLowerCase() else '0'
+            val ch = if (input.isNotEmpty()) input[0].toLowerCase() else '0'
             if (ch !in "123abc") {
                 println("Must be 1, 2, 3, a, b or c")
                 continue

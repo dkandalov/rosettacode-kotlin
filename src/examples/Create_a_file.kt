@@ -1,7 +1,5 @@
 package `create_a_file`
 
-// version 1.0.6
-
 /* testing on Windows 10 which needs administrative privileges
    to create files in the root */
  

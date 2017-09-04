@@ -5,7 +5,7 @@ package `forward_difference`
 fun forwardDifference(ia: IntArray, order: Int): IntArray {
     if (order < 0) throw IllegalArgumentException("Order must be non-negative")
     if (order == 0) return ia
-    var size = ia.size
+    val size = ia.size
     if (size == 0) return ia  // same empty array
     if (order >= size) return intArrayOf()  // new empty array
     var old = ia

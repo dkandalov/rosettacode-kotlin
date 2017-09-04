@@ -10,9 +10,9 @@ class Point(val x: Int, val y: Int) : Comparable<Point> {
 }
 
 fun convexHull(p: Array<Point>): List<Point> {
-    if (p.isEmpty()) return emptyList<Point>()
+    if (p.isEmpty()) return emptyList()
     p.sort()
-    var h = mutableListOf<Point>()
+    val h = mutableListOf<Point>()
 
     // lower hull
     for (pt in p) {

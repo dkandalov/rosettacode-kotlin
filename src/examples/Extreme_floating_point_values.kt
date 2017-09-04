@@ -2,7 +2,7 @@ package `extreme_floating_point_values`
 
 // version 1.0.5-2
 
-@Suppress("DIVISION_BY_ZERO")
+@Suppress("DIVISION_BY_ZERO", "FLOAT_LITERAL_CONFORMS_ZERO")
 
 fun main(args: Array<String>) {
     val inf     =  1.0 / 0.0

@@ -21,7 +21,6 @@ fun hq9plus(code: String) {
                     sb2.append("No more bottles of beer on the wall!\n")
                     sb2.toString()
                  }
-
                 '+'  -> { acc++; "" }  // yeah, it's weird!
                 else -> throw IllegalArgumentException("Code contains illegal operation '$c'")
             }

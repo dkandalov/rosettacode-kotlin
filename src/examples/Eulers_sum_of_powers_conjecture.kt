@@ -1,7 +1,5 @@
 package `eulers_sum_of_powers_conjecture`
 
-// version 1.0.5-2
-
 fun main(args: Array<String>) {
     val p5 = LongArray(250){ it.toLong() * it * it * it * it }
     var sum: Long

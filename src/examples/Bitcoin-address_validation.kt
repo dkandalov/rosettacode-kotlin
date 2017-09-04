@@ -1,7 +1,5 @@
 package `bitcoin_address_validation`
 
-// version 1.0.6
-
 import java.security.MessageDigest
 
 object Bitcoin {
@@ -9,8 +7,7 @@ object Bitcoin {
 
     private fun ByteArray.contentEquals(other: ByteArray): Boolean {
         if (this.size != other.size) return false
-        for (i in 0 until this.size) if (this[i] != other[i]) return false
-        return true
+        return (0 until this.size).none { this[it] != other[it] }
     }
 
     private fun decodeBase58(input: String): ByteArray? {

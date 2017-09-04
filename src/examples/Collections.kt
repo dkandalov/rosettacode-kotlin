@@ -1,7 +1,5 @@
 package `collections`
 
-// version 1.0.6
-
 import java.util.PriorityQueue
 
 fun main(args: Array<String>) {

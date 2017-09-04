@@ -1,7 +1,5 @@
 package `classes`
 
-// version 1.0.5-2
-
 class MyClass(val myInt: Int) {
    fun treble(): Int = myInt * 3
 }

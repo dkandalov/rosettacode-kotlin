@@ -5,26 +5,21 @@ fun <T : Comparable<T>> Array<T>.iterativeBinarySearch(target: T): Int {
     var lo = 0
     while (hi >= lo) {
         val guess = lo + (hi - lo) / 2
-        if (this[guess] > target)
-            hi = guess - 1
-        else if (this[guess] < target)
-            lo = guess + 1
-        else
-            return guess
+        if (this[guess] > target) hi = guess - 1
+        else if (this[guess] < target) lo = guess + 1
+        else return guess
     }
     return -1
 }
 
 fun <T : Comparable<T>> Array<T>.recursiveBinarySearch(target: T, lo: Int, hi: Int): Int {
-    if (hi < lo)
-        return -1
+    if (hi < lo) return -1
+
     val guess = (hi + lo) / 2
-    return if (this[guess] > target)
-        recursiveBinarySearch(target, lo, guess - 1)
-    else if (this[guess] < target)
-        recursiveBinarySearch(target, guess + 1, hi)
-    else
-        guess
+
+    return if (this[guess] > target) recursiveBinarySearch(target, lo, guess - 1)
+    else if (this[guess] < target) recursiveBinarySearch(target, guess + 1, hi)
+    else guess
 }
 
 fun main(args: Array<String>) {

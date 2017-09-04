@@ -49,7 +49,7 @@ fun determinant(m: Matrix): Double {
 
 fun cramer(m: Matrix, d: Vector): Vector {
     val divisor = determinant(m)
-    val numerators = Array<Matrix>(m.size) { Matrix(m.size) { m[it].copyOf() } }
+    val numerators = Array(m.size) { Matrix(m.size) { m[it].copyOf() } }
     val v = Vector(m.size)
     for (i in 0 until m.size) {
         for (j in 0 until m.size) numerators[i][j][i] = d[j]

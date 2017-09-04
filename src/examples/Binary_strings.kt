@@ -1,11 +1,9 @@
 package `binary_strings`
 
-// version 1.1.2
-
 class ByteString(private val bytes: ByteArray) : Comparable<ByteString> {
     val length get() = bytes.size
 
-    fun isEmpty() = bytes.size == 0
+    fun isEmpty() = bytes.isEmpty()
 
     operator fun plus(other: ByteString): ByteString = ByteString(bytes + other.bytes)
 

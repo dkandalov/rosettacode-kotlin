@@ -1,5 +1,7 @@
 package `archimedean_spiral`
 
+// version 1.1.0
+
 import java.awt.*
 import javax.swing.*
 
@@ -11,18 +13,18 @@ class ArchimedeanSpiral : JPanel() {
 
     private fun drawGrid(g: Graphics2D) {
         g.color = Color(0xEEEEEE)
-        g.stroke = BasicStroke(2f) 
-        val angle = Math.toRadians(45.0) 
+        g.stroke = BasicStroke(2f)
+        val angle = Math.toRadians(45.0)
         val w = width
         val center = w / 2
         val margin = 10
-        val numRings = 8 
+        val numRings = 8
         val spacing = (w - 2 * margin) / (numRings * 2)
- 
+
         for (i in 0 until numRings) {
             val pos = margin + i * spacing
             val size = w - (2 * margin + i * 2 * spacing)
-            g.drawOval(pos, pos, size, size) 
+            g.drawOval(pos, pos, size, size)
             val ia = i * angle
             val x2 = center + (Math.cos(ia) * (w - 2 * margin) / 2).toInt()
             val y2 = center - (Math.sin(ia) * (w - 2 * margin) / 2).toInt()
@@ -52,11 +54,11 @@ class ArchimedeanSpiral : JPanel() {
     private fun plot(g: Graphics2D, x: Int, y: Int) {
         g.drawOval(x, y, 1, 1)
     }
- 
+
     override fun paintComponent(gg: Graphics) {
         super.paintComponent(gg)
         val g = gg as Graphics2D
-        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON) 
+        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON)
         drawGrid(g)
         drawSpiral(g)
     }

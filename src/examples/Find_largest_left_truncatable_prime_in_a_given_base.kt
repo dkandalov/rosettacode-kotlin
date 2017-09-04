@@ -19,7 +19,7 @@ fun largestLeftTruncatablePrime(radix: Int, certainty: Int): BigInteger? {
     var list = nextLeftTruncatablePrimes(BigInteger.ZERO, radix, certainty)
     while (!list.isEmpty()) {
         lastList = list
-        list = mutableListOf<BigInteger>()
+        list = mutableListOf()
         for (n in lastList) list.addAll(nextLeftTruncatablePrimes(n, radix, certainty))
     }
     if (lastList == null) return null

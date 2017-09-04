@@ -66,11 +66,8 @@ fun triTri2D(t1: Triangle, t2: Triangle, eps: Double = 0.0,
 }
 
 fun main(args: Array<String>) {
-    var t1: Triangle
-    var t2: Triangle
-
-    t1 = Triangle(0.0 to 0.0, 5.0 to 0.0, 0.0 to 5.0)
-    t2 = Triangle(0.0 to 0.0, 5.0 to 0.0, 0.0 to 6.0)
+    var t1 = Triangle(0.0 to 0.0, 5.0 to 0.0, 0.0 to 5.0)
+    var t2 = Triangle(0.0 to 0.0, 5.0 to 0.0, 0.0 to 6.0)
     println("$t1 and\n$t2")
     println(if (triTri2D(t1, t2)) "overlap" else "do not overlap")
 

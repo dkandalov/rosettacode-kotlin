@@ -1,4 +1,4 @@
-package catalan_numbers
+package `catalan_numbers`
 
 abstract class Catalan {
     abstract operator fun invoke(n: Int) : Double

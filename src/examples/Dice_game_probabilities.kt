@@ -23,9 +23,11 @@ fun beatingProbability(nSides1: Int, nDice1: Int, nSides2: Int, nDice2: Int): Do
               Math.pow(nSides2.toDouble(), nDice2.toDouble())
 
     var tot = 0.0
-    for (i in 0 until len1)
-        for (j in 0 until minOf(i, len2))
+    for (i in 0 until len1) {
+        for (j in 0 until minOf(i, len2)) {
             tot += c1[i] * c2[j] / p12
+        }
+    }
     return tot
 }
 

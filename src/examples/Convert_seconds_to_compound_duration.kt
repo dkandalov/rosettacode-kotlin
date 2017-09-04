@@ -1,7 +1,5 @@
 package `convert_seconds_to_compound_duration`
 
-// version 1.0.6
-
 fun compoundDuration(n: Int): String {
     if (n < 0) return "" // task doesn't ask for negative integers to be converted
     if (n == 0) return "0 sec" 
@@ -12,7 +10,7 @@ fun compoundDuration(n: Int): String {
     val seconds: Int
     var divisor: Int = 7 * 24 * 60 * 60
     var rem    : Int
-    var result : String = ""
+    var result = ""
 
     weeks = n / divisor
     rem   = n % divisor

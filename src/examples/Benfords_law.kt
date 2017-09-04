@@ -14,8 +14,9 @@ class Benford(ng: NumberGenerator) {
     private val str: String
 
     init {
-        for (n in ng.numbers)
+        for (n in ng.numbers) {
             firstDigits[n.toString().substring(0, 1).toInt() - 1]++
+        }
 
         str = with(StringBuilder()) {
             for (i in firstDigits.indices) {
@@ -31,7 +32,7 @@ class Benford(ng: NumberGenerator) {
 object FibonacciGenerator : NumberGenerator {
     override val numbers: Array<BigInteger> by lazy {
         val fib = Array<BigInteger>(1000, { BigInteger.ONE })
-        for (i in 2..fib.size - 1)
+        for (i in 2 until fib.size)
             fib[i] = fib[i - 2].add(fib[i - 1])
         fib
     }

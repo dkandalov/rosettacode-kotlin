@@ -1,7 +1,5 @@
 package `break_oo_privacy`
 
-// version 1.0.6
-
 import kotlin.reflect.full.declaredMemberProperties
 import kotlin.reflect.jvm.isAccessible
 

@@ -2,7 +2,6 @@ package `faulhabers_triangle`
 
 // version 1.1.2
 
-import java.math.BigInteger
 import java.math.BigDecimal
 import java.math.MathContext
 
@@ -75,7 +74,7 @@ class Frac : Comparable<Frac> {
 
 fun bernoulli(n: Int): Frac {
     require(n >= 0)
-    val a = Array<Frac>(n + 1) { Frac.ZERO }
+    val a = Array(n + 1) { Frac.ZERO }
     for (m in 0..n) {
         a[m] = Frac(1, m + 1)
         for (j in m downTo 1) a[j - 1] = (a[j - 1] - a[j]) * Frac(j, 1)
@@ -92,7 +91,7 @@ fun binomial(n: Int, k: Int): Long {
 }
 
 fun faulhaberTriangle(p: Int): Array<Frac> {
-    val coeffs = Array<Frac>(p + 1) { Frac.ZERO }
+    val coeffs = Array(p + 1) { Frac.ZERO }
     val q = Frac(1, p + 1)
     var sign = -1
     for (j in 0..p) {

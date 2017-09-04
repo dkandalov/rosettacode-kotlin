@@ -1,7 +1,5 @@
 package `combinations`
 
-// version 1.0.6
-
 class Combinations(val m: Int, val n: Int) {
     private val combination = IntArray(m)
     

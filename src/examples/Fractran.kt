@@ -25,8 +25,7 @@ fun fractran(program: String, n: Int, limit: Int, primesOnly: Boolean): List<Int
     if (!primesOnly) results.add(n)
     var nn = BigInteger.valueOf(n.toLong())
     while (results.size < limit) {
-        val frac =  fractions.find { (it * nn).isIntegral() }
-        if (frac == null) break
+        val frac = fractions.find { (it * nn).isIntegral() } ?: break
         nn = nn * frac.num / frac.denom
         if (!primesOnly) {
            results.add(nn.toInt())

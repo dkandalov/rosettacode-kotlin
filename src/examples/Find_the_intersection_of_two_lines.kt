@@ -23,10 +23,8 @@ fun findIntersection(l1: LineF, l2: LineF): PointF {
 }
 
 fun main(args: Array<String>) {
-    var l1: LineF
-    var l2: LineF
-    l1 = LineF(PointF(4f, 0f), PointF(6f, 10f))
-    l2 = LineF(PointF(0f, 3f), PointF(10f, 7f))
+    var l1 = LineF(PointF(4f, 0f), PointF(6f, 10f))
+    var l2 = LineF(PointF(0f, 3f), PointF(10f, 7f))
     println(findIntersection(l1, l2))
     l1 = LineF(PointF(0f, 0f), PointF(1f, 1f))
     l2 = LineF(PointF(1f, 2f), PointF(4f, 5f))

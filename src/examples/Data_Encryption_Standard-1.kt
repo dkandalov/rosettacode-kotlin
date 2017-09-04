@@ -135,7 +135,7 @@ object DES {
     fun encrypt(key: String, message: String): String {
         val ks = getSubKeys(key)
         var m = message
-        var r = m.length % 16 // check if multiple of 16 hex digits
+        val r = m.length % 16 // check if multiple of 16 hex digits
         if (r != 0) {
             val len = (1 + m.length / 16) * 16
             m = m.padEnd(len, '0') // pad with zeros for simplicity
@@ -152,7 +152,7 @@ object DES {
     /* any padding is assumed to be in the form of trailing zeros following 0DOA;
        only the zeros will be removed */
     fun decrypt(key: String, encoded: String, removePadding: Boolean = false): String {
-        var ks = getSubKeys(key)
+        val ks = getSubKeys(key)
         // reverse the subkeys
         for (i in 1..8) {
             val temp = ks[i]
@@ -211,8 +211,8 @@ object DES {
         for (i in 0..63) mp[i] = m[IP[i] - 1]
 
         // split 'mp' in half and process the resulting series of 'l' and 'r
-        var l = Array(17) { BitSet(32) }
-        var r = Array(17) { BitSet(32) }
+        val l = Array(17) { BitSet(32) }
+        val r = Array(17) { BitSet(32) }
         for (i in 0..31) l[0][i] = mp[i]
         for (i in 0..31) r[0][i] = mp[i + 32]
         f(r[0], ks[1])

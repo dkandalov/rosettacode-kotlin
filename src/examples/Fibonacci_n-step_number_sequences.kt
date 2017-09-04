@@ -18,7 +18,7 @@ fun fibN(initial: IntArray, numTerms: Int) : IntArray {
 fun main(args: Array<String>) {
     val names = arrayOf("fibonacci",  "tribonacci", "tetranacci", "pentanacci", "hexanacci",
                         "heptanacci", "octonacci",  "nonanacci",  "decanacci")
-    var initial = intArrayOf(1, 1, 2, 4, 8, 16, 32, 64, 128, 256)
+    val initial = intArrayOf(1, 1, 2, 4, 8, 16, 32, 64, 128, 256)
     println(" n  name        values")
     var values = fibN(intArrayOf(2, 1), 15).joinToString(", ")
     println("%2d  %-10s  %s".format(2, "lucas", values))

@@ -26,7 +26,7 @@ fun digitalRoot(n: Long): Pair<Int, Int> = when {
                 ap++
             }
             Pair(dr.toInt(), ap)
-        } 
+        }
     }
 
 fun main(args: Array<String>) {

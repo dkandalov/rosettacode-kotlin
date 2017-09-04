@@ -1,7 +1,5 @@
 package `colour_bars_display`
 
-// version 1.0.6
-
 import java.awt.Color
 import java.awt.Graphics
 import javax.swing.JFrame

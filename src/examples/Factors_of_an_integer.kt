@@ -1,12 +1,12 @@
 package `factors_of_an_integer`
 
-// version 1.0.5-2
-
 fun printFactors(n: Int) {
     if (n < 1) return
     print("$n => ")
-    for (i in 1 .. n/2) if (n % i == 0) print("$i ")
-    println(n)      
+    (1..n / 2)
+        .filter { n % it == 0 }
+        .forEach { print("$it ") }
+    println(n)
 }
 
 fun main(args: Array<String>) {

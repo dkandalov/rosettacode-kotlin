@@ -1,7 +1,5 @@
 package `catamorphism`
 
-// version 1.0.6
-
 fun main(args: Array<String>) {
     val a = intArrayOf(1, 2, 3, 4, 5)
     println("Array       : ${a.joinToString(", ")}")

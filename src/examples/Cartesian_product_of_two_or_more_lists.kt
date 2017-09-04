@@ -37,14 +37,14 @@ fun nAryCartesianProduct(lists: List<List<Any>>): List<List<Any>> {
 fun printNAryProduct(lists: List<List<Any>>) {
     println("${lists.joinToString(" x ")} = ")
     println("[")
-    println("${nAryCartesianProduct(lists).joinToString("\n    ", "    ")}")
+    println(nAryCartesianProduct(lists).joinToString("\n    ", "    "))
     println("]\n")
 }
 
 fun main(args: Array<String>) {
    println("[1, 2] x [3, 4] = ${listOf(1, 2) * listOf(3, 4)}")
    println("[3, 4] x [1, 2] = ${listOf(3, 4) * listOf(1, 2)}")
-   println("[1, 2] x []     = ${listOf(1, 2) * listOf<Any>()}")
+   println("[1, 2] x []     = ${listOf(1, 2) * listOf()}")
    println("[]     x [1, 2] = ${listOf<Any>() * listOf(1, 2)}")
    println("[1, a] x [2, b] = ${listOf(1, 'a') * listOf(2, 'b')}")
    println()

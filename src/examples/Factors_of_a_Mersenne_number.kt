@@ -3,10 +3,10 @@ package `factors_of_a_mersenne_number`
 // version 1.0.6
 
 fun isPrime(n: Int): Boolean {
-    if (n < 2) return false 
+    if (n < 2) return false
     if (n % 2 == 0) return n == 2
     if (n % 3 == 0) return n == 3
-    var d : Int = 5
+    var d = 5
     while (d * d <= n) {
         if (n % d == 0) return false
         d += 2
@@ -42,8 +42,8 @@ fun main(args: Array<String>) {
                     break
             }
             println("2^${"%3d".format(q[k])} - 1 = 0 (mod $d)")
-        }
-        else
+        } else {
             println("${q[k]} is not prime")
+        }
     }
 }

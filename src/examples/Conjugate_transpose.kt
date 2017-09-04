@@ -32,8 +32,7 @@ class Complex(val real: Double, val imag: Double) {
 fun Matrix.conjTranspose(): Matrix {
     val rows = this.size
     val cols = this[0].size
-    val trans = Matrix(cols) { i -> Vector(rows) { j -> this[j][i].conj() } }
-    return trans
+    return Matrix(cols) { i -> Vector(rows) { j -> this[j][i].conj() } }
 }
 
 operator fun Matrix.times(other: Matrix): Matrix {

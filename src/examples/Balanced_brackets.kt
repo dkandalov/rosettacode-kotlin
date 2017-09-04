@@ -1,8 +1,6 @@
 package `balanced_brackets`
 
-// version 1.0.6
-
-import java.util.*
+import java.util.Random
 
 fun isBalanced(s: String): Boolean {
     if (s.isEmpty()) return true
@@ -29,7 +27,7 @@ fun main(args: Array<String>) {
     (1..7).forEach {
         var s = ""
         for (j in 1..8) {
-            if (r.nextInt(2) == 0) s += '[' else s += ']'
+            s += if (r.nextInt(2) == 0) '[' else ']'
         }
         println("$s  " + if (isBalanced(s)) "OK" else "NOT OK")
     }

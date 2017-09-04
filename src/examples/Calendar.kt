@@ -1,8 +1,11 @@
 package `calendar`
 
-import java.text.*
-import java.util.*
 import java.io.PrintStream
+import java.text.DateFormatSymbols
+import java.text.MessageFormat
+import java.util.Calendar
+import java.util.GregorianCalendar
+import java.util.Locale
 
 internal fun PrintStream.printCalendar(year: Int, nCols: Byte, locale: Locale?) {
     if (nCols < 1 || nCols > 12)
@@ -36,7 +39,7 @@ internal fun PrintStream.printCalendar(year: Int, nCols: Byte, locale: Locale?) 
     printf("%" + (w / 2 + 10) + "s%n", "[Snoopy Picture]")
     printf("%" + (w / 2 + 4) + "s%n%n", year)
 
-    for (r in 0..nRows - 1) {
+    for (r in 0 until nRows) {
         for (i in 0..7) {
             var c = r * nCols
             while (c < (r + 1) * nCols && c < 12) {

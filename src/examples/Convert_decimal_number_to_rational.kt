@@ -7,7 +7,7 @@ class Rational(val num: Long, val den: Long) {
 }
 
 fun decimalToRational(d: Double): Rational {
-    var ds = d.toString().trimEnd('0').trimEnd('.')
+    val ds = d.toString().trimEnd('0').trimEnd('.')
     val index = ds.indexOf('.')
     if (index == -1) return Rational(ds.toLong(), 1L)
     var num = ds.replace(".", "").toLong()
@@ -25,7 +25,7 @@ fun decimalToRational(d: Double): Rational {
 }
 
 fun main(args: Array<String>) {
-    var decimals = doubleArrayOf(0.9054054, 0.518518, 2.405308, .75, 0.0, -0.64, 123.0, -14.6)
+    val decimals = doubleArrayOf(0.9054054, 0.518518, 2.405308, .75, 0.0, -0.64, 123.0, -14.6)
     for (decimal in decimals)
         println("${decimal.toString().padEnd(9)} = ${decimalToRational(decimal)}")
 }

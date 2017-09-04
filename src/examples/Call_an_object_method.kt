@@ -1,7 +1,5 @@
 package `call_an_object_method`
 
-// version 1.0.5-2
-
 class MyClass {
     fun instanceMethod(s: String) = println(s)
 

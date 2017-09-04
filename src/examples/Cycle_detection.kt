@@ -39,7 +39,7 @@ fun brent(f: IntToInt, x0: Int): Pair<Int, Int> {
 fun main(args: Array<String>) {
     val f = { x: Int -> (x * x + 1) % 255 }
     // generate first 41 terms of the sequence starting from 3
-    var x0 = 3
+    val x0 = 3
     var x = x0
     val seq = List(41) { if (it > 0) x = f(x) ; x }
     println(seq)

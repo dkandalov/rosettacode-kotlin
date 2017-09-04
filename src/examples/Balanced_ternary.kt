@@ -4,22 +4,20 @@ package `balanced_ternary`
 
 import java.math.BigInteger
 
-val bigZero  = BigInteger.ZERO
-val bigOne   = BigInteger.ONE
+val bigZero = BigInteger.ZERO
+val bigOne = BigInteger.ONE
 val bigThree = BigInteger.valueOf(3L)
 
-class BTernary(private var value: String) : Comparable<BTernary> {
+data class BTernary(private var value: String) : Comparable<BTernary> {
 
     init {
-        require(value.all { it in "0+-" } )
+        require(value.all { it in "0+-" })
         value = value.trimStart('0')
     }
 
-    constructor(v: Int): this(BigInteger.valueOf(v.toLong()))
+    constructor(v: Int) : this(BigInteger.valueOf(v.toLong()))
 
-    constructor(v: Long): this(BigInteger.valueOf(v))
-
-    constructor(v: BigInteger): this("") {
+    constructor(v: BigInteger) : this("") {
         value = toBT(v)
     }
 
@@ -78,7 +76,7 @@ class BTernary(private var value: String) : Comparable<BTernary> {
         }
     }
 
-    private fun addDigits(a: Char, b: Char): String  =
+    private fun addDigits(a: Char, b: Char): String =
         when {
             a == '0' -> b.toString()
             b == '0' -> a.toString()
@@ -89,7 +87,7 @@ class BTernary(private var value: String) : Comparable<BTernary> {
     operator fun plus(other: BTernary): BTernary {
         var a = this.value
         var b = other.value
-        val longer  = if (a.length > b.length) a else b
+        val longer = if (a.length > b.length) a else b
         var shorter = if (a.length > b.length) b else a
         while (shorter.length < longer.length) shorter = "0" + shorter
         a = longer
@@ -112,9 +110,9 @@ class BTernary(private var value: String) : Comparable<BTernary> {
 
     operator fun times(other: BTernary): BTernary {
         var that = other
-        val one  = BTernary(1)
+        val one = BTernary(1)
         val zero = BTernary(0)
-        var mul  = zero
+        var mul = zero
         var flipFlag = false
         if (that < zero) {
             that = -that
@@ -128,8 +126,6 @@ class BTernary(private var value: String) : Comparable<BTernary> {
         if (flipFlag) mul = -mul
         return mul
     }
-
-    fun equals(other: BTernary) = this.compareTo(other) == 0
 
     override operator fun compareTo(other: BTernary) =
         this.toBigInteger().compareTo(other.toBigInteger())

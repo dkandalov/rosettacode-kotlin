@@ -3,12 +3,12 @@ package `echo_server`
 // version 1.1.3
 
 import java.io.BufferedReader
-import java.io.PrintWriter
 import java.io.InputStreamReader
+import java.io.PrintWriter
 import java.net.ServerSocket
 import java.net.Socket
 
-class ClientHandler(val clientSocket: Socket): Runnable {
+class ClientHandler(private val clientSocket: Socket): Runnable {
     private val connectionId: Int
 
     init {
@@ -20,8 +20,7 @@ class ClientHandler(val clientSocket: Socket): Runnable {
         val pw = PrintWriter(clientSocket.outputStream, true)
         val br = BufferedReader(InputStreamReader(clientSocket.inputStream))
         while (true) {
-            val line = br.readLine()
-            if (line == null) break
+            val line = br.readLine() ?: break
             println("Received: $line")
             pw.write("$line\n")
             pw.flush()

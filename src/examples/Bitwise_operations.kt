@@ -1,7 +1,5 @@
 package `bitwise_operations`
 
-// version 1.0.5-2
-
 /*  for symmetry with Kotlin's other binary bitwise operators
     we wrap Java's 'rotate' methods as infix functions */
 infix fun Int.rol(distance: Int): Int = Integer.rotateLeft(this, distance)

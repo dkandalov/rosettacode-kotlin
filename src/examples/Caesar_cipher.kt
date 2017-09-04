@@ -7,7 +7,7 @@ object Caesar {
         val offset = key % 26
         if (offset == 0) return s
         var d: Char
-        val chars = CharArray(s.length) 
+        val chars = CharArray(s.length)
         for ((index, c) in s.withIndex()) {
             if (c in 'A'..'Z') {
                 d = c + offset
@@ -20,10 +20,10 @@ object Caesar {
             else
                 d = c
             chars[index] = d
-        } 
+        }
         return chars.joinToString("")
     }
-    
+
     fun decrypt(s: String, key: Int): String {
         return encrypt(s, 26 - key)
     }

@@ -3,7 +3,7 @@ package `continued_fraction_arithmetic_construct_from_rational_number`
 // version 1.1.2
 // compile with -Xcoroutines=enable flag from command line
 
-import kotlin.coroutines.experimental.*
+import kotlin.coroutines.experimental.buildSequence
 
 fun r2cf(frac: Pair<Int, Int>) =
     buildSequence {
@@ -36,7 +36,7 @@ fun main(args: Array<String>) {
         print("${"%8d".format(frac.first)} / ${"%-8d".format(frac.second)} = ")
         iterate(r2cf(frac))
     }
-    var pi = arrayOf(31 to 10, 314 to 100, 3142 to 1000, 31428 to 10000,
+    val pi = arrayOf(31 to 10, 314 to 100, 3142 to 1000, 31428 to 10000,
                      314285 to 100000, 3142857 to 1000000,
                      31428571 to 10000000, 314285714 to 100000000)
     println("\nPi ->")
