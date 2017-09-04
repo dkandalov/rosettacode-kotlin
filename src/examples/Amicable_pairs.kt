@@ -12,7 +12,7 @@ fun main(args: Array<String>) {
     println("The pairs of amicable numbers below 20,000 are:\n")
     for(n in 2..19998) {
         val m = sum[n]
-        if (m in (n + 1)..19999 && n == sum[m]) {
+        if (m > n && m < 20000 && n == sum[m]) {
             println(n.toString().padStart(5) + " and " + m.toString().padStart(5))
         }
     }

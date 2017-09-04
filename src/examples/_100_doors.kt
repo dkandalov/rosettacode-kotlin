@@ -7,9 +7,8 @@ fun oneHundredDoors(): List<Int> {
             doors[j] = !doors[j]
         }
     }
-    return doors.asSequence()
+    return doors
         .mapIndexed { i, b -> i to b }
         .filter { it.second }
         .map { it.first + 1 }
-        .toList()
 }
