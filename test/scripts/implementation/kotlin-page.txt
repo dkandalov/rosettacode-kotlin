@@ -3,21 +3,16 @@
 <head>
 <meta charset="UTF-8"/>
 <title>Category:Kotlin - Rosetta Code</title>
-<script type="text/javascript">
-//<![CDATA[
-try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:0,byc:0,owlid:"cf",bag2:1,mirage2:0,oracle:0,paths:{cloudflare:"/cdn-cgi/nexp/dok3v=1613a3a185/"},atok:"a583006972e34980972fddfc4853b1f8",petok:"243ab086787fc7222cab3ce900598e93ec795473-1481835916-1800",zone:"rosettacode.org",rocket:"0",apps:{"ga_key":{"ua":"UA-1219419-1","ga_bs":"2"}}}];!function(a,b){a=document.createElement("script"),b=document.getElementsByTagName("script")[0],a.async=!0,a.src="//ajax.cloudflare.com/cdn-cgi/nexp/dok3v=f2befc48d1/cloudflare.min.js",b.parentNode.insertBefore(a,b)}()}}catch(e){};
-//]]>
-</script>
-<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script src="/cdn-cgi/apps/head/7qaJovFEYxjqsAZAxmfekTkNrFg.js"></script><script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
 <script>window.RLQ = window.RLQ || []; window.RLQ.push( function () {
-mw.config.set({"wgCanonicalNamespace":"Category","wgCanonicalSpecialPageName":!1,"wgNamespaceNumber":14,"wgPageName":"Category:Kotlin","wgTitle":"Kotlin","wgCurRevisionId":198253,"wgRevisionId":198253,"wgArticleId":11088,"wgIsArticle":!0,"wgIsRedirect":!1,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Typing/Checking/Static","Programming Languages"],"wgBreakFrames":!1,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Category:Kotlin","wgRelevantArticleId":11088,"wgIsProbablyEditable":!0,"wgRestrictionEdit":[],"wgRestrictionMove":[],"sfgAutocompleteValues":[],"sfgAutocompleteOnAllChars":!1,
+mw.config.set({"wgCanonicalNamespace":"Category","wgCanonicalSpecialPageName":!1,"wgNamespaceNumber":14,"wgPageName":"Category:Kotlin","wgTitle":"Kotlin","wgCurRevisionId":247665,"wgRevisionId":247665,"wgArticleId":11088,"wgIsArticle":!0,"wgIsRedirect":!1,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Typing/Checking/Static","Programming Languages"],"wgBreakFrames":!1,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Category:Kotlin","wgRelevantArticleId":11088,"wgIsProbablyEditable":!0,"wgRestrictionEdit":[],"wgRestrictionMove":[],"sfgAutocompleteValues":[],"sfgAutocompleteOnAllChars":!1,
 "sfgFieldProperties":[],"sfgDependentFields":[],"sfgShowOnSelect":[],"sfgScriptPath":"/mw/extensions/SemanticForms","sdgDownArrowImage":"/mw/extensions/SemanticDrilldown/skins/down-arrow.png","sdgRightArrowImage":"/mw/extensions/SemanticDrilldown/skins/right-arrow.png"});mw.loader.implement("user.options",function($,jQuery){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens",function($,jQuery){mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\"});});mw.loader.load(["ext.smw.style","ext.smw.tooltips","mediawiki.page.startup","mediawiki.legacy.wikibits"]);
 } );</script>
 <link rel="stylesheet" href="/mw/load.php?debug=false&amp;lang=en&amp;modules=ext.bootstrap.styles%7Cmediawiki.action.view.categoryPage.styles%7Cmediawiki.helplink&amp;only=styles&amp;skin=chameleon"/>
-<meta name="ResourceLoaderDynamicStyles" content=""/>
+<meta name="ResourceLoaderDynamicStyles" content/>
 <link rel="stylesheet" href="/mw/load.php?debug=false&amp;lang=en&amp;modules=site&amp;only=styles&amp;skin=chameleon"/>
 <style>a:lang(ar),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}</style>
-<script async="" src="/mw/load.php?debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=chameleon"></script>
+<script async src="/mw/load.php?debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=chameleon"></script>
 <meta name="generator" content="MediaWiki 1.26.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <link rel="ExportRDF" type="application/rdf+xml" title="Category:Kotlin" href="/mw/index.php?title=Special:ExportRDF/Category:Kotlin&amp;xmlmime=rdf"/>
@@ -28,27 +23,12 @@ mw.config.set({"wgCanonicalNamespace":"Category","wgCanonicalSpecialPageName":!1
 <link rel="EditURI" type="application/rsd+xml" href="http://rosettacode.org/mw/api.php?action=rsd"/>
 <link rel="copyright" href="http://www.gnu.org/licenses/fdl-1.2.html"/>
 <link rel="alternate" type="application/atom+xml" title="Rosetta Code Atom feed" href="/mw/index.php?title=Special:RecentChanges&amp;feed=atom"/>
-<script type="text/javascript">
-/* <![CDATA[ */
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-1219419-1']);
-_gaq.push(['_trackPageview']);
-
-(function() {
-var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
-
-(function(b){(function(a){"__CF"in b&&"DJS"in b.__CF?b.__CF.DJS.push(a):"addEventListener"in b?b.addEventListener("load",a,!1):b.attachEvent("onload",a)})(function(){"FB"in b&&"Event"in FB&&"subscribe"in FB.Event&&(FB.Event.subscribe("edge.create",function(a){_gaq.push(["_trackSocial","facebook","like",a])}),FB.Event.subscribe("edge.remove",function(a){_gaq.push(["_trackSocial","facebook","unlike",a])}),FB.Event.subscribe("message.send",function(a){_gaq.push(["_trackSocial","facebook","send",a])}));"twttr"in b&&"events"in twttr&&"bind"in twttr.events&&twttr.events.bind("tweet",function(a){if(a){var b;if(a.target&&a.target.nodeName=="IFRAME")a:{if(a=a.target.src){a=a.split("#")[0].match(/[^?=&]+=([^&]*)?/g);b=0;for(var c;c=a[b];++b)if(c.indexOf("url")===0){b=unescape(c.split("=")[1]);break a}}b=void 0}_gaq.push(["_trackSocial","twitter","tweet",b])}})})})(window);
-/* ]]> */
-</script>
 </head>
 <body class="mediawiki ltr sitedir-ltr ns-14 ns-subject page-Category_Kotlin layout-standard skin-chameleon action-view">
 <div class="container">
 <div class="row">
 <div class="col-lg-3">
- 
+
 <div id="p-logo" class="p-logo" role="banner">
 <a href="/wiki/Rosetta_Code" title="Visit the main page"><img src="/mw/title.png" alt="Rosetta Code"/></a>
 </div>
@@ -56,7 +36,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 <div class="col-lg-9">
 <div class="row">
 <div class="col-lg-12">
- 
+
 <div class="p-personal pull-right" id="p-personal">
 <ul class="p-personal-tools list-inline pull-right">
 <li id="pt-createaccount"><a href="/mw/index.php?title=Special:UserLogin&amp;returnto=Category%3AKotlin&amp;type=signup" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li>
@@ -69,14 +49,14 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 </div>
 <div class="row">
 <div class="col-lg-12">
- 
+
 <div id="p-search" class="p-search pull-right" role="search">
 <form id="searchform" class="mw-search form-inline" action="/mw/index.php">
 <input type="hidden" name="title" value="Special:Search"/>
 <div class="input-group">
 <input name="search" placeholder="Search" title="Search Rosetta Code [f]" accesskey="f" id="searchInput" class="form-control"/>
 <div class="input-group-btn">
-<button value="Go" id="searchGoButton" name="go" title="Go to a page with this exact name if it exists" type="submit" class="searchGoButton btn btn-default"><span class="glyphicon glyphicon-share-alt"></span></button><button value="Search" id="mw-searchButton" name="fulltext" title="Search the pages for this text" type="submit" class="mw-searchButton btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+ <button value="Go" id="searchGoButton" name="go" title="Go to a page with this exact name if it exists" type="submit" class="searchGoButton btn btn-default"><span class="glyphicon glyphicon-share-alt"></span></button><button value="Search" id="mw-searchButton" name="fulltext" title="Search the pages for this text" type="submit" class="mw-searchButton btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
 </div>
 </div>
 </form>
@@ -87,7 +67,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 </div>
 <div class="row">
 <div class="col-lg-12">
- 
+
 <nav class="navbar navbar-default p-navbar" role="navigation" id="mw-navigation">
 <div class="container-fluid"><div class="navbar-header">
 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mw-navigation-collapse">
@@ -98,7 +78,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 </button>
 </div>
 <div class="collapse navbar-collapse" id="mw-navigation-collapse"><ul class="nav navbar-nav">
- 
+
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <b class="caret"></b></a>
 <ul class="dropdown-menu p-Community" id="p-Community">
@@ -109,7 +89,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 <li id="n-Finances"><a href="/wiki/Rosetta_Code:Finances">Finances</a></li>
 </ul>
 </li>
- 
+
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Explore <b class="caret"></b></a>
 <ul class="dropdown-menu p-Explore" id="p-Explore">
@@ -120,23 +100,23 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 <li id="n-randompage"><a href="/wiki/Special:Random" title="Load a random page [x]" accesskey="x">Random page</a></li>
 </ul>
 </li></ul>
-</div> 
+</div>
 </div>
 </nav>
 </div>
 </div>
 <div class="row">
 <div class="col-lg-12">
- 
+
 <ul class="p-contentnavigation list-inline text-center" id="p-contentnavigation">
- 
+
 <li id="p-namespaces">
 <ul class="list-inline">
 <li id="ca-nstab-category" class="selected"><a href="/wiki/Category:Kotlin" title="View the category page [c]" accesskey="c" class="selected">Category</a></li>
 <li id="ca-talk" class="new"><a href="/mw/index.php?title=Category_talk:Kotlin&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [t]" accesskey="t" class="new">Discussion</a></li>
 </ul>
 </li>
- 
+
 <li id="p-views">
 <ul class="list-inline">
 <li id="ca-edit"><a href="/mw/index.php?title=Category:Kotlin&amp;action=edit" title="Edit this page [e]" accesskey="e">Edit</a></li>
@@ -152,16 +132,16 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 </div>
 <div class="row">
 <div class="col-lg-12">
- 
+
 <div id="content" class="mw-body"><a id="top"></a>
 <div id="mw-js-message" style="display:none;"></div>
 <div class="contentHeader">
- 
+
 <h1 id="firstHeading" class="firstHeading">Category:Kotlin</h1>
- 
+
 <div id="siteSub">From Rosetta Code</div><div id="jump-to-nav" class="mw-jump">Jump to:<a href="#mw-navigation">navigation</a>, <a href="#p-search">search</a></div>
 </div><div id="bodyContent">
- 
+
 <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="infobox" style="width: 2in"><div class="floatleft"><a href="/wiki/Category:Solutions_by_Programming_Language" title="Category:Solutions by Programming Language"><img alt="Language" src="/mw/images/thumb/2/27/Rcode-button-language-crushed.png/64px-Rcode-button-language-crushed.png" width="64" height="64" srcset="/mw/images/thumb/2/27/Rcode-button-language-crushed.png/96px-Rcode-button-language-crushed.png 1.5x, /mw/images/thumb/2/27/Rcode-button-language-crushed.png/128px-Rcode-button-language-crushed.png 2x"/></a></div><b>Kotlin</b><br/> This <b>programming language</b> may be used to instruct a computer to perform a task.
 <table style="text-align: left; font-size: 75%; background: transparent;">
 <tr>
@@ -181,149 +161,817 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 <p><br/>
 </p>
 </td></tr></table>
-Listed below are all of the tasks on Rosetta Code which have been solved using Kotlin.</div><div class="infobox" style="width: 2in"><big><b>Your Help Needed</b></big><br/>If you know <b>Kotlin</b>, please write code for some of the <a href="/wiki/Reports:Tasks_not_implemented_in_Kotlin" title="Reports:Tasks not implemented in Kotlin">tasks not implemented in <b>Kotlin</b></a>.</div>Kotlin is the codename for a statically-typed <a href="/wiki/JVM" title="JVM" class="mw-redirect">JVM</a>-targeted programming language developed by JetBrains and intended for industrial use.
- 
- 
- 
+Listed below are all of the tasks on Rosetta Code which have been solved using Kotlin.</div><div class="infobox" style="width: 2in"><big><b>Your Help Needed</b></big><br/>If you know <b>Kotlin</b>, please write code for some of the <a href="/wiki/Reports:Tasks_not_implemented_in_Kotlin" title="Reports:Tasks not implemented in Kotlin">tasks not implemented in <b>Kotlin</b></a>.</div>Kotlin is a statically-typed programming language that runs on the <a href="/wiki/JVM" title="JVM" class="mw-redirect">JVM</a> and can also be compiled to JavaScript. It is being developed by JetBrains with assistance from open source contributors and is intended for industrial use.
+<p><br/>
+In addition, a separate team at JetBrains is developing a version of Kotlin which compiles (via LLVM) directly to machine code for various platforms. The first Technology Preview for this version was rolled out in April 2017.
+</p><p>Kotlin has become a popular language for developing Android applications and, in May 2017, Google announced official support for it alongside Java and C++.
+</p>
+
+
+
 <div lang="en" dir="ltr"><div id="mw-pages">
 <h2>Pages in category "Kotlin"</h2>
-<p>The following 117 pages are in this category, out of 117 total.
+<p>The following 781 pages are in this category, out of 781 total.
 </p><div lang="en" dir="ltr" class="mw-content-ltr"><div class="mw-category"><div class="mw-category-group"><h3>1</h3>
-<ul><li><a href="/wiki/100_doors" title="100 doors">100 doors</a></li></ul></div><div class="mw-category-group"><h3>2</h3>
+<ul><li><a href="/wiki/100_doors" title="100 doors">100 doors</a></li>
+<li><a href="/wiki/15_Puzzle_Game" title="15 Puzzle Game">15 Puzzle Game</a></li></ul></div><div class="mw-category-group"><h3>2</h3>
 <ul><li><a href="/wiki/2048" title="2048">2048</a></li>
-<li><a href="/wiki/24_game" title="24 game">24 game</a></li></ul></div><div class="mw-category-group"><h3>9</h3>
+<li><a href="/wiki/24_game" title="24 game">24 game</a></li>
+<li><a href="/wiki/24_game/Solve" title="24 game/Solve">24 game/Solve</a></li></ul></div><div class="mw-category-group"><h3>4</h3>
+<ul><li><a href="/wiki/4-rings_or_4-squares_puzzle" title="4-rings or 4-squares puzzle">4-rings or 4-squares puzzle</a></li></ul></div><div class="mw-category-group"><h3>9</h3>
 <ul><li><a href="/wiki/9_billion_names_of_God_the_integer" title="9 billion names of God the integer">9 billion names of God the integer</a></li>
 <li><a href="/wiki/99_Bottles_of_Beer" title="99 Bottles of Beer">99 Bottles of Beer</a></li></ul></div><div class="mw-category-group"><h3>A</h3>
-<ul><li><a href="/wiki/ABC_Problem" title="ABC Problem">ABC Problem</a></li>
+<ul><li><a href="/wiki/A%2BB" title="A+B">A+B</a></li>
+<li><a href="/wiki/ABC_Problem" title="ABC Problem">ABC Problem</a></li>
+<li><a href="/wiki/Abstract_type" title="Abstract type">Abstract type</a></li>
+<li><a href="/wiki/Abundant,_deficient_and_perfect_number_classifications" title="Abundant, deficient and perfect number classifications">Abundant, deficient and perfect number classifications</a></li>
+<li><a href="/wiki/Accumulator_factory" title="Accumulator factory">Accumulator factory</a></li>
 <li><a href="/wiki/Ackermann_function" title="Ackermann function">Ackermann function</a></li>
 <li><a href="/wiki/Active_Directory/Connect" title="Active Directory/Connect">Active Directory/Connect</a></li>
+<li><a href="/wiki/Add_a_variable_to_a_class_instance_at_runtime" title="Add a variable to a class instance at runtime">Add a variable to a class instance at runtime</a></li>
+<li><a href="/wiki/Address_of_a_variable" title="Address of a variable">Address of a variable</a></li>
+<li><a href="/wiki/AKS_test_for_primes" title="AKS test for primes">AKS test for primes</a></li>
 <li><a href="/wiki/Align_columns" title="Align columns">Align columns</a></li>
+<li><a href="/wiki/Aliquot_sequence_classifications" title="Aliquot sequence classifications">Aliquot sequence classifications</a></li>
 <li><a href="/wiki/Almost_prime" title="Almost prime">Almost prime</a></li>
+<li><a href="/wiki/Amb" title="Amb">Amb</a></li>
+<li><a href="/wiki/Amicable_pairs" title="Amicable pairs">Amicable pairs</a></li>
+<li><a href="/wiki/Anagrams" title="Anagrams">Anagrams</a></li>
+<li><a href="/wiki/Anagrams/Deranged_anagrams" title="Anagrams/Deranged anagrams">Anagrams/Deranged anagrams</a></li>
+<li><a href="/wiki/Angle_difference_between_two_bearings" title="Angle difference between two bearings">Angle difference between two bearings</a></li>
 <li><a href="/wiki/Animate_a_pendulum" title="Animate a pendulum">Animate a pendulum</a></li>
+<li><a href="/wiki/Animation" title="Animation">Animation</a></li>
+<li><a href="/wiki/Anonymous_recursion" title="Anonymous recursion">Anonymous recursion</a></li>
 <li><a href="/wiki/Apply_a_callback_to_an_array" title="Apply a callback to an array">Apply a callback to an array</a></li>
+<li><a href="/wiki/Apply_a_digitial_filter_(direct_form_II_transposed)" title="Apply a digitial filter (direct form II transposed)">Apply a digitial filter (direct form II transposed)</a></li>
+<li><a href="/wiki/Arbitrary-precision_integers_(included)" title="Arbitrary-precision integers (included)">Arbitrary-precision integers (included)</a></li>
+<li><a href="/wiki/Archimedean_spiral" title="Archimedean spiral">Archimedean spiral</a></li>
+<li><a href="/wiki/Arithmetic-geometric_mean" title="Arithmetic-geometric mean">Arithmetic-geometric mean</a></li>
+<li><a href="/wiki/Arithmetic-geometric_mean/Calculate_Pi" title="Arithmetic-geometric mean/Calculate Pi">Arithmetic-geometric mean/Calculate Pi</a></li>
+<li><a href="/wiki/Arithmetic/Complex" title="Arithmetic/Complex">Arithmetic/Complex</a></li>
+<li><a href="/wiki/Arithmetic/Integer" title="Arithmetic/Integer">Arithmetic/Integer</a></li>
+<li><a href="/wiki/Arithmetic/Rational" title="Arithmetic/Rational">Arithmetic/Rational</a></li>
 <li><a href="/wiki/Array_concatenation" title="Array concatenation">Array concatenation</a></li>
 <li><a href="/wiki/Array_length" title="Array length">Array length</a></li>
 <li><a href="/wiki/Arrays" title="Arrays">Arrays</a></li>
+<li><a href="/wiki/Assertions" title="Assertions">Assertions</a></li>
+<li><a href="/wiki/Assertions_in_design_by_contract" title="Assertions in design by contract">Assertions in design by contract</a></li>
 <li><a href="/wiki/Associative_array/Creation" title="Associative array/Creation">Associative array/Creation</a></li>
 <li><a href="/wiki/Associative_array/Iteration" title="Associative array/Iteration">Associative array/Iteration</a></li>
+<li><a href="/wiki/Average_loop_length" title="Average loop length">Average loop length</a></li>
 <li><a href="/wiki/Averages/Arithmetic_mean" title="Averages/Arithmetic mean">Averages/Arithmetic mean</a></li>
+<li><a href="/wiki/Averages/Mean_angle" title="Averages/Mean angle">Averages/Mean angle</a></li>
+<li><a href="/wiki/Averages/Mean_time_of_day" title="Averages/Mean time of day">Averages/Mean time of day</a></li>
 <li><a href="/wiki/Averages/Median" title="Averages/Median">Averages/Median</a></li>
-<li><a href="/wiki/Averages/Pythagorean_means" title="Averages/Pythagorean means">Averages/Pythagorean means</a></li></ul></div><div class="mw-category-group"><h3>B</h3>
-<ul><li><a href="/wiki/Benford%27s_law" title="Benford's law">Benford's law</a></li>
+<li><a href="/wiki/Averages/Mode" title="Averages/Mode">Averages/Mode</a></li>
+<li><a href="/wiki/Averages/Pythagorean_means" title="Averages/Pythagorean means">Averages/Pythagorean means</a></li>
+<li><a href="/wiki/Averages/Root_mean_square" title="Averages/Root mean square">Averages/Root mean square</a></li>
+<li><a href="/wiki/Averages/Simple_moving_average" title="Averages/Simple moving average">Averages/Simple moving average</a></li>
+<li><a href="/wiki/AVL_tree" title="AVL tree">AVL tree</a></li></ul></div><div class="mw-category-group"><h3>B</h3>
+<ul><li><a href="/wiki/Babbage_problem" title="Babbage problem">Babbage problem</a></li>
+<li><a href="/wiki/Bacon_cipher" title="Bacon cipher">Bacon cipher</a></li>
+<li><a href="/wiki/Balanced_brackets" title="Balanced brackets">Balanced brackets</a></li>
+<li><a href="/wiki/Balanced_ternary" title="Balanced ternary">Balanced ternary</a></li>
+<li><a href="/wiki/Barnsley_fern" title="Barnsley fern">Barnsley fern</a></li>
+<li><a href="/wiki/Base64_encode_data" title="Base64 encode data">Base64 encode data</a></li>
+<li><a href="/wiki/Benford%27s_law" title="Benford's law">Benford's law</a></li>
 <li><a href="/wiki/Bernoulli_numbers" title="Bernoulli numbers">Bernoulli numbers</a></li>
 <li><a href="/wiki/Best_shuffle" title="Best shuffle">Best shuffle</a></li>
+<li><a href="/wiki/Binary_digits" title="Binary digits">Binary digits</a></li>
 <li><a href="/wiki/Binary_search" title="Binary search">Binary search</a></li>
-<li><a href="/wiki/Boolean_values" title="Boolean values">Boolean values</a></li></ul></div><div class="mw-category-group"><h3>C</h3>
-<ul><li><a href="/wiki/Calendar" title="Calendar">Calendar</a></li>
+<li><a href="/wiki/Binary_strings" title="Binary strings">Binary strings</a></li>
+<li><a href="/wiki/Birthday_problem" title="Birthday problem">Birthday problem</a></li>
+<li><a href="/wiki/Bitcoin/address_validation" title="Bitcoin/address validation">Bitcoin/address validation</a></li>
+<li><a href="/wiki/Bitmap" title="Bitmap">Bitmap</a></li>
+<li><a href="/wiki/Bitmap/Bresenham%27s_line_algorithm" title="Bitmap/Bresenham's line algorithm">Bitmap/Bresenham's line algorithm</a></li>
+<li><a href="/wiki/Bitmap/Flood_fill" title="Bitmap/Flood fill">Bitmap/Flood fill</a></li>
+<li><a href="/wiki/Bitmap/Midpoint_circle_algorithm" title="Bitmap/Midpoint circle algorithm">Bitmap/Midpoint circle algorithm</a></li>
+<li><a href="/wiki/Bitwise_operations" title="Bitwise operations">Bitwise operations</a></li>
+<li><a href="/wiki/Boolean_values" title="Boolean values">Boolean values</a></li>
+<li><a href="/wiki/Box_the_compass" title="Box the compass">Box the compass</a></li>
+<li><a href="/wiki/Brace_expansion" title="Brace expansion">Brace expansion</a></li>
+<li><a href="/wiki/Break_OO_privacy" title="Break OO privacy">Break OO privacy</a></li>
+<li><a href="/wiki/Brownian_tree" title="Brownian tree">Brownian tree</a></li>
+<li><a href="/wiki/Bulls_and_cows" title="Bulls and cows">Bulls and cows</a></li>
+<li><a href="/wiki/Bulls_and_cows/Player" title="Bulls and cows/Player">Bulls and cows/Player</a></li></ul></div><div class="mw-category-group"><h3>C</h3>
+<ul><li><a href="/wiki/Caesar_cipher" title="Caesar cipher">Caesar cipher</a></li>
+<li><a href="/wiki/Calendar" title="Calendar">Calendar</a></li>
+<li><a href="/wiki/Calendar_-_for_%22REAL%22_programmers" title="Calendar - for &quot;REAL&quot; programmers">Calendar - for &quot;REAL&quot; programmers</a></li>
+<li><a href="/wiki/Call_a_foreign-language_function" title="Call a foreign-language function">Call a foreign-language function</a></li>
+<li><a href="/wiki/Call_a_function" title="Call a function">Call a function</a></li>
+<li><a href="/wiki/Call_an_object_method" title="Call an object method">Call an object method</a></li>
 <li><a href="/wiki/Carmichael_3_strong_pseudoprimes" title="Carmichael 3 strong pseudoprimes">Carmichael 3 strong pseudoprimes</a></li>
+<li><a href="/wiki/Cartesian_product_of_two_or_more_lists" title="Cartesian product of two or more lists">Cartesian product of two or more lists</a></li>
+<li><a href="/wiki/Case-sensitivity_of_identifiers" title="Case-sensitivity of identifiers">Case-sensitivity of identifiers</a></li>
+<li><a href="/wiki/Casting_out_nines" title="Casting out nines">Casting out nines</a></li>
 <li><a href="/wiki/Catalan_numbers" title="Catalan numbers">Catalan numbers</a></li>
+<li><a href="/wiki/Catalan_numbers/Pascal%27s_triangle" title="Catalan numbers/Pascal's triangle">Catalan numbers/Pascal's triangle</a></li>
+<li><a href="/wiki/Catamorphism" title="Catamorphism">Catamorphism</a></li>
+<li><a href="/wiki/Character_codes" title="Character codes">Character codes</a></li>
+<li><a href="/wiki/Chebyshev_coefficients" title="Chebyshev coefficients">Chebyshev coefficients</a></li>
+<li><a href="/wiki/Check_input_device_is_a_terminal" title="Check input device is a terminal">Check input device is a terminal</a></li>
+<li><a href="/wiki/Check_Machin-like_formulas" title="Check Machin-like formulas">Check Machin-like formulas</a></li>
+<li><a href="/wiki/Check_output_device_is_a_terminal" title="Check output device is a terminal">Check output device is a terminal</a></li>
+<li><a href="/wiki/Check_that_file_exists" title="Check that file exists">Check that file exists</a></li>
+<li><a href="/wiki/Chinese_remainder_theorem" title="Chinese remainder theorem">Chinese remainder theorem</a></li>
+<li><a href="/wiki/Chinese_zodiac" title="Chinese zodiac">Chinese zodiac</a></li>
+<li><a href="/wiki/Cholesky_decomposition" title="Cholesky decomposition">Cholesky decomposition</a></li>
+<li><a href="/wiki/Classes" title="Classes">Classes</a></li>
+<li><a href="/wiki/Closest-pair_problem" title="Closest-pair problem">Closest-pair problem</a></li>
+<li><a href="/wiki/Closures/Value_capture" title="Closures/Value capture">Closures/Value capture</a></li>
+<li><a href="/wiki/Collections" title="Collections">Collections</a></li>
 <li><a href="/wiki/Color_of_a_screen_pixel" title="Color of a screen pixel">Color of a screen pixel</a></li>
+<li><a href="/wiki/Colour_bars/Display" title="Colour bars/Display">Colour bars/Display</a></li>
+<li><a href="/wiki/Colour_pinstripe/Display" title="Colour pinstripe/Display">Colour pinstripe/Display</a></li>
+<li><a href="/wiki/Combinations" title="Combinations">Combinations</a></li>
+<li><a href="/wiki/Combinations_and_permutations" title="Combinations and permutations">Combinations and permutations</a></li>
+<li><a href="/wiki/Combinations_with_repetitions" title="Combinations with repetitions">Combinations with repetitions</a></li>
+<li><a href="/wiki/Comma_quibbling" title="Comma quibbling">Comma quibbling</a></li>
 <li><a href="/wiki/Command-line_arguments" title="Command-line arguments">Command-line arguments</a></li>
+<li><a href="/wiki/Commatizing_numbers" title="Commatizing numbers">Commatizing numbers</a></li>
+<li><a href="/wiki/Comments" title="Comments">Comments</a></li>
+<li><a href="/wiki/Compare_a_list_of_strings" title="Compare a list of strings">Compare a list of strings</a></li>
+<li><a href="/wiki/Compile-time_calculation" title="Compile-time calculation">Compile-time calculation</a></li>
+<li><a href="/wiki/Compound_data_type" title="Compound data type">Compound data type</a></li>
+<li><a href="/wiki/Concurrent_computing" title="Concurrent computing">Concurrent computing</a></li>
+<li><a href="/wiki/Conditional_structures" title="Conditional structures">Conditional structures</a></li>
+<li><a href="/wiki/Conjugate_transpose" title="Conjugate transpose">Conjugate transpose</a></li>
+<li><a href="/wiki/Constrained_genericity" title="Constrained genericity">Constrained genericity</a></li>
+<li><a href="/wiki/Constrained_random_points_on_a_circle" title="Constrained random points on a circle">Constrained random points on a circle</a></li>
+<li><a href="/wiki/Continued_fraction" title="Continued fraction">Continued fraction</a></li>
+<li><a href="/wiki/Continued_fraction/Arithmetic/Construct_from_rational_number" title="Continued fraction/Arithmetic/Construct from rational number">Continued fraction/Arithmetic/Construct from rational number</a></li>
+<li><a href="/wiki/Continued_fraction/Arithmetic/G(matrix_NG,_Contined_Fraction_N)" title="Continued fraction/Arithmetic/G(matrix NG, Contined Fraction N)">Continued fraction/Arithmetic/G(matrix NG, Contined Fraction N)</a></li>
+<li><a href="/wiki/Convert_decimal_number_to_rational" title="Convert decimal number to rational">Convert decimal number to rational</a></li>
+<li><a href="/wiki/Convert_seconds_to_compound_duration" title="Convert seconds to compound duration">Convert seconds to compound duration</a></li>
+<li><a href="/wiki/Convex_hull" title="Convex hull">Convex hull</a></li>
 <li><a href="/wiki/Copy_a_string" title="Copy a string">Copy a string</a></li>
-<li><a href="/wiki/Create_a_two-dimensional_array_at_runtime" title="Create a two-dimensional array at runtime">Create a two-dimensional array at runtime</a></li></ul></div><div class="mw-category-group"><h3>D</h3>
-<ul><li><a href="/wiki/Discordian_date" title="Discordian date">Discordian date</a></li>
-<li><a href="/wiki/Dot_product" title="Dot product">Dot product</a></li></ul></div><div class="mw-category-group"><h3>E</h3>
-<ul><li><a href="/wiki/Emirp_primes" title="Emirp primes">Emirp primes</a></li>
+<li><a href="/wiki/Count_in_factors" title="Count in factors">Count in factors</a></li>
+<li><a href="/wiki/Count_in_octal" title="Count in octal">Count in octal</a></li>
+<li><a href="/wiki/Count_occurrences_of_a_substring" title="Count occurrences of a substring">Count occurrences of a substring</a></li>
+<li><a href="/wiki/Count_the_coins" title="Count the coins">Count the coins</a></li>
+<li><a href="/wiki/Cramer%27s_rule" title="Cramer's rule">Cramer's rule</a></li>
+<li><a href="/wiki/CRC-32" title="CRC-32">CRC-32</a></li>
+<li><a href="/wiki/Create_a_file" title="Create a file">Create a file</a></li>
+<li><a href="/wiki/Create_a_file_on_magnetic_tape" title="Create a file on magnetic tape">Create a file on magnetic tape</a></li>
+<li><a href="/wiki/Create_a_two-dimensional_array_at_runtime" title="Create a two-dimensional array at runtime">Create a two-dimensional array at runtime</a></li>
+<li><a href="/wiki/Create_an_HTML_table" title="Create an HTML table">Create an HTML table</a></li>
+<li><a href="/wiki/Create_an_object_at_a_given_address" title="Create an object at a given address">Create an object at a given address</a></li>
+<li><a href="/wiki/Create_an_object/Native_demonstration" title="Create an object/Native demonstration">Create an object/Native demonstration</a></li>
+<li><a href="/wiki/CSV_data_manipulation" title="CSV data manipulation">CSV data manipulation</a></li>
+<li><a href="/wiki/CSV_to_HTML_translation" title="CSV to HTML translation">CSV to HTML translation</a></li>
+<li><a href="/wiki/Cumulative_standard_deviation" title="Cumulative standard deviation">Cumulative standard deviation</a></li>
+<li><a href="/wiki/Currency" title="Currency">Currency</a></li>
+<li><a href="/wiki/Currying" title="Currying">Currying</a></li>
+<li><a href="/wiki/CUSIP" title="CUSIP">CUSIP</a></li>
+<li><a href="/wiki/Cut_a_rectangle" title="Cut a rectangle">Cut a rectangle</a></li>
+<li><a href="/wiki/Cycle_detection" title="Cycle detection">Cycle detection</a></li></ul></div><div class="mw-category-group"><h3>D</h3>
+<ul><li><a href="/wiki/Damm_algorithm" title="Damm algorithm">Damm algorithm</a></li>
+<li><a href="/wiki/Data_Encryption_Standard" title="Data Encryption Standard">Data Encryption Standard</a></li>
+<li><a href="/wiki/Date_format" title="Date format">Date format</a></li>
+<li><a href="/wiki/Date_manipulation" title="Date manipulation">Date manipulation</a></li>
+<li><a href="/wiki/Day_of_the_week" title="Day of the week">Day of the week</a></li>
+<li><a href="/wiki/Deal_cards_for_FreeCell" title="Deal cards for FreeCell">Deal cards for FreeCell</a></li>
+<li><a href="/wiki/Decimal_floating_point_number_to_binary" title="Decimal floating point number to binary">Decimal floating point number to binary</a></li>
+<li><a href="/wiki/Deconvolution/1D" title="Deconvolution/1D">Deconvolution/1D</a></li>
+<li><a href="/wiki/Define_a_primitive_data_type" title="Define a primitive data type">Define a primitive data type</a></li>
+<li><a href="/wiki/Delete_a_file" title="Delete a file">Delete a file</a></li>
+<li><a href="/wiki/Deming%27s_Funnel" title="Deming's Funnel">Deming's Funnel</a></li>
+<li><a href="/wiki/Department_Numbers" title="Department Numbers">Department Numbers</a></li>
+<li><a href="/wiki/Detect_division_by_zero" title="Detect division by zero">Detect division by zero</a></li>
+<li><a href="/wiki/Determine_if_a_string_is_numeric" title="Determine if a string is numeric">Determine if a string is numeric</a></li>
+<li><a href="/wiki/Determine_if_only_one_instance_is_running" title="Determine if only one instance is running">Determine if only one instance is running</a></li>
+<li><a href="/wiki/Determine_if_two_triangles_overlap" title="Determine if two triangles overlap">Determine if two triangles overlap</a></li>
+<li><a href="/wiki/Dice_game_probabilities" title="Dice game probabilities">Dice game probabilities</a></li>
+<li><a href="/wiki/Digital_root" title="Digital root">Digital root</a></li>
+<li><a href="/wiki/Digital_root/Multiplicative_digital_root" title="Digital root/Multiplicative digital root">Digital root/Multiplicative digital root</a></li>
+<li><a href="/wiki/Dinesman%27s_multiple-dwelling_problem" title="Dinesman's multiple-dwelling problem">Dinesman's multiple-dwelling problem</a></li>
+<li><a href="/wiki/Discordian_date" title="Discordian date">Discordian date</a></li>
+<li><a href="/wiki/Display_a_linear_combination" title="Display a linear combination">Display a linear combination</a></li>
+<li><a href="/wiki/DNS_query" title="DNS query">DNS query</a></li>
+<li><a href="/wiki/Dot_product" title="Dot product">Dot product</a></li>
+<li><a href="/wiki/Doubly-linked_list/Definition" title="Doubly-linked list/Definition">Doubly-linked list/Definition</a></li>
+<li><a href="/wiki/Doubly-linked_list/Element_definition" title="Doubly-linked list/Element definition">Doubly-linked list/Element definition</a></li>
+<li><a href="/wiki/Doubly-linked_list/Element_insertion" title="Doubly-linked list/Element insertion">Doubly-linked list/Element insertion</a></li>
+<li><a href="/wiki/Doubly-linked_list/Traversal" title="Doubly-linked list/Traversal">Doubly-linked list/Traversal</a></li>
+<li><a href="/wiki/Dragon_curve" title="Dragon curve">Dragon curve</a></li>
+<li><a href="/wiki/Draw_a_clock" title="Draw a clock">Draw a clock</a></li>
+<li><a href="/wiki/Draw_a_cuboid" title="Draw a cuboid">Draw a cuboid</a></li>
+<li><a href="/wiki/Draw_a_rotating_cube" title="Draw a rotating cube">Draw a rotating cube</a></li>
+<li><a href="/wiki/Draw_a_sphere" title="Draw a sphere">Draw a sphere</a></li>
+<li><a href="/wiki/Dutch_national_flag_problem" title="Dutch national flag problem">Dutch national flag problem</a></li>
+<li><a href="/wiki/Dynamic_variable_names" title="Dynamic variable names">Dynamic variable names</a></li></ul></div><div class="mw-category-group"><h3>E</h3>
+<ul><li><a href="/wiki/Echo_server" title="Echo server">Echo server</a></li>
+<li><a href="/wiki/Eertree" title="Eertree">Eertree</a></li>
+<li><a href="/wiki/Egyptian_division" title="Egyptian division">Egyptian division</a></li>
+<li><a href="/wiki/Elliptic_curve_arithmetic" title="Elliptic curve arithmetic">Elliptic curve arithmetic</a></li>
+<li><a href="/wiki/Emirp_primes" title="Emirp primes">Emirp primes</a></li>
+<li><a href="/wiki/Empty_directory" title="Empty directory">Empty directory</a></li>
 <li><a href="/wiki/Empty_program" title="Empty program">Empty program</a></li>
-<li><a href="/wiki/Empty_string" title="Empty string">Empty string</a></li></ul></div><div class="mw-category-group"><h3>F</h3>
+<li><a href="/wiki/Empty_string" title="Empty string">Empty string</a></li>
+<li><a href="/wiki/Enforced_immutability" title="Enforced immutability">Enforced immutability</a></li>
+<li><a href="/wiki/Entropy" title="Entropy">Entropy</a></li>
+<li><a href="/wiki/Entropy/Narcissist" title="Entropy/Narcissist">Entropy/Narcissist</a></li>
+<li><a href="/wiki/Enumerations" title="Enumerations">Enumerations</a></li>
+<li><a href="/wiki/Environment_variables" title="Environment variables">Environment variables</a></li>
+<li><a href="/wiki/Equilibrium_index" title="Equilibrium index">Equilibrium index</a></li>
+<li><a href="/wiki/Ethiopian_multiplication" title="Ethiopian multiplication">Ethiopian multiplication</a></li>
+<li><a href="/wiki/Euler_method" title="Euler method">Euler method</a></li>
+<li><a href="/wiki/Euler%27s_sum_of_powers_conjecture" title="Euler's sum of powers conjecture">Euler's sum of powers conjecture</a></li>
+<li><a href="/wiki/Evaluate_binomial_coefficients" title="Evaluate binomial coefficients">Evaluate binomial coefficients</a></li>
+<li><a href="/wiki/Even_or_odd" title="Even or odd">Even or odd</a></li>
+<li><a href="/wiki/Evolutionary_algorithm" title="Evolutionary algorithm">Evolutionary algorithm</a></li>
+<li><a href="/wiki/Exceptions" title="Exceptions">Exceptions</a></li>
+<li><a href="/wiki/Exceptions/Catch_an_exception_thrown_in_a_nested_call" title="Exceptions/Catch an exception thrown in a nested call">Exceptions/Catch an exception thrown in a nested call</a></li>
+<li><a href="/wiki/Execute_a_system_command" title="Execute a system command">Execute a system command</a></li>
+<li><a href="/wiki/Execute_Brain****" title="Execute Brain****">Execute Brain****</a></li>
+<li><a href="/wiki/Execute_HQ9%2B" title="Execute HQ9+">Execute HQ9+</a></li>
+<li><a href="/wiki/Execute_SNUSP" title="Execute SNUSP">Execute SNUSP</a></li>
+<li><a href="/wiki/Exponentiation_operator" title="Exponentiation operator">Exponentiation operator</a></li>
+<li><a href="/wiki/Exponentiation_order" title="Exponentiation order">Exponentiation order</a></li>
+<li><a href="/wiki/Extend_your_language" title="Extend your language">Extend your language</a></li>
+<li><a href="/wiki/Extensible_prime_generator" title="Extensible prime generator">Extensible prime generator</a></li>
+<li><a href="/wiki/Extract_file_extension" title="Extract file extension">Extract file extension</a></li>
+<li><a href="/wiki/Extreme_floating_point_values" title="Extreme floating point values">Extreme floating point values</a></li></ul></div><div class="mw-category-group"><h3>F</h3>
 <ul><li><a href="/wiki/Factorial" title="Factorial">Factorial</a></li>
+<li><a href="/wiki/Factors_of_a_Mersenne_number" title="Factors of a Mersenne number">Factors of a Mersenne number</a></li>
+<li><a href="/wiki/Factors_of_an_integer" title="Factors of an integer">Factors of an integer</a></li>
+<li><a href="/wiki/Farey_sequence" title="Farey sequence">Farey sequence</a></li>
 <li><a href="/wiki/Fast_Fourier_transform" title="Fast Fourier transform">Fast Fourier transform</a></li>
+<li><a href="/wiki/FASTA_format" title="FASTA format">FASTA format</a></li>
+<li><a href="/wiki/Faulhaber%27s_formula" title="Faulhaber's formula">Faulhaber's formula</a></li>
+<li><a href="/wiki/Faulhaber%27s_triangle" title="Faulhaber's triangle">Faulhaber's triangle</a></li>
+<li><a href="/wiki/Fibonacci_n-step_number_sequences" title="Fibonacci n-step number sequences">Fibonacci n-step number sequences</a></li>
 <li><a href="/wiki/Fibonacci_sequence" title="Fibonacci sequence">Fibonacci sequence</a></li>
+<li><a href="/wiki/Fibonacci_word" title="Fibonacci word">Fibonacci word</a></li>
+<li><a href="/wiki/Fibonacci_word/fractal" title="Fibonacci word/fractal">Fibonacci word/fractal</a></li>
+<li><a href="/wiki/File_extension_is_in_extensions_list" title="File extension is in extensions list">File extension is in extensions list</a></li>
+<li><a href="/wiki/File_input/output" title="File input/output">File input/output</a></li>
+<li><a href="/wiki/File_modification_time" title="File modification time">File modification time</a></li>
+<li><a href="/wiki/File_size" title="File size">File size</a></li>
+<li><a href="/wiki/Filter" title="Filter">Filter</a></li>
+<li><a href="/wiki/Find_first_and_last_set_bit_of_a_long_integer" title="Find first and last set bit of a long integer">Find first and last set bit of a long integer</a></li>
+<li><a href="/wiki/Find_largest_left_truncatable_prime_in_a_given_base" title="Find largest left truncatable prime in a given base">Find largest left truncatable prime in a given base</a></li>
+<li><a href="/wiki/Find_limit_of_recursion" title="Find limit of recursion">Find limit of recursion</a></li>
+<li><a href="/wiki/Find_palindromic_numbers_in_both_binary_and_ternary_bases" title="Find palindromic numbers in both binary and ternary bases">Find palindromic numbers in both binary and ternary bases</a></li>
+<li><a href="/wiki/Find_the_intersection_of_two_lines" title="Find the intersection of two lines">Find the intersection of two lines</a></li>
+<li><a href="/wiki/Find_the_last_Sunday_of_each_month" title="Find the last Sunday of each month">Find the last Sunday of each month</a></li>
+<li><a href="/wiki/Find_the_missing_permutation" title="Find the missing permutation">Find the missing permutation</a></li>
+<li><a href="/wiki/First_class_environments" title="First class environments">First class environments</a></li>
+<li><a href="/wiki/First-class_functions" title="First-class functions">First-class functions</a></li>
+<li><a href="/wiki/First-class_functions/Use_numbers_analogously" title="First-class functions/Use numbers analogously">First-class functions/Use numbers analogously</a></li>
+<li><a href="/wiki/Five_weekends" title="Five weekends">Five weekends</a></li>
 <li><a href="/wiki/FizzBuzz" title="FizzBuzz">FizzBuzz</a></li>
+<li><a href="/wiki/Flatten_a_list" title="Flatten a list">Flatten a list</a></li>
+<li><a href="/wiki/Flipping_bits_game" title="Flipping bits game">Flipping bits game</a></li>
+<li><a href="/wiki/Flow-control_structures" title="Flow-control structures">Flow-control structures</a></li>
 <li><a href="/wiki/Floyd%27s_triangle" title="Floyd's triangle">Floyd's triangle</a></li>
-<li><a href="/wiki/Function_definition" title="Function definition">Function definition</a></li></ul></div><div class="mw-category-group"><h3>G</h3>
-<ul><li><a href="/wiki/Generate_Chess960_starting_position" title="Generate Chess960 starting position">Generate Chess960 starting position</a></li>
+<li><a href="/wiki/Floyd-Warshall_algorithm" title="Floyd-Warshall algorithm">Floyd-Warshall algorithm</a></li>
+<li><a href="/wiki/Formatted_numeric_output" title="Formatted numeric output">Formatted numeric output</a></li>
+<li><a href="/wiki/Forward_difference" title="Forward difference">Forward difference</a></li>
+<li><a href="/wiki/Fractal_tree" title="Fractal tree">Fractal tree</a></li>
+<li><a href="/wiki/Fractran" title="Fractran">Fractran</a></li>
+<li><a href="/wiki/Function_composition" title="Function composition">Function composition</a></li>
+<li><a href="/wiki/Function_definition" title="Function definition">Function definition</a></li>
+<li><a href="/wiki/Function_prototype" title="Function prototype">Function prototype</a></li></ul></div><div class="mw-category-group"><h3>G</h3>
+<ul><li><a href="/wiki/Gamma_function" title="Gamma function">Gamma function</a></li>
+<li><a href="/wiki/General_FizzBuzz" title="General FizzBuzz">General FizzBuzz</a></li>
+<li><a href="/wiki/Generate_Chess960_starting_position" title="Generate Chess960 starting position">Generate Chess960 starting position</a></li>
+<li><a href="/wiki/Generate_lower_case_ASCII_alphabet" title="Generate lower case ASCII alphabet">Generate lower case ASCII alphabet</a></li>
+<li><a href="/wiki/Generator/Exponential" title="Generator/Exponential">Generator/Exponential</a></li>
+<li><a href="/wiki/Generic_swap" title="Generic swap">Generic swap</a></li>
+<li><a href="/wiki/Get_system_command_output" title="Get system command output">Get system command output</a></li>
+<li><a href="/wiki/Gray_code" title="Gray code">Gray code</a></li>
 <li><a href="/wiki/Greatest_common_divisor" title="Greatest common divisor">Greatest common divisor</a></li>
-<li><a href="/wiki/GUI_component_interaction" title="GUI component interaction">GUI component interaction</a></li></ul></div><div class="mw-category-group"><h3>H</h3>
+<li><a href="/wiki/Greatest_element_of_a_list" title="Greatest element of a list">Greatest element of a list</a></li>
+<li><a href="/wiki/Greatest_subsequential_sum" title="Greatest subsequential sum">Greatest subsequential sum</a></li>
+<li><a href="/wiki/Greyscale_bars/Display" title="Greyscale bars/Display">Greyscale bars/Display</a></li>
+<li><a href="/wiki/Guess_the_number" title="Guess the number">Guess the number</a></li>
+<li><a href="/wiki/Guess_the_number/With_feedback" title="Guess the number/With feedback">Guess the number/With feedback</a></li>
+<li><a href="/wiki/Guess_the_number/With_feedback_(player)" title="Guess the number/With feedback (player)">Guess the number/With feedback (player)</a></li>
+<li><a href="/wiki/GUI_component_interaction" title="GUI component interaction">GUI component interaction</a></li>
+<li><a href="/wiki/GUI/Maximum_window_dimensions" title="GUI/Maximum window dimensions">GUI/Maximum window dimensions</a></li></ul></div><div class="mw-category-group"><h3>H</h3>
 <ul><li><a href="/wiki/Hailstone_sequence" title="Hailstone sequence">Hailstone sequence</a></li>
 <li><a href="/wiki/Hamming_numbers" title="Hamming numbers">Hamming numbers</a></li>
+<li><a href="/wiki/Handle_a_signal" title="Handle a signal">Handle a signal</a></li>
+<li><a href="/wiki/Happy_numbers" title="Happy numbers">Happy numbers</a></li>
+<li><a href="/wiki/Harshad_or_Niven_series" title="Harshad or Niven series">Harshad or Niven series</a></li>
+<li><a href="/wiki/Hash_from_two_arrays" title="Hash from two arrays">Hash from two arrays</a></li>
+<li><a href="/wiki/Hash_join" title="Hash join">Hash join</a></li>
 <li><a href="/wiki/Haversine_formula" title="Haversine formula">Haversine formula</a></li>
 <li><a href="/wiki/Hello_world/Graphical" title="Hello world/Graphical">Hello world/Graphical</a></li>
+<li><a href="/wiki/Hello_world/Line_printer" title="Hello world/Line printer">Hello world/Line printer</a></li>
+<li><a href="/wiki/Hello_world/Newbie" title="Hello world/Newbie">Hello world/Newbie</a></li>
 <li><a href="/wiki/Hello_world/Newline_omission" title="Hello world/Newline omission">Hello world/Newline omission</a></li>
+<li><a href="/wiki/Hello_world/Standard_error" title="Hello world/Standard error">Hello world/Standard error</a></li>
 <li><a href="/wiki/Hello_world/Text" title="Hello world/Text">Hello world/Text</a></li>
+<li><a href="/wiki/Hello_world/Web_server" title="Hello world/Web server">Hello world/Web server</a></li>
+<li><a href="/wiki/Here_document" title="Here document">Here document</a></li>
 <li><a href="/wiki/Heronian_triangles" title="Heronian triangles">Heronian triangles</a></li>
+<li><a href="/wiki/Hickerson_series_of_almost_integers" title="Hickerson series of almost integers">Hickerson series of almost integers</a></li>
 <li><a href="/wiki/Higher-order_functions" title="Higher-order functions">Higher-order functions</a></li>
+<li><a href="/wiki/History_variables" title="History variables">History variables</a></li>
 <li><a href="/wiki/Hofstadter_Figure-Figure_sequences" title="Hofstadter Figure-Figure sequences">Hofstadter Figure-Figure sequences</a></li>
+<li><a href="/wiki/Hofstadter_Q_sequence" title="Hofstadter Q sequence">Hofstadter Q sequence</a></li>
+<li><a href="/wiki/Hofstadter-Conway_$10,000_sequence" title="Hofstadter-Conway $10,000 sequence">Hofstadter-Conway $10,000 sequence</a></li>
+<li><a href="/wiki/Holidays_related_to_Easter" title="Holidays related to Easter">Holidays related to Easter</a></li>
+<li><a href="/wiki/Honeycombs" title="Honeycombs">Honeycombs</a></li>
+<li><a href="/wiki/Horizontal_sundial_calculations" title="Horizontal sundial calculations">Horizontal sundial calculations</a></li>
+<li><a href="/wiki/Horner%27s_rule_for_polynomial_evaluation" title="Horner's rule for polynomial evaluation">Horner's rule for polynomial evaluation</a></li>
+<li><a href="/wiki/Host_introspection" title="Host introspection">Host introspection</a></li>
+<li><a href="/wiki/Hostname" title="Hostname">Hostname</a></li>
 <li><a href="/wiki/Hough_transform" title="Hough transform">Hough transform</a></li>
+<li><a href="/wiki/HTTP" title="HTTP">HTTP</a></li>
+<li><a href="/wiki/HTTPS" title="HTTPS">HTTPS</a></li>
 <li><a href="/wiki/Huffman_coding" title="Huffman coding">Huffman coding</a></li></ul></div><div class="mw-category-group"><h3>I</h3>
-<ul><li><a href="/wiki/Infinity" title="Infinity">Infinity</a></li>
+<ul><li><a href="/wiki/I_before_E_except_after_C" title="I before E except after C">I before E except after C</a></li>
+<li><a href="/wiki/I.Q._Puzzle" title="I.Q. Puzzle">I.Q. Puzzle</a></li>
+<li><a href="/wiki/IBAN" title="IBAN">IBAN</a></li>
+<li><a href="/wiki/Identity_matrix" title="Identity matrix">Identity matrix</a></li>
+<li><a href="/wiki/Idiomatically_determine_all_the_lowercase_and_uppercase_letters" title="Idiomatically determine all the lowercase and uppercase letters">Idiomatically determine all the lowercase and uppercase letters</a></li>
+<li><a href="/wiki/Implicit_type_conversion" title="Implicit type conversion">Implicit type conversion</a></li>
+<li><a href="/wiki/Include_a_file" title="Include a file">Include a file</a></li>
+<li><a href="/wiki/Increment_a_numerical_string" title="Increment a numerical string">Increment a numerical string</a></li>
+<li><a href="/wiki/Index_finite_lists_of_positive_integers" title="Index finite lists of positive integers">Index finite lists of positive integers</a></li>
+<li><a href="/wiki/Infinity" title="Infinity">Infinity</a></li>
 <li><a href="/wiki/Inheritance/Multiple" title="Inheritance/Multiple">Inheritance/Multiple</a></li>
-<li><a href="/wiki/Integer_comparison" title="Integer comparison">Integer comparison</a></li></ul></div><div class="mw-category-group"><h3>J</h3>
+<li><a href="/wiki/Inheritance/Single" title="Inheritance/Single">Inheritance/Single</a></li>
+<li><a href="/wiki/Input_loop" title="Input loop">Input loop</a></li>
+<li><a href="/wiki/Input/Output_for_Lines_of_Text" title="Input/Output for Lines of Text">Input/Output for Lines of Text</a></li>
+<li><a href="/wiki/Input/Output_for_Pairs_of_Numbers" title="Input/Output for Pairs of Numbers">Input/Output for Pairs of Numbers</a></li>
+<li><a href="/wiki/Integer_comparison" title="Integer comparison">Integer comparison</a></li>
+<li><a href="/wiki/Integer_overflow" title="Integer overflow">Integer overflow</a></li>
+<li><a href="/wiki/Integer_roots" title="Integer roots">Integer roots</a></li>
+<li><a href="/wiki/Integer_sequence" title="Integer sequence">Integer sequence</a></li>
+<li><a href="/wiki/Interactive_programming" title="Interactive programming">Interactive programming</a></li>
+<li><a href="/wiki/Introspection" title="Introspection">Introspection</a></li>
+<li><a href="/wiki/Inverted_syntax" title="Inverted syntax">Inverted syntax</a></li>
+<li><a href="/wiki/Iterated_digits_squaring" title="Iterated digits squaring">Iterated digits squaring</a></li></ul></div><div class="mw-category-group"><h3>J</h3>
 <ul><li><a href="/wiki/Jaro_distance" title="Jaro distance">Jaro distance</a></li>
-<li><a href="/wiki/Jensen%27s_Device" title="Jensen's Device">Jensen's Device</a></li></ul></div><div class="mw-category-group"><h3>K</h3>
-<ul><li><a href="/wiki/Kaprekar_numbers" title="Kaprekar numbers">Kaprekar numbers</a></li>
+<li><a href="/wiki/Jensen%27s_Device" title="Jensen's Device">Jensen's Device</a></li>
+<li><a href="/wiki/JortSort" title="JortSort">JortSort</a></li>
+<li><a href="/wiki/Josephus_problem" title="Josephus problem">Josephus problem</a></li>
+<li><a href="/wiki/Julia_set" title="Julia set">Julia set</a></li>
+<li><a href="/wiki/Jump_anywhere" title="Jump anywhere">Jump anywhere</a></li></ul></div><div class="mw-category-group"><h3>K</h3>
+<ul><li><a href="/wiki/Kahan_summation" title="Kahan summation">Kahan summation</a></li>
+<li><a href="/wiki/Kaprekar_numbers" title="Kaprekar numbers">Kaprekar numbers</a></li>
+<li><a href="/wiki/Keyboard_input/Flush_the_keyboard_buffer" title="Keyboard input/Flush the keyboard buffer">Keyboard input/Flush the keyboard buffer</a></li>
+<li><a href="/wiki/Keyboard_input/Keypress_check" title="Keyboard input/Keypress check">Keyboard input/Keypress check</a></li>
+<li><a href="/wiki/Keyboard_input/Obtain_a_Y_or_N_response" title="Keyboard input/Obtain a Y or N response">Keyboard input/Obtain a Y or N response</a></li>
+<li><a href="/wiki/Knapsack_problem/0-1" title="Knapsack problem/0-1">Knapsack problem/0-1</a></li>
+<li><a href="/wiki/Knapsack_problem/Bounded" title="Knapsack problem/Bounded">Knapsack problem/Bounded</a></li>
+<li><a href="/wiki/Knapsack_problem/Continuous" title="Knapsack problem/Continuous">Knapsack problem/Continuous</a></li>
+<li><a href="/wiki/Knapsack_problem/Unbounded" title="Knapsack problem/Unbounded">Knapsack problem/Unbounded</a></li>
 <li><a href="/wiki/Knight%27s_tour" title="Knight's tour">Knight's tour</a></li>
-<li><a href="/wiki/Knuth_shuffle" title="Knuth shuffle">Knuth shuffle</a></li></ul></div><div class="mw-category-group"><h3>L</h3>
+<li><a href="/wiki/Knuth_shuffle" title="Knuth shuffle">Knuth shuffle</a></li>
+<li><a href="/wiki/Knuth%27s_algorithm_S" title="Knuth's algorithm S">Knuth's algorithm S</a></li>
+<li><a href="/wiki/Knuth%27s_power_tree" title="Knuth's power tree">Knuth's power tree</a></li>
+<li><a href="/wiki/Kosaraju" title="Kosaraju">Kosaraju</a></li>
+<li><a href="/wiki/Kronecker_product" title="Kronecker product">Kronecker product</a></li></ul></div><div class="mw-category-group"><h3>L</h3>
 <ul><li><a href="/wiki/Largest_int_from_concatenated_ints" title="Largest int from concatenated ints">Largest int from concatenated ints</a></li>
+<li><a href="/wiki/Last_Friday_of_each_month" title="Last Friday of each month">Last Friday of each month</a></li>
+<li><a href="/wiki/Last_letter-first_letter" title="Last letter-first letter">Last letter-first letter</a></li>
 <li><a href="/wiki/Leap_year" title="Leap year">Leap year</a></li>
 <li><a href="/wiki/Least_common_multiple" title="Least common multiple">Least common multiple</a></li>
+<li><a href="/wiki/Left_factorials" title="Left factorials">Left factorials</a></li>
+<li><a href="/wiki/Leonardo_numbers" title="Leonardo numbers">Leonardo numbers</a></li>
+<li><a href="/wiki/Letter_frequency" title="Letter frequency">Letter frequency</a></li>
+<li><a href="/wiki/Levenshtein_distance" title="Levenshtein distance">Levenshtein distance</a></li>
+<li><a href="/wiki/Levenshtein_distance/Alignment" title="Levenshtein distance/Alignment">Levenshtein distance/Alignment</a></li>
+<li><a href="/wiki/Linear_congruential_generator" title="Linear congruential generator">Linear congruential generator</a></li>
+<li><a href="/wiki/Linux_CPU_utilization" title="Linux CPU utilization">Linux CPU utilization</a></li>
+<li><a href="/wiki/List_comprehensions" title="List comprehensions">List comprehensions</a></li>
+<li><a href="/wiki/List_rooted_trees" title="List rooted trees">List rooted trees</a></li>
 <li><a href="/wiki/Literals/Floating_point" title="Literals/Floating point">Literals/Floating point</a></li>
+<li><a href="/wiki/Literals/Integer" title="Literals/Integer">Literals/Integer</a></li>
+<li><a href="/wiki/Literals/String" title="Literals/String">Literals/String</a></li>
+<li><a href="/wiki/Logical_operations" title="Logical operations">Logical operations</a></li>
 <li><a href="/wiki/Long_multiplication" title="Long multiplication">Long multiplication</a></li>
+<li><a href="/wiki/Longest_common_prefix" title="Longest common prefix">Longest common prefix</a></li>
+<li><a href="/wiki/Longest_common_subsequence" title="Longest common subsequence">Longest common subsequence</a></li>
+<li><a href="/wiki/Longest_Common_Substring" title="Longest Common Substring">Longest Common Substring</a></li>
+<li><a href="/wiki/Longest_increasing_subsequence" title="Longest increasing subsequence">Longest increasing subsequence</a></li>
+<li><a href="/wiki/Longest_string_challenge" title="Longest string challenge">Longest string challenge</a></li>
+<li><a href="/wiki/Look-and-say_sequence" title="Look-and-say sequence">Look-and-say sequence</a></li>
+<li><a href="/wiki/Loop_over_multiple_arrays_simultaneously" title="Loop over multiple arrays simultaneously">Loop over multiple arrays simultaneously</a></li>
 <li><a href="/wiki/Loops/Break" title="Loops/Break">Loops/Break</a></li>
+<li><a href="/wiki/Loops/Continue" title="Loops/Continue">Loops/Continue</a></li>
+<li><a href="/wiki/Loops/Do-while" title="Loops/Do-while">Loops/Do-while</a></li>
+<li><a href="/wiki/Loops/Downward_for" title="Loops/Downward for">Loops/Downward for</a></li>
 <li><a href="/wiki/Loops/For" title="Loops/For">Loops/For</a></li>
-<li><a href="/wiki/Loops/Nested" title="Loops/Nested">Loops/Nested</a></li></ul></div><div class="mw-category-group"><h3>M</h3>
-<ul><li><a href="/wiki/Maze_generation" title="Maze generation">Maze generation</a></li>
+<li><a href="/wiki/Loops/For_with_a_specified_step" title="Loops/For with a specified step">Loops/For with a specified step</a></li>
+<li><a href="/wiki/Loops/Foreach" title="Loops/Foreach">Loops/Foreach</a></li>
+<li><a href="/wiki/Loops/Infinite" title="Loops/Infinite">Loops/Infinite</a></li>
+<li><a href="/wiki/Loops/N_plus_one_half" title="Loops/N plus one half">Loops/N plus one half</a></li>
+<li><a href="/wiki/Loops/Nested" title="Loops/Nested">Loops/Nested</a></li>
+<li><a href="/wiki/Loops/While" title="Loops/While">Loops/While</a></li>
+<li><a href="/wiki/Lucas-Lehmer_test" title="Lucas-Lehmer test">Lucas-Lehmer test</a></li>
+<li><a href="/wiki/Ludic_numbers" title="Ludic numbers">Ludic numbers</a></li>
+<li><a href="/wiki/Luhn_test_of_credit_card_numbers" title="Luhn test of credit card numbers">Luhn test of credit card numbers</a></li>
+<li><a href="/wiki/Lychrel_numbers" title="Lychrel numbers">Lychrel numbers</a></li>
+<li><a href="/wiki/LZW_compression" title="LZW compression">LZW compression</a></li></ul></div><div class="mw-category-group"><h3>M</h3>
+<ul><li><a href="/wiki/MAC_Vendor_Lookup" title="MAC Vendor Lookup">MAC Vendor Lookup</a></li>
+<li><a href="/wiki/Machine_code" title="Machine code">Machine code</a></li>
+<li><a href="/wiki/Mad_Libs" title="Mad Libs">Mad Libs</a></li>
+<li><a href="/wiki/Magic_squares_of_doubly_even_order" title="Magic squares of doubly even order">Magic squares of doubly even order</a></li>
+<li><a href="/wiki/Magic_squares_of_odd_order" title="Magic squares of odd order">Magic squares of odd order</a></li>
+<li><a href="/wiki/Magic_squares_of_singly_even_order" title="Magic squares of singly even order">Magic squares of singly even order</a></li>
+<li><a href="/wiki/Make_directory_path" title="Make directory path">Make directory path</a></li>
+<li><a href="/wiki/Man_or_boy_test" title="Man or boy test">Man or boy test</a></li>
+<li><a href="/wiki/Mandelbrot_set" title="Mandelbrot set">Mandelbrot set</a></li>
+<li><a href="/wiki/Map_range" title="Map range">Map range</a></li>
+<li><a href="/wiki/Matrix_arithmetic" title="Matrix arithmetic">Matrix arithmetic</a></li>
+<li><a href="/wiki/Matrix_multiplication" title="Matrix multiplication">Matrix multiplication</a></li>
+<li><a href="/wiki/Matrix_transposition" title="Matrix transposition">Matrix transposition</a></li>
+<li><a href="/wiki/Matrix-exponentiation_operator" title="Matrix-exponentiation operator">Matrix-exponentiation operator</a></li>
+<li><a href="/wiki/Maximum_triangle_path_sum" title="Maximum triangle path sum">Maximum triangle path sum</a></li>
+<li><a href="/wiki/Maze_generation" title="Maze generation">Maze generation</a></li>
+<li><a href="/wiki/MD4" title="MD4">MD4</a></li>
+<li><a href="/wiki/MD5" title="MD5">MD5</a></li>
+<li><a href="/wiki/MD5/Implementation" title="MD5/Implementation">MD5/Implementation</a></li>
+<li><a href="/wiki/Memory_allocation" title="Memory allocation">Memory allocation</a></li>
+<li><a href="/wiki/Memory_layout_of_a_data_structure" title="Memory layout of a data structure">Memory layout of a data structure</a></li>
+<li><a href="/wiki/Menu" title="Menu">Menu</a></li>
+<li><a href="/wiki/Metaprogramming" title="Metaprogramming">Metaprogramming</a></li>
+<li><a href="/wiki/Metronome" title="Metronome">Metronome</a></li>
 <li><a href="/wiki/Middle_three_digits" title="Middle three digits">Middle three digits</a></li>
+<li><a href="/wiki/Miller%E2%80%93Rabin_primality_test" title="Miller–Rabin primality test">Miller–Rabin primality test</a></li>
+<li><a href="/wiki/Modular_arithmetic" title="Modular arithmetic">Modular arithmetic</a></li>
+<li><a href="/wiki/Modular_exponentiation" title="Modular exponentiation">Modular exponentiation</a></li>
+<li><a href="/wiki/Modular_inverse" title="Modular inverse">Modular inverse</a></li>
+<li><a href="/wiki/Monte_Carlo_methods" title="Monte Carlo methods">Monte Carlo methods</a></li>
+<li><a href="/wiki/Montgomery_reduction" title="Montgomery reduction">Montgomery reduction</a></li>
+<li><a href="/wiki/Monty_Hall_problem" title="Monty Hall problem">Monty Hall problem</a></li>
 <li><a href="/wiki/Morse_code" title="Morse code">Morse code</a></li>
-<li><a href="/wiki/Multifactorial" title="Multifactorial">Multifactorial</a></li></ul></div><div class="mw-category-group"><h3>N</h3>
+<li><a href="/wiki/Mouse_position" title="Mouse position">Mouse position</a></li>
+<li><a href="/wiki/Move-to-front_algorithm" title="Move-to-front algorithm">Move-to-front algorithm</a></li>
+<li><a href="/wiki/Multi-dimensional_array" title="Multi-dimensional array">Multi-dimensional array</a></li>
+<li><a href="/wiki/Multifactorial" title="Multifactorial">Multifactorial</a></li>
+<li><a href="/wiki/Multiple_distinct_objects" title="Multiple distinct objects">Multiple distinct objects</a></li>
+<li><a href="/wiki/Multiplication_tables" title="Multiplication tables">Multiplication tables</a></li>
+<li><a href="/wiki/Multisplit" title="Multisplit">Multisplit</a></li>
+<li><a href="/wiki/Munchausen_numbers" title="Munchausen numbers">Munchausen numbers</a></li>
+<li><a href="/wiki/Mutual_recursion" title="Mutual recursion">Mutual recursion</a></li></ul></div><div class="mw-category-group"><h3>N</h3>
 <ul><li><a href="/wiki/N%27th" title="N'th">N'th</a></li>
+<li><a href="/wiki/N-queens_problem" title="N-queens problem">N-queens problem</a></li>
+<li><a href="/wiki/Named_parameters" title="Named parameters">Named parameters</a></li>
+<li><a href="/wiki/Names_to_numbers" title="Names to numbers">Names to numbers</a></li>
+<li><a href="/wiki/Naming_conventions" title="Naming conventions">Naming conventions</a></li>
+<li><a href="/wiki/Narcissist" title="Narcissist">Narcissist</a></li>
+<li><a href="/wiki/Narcissistic_decimal_number" title="Narcissistic decimal number">Narcissistic decimal number</a></li>
+<li><a href="/wiki/Natural_sorting" title="Natural sorting">Natural sorting</a></li>
+<li><a href="/wiki/Nautical_bell" title="Nautical bell">Nautical bell</a></li>
+<li><a href="/wiki/Negative_base_numbers" title="Negative base numbers">Negative base numbers</a></li>
+<li><a href="/wiki/Nested_function" title="Nested function">Nested function</a></li>
+<li><a href="/wiki/Non-continuous_subsequences" title="Non-continuous subsequences">Non-continuous subsequences</a></li>
+<li><a href="/wiki/Non-decimal_radices/Convert" title="Non-decimal radices/Convert">Non-decimal radices/Convert</a></li>
+<li><a href="/wiki/Non-decimal_radices/Input" title="Non-decimal radices/Input">Non-decimal radices/Input</a></li>
+<li><a href="/wiki/Non-decimal_radices/Output" title="Non-decimal radices/Output">Non-decimal radices/Output</a></li>
+<li><a href="/wiki/Nth_root" title="Nth root">Nth root</a></li>
+<li><a href="/wiki/Null_object" title="Null object">Null object</a></li>
+<li><a href="/wiki/Number_names" title="Number names">Number names</a></li>
+<li><a href="/wiki/Number_reversal_game" title="Number reversal game">Number reversal game</a></li>
 <li><a href="/wiki/Numeric_error_propagation" title="Numeric error propagation">Numeric error propagation</a></li>
-<li><a href="/wiki/Numerical_integration/Gauss-Legendre_Quadrature" title="Numerical integration/Gauss-Legendre Quadrature">Numerical integration/Gauss-Legendre Quadrature</a></li></ul></div><div class="mw-category-group"><h3>O</h3>
-<ul><li><a href="/wiki/Operator_precedence" title="Operator precedence">Operator precedence</a></li>
+<li><a href="/wiki/Numerical_integration" title="Numerical integration">Numerical integration</a></li>
+<li><a href="/wiki/Numerical_integration/Gauss-Legendre_Quadrature" title="Numerical integration/Gauss-Legendre Quadrature">Numerical integration/Gauss-Legendre Quadrature</a></li>
+<li><a href="/wiki/NYSIIS" title="NYSIIS">NYSIIS</a></li></ul></div><div class="mw-category-group"><h3>O</h3>
+<ul><li><a href="/wiki/Odd_word_problem" title="Odd word problem">Odd word problem</a></li>
+<li><a href="/wiki/Old_lady_swallowed_a_fly" title="Old lady swallowed a fly">Old lady swallowed a fly</a></li>
+<li><a href="/wiki/Old_Russian_measure_of_length" title="Old Russian measure of length">Old Russian measure of length</a></li>
+<li><a href="/wiki/OpenGL" title="OpenGL">OpenGL</a></li>
+<li><a href="/wiki/Operator_precedence" title="Operator precedence">Operator precedence</a></li>
+<li><a href="/wiki/Order_disjoint_list_items" title="Order disjoint list items">Order disjoint list items</a></li>
+<li><a href="/wiki/Order_two_numerical_lists" title="Order two numerical lists">Order two numerical lists</a></li>
+<li><a href="/wiki/Ordered_Partitions" title="Ordered Partitions">Ordered Partitions</a></li>
 <li><a href="/wiki/Ordered_words" title="Ordered words">Ordered words</a></li></ul></div><div class="mw-category-group"><h3>P</h3>
-<ul><li><a href="/wiki/Pascal%27s_triangle" title="Pascal's triangle">Pascal's triangle</a></li>
+<ul><li><a href="/wiki/Palindrome_detection" title="Palindrome detection">Palindrome detection</a></li>
+<li><a href="/wiki/Pangram_checker" title="Pangram checker">Pangram checker</a></li>
+<li><a href="/wiki/Paraffins" title="Paraffins">Paraffins</a></li>
+<li><a href="/wiki/Parametric_polymorphism" title="Parametric polymorphism">Parametric polymorphism</a></li>
+<li><a href="/wiki/Parse_an_IP_Address" title="Parse an IP Address">Parse an IP Address</a></li>
+<li><a href="/wiki/Parse_command-line_arguments" title="Parse command-line arguments">Parse command-line arguments</a></li>
+<li><a href="/wiki/Parsing/RPN_calculator_algorithm" title="Parsing/RPN calculator algorithm">Parsing/RPN calculator algorithm</a></li>
+<li><a href="/wiki/Partial_function_application" title="Partial function application">Partial function application</a></li>
+<li><a href="/wiki/Partition_an_integer_X_into_N_primes" title="Partition an integer X into N primes">Partition an integer X into N primes</a></li>
+<li><a href="/wiki/Pascal_matrix_generation" title="Pascal matrix generation">Pascal matrix generation</a></li>
+<li><a href="/wiki/Pascal%27s_triangle" title="Pascal's triangle">Pascal's triangle</a></li>
+<li><a href="/wiki/Pascal%27s_triangle/Puzzle" title="Pascal's triangle/Puzzle">Pascal's triangle/Puzzle</a></li>
+<li><a href="/wiki/Pathological_floating_point_problems" title="Pathological floating point problems">Pathological floating point problems</a></li>
+<li><a href="/wiki/Penrose_tiling" title="Penrose tiling">Penrose tiling</a></li>
+<li><a href="/wiki/Pentagram" title="Pentagram">Pentagram</a></li>
+<li><a href="/wiki/Perfect_numbers" title="Perfect numbers">Perfect numbers</a></li>
+<li><a href="/wiki/Perfect_shuffle" title="Perfect shuffle">Perfect shuffle</a></li>
+<li><a href="/wiki/Perlin_noise" title="Perlin noise">Perlin noise</a></li>
+<li><a href="/wiki/Permutation_test" title="Permutation test">Permutation test</a></li>
+<li><a href="/wiki/Permutations" title="Permutations">Permutations</a></li>
+<li><a href="/wiki/Permutations_by_swapping" title="Permutations by swapping">Permutations by swapping</a></li>
+<li><a href="/wiki/Permutations_with_repetitions" title="Permutations with repetitions">Permutations with repetitions</a></li>
+<li><a href="/wiki/Permutations/Derangements" title="Permutations/Derangements">Permutations/Derangements</a></li>
+<li><a href="/wiki/Permutations/Rank_of_a_permutation" title="Permutations/Rank of a permutation">Permutations/Rank of a permutation</a></li>
 <li><a href="/wiki/Pernicious_numbers" title="Pernicious numbers">Pernicious numbers</a></li>
-<li><a href="/wiki/Priority_queue" title="Priority queue">Priority queue</a></li></ul></div><div class="mw-category-group"><h3>R</h3>
-<ul><li><a href="/wiki/Ray-casting_algorithm" title="Ray-casting algorithm">Ray-casting algorithm</a></li>
+<li><a href="/wiki/Phrase_reversals" title="Phrase reversals">Phrase reversals</a></li>
+<li><a href="/wiki/Pi" title="Pi">Pi</a></li>
+<li><a href="/wiki/Pick_random_element" title="Pick random element">Pick random element</a></li>
+<li><a href="/wiki/Pig_the_dice_game" title="Pig the dice game">Pig the dice game</a></li>
+<li><a href="/wiki/Pinstripe/Display" title="Pinstripe/Display">Pinstripe/Display</a></li>
+<li><a href="/wiki/Plasma_effect" title="Plasma effect">Plasma effect</a></li>
+<li><a href="/wiki/Playfair_cipher" title="Playfair cipher">Playfair cipher</a></li>
+<li><a href="/wiki/Playing_cards" title="Playing cards">Playing cards</a></li>
+<li><a href="/wiki/Poker_hand_analyser" title="Poker hand analyser">Poker hand analyser</a></li>
+<li><a href="/wiki/Polymorphic_copy" title="Polymorphic copy">Polymorphic copy</a></li>
+<li><a href="/wiki/Polymorphism" title="Polymorphism">Polymorphism</a></li>
+<li><a href="/wiki/Polynomial_synthetic_division" title="Polynomial synthetic division">Polynomial synthetic division</a></li>
+<li><a href="/wiki/Polyspiral" title="Polyspiral">Polyspiral</a></li>
+<li><a href="/wiki/Population_count" title="Population count">Population count</a></li>
+<li><a href="/wiki/Power_set" title="Power set">Power set</a></li>
+<li><a href="/wiki/Pragmatic_directives" title="Pragmatic directives">Pragmatic directives</a></li>
+<li><a href="/wiki/Price_fraction" title="Price fraction">Price fraction</a></li>
+<li><a href="/wiki/Primality_by_trial_division" title="Primality by trial division">Primality by trial division</a></li>
+<li><a href="/wiki/Prime_conspiracy" title="Prime conspiracy">Prime conspiracy</a></li>
+<li><a href="/wiki/Prime_decomposition" title="Prime decomposition">Prime decomposition</a></li>
+<li><a href="/wiki/Primes_-_allocate_descendants_to_their_ancestors" title="Primes - allocate descendants to their ancestors">Primes - allocate descendants to their ancestors</a></li>
+<li><a href="/wiki/Primorial_numbers" title="Primorial numbers">Primorial numbers</a></li>
+<li><a href="/wiki/Priority_queue" title="Priority queue">Priority queue</a></li>
+<li><a href="/wiki/Probabilistic_choice" title="Probabilistic choice">Probabilistic choice</a></li>
+<li><a href="/wiki/Problem_of_Apollonius" title="Problem of Apollonius">Problem of Apollonius</a></li>
+<li><a href="/wiki/Program_name" title="Program name">Program name</a></li>
+<li><a href="/wiki/Program_termination" title="Program termination">Program termination</a></li>
+<li><a href="/wiki/Proper_divisors" title="Proper divisors">Proper divisors</a></li>
+<li><a href="/wiki/Pythagoras_tree" title="Pythagoras tree">Pythagoras tree</a></li>
+<li><a href="/wiki/Pythagorean_quadruples" title="Pythagorean quadruples">Pythagorean quadruples</a></li>
+<li><a href="/wiki/Pythagorean_triples" title="Pythagorean triples">Pythagorean triples</a></li></ul></div><div class="mw-category-group"><h3>Q</h3>
+<ul><li><a href="/wiki/Quaternion_type" title="Quaternion type">Quaternion type</a></li>
+<li><a href="/wiki/Queue/Definition" title="Queue/Definition">Queue/Definition</a></li>
+<li><a href="/wiki/Queue/Usage" title="Queue/Usage">Queue/Usage</a></li>
+<li><a href="/wiki/Quickselect_algorithm" title="Quickselect algorithm">Quickselect algorithm</a></li>
+<li><a href="/wiki/Quine" title="Quine">Quine</a></li></ul></div><div class="mw-category-group"><h3>R</h3>
+<ul><li><a href="/wiki/Ramer-Douglas-Peucker_line_simplification" title="Ramer-Douglas-Peucker line simplification">Ramer-Douglas-Peucker line simplification</a></li>
+<li><a href="/wiki/Ramsey%27s_theorem" title="Ramsey's theorem">Ramsey's theorem</a></li>
+<li><a href="/wiki/Random_number_generator_(device)" title="Random number generator (device)">Random number generator (device)</a></li>
+<li><a href="/wiki/Random_number_generator_(included)" title="Random number generator (included)">Random number generator (included)</a></li>
+<li><a href="/wiki/Random_numbers" title="Random numbers">Random numbers</a></li>
+<li><a href="/wiki/Range_expansion" title="Range expansion">Range expansion</a></li>
+<li><a href="/wiki/Range_extraction" title="Range extraction">Range extraction</a></li>
+<li><a href="/wiki/Ranking_methods" title="Ranking methods">Ranking methods</a></li>
+<li><a href="/wiki/Rate_counter" title="Rate counter">Rate counter</a></li>
+<li><a href="/wiki/Ray-casting_algorithm" title="Ray-casting algorithm">Ray-casting algorithm</a></li>
 <li><a href="/wiki/Read_a_configuration_file" title="Read a configuration file">Read a configuration file</a></li>
+<li><a href="/wiki/Read_a_file_character_by_character/UTF8" title="Read a file character by character/UTF8">Read a file character by character/UTF8</a></li>
+<li><a href="/wiki/Read_a_file_line_by_line" title="Read a file line by line">Read a file line by line</a></li>
+<li><a href="/wiki/Read_a_specific_line_from_a_file" title="Read a specific line from a file">Read a specific line from a file</a></li>
 <li><a href="/wiki/Read_entire_file" title="Read entire file">Read entire file</a></li>
+<li><a href="/wiki/Readline_interface" title="Readline interface">Readline interface</a></li>
+<li><a href="/wiki/Real_constants_and_functions" title="Real constants and functions">Real constants and functions</a></li>
+<li><a href="/wiki/Record_sound" title="Record sound">Record sound</a></li>
+<li><a href="/wiki/Reflection/List_properties" title="Reflection/List properties">Reflection/List properties</a></li>
+<li><a href="/wiki/Regular_expressions" title="Regular expressions">Regular expressions</a></li>
 <li><a href="/wiki/Remove_duplicate_elements" title="Remove duplicate elements">Remove duplicate elements</a></li>
+<li><a href="/wiki/Remove_lines_from_a_file" title="Remove lines from a file">Remove lines from a file</a></li>
+<li><a href="/wiki/Rename_a_file" title="Rename a file">Rename a file</a></li>
+<li><a href="/wiki/Rep-string" title="Rep-string">Rep-string</a></li>
+<li><a href="/wiki/Repeat" title="Repeat">Repeat</a></li>
 <li><a href="/wiki/Repeat_a_string" title="Repeat a string">Repeat a string</a></li>
+<li><a href="/wiki/Resistor_mesh" title="Resistor mesh">Resistor mesh</a></li>
+<li><a href="/wiki/Respond_to_an_unknown_method_call" title="Respond to an unknown method call">Respond to an unknown method call</a></li>
+<li><a href="/wiki/Return_multiple_values" title="Return multiple values">Return multiple values</a></li>
 <li><a href="/wiki/Reverse_a_string" title="Reverse a string">Reverse a string</a></li>
+<li><a href="/wiki/Reverse_the_gender_of_a_string" title="Reverse the gender of a string">Reverse the gender of a string</a></li>
+<li><a href="/wiki/Reverse_words_in_a_string" title="Reverse words in a string">Reverse words in a string</a></li>
 <li><a href="/wiki/RIPEMD-160" title="RIPEMD-160">RIPEMD-160</a></li>
+<li><a href="/wiki/Roman_numerals/Decode" title="Roman numerals/Decode">Roman numerals/Decode</a></li>
 <li><a href="/wiki/Roman_numerals/Encode" title="Roman numerals/Encode">Roman numerals/Encode</a></li>
+<li><a href="/wiki/Roots_of_a_function" title="Roots of a function">Roots of a function</a></li>
 <li><a href="/wiki/Roots_of_a_quadratic_function" title="Roots of a quadratic function">Roots of a quadratic function</a></li>
 <li><a href="/wiki/Roots_of_unity" title="Roots of unity">Roots of unity</a></li>
 <li><a href="/wiki/Rosetta_Code/Rank_languages_by_popularity" title="Rosetta Code/Rank languages by popularity">Rosetta Code/Rank languages by popularity</a></li>
-<li><a href="/wiki/Rot-13" title="Rot-13">Rot-13</a></li></ul></div><div class="mw-category-group"><h3>S</h3>
-<ul><li><a href="/wiki/Semordnilap" title="Semordnilap">Semordnilap</a></li>
+<li><a href="/wiki/Rot-13" title="Rot-13">Rot-13</a></li>
+<li><a href="/wiki/RSA_code" title="RSA code">RSA code</a></li>
+<li><a href="/wiki/Run-length_encoding" title="Run-length encoding">Run-length encoding</a></li>
+<li><a href="/wiki/Runge-Kutta_method" title="Runge-Kutta method">Runge-Kutta method</a></li>
+<li><a href="/wiki/Runtime_evaluation/In_an_environment" title="Runtime evaluation/In an environment">Runtime evaluation/In an environment</a></li></ul></div><div class="mw-category-group"><h3>S</h3>
+<ul><li><a href="/wiki/Safe_addition" title="Safe addition">Safe addition</a></li>
+<li><a href="/wiki/Sailors,_coconuts_and_a_monkey_problem" title="Sailors, coconuts and a monkey problem">Sailors, coconuts and a monkey problem</a></li>
+<li><a href="/wiki/Sattolo_cycle" title="Sattolo cycle">Sattolo cycle</a></li>
+<li><a href="/wiki/Scope_modifiers" title="Scope modifiers">Scope modifiers</a></li>
+<li><a href="/wiki/Scope/Function_names_and_labels" title="Scope/Function names and labels">Scope/Function names and labels</a></li>
+<li><a href="/wiki/Search_a_list" title="Search a list">Search a list</a></li>
+<li><a href="/wiki/Search_a_list_of_records" title="Search a list of records">Search a list of records</a></li>
+<li><a href="/wiki/Secure_temporary_file" title="Secure temporary file">Secure temporary file</a></li>
+<li><a href="/wiki/SEDOLs" title="SEDOLs">SEDOLs</a></li>
+<li><a href="/wiki/Self-describing_numbers" title="Self-describing numbers">Self-describing numbers</a></li>
+<li><a href="/wiki/Self-hosting_compiler" title="Self-hosting compiler">Self-hosting compiler</a></li>
+<li><a href="/wiki/Self-referential_sequence" title="Self-referential sequence">Self-referential sequence</a></li>
+<li><a href="/wiki/Semiprime" title="Semiprime">Semiprime</a></li>
+<li><a href="/wiki/Semordnilap" title="Semordnilap">Semordnilap</a></li>
+<li><a href="/wiki/Send_an_unknown_method_call" title="Send an unknown method call">Send an unknown method call</a></li>
+<li><a href="/wiki/Separate_the_house_number_from_the_street_name" title="Separate the house number from the street name">Separate the house number from the street name</a></li>
+<li><a href="/wiki/Sequence_of_non-squares" title="Sequence of non-squares">Sequence of non-squares</a></li>
+<li><a href="/wiki/Sequence_of_primes_by_Trial_Division" title="Sequence of primes by Trial Division">Sequence of primes by Trial Division</a></li>
+<li><a href="/wiki/Sequence_of_primorial_primes" title="Sequence of primorial primes">Sequence of primorial primes</a></li>
+<li><a href="/wiki/Set" title="Set">Set</a></li>
+<li><a href="/wiki/Set_consolidation" title="Set consolidation">Set consolidation</a></li>
+<li><a href="/wiki/Set_puzzle" title="Set puzzle">Set puzzle</a></li>
+<li><a href="/wiki/Seven-sided_dice_from_five-sided_dice" title="Seven-sided dice from five-sided dice">Seven-sided dice from five-sided dice</a></li>
+<li><a href="/wiki/SHA-1" title="SHA-1">SHA-1</a></li>
+<li><a href="/wiki/SHA-256" title="SHA-256">SHA-256</a></li>
+<li><a href="/wiki/Shell_one-liner" title="Shell one-liner">Shell one-liner</a></li>
+<li><a href="/wiki/Shoelace_formula_for_polygonal_area" title="Shoelace formula for polygonal area">Shoelace formula for polygonal area</a></li>
+<li><a href="/wiki/Short-circuit_evaluation" title="Short-circuit evaluation">Short-circuit evaluation</a></li>
+<li><a href="/wiki/Shortest_common_supersequence" title="Shortest common supersequence">Shortest common supersequence</a></li>
+<li><a href="/wiki/Show_the_epoch" title="Show the epoch">Show the epoch</a></li>
+<li><a href="/wiki/Sierpinski_carpet" title="Sierpinski carpet">Sierpinski carpet</a></li>
+<li><a href="/wiki/Sierpinski_pentagon" title="Sierpinski pentagon">Sierpinski pentagon</a></li>
+<li><a href="/wiki/Sierpinski_triangle" title="Sierpinski triangle">Sierpinski triangle</a></li>
 <li><a href="/wiki/Sierpinski_triangle/Graphical" title="Sierpinski triangle/Graphical">Sierpinski triangle/Graphical</a></li>
 <li><a href="/wiki/Sieve_of_Eratosthenes" title="Sieve of Eratosthenes">Sieve of Eratosthenes</a></li>
+<li><a href="/wiki/Simple_windowed_application" title="Simple windowed application">Simple windowed application</a></li>
+<li><a href="/wiki/Simulate_input/Keyboard" title="Simulate input/Keyboard">Simulate input/Keyboard</a></li>
+<li><a href="/wiki/Simulate_input/Mouse" title="Simulate input/Mouse">Simulate input/Mouse</a></li>
+<li><a href="/wiki/Singleton" title="Singleton">Singleton</a></li>
+<li><a href="/wiki/Singly-linked_list/Element_definition" title="Singly-linked list/Element definition">Singly-linked list/Element definition</a></li>
+<li><a href="/wiki/Singly-linked_list/Element_insertion" title="Singly-linked list/Element insertion">Singly-linked list/Element insertion</a></li>
+<li><a href="/wiki/Singly-linked_list/Element_removal" title="Singly-linked list/Element removal">Singly-linked list/Element removal</a></li>
 <li><a href="/wiki/Singly-linked_list/Traversal" title="Singly-linked list/Traversal">Singly-linked list/Traversal</a></li>
+<li><a href="/wiki/Sleep" title="Sleep">Sleep</a></li>
+<li><a href="/wiki/Smith_numbers" title="Smith numbers">Smith numbers</a></li>
+<li><a href="/wiki/Solve_a_Holy_Knight%27s_tour" title="Solve a Holy Knight's tour">Solve a Holy Knight's tour</a></li>
+<li><a href="/wiki/Sort_a_list_of_object_identifiers" title="Sort a list of object identifiers">Sort a list of object identifiers</a></li>
+<li><a href="/wiki/Sort_an_array_of_composite_structures" title="Sort an array of composite structures">Sort an array of composite structures</a></li>
+<li><a href="/wiki/Sort_an_integer_array" title="Sort an integer array">Sort an integer array</a></li>
+<li><a href="/wiki/Sort_three_variables" title="Sort three variables">Sort three variables</a></li>
 <li><a href="/wiki/Sort_using_a_custom_comparator" title="Sort using a custom comparator">Sort using a custom comparator</a></li>
+<li><a href="/wiki/Sorting_algorithms/Bead_sort" title="Sorting algorithms/Bead sort">Sorting algorithms/Bead sort</a></li>
+<li><a href="/wiki/Sorting_algorithms/Bogosort" title="Sorting algorithms/Bogosort">Sorting algorithms/Bogosort</a></li>
 <li><a href="/wiki/Sorting_algorithms/Bubble_sort" title="Sorting algorithms/Bubble sort">Sorting algorithms/Bubble sort</a></li>
+<li><a href="/wiki/Sorting_Algorithms/Circle_Sort" title="Sorting Algorithms/Circle Sort">Sorting Algorithms/Circle Sort</a></li>
+<li><a href="/wiki/Sorting_algorithms/Cocktail_sort" title="Sorting algorithms/Cocktail sort">Sorting algorithms/Cocktail sort</a></li>
+<li><a href="/wiki/Sorting_algorithms/Comb_sort" title="Sorting algorithms/Comb sort">Sorting algorithms/Comb sort</a></li>
+<li><a href="/wiki/Sorting_algorithms/Counting_sort" title="Sorting algorithms/Counting sort">Sorting algorithms/Counting sort</a></li>
+<li><a href="/wiki/Sorting_algorithms/Cycle_sort" title="Sorting algorithms/Cycle sort">Sorting algorithms/Cycle sort</a></li>
+<li><a href="/wiki/Sorting_algorithms/Gnome_sort" title="Sorting algorithms/Gnome sort">Sorting algorithms/Gnome sort</a></li>
+<li><a href="/wiki/Sorting_algorithms/Heapsort" title="Sorting algorithms/Heapsort">Sorting algorithms/Heapsort</a></li>
 <li><a href="/wiki/Sorting_algorithms/Insertion_sort" title="Sorting algorithms/Insertion sort">Sorting algorithms/Insertion sort</a></li>
 <li><a href="/wiki/Sorting_algorithms/Merge_sort" title="Sorting algorithms/Merge sort">Sorting algorithms/Merge sort</a></li>
+<li><a href="/wiki/Sorting_algorithms/Pancake_sort" title="Sorting algorithms/Pancake sort">Sorting algorithms/Pancake sort</a></li>
+<li><a href="/wiki/Sorting_algorithms/Patience_sort" title="Sorting algorithms/Patience sort">Sorting algorithms/Patience sort</a></li>
+<li><a href="/wiki/Sorting_algorithms/Permutation_sort" title="Sorting algorithms/Permutation sort">Sorting algorithms/Permutation sort</a></li>
 <li><a href="/wiki/Sorting_algorithms/Quicksort" title="Sorting algorithms/Quicksort">Sorting algorithms/Quicksort</a></li>
+<li><a href="/wiki/Sorting_algorithms/Radix_sort" title="Sorting algorithms/Radix sort">Sorting algorithms/Radix sort</a></li>
 <li><a href="/wiki/Sorting_algorithms/Selection_sort" title="Sorting algorithms/Selection sort">Sorting algorithms/Selection sort</a></li>
+<li><a href="/wiki/Sorting_algorithms/Shell_sort" title="Sorting algorithms/Shell sort">Sorting algorithms/Shell sort</a></li>
+<li><a href="/wiki/Sorting_algorithms/Stooge_sort" title="Sorting algorithms/Stooge sort">Sorting algorithms/Stooge sort</a></li>
+<li><a href="/wiki/Sorting_algorithms/Strand_sort" title="Sorting algorithms/Strand sort">Sorting algorithms/Strand sort</a></li>
+<li><a href="/wiki/Soundex" title="Soundex">Soundex</a></li>
 <li><a href="/wiki/Sparkline_in_unicode" title="Sparkline in unicode">Sparkline in unicode</a></li>
+<li><a href="/wiki/Special_characters" title="Special characters">Special characters</a></li>
+<li><a href="/wiki/Special_variables" title="Special variables">Special variables</a></li>
+<li><a href="/wiki/Spiral_matrix" title="Spiral matrix">Spiral matrix</a></li>
+<li><a href="/wiki/Split_a_character_string_based_on_change_of_character" title="Split a character string based on change of character">Split a character string based on change of character</a></li>
 <li><a href="/wiki/Stable_marriage_problem" title="Stable marriage problem">Stable marriage problem</a></li>
+<li><a href="/wiki/Stack" title="Stack">Stack</a></li>
+<li><a href="/wiki/Stack_traces" title="Stack traces">Stack traces</a></li>
+<li><a href="/wiki/Start_from_a_main_routine" title="Start from a main routine">Start from a main routine</a></li>
+<li><a href="/wiki/Statistics/Basic" title="Statistics/Basic">Statistics/Basic</a></li>
+<li><a href="/wiki/Statistics/Normal_distribution" title="Statistics/Normal distribution">Statistics/Normal distribution</a></li>
+<li><a href="/wiki/Stem-and-leaf_plot" title="Stem-and-leaf plot">Stem-and-leaf plot</a></li>
+<li><a href="/wiki/Stern-Brocot_sequence" title="Stern-Brocot sequence">Stern-Brocot sequence</a></li>
 <li><a href="/wiki/String_append" title="String append">String append</a></li>
-<li><a href="/wiki/String_concatenation" title="String concatenation">String concatenation</a></li></ul></div><div class="mw-category-group"><h3>T</h3>
-<ul><li><a href="/wiki/The_Twelve_Days_of_Christmas" title="The Twelve Days of Christmas">The Twelve Days of Christmas</a></li>
+<li><a href="/wiki/String_case" title="String case">String case</a></li>
+<li><a href="/wiki/String_comparison" title="String comparison">String comparison</a></li>
+<li><a href="/wiki/String_concatenation" title="String concatenation">String concatenation</a></li>
+<li><a href="/wiki/String_interpolation_(included)" title="String interpolation (included)">String interpolation (included)</a></li>
+<li><a href="/wiki/String_length" title="String length">String length</a></li>
+<li><a href="/wiki/String_matching" title="String matching">String matching</a></li>
+<li><a href="/wiki/String_prepend" title="String prepend">String prepend</a></li>
+<li><a href="/wiki/Strip_a_set_of_characters_from_a_string" title="Strip a set of characters from a string">Strip a set of characters from a string</a></li>
+<li><a href="/wiki/Strip_block_comments" title="Strip block comments">Strip block comments</a></li>
+<li><a href="/wiki/Strip_comments_from_a_string" title="Strip comments from a string">Strip comments from a string</a></li>
+<li><a href="/wiki/Strip_control_codes_and_extended_characters_from_a_string" title="Strip control codes and extended characters from a string">Strip control codes and extended characters from a string</a></li>
+<li><a href="/wiki/Strip_whitespace_from_a_string/Top_and_tail" title="Strip whitespace from a string/Top and tail">Strip whitespace from a string/Top and tail</a></li>
+<li><a href="/wiki/Subleq" title="Subleq">Subleq</a></li>
+<li><a href="/wiki/Subset_sum_problem" title="Subset sum problem">Subset sum problem</a></li>
+<li><a href="/wiki/Substitution_Cipher" title="Substitution Cipher">Substitution Cipher</a></li>
+<li><a href="/wiki/Substring" title="Substring">Substring</a></li>
+<li><a href="/wiki/Substring/Top_and_tail" title="Substring/Top and tail">Substring/Top and tail</a></li>
+<li><a href="/wiki/Suffix_tree" title="Suffix tree">Suffix tree</a></li>
+<li><a href="/wiki/Sum_and_product_of_an_array" title="Sum and product of an array">Sum and product of an array</a></li>
+<li><a href="/wiki/Sum_and_Product_Puzzle" title="Sum and Product Puzzle">Sum and Product Puzzle</a></li>
+<li><a href="/wiki/Sum_digits_of_an_integer" title="Sum digits of an integer">Sum digits of an integer</a></li>
+<li><a href="/wiki/Sum_multiples_of_3_and_5" title="Sum multiples of 3 and 5">Sum multiples of 3 and 5</a></li>
+<li><a href="/wiki/Sum_of_a_series" title="Sum of a series">Sum of a series</a></li>
+<li><a href="/wiki/Sum_of_squares" title="Sum of squares">Sum of squares</a></li>
+<li><a href="/wiki/Superellipse" title="Superellipse">Superellipse</a></li>
+<li><a href="/wiki/Superpermutation_minimisation" title="Superpermutation minimisation">Superpermutation minimisation</a></li>
+<li><a href="/wiki/Sutherland-Hodgman_polygon_clipping" title="Sutherland-Hodgman polygon clipping">Sutherland-Hodgman polygon clipping</a></li>
+<li><a href="/wiki/Symmetric_difference" title="Symmetric difference">Symmetric difference</a></li>
+<li><a href="/wiki/System_time" title="System time">System time</a></li></ul></div><div class="mw-category-group"><h3>T</h3>
+<ul><li><a href="/wiki/Tarjan" title="Tarjan">Tarjan</a></li>
+<li><a href="/wiki/Taxicab_numbers" title="Taxicab numbers">Taxicab numbers</a></li>
+<li><a href="/wiki/Temperature_conversion" title="Temperature conversion">Temperature conversion</a></li>
+<li><a href="/wiki/Terminal_control/Clear_the_screen" title="Terminal control/Clear the screen">Terminal control/Clear the screen</a></li>
+<li><a href="/wiki/Terminal_control/Coloured_text" title="Terminal control/Coloured text">Terminal control/Coloured text</a></li>
+<li><a href="/wiki/Terminal_control/Cursor_movement" title="Terminal control/Cursor movement">Terminal control/Cursor movement</a></li>
+<li><a href="/wiki/Terminal_control/Cursor_positioning" title="Terminal control/Cursor positioning">Terminal control/Cursor positioning</a></li>
+<li><a href="/wiki/Terminal_control/Dimensions" title="Terminal control/Dimensions">Terminal control/Dimensions</a></li>
+<li><a href="/wiki/Terminal_control/Display_an_extended_character" title="Terminal control/Display an extended character">Terminal control/Display an extended character</a></li>
+<li><a href="/wiki/Terminal_control/Hiding_the_cursor" title="Terminal control/Hiding the cursor">Terminal control/Hiding the cursor</a></li>
+<li><a href="/wiki/Terminal_control/Inverse_video" title="Terminal control/Inverse video">Terminal control/Inverse video</a></li>
+<li><a href="/wiki/Terminal_control/Positional_read" title="Terminal control/Positional read">Terminal control/Positional read</a></li>
+<li><a href="/wiki/Terminal_control/Preserve_screen" title="Terminal control/Preserve screen">Terminal control/Preserve screen</a></li>
+<li><a href="/wiki/Terminal_control/Ringing_the_terminal_bell" title="Terminal control/Ringing the terminal bell">Terminal control/Ringing the terminal bell</a></li>
+<li><a href="/wiki/Terminal_control/Unicode_output" title="Terminal control/Unicode output">Terminal control/Unicode output</a></li>
+<li><a href="/wiki/Ternary_logic" title="Ternary logic">Ternary logic</a></li>
+<li><a href="/wiki/Test_a_function" title="Test a function">Test a function</a></li>
+<li><a href="/wiki/Test_integerness" title="Test integerness">Test integerness</a></li>
+<li><a href="/wiki/Textonyms" title="Textonyms">Textonyms</a></li>
+<li><a href="/wiki/The_ISAAC_Cipher" title="The ISAAC Cipher">The ISAAC Cipher</a></li>
+<li><a href="/wiki/The_Twelve_Days_of_Christmas" title="The Twelve Days of Christmas">The Twelve Days of Christmas</a></li>
+<li><a href="/wiki/Thiele%27s_interpolation_formula" title="Thiele's interpolation formula">Thiele's interpolation formula</a></li>
+<li><a href="/wiki/Thue-Morse" title="Thue-Morse">Thue-Morse</a></li>
+<li><a href="/wiki/Time_a_function" title="Time a function">Time a function</a></li>
 <li><a href="/wiki/Tokenize_a_string" title="Tokenize a string">Tokenize a string</a></li>
+<li><a href="/wiki/Tokenize_a_string_with_escaping" title="Tokenize a string with escaping">Tokenize a string with escaping</a></li>
+<li><a href="/wiki/Tonelli-Shanks_algorithm" title="Tonelli-Shanks algorithm">Tonelli-Shanks algorithm</a></li>
+<li><a href="/wiki/Top_rank_per_group" title="Top rank per group">Top rank per group</a></li>
+<li><a href="/wiki/Topic_variable" title="Topic variable">Topic variable</a></li>
+<li><a href="/wiki/Topswops" title="Topswops">Topswops</a></li>
+<li><a href="/wiki/Total_circles_area" title="Total circles area">Total circles area</a></li>
+<li><a href="/wiki/Towers_of_Hanoi" title="Towers of Hanoi">Towers of Hanoi</a></li>
+<li><a href="/wiki/Trabb_Pardo%E2%80%93Knuth_algorithm" title="Trabb Pardo–Knuth algorithm">Trabb Pardo–Knuth algorithm</a></li>
 <li><a href="/wiki/Tree_traversal" title="Tree traversal">Tree traversal</a></li>
-<li><a href="/wiki/Truncatable_primes" title="Truncatable primes">Truncatable primes</a></li></ul></div><div class="mw-category-group"><h3>U</h3>
-<ul><li><a href="/wiki/Ulam_spiral_(for_primes)" title="Ulam spiral (for primes)">Ulam spiral (for primes)</a></li></ul></div><div class="mw-category-group"><h3>W</h3>
-<ul><li><a href="/wiki/Window_creation" title="Window creation">Window creation</a></li></ul></div></div></div>
+<li><a href="/wiki/Trigonometric_functions" title="Trigonometric functions">Trigonometric functions</a></li>
+<li><a href="/wiki/Truncatable_primes" title="Truncatable primes">Truncatable primes</a></li>
+<li><a href="/wiki/Truncate_a_file" title="Truncate a file">Truncate a file</a></li>
+<li><a href="/wiki/Twelve_statements" title="Twelve statements">Twelve statements</a></li>
+<li><a href="/wiki/Two_Sum" title="Two Sum">Two Sum</a></li>
+<li><a href="/wiki/Type_detection" title="Type detection">Type detection</a></li></ul></div><div class="mw-category-group"><h3>U</h3>
+<ul><li><a href="/wiki/Ulam_spiral_(for_primes)" title="Ulam spiral (for primes)">Ulam spiral (for primes)</a></li>
+<li><a href="/wiki/Unbias_a_random_generator" title="Unbias a random generator">Unbias a random generator</a></li>
+<li><a href="/wiki/Undefined_values" title="Undefined values">Undefined values</a></li>
+<li><a href="/wiki/Unicode_strings" title="Unicode strings">Unicode strings</a></li>
+<li><a href="/wiki/Unicode_variable_names" title="Unicode variable names">Unicode variable names</a></li>
+<li><a href="/wiki/URL_decoding" title="URL decoding">URL decoding</a></li>
+<li><a href="/wiki/URL_encoding" title="URL encoding">URL encoding</a></li>
+<li><a href="/wiki/URL_parser" title="URL parser">URL parser</a></li>
+<li><a href="/wiki/User_input/Graphical" title="User input/Graphical">User input/Graphical</a></li>
+<li><a href="/wiki/User_input/Text" title="User input/Text">User input/Text</a></li>
+<li><a href="/wiki/UTF-8_encode_and_decode" title="UTF-8 encode and decode">UTF-8 encode and decode</a></li></ul></div><div class="mw-category-group"><h3>V</h3>
+<ul><li><a href="/wiki/Validate_International_Securities_Identification_Number" title="Validate International Securities Identification Number">Validate International Securities Identification Number</a></li>
+<li><a href="/wiki/Vampire_number" title="Vampire number">Vampire number</a></li>
+<li><a href="/wiki/Van_der_Corput_sequence" title="Van der Corput sequence">Van der Corput sequence</a></li>
+<li><a href="/wiki/Variable_size/Get" title="Variable size/Get">Variable size/Get</a></li>
+<li><a href="/wiki/Variable_size/Set" title="Variable size/Set">Variable size/Set</a></li>
+<li><a href="/wiki/Variable-length_quantity" title="Variable-length quantity">Variable-length quantity</a></li>
+<li><a href="/wiki/Variables" title="Variables">Variables</a></li>
+<li><a href="/wiki/Variadic_function" title="Variadic function">Variadic function</a></li>
+<li><a href="/wiki/Vector" title="Vector">Vector</a></li>
+<li><a href="/wiki/Vector_products" title="Vector products">Vector products</a></li>
+<li><a href="/wiki/Verify_distribution_uniformity/Naive" title="Verify distribution uniformity/Naive">Verify distribution uniformity/Naive</a></li>
+<li><a href="/wiki/Vigen%C3%A8re_cipher" title="Vigenère cipher">Vigenère cipher</a></li>
+<li><a href="/wiki/Vigen%C3%A8re_cipher/Cryptanalysis" title="Vigenère cipher/Cryptanalysis">Vigenère cipher/Cryptanalysis</a></li>
+<li><a href="/wiki/VList" title="VList">VList</a></li>
+<li><a href="/wiki/Vogel%27s_approximation_method" title="Vogel's approximation method">Vogel's approximation method</a></li>
+<li><a href="/wiki/Voronoi_diagram" title="Voronoi diagram">Voronoi diagram</a></li></ul></div><div class="mw-category-group"><h3>W</h3>
+<ul><li><a href="/wiki/Walk_a_directory/Non-recursively" title="Walk a directory/Non-recursively">Walk a directory/Non-recursively</a></li>
+<li><a href="/wiki/Water_collected_between_towers" title="Water collected between towers">Water collected between towers</a></li>
+<li><a href="/wiki/Web_scraping" title="Web scraping">Web scraping</a></li>
+<li><a href="/wiki/Window_creation" title="Window creation">Window creation</a></li>
+<li><a href="/wiki/Word_break_problem" title="Word break problem">Word break problem</a></li>
+<li><a href="/wiki/Word_count" title="Word count">Word count</a></li>
+<li><a href="/wiki/Word_wrap" title="Word wrap">Word wrap</a></li>
+<li><a href="/wiki/World_Cup_group_stage" title="World Cup group stage">World Cup group stage</a></li>
+<li><a href="/wiki/Write_entire_file" title="Write entire file">Write entire file</a></li>
+<li><a href="/wiki/Write_float_arrays_to_a_text_file" title="Write float arrays to a text file">Write float arrays to a text file</a></li>
+<li><a href="/wiki/Write_language_name_in_3D_ASCII" title="Write language name in 3D ASCII">Write language name in 3D ASCII</a></li></ul></div><div class="mw-category-group"><h3>X</h3>
+<ul><li><a href="/wiki/Xiaolin_Wu%27s_line_algorithm" title="Xiaolin Wu's line algorithm">Xiaolin Wu's line algorithm</a></li>
+<li><a href="/wiki/XML/DOM_serialization" title="XML/DOM serialization">XML/DOM serialization</a></li>
+<li><a href="/wiki/XML/Input" title="XML/Input">XML/Input</a></li>
+<li><a href="/wiki/XML/Output" title="XML/Output">XML/Output</a></li>
+<li><a href="/wiki/XML/XPath" title="XML/XPath">XML/XPath</a></li></ul></div><div class="mw-category-group"><h3>Y</h3>
+<ul><li><a href="/wiki/Y_combinator" title="Y combinator">Y combinator</a></li>
+<li><a href="/wiki/Yin_and_yang" title="Yin and yang">Yin and yang</a></li></ul></div><div class="mw-category-group"><h3>Z</h3>
+<ul><li><a href="/wiki/Zebra_puzzle" title="Zebra puzzle">Zebra puzzle</a></li>
+<li><a href="/wiki/Zeckendorf_number_representation" title="Zeckendorf number representation">Zeckendorf number representation</a></li>
+<li><a href="/wiki/Zero_to_the_zero_power" title="Zero to the zero power">Zero to the zero power</a></li>
+<li><a href="/wiki/Zhang-Suen_thinning_algorithm" title="Zhang-Suen thinning algorithm">Zhang-Suen thinning algorithm</a></li>
+<li><a href="/wiki/Zig-zag_matrix" title="Zig-zag matrix">Zig-zag matrix</a></li></ul></div></div></div>
 </div></div></div><div class="printfooter">
-Retrieved from "<a dir="ltr" href="http://rosettacode.org/mw/index.php?title=Category:Kotlin&amp;oldid=198253">http://rosettacode.org/mw/index.php?title=Category:Kotlin&amp;oldid=198253</a>"</div>
+Retrieved from "<a dir="ltr" href="http://rosettacode.org/mw/index.php?title=Category:Kotlin&amp;oldid=247665">http://rosettacode.org/mw/index.php?title=Category:Kotlin&amp;oldid=247665</a>"</div>
 </div>
- 
-<div id='catlinks' class='catlinks'><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="/wiki/Category:Typing/Checking/Static" title="Category:Typing/Checking/Static">Typing/Checking/Static</a></li><li><a href="/wiki/Category:Programming_Languages" title="Category:Programming Languages">Programming Languages</a></li></ul></div></div>
+
+<div id="catlinks" class="catlinks"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="/wiki/Category:Typing/Checking/Static" title="Category:Typing/Checking/Static">Typing/Checking/Static</a></li><li><a href="/wiki/Category:Programming_Languages" title="Category:Programming Languages">Programming Languages</a></li></ul></div></div>
 </div>
 </div>
 </div>
 <div class="row">
 <div class="col-lg-12">
- 
+
 <nav class="navbar navbar-default p-tb " id="p-tb">
 <ul class="nav navbar-nav small">
 <li id="t-whatlinkshere"><a href="/wiki/Special:WhatLinksHere/Category:Kotlin" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
 <li id="t-recentchangeslinked"><a href="/wiki/Special:RecentChangesLinked/Category:Kotlin" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
 <li id="t-specialpages"><a href="/wiki/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li>
 <li id="t-print"><a href="/mw/index.php?title=Category:Kotlin&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>
-<li id="t-permalink"><a href="/mw/index.php?title=Category:Kotlin&amp;oldid=198253" title="Permanent link to this revision of the page">Permanent link</a></li>
+<li id="t-permalink"><a href="/mw/index.php?title=Category:Kotlin&amp;oldid=247665" title="Permanent link to this revision of the page">Permanent link</a></li>
 <li id="t-info"><a href="/mw/index.php?title=Category:Kotlin&amp;action=info" title="More information about this page">Page information</a></li>
 <li id="t-smwbrowselink"><a href="/wiki/Special:Browse/Category:Kotlin" rel="smw-browse">Browse properties</a></li>
 </ul>
@@ -332,17 +980,17 @@ Retrieved from "<a dir="ltr" href="http://rosettacode.org/mw/index.php?title=Cat
 </div>
 <div class="row">
 <div class="col-lg-12">
- 
+
 <ul class="footer-info list-unstyled small" id="footer-info">
- 
-<li> This page was last modified on 28 January 2015, at 21:07.</li>
+
+<li> This page was last modified on 21 May 2017, at 19:07.</li>
 <li>Content is available under <a class="external" rel="nofollow" href="http://www.gnu.org/licenses/fdl-1.2.html">GNU Free Documentation License 1.2</a> unless otherwise noted.</li>
 </ul>
 </div>
 </div>
 <div class="row">
 <div class="col-lg-6">
- 
+
 <ul class="list-inline footer-places " id="footer-places">
 <li><small><a href="/wiki/Rosetta_Code:Privacy_policy" title="Rosetta Code:Privacy policy">Privacy policy</a></small></li>
 <li><small><a href="/wiki/Rosetta_Code:About" title="Rosetta Code:About">About Rosetta Code</a></small></li>
@@ -350,11 +998,11 @@ Retrieved from "<a dir="ltr" href="http://rosettacode.org/mw/index.php?title=Cat
 </ul>
 </div>
 <div class="col-lg-6">
- 
+
 <ul class="list-inline pull-right footer-icons " id="footer-icons">
- 
+
 <li><a href="http://www.gnu.org/licenses/fdl-1.2.html"><img src="/mw/resources/assets/licenses/gnu-fdl.png" alt="GNU Free Documentation License 1.2" width="88" height="31"/></a></li>
- 
+
 <li><a href="//www.mediawiki.org/"><img src="/mw/resources/assets/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/mw/resources/assets/poweredby_mediawiki_132x47.png 1.5x, /mw/resources/assets/poweredby_mediawiki_176x62.png 2x" width="88" height="31"/></a></li>
 <li><a href="https://www.semantic-mediawiki.org/wiki/Semantic_MediaWiki"><img src="/mw/extensions/SemanticMediaWiki/includes/../resources/images/smw_button.png" alt="Powered by Semantic MediaWiki" width="88" height="31"/></a></li>
 </ul>
@@ -363,9 +1011,19 @@ Retrieved from "<a dir="ltr" href="http://rosettacode.org/mw/index.php?title=Cat
 </div><script>window.RLQ = window.RLQ || []; window.RLQ.push( function () {
 mw.loader.state({"user":"ready","user.groups":"ready"});mw.loader.load(["mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.bootstrap.scripts"]);
 } );</script>
-<script type="text/javascript">/* CloudFlare analytics upgrade */
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(["_setAccount", "UA-1219419-1"]);
+  _gaq.push(["_trackPageview"]);
+
+  (function() {
+    var ga = document.createElement("script"); ga.type = "text/javascript"; ga.async = true;
+    ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";
+    var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
 </script>
 <script>window.RLQ = window.RLQ || []; window.RLQ.push( function () {
-mw.config.set({"wgBackendResponseTime":415});
+mw.config.set({"wgBackendResponseTime":707});
 } );</script></body>
 </html>

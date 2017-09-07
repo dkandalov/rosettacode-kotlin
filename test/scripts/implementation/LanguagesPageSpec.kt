@@ -15,7 +15,7 @@ class LanguagesPageSpec: StringSpec() {
                 "http://rosettacode.org//wiki/9_billion_names_of_God_the_integer",
                 "http://rosettacode.org//wiki/99_Bottles_of_Beer"
             )
-            urls.size shouldBe 117
+            urls.size shouldBe 781
         }
     }
 }

@@ -8,7 +8,7 @@ data class EditPage(val url: EditPageUrl, val html: String) {
     fun extractCodeSnippets(): List<WebCodeSnippet> {
         val html = textAreaContent().unEscapeXml()
         return html.sourceCodeRanges()
-            .map{ html.substring(it) }
+            .map { html.substring(it) }
             .mapIndexed { index, code -> WebCodeSnippet.create(url, code, index) }
     }
 
@@ -85,7 +85,7 @@ data class EditPage(val url: EditPageUrl, val html: String) {
         fun get(url: EditPageUrl, cookieJar: CookieJar = CookieJar()) = EditPage(url, khttp.get(url.value, cookies = cookieJar).text)
 
         private fun String.sourceCodeRanges(startFrom: Int = 0): List<IntRange> {
-            val i1 = find(startFrom, 20) { s -> openingTags.any{ tag -> s.startsWith(tag) }} ?: return emptyList()
+            val i1 = find(startFrom, 20) { s -> openingTags.any { tag -> s.startsWith(tag) } } ?: return emptyList()
             val i2 = find(i1, ">") ?: return emptyList()
             val i3 = find(i2, closingTag) ?: return emptyList()
 
@@ -107,12 +107,12 @@ data class EditPage(val url: EditPageUrl, val html: String) {
         private fun String.unEscapeXml() = replace("&lt;", "<").replace("&amp;", "&")
         private fun String.escapeXml() = this // Don't escape anything because media wiki doesn't like everything escaped and can handle escaping itself anyway.
         private fun String.replaceKotlinTagWithScala() =
-                // Do this because RosettaCode highlights kotlin as scala better than kotlin as kotlin.
-                replace("<lang kotlin>", "<lang scala>").replace("<lang Kotlin>", "<lang scala>")
+            // Do this because RosettaCode highlights kotlin as scala better than kotlin as kotlin.
+            replace("<lang kotlin>", "<lang scala>").replace("<lang Kotlin>", "<lang scala>")
     }
 
     sealed class SubmitResult {
-        object Success : SubmitResult()
-        data class Failure(val reason: String) : SubmitResult()
+        object Success: SubmitResult()
+        data class Failure(val reason: String): SubmitResult()
     }
 }

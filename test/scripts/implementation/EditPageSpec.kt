@@ -4,7 +4,7 @@ import io.kotlintest.specs.StringSpec
 
 class EditPageSpec: StringSpec() {
     init {
-        val someUrl = EditPageUrl("")
+        val someUrl = EditPageUrl("http://rosettacode.org/something")
 
         "extract code snippets from task edit page" {
             val html = "array-concatenation-edit-page.txt".readFileText()
