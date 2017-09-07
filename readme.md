@@ -31,8 +31,6 @@ usual GitHub workflow. Once you have your local clone, make sure the project com
 
 If you want to use [Gradle](https://www.gradle.org), then `./gradlew classes`.
 
-If you want to use [Maven](http://www.maven.org), then `mvn compile`.
-
 ### Step 2: Pull code from Rosetta Code website
 
 You will need to run a script which checks that Kotlin code in repository 
