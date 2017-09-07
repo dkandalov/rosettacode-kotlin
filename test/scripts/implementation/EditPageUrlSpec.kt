@@ -4,7 +4,7 @@ import io.kotlintest.specs.StringSpec
 import scripts.implementation.EditPageUrl.Companion.asFileName
 import scripts.implementation.EditPageUrl.Companion.asPackageName
 
-class EditPageUrlSpec : StringSpec() {
+class EditPageUrlSpec: StringSpec() {
     init {
         "extract page edit id from url" {
             EditPageUrl("http://rosettacode.org/mw/index.php?title=Array_concatenation&action=edit&section=70").apply {

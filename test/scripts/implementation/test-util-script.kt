@@ -1,18 +1,28 @@
 package scripts.implementation
 
-import khttp.get
+import org.http4k.client.OkHttp
+import org.http4k.core.Method.GET
+import org.http4k.core.Request
 import java.io.File
 
 fun String.trimmed() = trimMargin().trim()
 
-fun String.readText() = File("./test/scripts/implementation/$this").readText()
+fun String.readFileText() = File("./test/scripts/implementation/$this").readText()
 
 fun main(args: Array<String>) {
+    fun String.getWebPageText() = OkHttp()(Request(GET, this)).bodyString()
+
     fun downloadPagesForTestInput() {
-        val basePath = "./test/scripts/"
-        File("$basePath/kotlin-page.txt").writeText(get("http://rosettacode.org/wiki/Category:Kotlin").text)
-        File("$basePath/array-concatenation-page.txt").writeText(get("http://rosettacode.org/wiki/Array_concatenation").text)
-        File("$basePath/array-concatenation-edit-page.txt").writeText(get("http://rosettacode.org//mw/index.php?title=Array_concatenation&action=edit&section=70").text)
+        val basePath = "./test/scripts/implementation/"
+
+        File("$basePath/kotlin-page.txt")
+            .writeText("http://rosettacode.org/wiki/Category:Kotlin".getWebPageText())
+
+        File("$basePath/array-concatenation-page.txt")
+            .writeText("http://rosettacode.org/wiki/Array_concatenation".getWebPageText())
+
+        File("$basePath/array-concatenation-edit-page.txt")
+            .writeText("http://rosettacode.org//mw/index.php?title=Array_concatenation&action=edit&section=70".getWebPageText())
     }
     downloadPagesForTestInput()
 }

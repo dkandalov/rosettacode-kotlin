@@ -3,7 +3,7 @@ package scripts.implementation
 import io.kotlintest.specs.StringSpec
 import java.io.File
 
-class CodeSnippetsSpec : StringSpec() {
+class CodeSnippetsSpec: StringSpec() {
     init {
         "code is trimmed for both local and web snippets" {
             val code = "\n" +

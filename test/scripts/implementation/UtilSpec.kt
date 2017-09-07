@@ -2,7 +2,7 @@ package scripts.implementation
 
 import io.kotlintest.specs.StringSpec
 
-class UtilSpec : StringSpec() {
+class UtilSpec: StringSpec() {
     init {
         "retry throws exception when exceeded amount of retries" {
             var attempts = 0

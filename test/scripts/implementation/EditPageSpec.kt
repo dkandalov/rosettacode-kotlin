@@ -2,12 +2,12 @@ package scripts.implementation
 
 import io.kotlintest.specs.StringSpec
 
-class EditPageSpec : StringSpec() {
+class EditPageSpec: StringSpec() {
     init {
         val someUrl = EditPageUrl("")
 
         "extract code snippets from task edit page" {
-            val html = "array-concatenation-edit-page.txt".readText()
+            val html = "array-concatenation-edit-page.txt".readFileText()
             val codeSnippets = EditPage(someUrl, html).extractCodeSnippets()
             codeSnippets shouldBe listOf(
                 WebCodeSnippet(someUrl,
@@ -38,7 +38,7 @@ class EditPageSpec : StringSpec() {
         }
 
         "extract text area from task edit page" {
-            val html = "array-concatenation-edit-page.txt".readText()
+            val html = "array-concatenation-edit-page.txt".readFileText()
             val text = EditPage(someUrl, html).textAreaContent().trimmed()
             text shouldBe """
                 |=={{header|Kotlin}}==
