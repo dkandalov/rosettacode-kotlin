@@ -1,40 +1,49 @@
 package scripts.implementation
 
-import khttp.structures.cookie.CookieJar
+import org.http4k.core.HttpHandler
 import java.io.File
 import java.net.SocketTimeoutException
 
 private val excludedTasks = listOf(
+    // kotlin native
+    "Address_of_a_variable",
+    "Create_an_object_at_a_given_address",
+    "Call_a_foreign-language_function",
+    "Check_input_device_is_a_terminal",
+    "Check_output_device_is_a_terminal",
+    "Machine_code",
+    "OpenGL",
+    "Positional_read",
+    "Terminal_control-Positional_read",
+
+    // kotlin js
+    "Respond_to_an_unknown_method_call",
+    "Runtime_evaluation-In_an_environment",
+    "Send_an_unknown_method_call",
+
+    // ignored because there is no code
+    "Boolean_values",
+    "Interactive_programming",
+
     "matrix_NG,_Contined_Fraction_N", // because of https://youtrack.jetbrains.com/issue/KT-10494
-    "Calendar_-_for_%22REAL%22_programmers", // because some code snippets for it are uppercase and not really compilable
-    "Address_of_a_variable", // kotlin native
-    "Create_an_object_at_a_given_address", // kotlin native
-    "Call_a_foreign-language_function", // kotlin native
-    "Check_input_device_is_a_terminal", // kotlin native
-    "Check_output_device_is_a_terminal", // kotlin native
-    "Machine_code", // kotlin native
-    "OpenGL", // kotlin native
-    "Positional_read", // kotlin native
-    "Terminal_control-Positional_read", // kotlin native
-    "Boolean_values", // ignored because there is no code
-    "Interactive_programming" // ignored because there is no code
+    "Calendar_-_for_%22REAL%22_programmers" // because some code snippets for it are uppercase and not really compilable
 )
 
-fun pushLocalChangesToRosettaCode() {
-    val snippetStorage = loadCodeSnippets(excludedTasks)
+fun pushLocalChangesToRosettaCode(httpClient: HttpHandler = newHttpClient()) {
+    val snippetStorage = loadCodeSnippets(excludedTasks, httpClient)
 
     snippetStorage.snippetsWithDiffs.apply {
         if (isEmpty()) return log(">>> Nothing to push. There are no differences between code in local files and rosetta code website.")
 
-        var cookieJar = cached("loginCookieJar") { loginAndGetCookies() }
-        if (cookieJar.isEmpty() || cookieJar.hasExpiredEntries()) {
+        var cookies = cached("loginCookieJar") { loginAndGetCookies(httpClient) }
+        if (cookies.list.isEmpty() || cookies.anyIsExpired()) {
             log("Login cookies have expired entries. Please login to RosettaCode website again.")
-            cookieJar = cached("loginCookieJar", replace = true) { loginAndGetCookies() }
+            cookies = cached("loginCookieJar", replace = true) { loginAndGetCookies(httpClient) }
         }
-        if (cookieJar.isEmpty()) return
+        if (cookies.list.isEmpty()) return
 
         forEach { (webSnippet, localSnippet) ->
-            val result = webSnippet.submitCodeChange(localSnippet.sourceCode, cookieJar)
+            val result = webSnippet.submitCodeChange(httpClient, localSnippet.sourceCode, cookies)
             when (result) {
                 is EditPage.SubmitResult.Success -> {
                     log("Pushed local changes to ${webSnippet.editPageUrl}")
@@ -54,17 +63,17 @@ fun pushLocalChangesToRosettaCode() {
     }
 }
 
-private fun loginAndGetCookies(): CookieJar {
-    val (userName, password) = showLoginDialog() ?: return CookieJar()
+private fun loginAndGetCookies(httpClient: HttpHandler): Cookies {
+    val (userName, password) = showLoginDialog() ?: return Cookies()
     if (userName.isEmpty() || password.isEmpty()) {
         log("Please specify non-empty user name and password to be able to login into RosettaCode website.")
-        return CookieJar()
+        return Cookies()
     }
-    return LoginPage.get().login(userName, password)
+    return LoginPage.getWith(httpClient).login(httpClient, userName, password)
 }
 
-fun pullFromRosettaCodeWebsite(overwriteLocalFiles: Boolean = false) {
-    val snippetStorage = loadCodeSnippets(excludedTasks)
+fun pullFromRosettaCodeWebsite(overwriteLocalFiles: Boolean = false, httpClient: HttpHandler = newHttpClient()) {
+    val snippetStorage = loadCodeSnippets(excludedTasks, httpClient)
 
     snippetStorage.onlyWebSnippets.apply {
         if (isNotEmpty()) {
@@ -113,19 +122,21 @@ fun pullFromRosettaCodeWebsite(overwriteLocalFiles: Boolean = false) {
 }
 
 
-private fun loadCodeSnippets(exclusions: List<String>): CodeSnippetStorage {
-    val kotlinPage = cached("kotlinPage") { LanguagePage.Companion.get() }
+private fun loadCodeSnippets(exclusions: List<String>, httpClient: HttpHandler): CodeSnippetStorage {
+    val kotlinPage = cached("kotlinPage") { LanguagePage.getWith(httpClient) }
     val editPageUrls = cached("editPageUrls") {
         kotlinPage.extractTaskPageUrls().mapParallelWithProgress { url, progress ->
             log("Getting edit page url from $url ($progress)")
-            TaskPage.get(url).extractKotlinEditPageUrl()
+            retry(SocketTimeoutException::class) {
+                TaskPage.getWith(httpClient, url).extractKotlinEditPageUrl()
+            }
         }
     }
 
     val editPages = cached("editPages") {
-        editPageUrls.mapParallelWithProgress { it, progress ->
-            log("Getting source code from $it ($progress)")
-            retry(SocketTimeoutException::class) { EditPage.Companion.get(it) }
+        editPageUrls.mapParallelWithProgress { url, progress ->
+            log("Getting source code from $url ($progress)")
+            retry(SocketTimeoutException::class) { EditPage.getWith(httpClient, url) }
         }
     }
 

@@ -2,7 +2,16 @@ package scripts.implementation
 
 import com.thoughtworks.xstream.XStream
 import com.thoughtworks.xstream.io.xml.XppDriver
+import org.http4k.client.ApacheClient
+import org.http4k.core.Parameters
+import org.http4k.core.Request
+import org.http4k.core.body.form
+import org.http4k.core.body.toBody
+import org.http4k.core.cookie.Cookie
 import java.io.File
+import java.time.Instant
+import java.time.OffsetDateTime
+import java.time.format.DateTimeFormatter
 import java.util.concurrent.Callable
 import java.util.concurrent.Executors.newFixedThreadPool
 import java.util.concurrent.atomic.AtomicReference
@@ -13,7 +22,30 @@ val log: (Any?) -> Unit = {
     System.out.println(it)
 }
 
+fun newHttpClient() = ApacheClient()
+
 private val xStream = XStream(XppDriver())
+
+data class Cookies(val list: List<Cookie> = emptyList()) {
+    fun anyIsExpired(now: Instant = Instant.now()): Boolean {
+        return list
+            .mapNotNull { it.value.split("; ").find { it.startsWith("expires=") } }
+            .any {
+                val s = it.replace("expires=", "").replace("-", " ")
+                val dateTime = OffsetDateTime.parse(s, DateTimeFormatter.RFC_1123_DATE_TIME)
+                // Exclude year 1970 because there are some cookies which have timestamp just after 1970
+                dateTime.year > 1970 && dateTime.toInstant() <= now
+            }
+    }
+
+    operator fun plus(cookie: Cookie) = Cookies(list + cookie)
+}
+
+fun Request.with(cookies: Cookies): Request =
+    replaceHeader("Cookie", cookies.list.map { it.toString() }.joinToString(""))
+
+fun Request.formData(parameters: Parameters) =
+    run { body(form().plus(parameters).toBody()) }
 
 /**
  * Caches result of function `f` in xml file.
@@ -71,7 +103,7 @@ fun <T, R> List<T>.mapParallelWithProgress(f: (T, Progress) -> R): List<R> {
 fun <T> retry(exceptionClass: KClass<out Exception>, retries: Int = 3, f: () -> T): T {
     return try {
         f()
-    } catch(e: Exception) {
+    } catch (e: Exception) {
         if (retries == 1) throw IllegalStateException("Exceeded amount of retries", e)
         if (e.javaClass.kotlin.isSubclassOf(exceptionClass)) {
             retry(exceptionClass, retries - 1, f)

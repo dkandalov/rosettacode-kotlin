@@ -1,6 +1,10 @@
 package scripts.implementation
 
-import khttp.structures.cookie.CookieJar
+import org.http4k.core.HttpHandler
+import org.http4k.core.Method.GET
+import org.http4k.core.Method.POST
+import org.http4k.core.Request
+import org.http4k.core.Status.Companion.OK
 import scripts.implementation.EditPage.SubmitResult.Failure
 import scripts.implementation.EditPage.SubmitResult.Success
 
@@ -12,7 +16,7 @@ data class EditPage(val url: EditPageUrl, val html: String) {
             .mapIndexed { index, code -> WebCodeSnippet.create(url, code, index) }
     }
 
-    fun submitCodeChange(newCode: String, index: Int, cookieJar: CookieJar): SubmitResult {
+    fun submitCodeChange(httpClient: HttpHandler, newCode: String, index: Int, cookies: Cookies): SubmitResult {
         fun String.valueOfTag(tagName: String): String {
             val i1 = indexOf("name=\"$tagName\"")
             if (i1 == -1) return ""
@@ -46,10 +50,9 @@ data class EditPage(val url: EditPageUrl, val html: String) {
         // TODO some pages seem to only work with http instead of https url
         // E.g. http://rosettacode.org//mw/index.php?title=Sort_an_array_of_composite_structures&action=edit&section=39
         // and http://rosettacode.org//mw/index.php?title=Zeckendorf_number_representation&action=edit&section=29
-        val response = khttp.post(
-            url = "https://rosettacode.org/mw/index.php?title=${url.pageId()}&action=submit",
-            cookies = cookieJar,
-            data = mapOf(
+        val request = Request(POST, "https://rosettacode.org/mw/index.php?title=${url.pageId()}&action=submit")
+            .with(cookies)
+            .formData(listOf(
                 "wpAntispam" to "",
                 "wpSection" to section,
                 "wpStarttime" to startTime,
@@ -64,10 +67,11 @@ data class EditPage(val url: EditPageUrl, val html: String) {
                 "wpSave" to "Save page",
                 "wpEditToken" to editToken,
                 "wpUltimateParam" to "1"
-            )
-        )
-        return if (response.statusCode != 200) Failure(response.statusCode.toString())
-        else if (String(response.content).contains("class=\"permissions-errors\"")) Failure("permission error; try removing login cookie")
+            ))
+        val response = httpClient(request)
+
+        return if (response.status != OK) Failure(response.status.toString())
+        else if (response.bodyString().contains("class=\"permissions-errors\"")) Failure("permission error; try removing login cookie")
         else Success
     }
 
@@ -82,7 +86,10 @@ data class EditPage(val url: EditPageUrl, val html: String) {
         private val openingTags = listOf("<lang Kotlin>", "<lang kotlin>", "<lang scala>")
         private val closingTag = "</lang>"
 
-        fun get(url: EditPageUrl, cookieJar: CookieJar = CookieJar()) = EditPage(url, khttp.get(url.value, cookies = cookieJar).text)
+        fun getWith(httpClient: HttpHandler, url: EditPageUrl, cookies: Cookies = Cookies()): EditPage {
+            val request = Request(GET, url.value).with(cookies)
+            return EditPage(url, httpClient(request).bodyString())
+        }
 
         private fun String.sourceCodeRanges(startFrom: Int = 0): List<IntRange> {
             val i1 = find(startFrom, 20) { s -> openingTags.any { tag -> s.startsWith(tag) } } ?: return emptyList()

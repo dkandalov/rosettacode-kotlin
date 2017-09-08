@@ -28,11 +28,10 @@ targetCompatibility = 1.8
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:1.1.4"
-    compile "khttp:khttp:0.1.0"
     compile "com.thoughtworks.xstream:xstream:1.4.9"
-    compile "org.http4k:http4k-core:2.25.4"
-    compile "org.http4k:http4k-server-jetty:2.25.4"
-    compile "org.http4k:http4k-client-okhttp:2.25.4"
+    compile "org.http4k:http4k-core:2.24.0"
+    compile "org.http4k:http4k-server-jetty:2.24.0"
+    compile "org.http4k:http4k-client-apache:2.24.0"
     testCompile "io.kotlintest:kotlintest:1.3.7"
 
     // For Break_OO_privacy.kt and Reflection-List_properties.kt
