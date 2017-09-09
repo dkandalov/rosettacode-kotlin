@@ -24,6 +24,19 @@ val log: (Any?) -> Unit = {
 
 fun newHttpClient() = ApacheClient()
 
+fun newRecordingHttpClient(): RecordingHttpClient {
+    val file = File(".cache/httpRecording.xml")
+    val recording = if (file.exists()) xStream.fromXML(file.readText()) as HttpRecording else HttpRecording()
+
+    val recordingHttpClient = RecordingHttpClient(newHttpClient(), recording)
+
+    Runtime.getRuntime().addShutdownHook(Thread {
+        file.parentFile.mkdirs()
+        file.writeText(xStream.toXML(recordingHttpClient.recording))
+    })
+    return recordingHttpClient
+}
+
 private val xStream = XStream(XppDriver())
 
 data class Cookies(val list: List<Cookie> = emptyList()) {
@@ -91,10 +104,12 @@ fun <T, R> List<T>.mapParallelWithProgress(f: (T, Progress) -> R): List<R> {
     val executor = newFixedThreadPool(poolSize)
 
     val progressRef = AtomicReference(Progress(0, size))
-    val futures = this.map{ executor.submit(Callable {
-        val progress = progressRef.updateAndGet { it.next() }
-        f(it, progress)
-    })}
+    val futures = this.map {
+        executor.submit(Callable {
+            val progress = progressRef.updateAndGet { it.next() }
+            f(it, progress)
+        })
+    }
     val result = futures.map { it.get() }
     executor.shutdown()
     return result
