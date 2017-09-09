@@ -4,7 +4,7 @@ import org.http4k.core.HttpHandler
 import org.http4k.core.Method.GET
 import org.http4k.core.Request
 
-data class LanguagePage(val html: String) {
+data class LanguagePage(private val html: String) {
     fun extractTaskPageUrls(): List<String> {
         val linesWithHref = html.split("\n")
             .dropWhile { !it.contains("<h2>Pages in category \"Kotlin\"</h2>") }

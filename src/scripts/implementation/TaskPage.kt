@@ -4,8 +4,8 @@ import org.http4k.core.HttpHandler
 import org.http4k.core.Method.GET
 import org.http4k.core.Request
 
-data class TaskPage(val html: String) {
-    internal fun extractKotlinEditPageUrl(): EditPageUrl {
+data class TaskPage(private val html: String) {
+    fun extractKotlinEditPageUrl(): EditPageUrl {
         val s = html.split("\n")
             .dropWhile { !it.contains("<span class=\"mw-headline\" id=\"Kotlin\">") }
             .find { it.contains("<a href=\"/mw/") }!!

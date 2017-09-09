@@ -1,7 +1,7 @@
 package scripts.implementation
 
 import io.kotlintest.specs.StringSpec
-import java.io.File
+import java.io.File.createTempFile
 
 class CodeSnippetsSpec: StringSpec() {
     init {
@@ -10,7 +10,7 @@ class CodeSnippetsSpec: StringSpec() {
                 "package abc\n" +
                 "  class A {}  \n" +
                 "\n"
-            val file = File.createTempFile("code-snippet", "")
+            val file = createTempFile("code-snippet", "")
             file.writeText(code)
 
             val localCodeSnippet = LocalCodeSnippet(file.absolutePath)

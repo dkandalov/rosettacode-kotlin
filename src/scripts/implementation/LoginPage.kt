@@ -13,7 +13,6 @@ data class LoginPage(val html: String, private val cookies: Cookies) {
         if (html.isLoggedIn()) return cookies
         if (html.contains("I'm not a robot")) throw FailedToLogin("Can't login right now because login page has 'I'm not a robot' capture.")
 
-
         val loginToken = Regex("<input type=\"hidden\" value=\"(.+?)\"").find(html)!!.groups[1]!!.value
         val request = Request(POST, "https://rosettacode.org/mw/index.php?title=Special:UserLogin&action=submitlogin&type=login&returnto=Rosetta+Code")
             .with(cookies + Cookie("rosettacodeUserName", URLEncoder.encode(userName, "UTF-8")))
