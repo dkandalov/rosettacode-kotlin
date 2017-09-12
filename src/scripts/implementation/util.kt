@@ -24,11 +24,11 @@ val log: (Any?) -> Unit = {
 
 fun newHttpClient() = ApacheClient()
 
-fun newRecordingHttpClient(): RecordingHttpClient {
+fun newRecordingHttpClient(recordedRequestsMatcher: (Request) -> Boolean = { false }): RecordingHttpClient {
     val file = File(".cache/httpRecording.xml")
     val recording = if (file.exists()) xStream.fromXML(file.readText()) as HttpRecording else HttpRecording()
 
-    val recordingHttpClient = RecordingHttpClient(newHttpClient(), recording)
+    val recordingHttpClient = RecordingHttpClient(newHttpClient(), recording.filter(recordedRequestsMatcher))
 
     Runtime.getRuntime().addShutdownHook(Thread {
         file.parentFile.mkdirs()

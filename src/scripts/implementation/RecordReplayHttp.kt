@@ -17,5 +17,10 @@ data class HttpRecording(private val data: LinkedHashMap<Request, Response> = Li
         data.put(request, response)
     }
 
+    fun filter(f: (Request) -> Boolean): HttpRecording {
+        data.filter { f(it.key) }.forEach{ data.remove(it.key) }
+        return this
+    }
+
     fun responseFor(request: Request): Response? = data[request]
 }
