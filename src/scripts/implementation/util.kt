@@ -55,7 +55,7 @@ data class Cookies(val list: List<Cookie> = emptyList()) {
 }
 
 fun Request.with(cookies: Cookies): Request =
-    replaceHeader("Cookie", cookies.list.map { it.toString() }.joinToString(""))
+    replaceHeader("Cookie", cookies.list.map { "${it.name}=${it.value}" }.joinToString(""))
 
 fun Request.formData(parameters: Parameters) =
     run { body(form().plus(parameters).toBody()) }
