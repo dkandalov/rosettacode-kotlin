@@ -18,7 +18,7 @@ private val excludedTasks = listOf(
 
     // kotlin js
     "Respond_to_an_unknown_method_call",
-    "Runtime_evaluation-In_an_environment",
+    "Runtime_evaluation",
     "Send_an_unknown_method_call",
 
     // ignored because there is no code
