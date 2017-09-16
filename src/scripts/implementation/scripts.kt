@@ -13,8 +13,10 @@ private val excludedTasks = listOf(
     "Check_output_device_is_a_terminal",
     "Machine_code",
     "OpenGL",
+    "Pointers_and_references",
     "Positional_read",
     "Terminal_control-Positional_read",
+    "Window_creation",
 
     // kotlin js
     "Respond_to_an_unknown_method_call",
