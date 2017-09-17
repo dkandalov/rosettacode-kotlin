@@ -7,6 +7,7 @@ import java.net.SocketTimeoutException
 private val excludedTasks = listOf(
     // kotlin native
     "Address_of_a_variable",
+    "Arena_storage_pool",
     "Create_an_object_at_a_given_address",
     "Call_a_foreign-language_function",
     "Check_input_device_is_a_terminal",
@@ -16,7 +17,7 @@ private val excludedTasks = listOf(
     "Pointers_and_references",
     "Positional_read",
     "Terminal_control-Positional_read",
-    "Window_creation",
+    "Window_creation/X11",
 
     // kotlin js
     "Respond_to_an_unknown_method_call",
