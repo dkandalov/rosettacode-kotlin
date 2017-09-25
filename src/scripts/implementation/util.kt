@@ -3,11 +3,12 @@ package scripts.implementation
 import com.thoughtworks.xstream.XStream
 import com.thoughtworks.xstream.io.xml.XppDriver
 import org.http4k.client.ApacheClient
-import org.http4k.core.Parameters
-import org.http4k.core.Request
+import org.http4k.core.*
 import org.http4k.core.body.form
 import org.http4k.core.body.toBody
 import org.http4k.core.cookie.Cookie
+import org.http4k.filter.TrafficFilters
+import org.http4k.traffic.ReadWriteCache
 import java.io.File
 import java.time.Instant
 import java.time.OffsetDateTime
@@ -24,17 +25,11 @@ val log: (Any?) -> Unit = {
 
 fun newHttpClient() = ApacheClient()
 
-fun newRecordingHttpClient(recordedRequestsMatcher: (Request) -> Boolean = { false }): RecordingHttpClient {
-    val file = File(".cache/httpRecording.xml")
-    val recording = if (file.exists()) xStream.fromXML(file.readText()) as HttpRecording else HttpRecording()
-
-    val recordingHttpClient = RecordingHttpClient(newHttpClient(), recording.filter(recordedRequestsMatcher))
-
-    Runtime.getRuntime().addShutdownHook(Thread {
-        file.parentFile.mkdirs()
-        file.writeText(xStream.toXML(recordingHttpClient.recording))
-    })
-    return recordingHttpClient
+fun newRecordingHttpClient(shouldStore: (HttpMessage) -> Boolean = { true }): HttpHandler {
+    val storage = ReadWriteCache.Disk(".cache/http", shouldStore)
+    return TrafficFilters.ServeCachedFrom(storage)
+        .then(TrafficFilters.RecordTo(storage))
+        .then(newHttpClient())
 }
 
 private val xStream = XStream(XppDriver())
