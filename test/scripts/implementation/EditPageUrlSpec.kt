@@ -1,5 +1,6 @@
 package scripts.implementation
 
+import io.kotlintest.matchers.shouldBe
 import io.kotlintest.specs.StringSpec
 import scripts.implementation.EditPageUrl.Companion.asFileName
 import scripts.implementation.EditPageUrl.Companion.asPackageName
