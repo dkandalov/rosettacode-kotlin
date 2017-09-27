@@ -5,17 +5,20 @@ import org.http4k.core.Method.GET
 import org.http4k.core.Method.POST
 import org.http4k.core.Request
 import org.http4k.core.cookie.Cookie
-import org.http4k.core.cookie.cookies
+import org.http4k.filter.cookie.LocalCookie
 import java.net.URLEncoder
+import java.time.LocalDateTime
 
-data class LoginPage(val html: String, private val cookies: Cookies) {
-    fun login(httpClient: HttpHandler, userName: String, password: String): Cookies {
-        if (html.isLoggedIn()) return cookies
+data class LoginPage(val html: String) {
+
+    fun login(rcClient: RCClient, userName: String, password: String): Boolean {
+        if (html.isLoggedIn()) return true
         if (html.contains("I'm not a robot")) throw FailedToLogin("Can't login right now because login page has 'I'm not a robot' capture.")
 
         val loginToken = Regex("<input type=\"hidden\" value=\"(.+?)\"").find(html)!!.groups[1]!!.value
-        val request = Request(POST, "https://rosettacode.org/mw/index.php?title=Special:UserLogin&action=submitlogin&type=login&returnto=Rosetta+Code")
-            .with(cookies + Cookie("rosettacodeUserName", URLEncoder.encode(userName, "UTF-8")))
+        rcClient.cookieStorage.store(listOf(LocalCookie(Cookie("rosettacodeUserName", URLEncoder.encode(userName, "UTF-8")), LocalDateTime.now())))
+
+        val request = Request(POST, "http://rosettacode.org/mw/index.php?title=Special:UserLogin&action=submitlogin&type=login&returnto=Rosetta+Code")
             .formData(listOf(
                 "wpName" to userName,
                 "wpPassword" to password,
@@ -23,16 +26,16 @@ data class LoginPage(val html: String, private val cookies: Cookies) {
                 "wpLoginToken" to loginToken
             ))
 
-        val response = httpClient(request)
+        val response = rcClient(request)
 
         if (!response.bodyString().isLoggedIn()) throw FailedToLogin("status = ${response.status}")
-        return Cookies(response.cookies())
+        return true
     }
 
     companion object {
         fun getWith(httpClient: HttpHandler, url: String = "http://rosettacode.org/wiki/Special:UserLogin") =
             httpClient(Request(GET, url)).run {
-                LoginPage(bodyString(), Cookies(cookies()))
+                LoginPage(bodyString())
             }
 
         fun String.isLoggedIn() = !contains(">Log in<") && contains(">Log out<") // Checking for "Log in" link in the top right corner of the web page.

@@ -7,12 +7,16 @@ import org.http4k.core.*
 import org.http4k.core.body.form
 import org.http4k.core.body.toBody
 import org.http4k.core.cookie.Cookie
+import org.http4k.core.cookie.cookies
+import org.http4k.filter.DebuggingFilters
 import org.http4k.filter.TrafficFilters
+import org.http4k.filter.cookie.BasicCookieStorage
+import org.http4k.filter.cookie.CookieStorage
+import org.http4k.filter.cookie.LocalCookie
 import org.http4k.traffic.ReadWriteCache
 import java.io.File
-import java.time.Instant
-import java.time.OffsetDateTime
-import java.time.format.DateTimeFormatter
+import java.time.Clock
+import java.time.LocalDateTime
 import java.util.concurrent.Callable
 import java.util.concurrent.Executors.newFixedThreadPool
 import java.util.concurrent.atomic.AtomicReference
@@ -23,34 +27,35 @@ val log: (Any?) -> Unit = {
     System.out.println(it)
 }
 
+interface RCClient : HttpHandler {
+    val cookieStorage: BasicCookieStorage
+}
+
+fun HttpHandler.asRCClient(): RCClient {
+    val cookieStorage = cached("cookies") { BasicCookieStorage() }
+    val httpClient = Cookies(storage = cookieStorage).then(this)
+    return object : RCClient {
+        override val cookieStorage = cookieStorage
+        override fun invoke(request: Request) = httpClient(request).also {
+            cached("cookies", replace = true) { cookieStorage }
+        }
+    }
+}
+
 fun newHttpClient() = ApacheClient()
 
-fun newRecordingHttpClient(shouldStore: (HttpMessage) -> Boolean = { true }): HttpHandler {
+fun HttpHandler.withDebug() = DebuggingFilters.PrintRequestAndResponse().then(this)
+
+fun HttpHandler.cached(shouldStore: (HttpMessage) -> Boolean = { true }): HttpHandler {
     val storage = ReadWriteCache.Disk(".cache/http", shouldStore)
     return TrafficFilters.ServeCachedFrom(storage)
         .then(TrafficFilters.RecordTo(storage))
-        .then(newHttpClient())
+        .then(this)
 }
+
 
 private val xStream = XStream(XppDriver())
 
-data class Cookies(val list: List<Cookie> = emptyList()) {
-    fun anyIsExpired(now: Instant = Instant.now()): Boolean {
-        return list
-            .mapNotNull { it.value.split("; ").find { it.startsWith("expires=") } }
-            .any {
-                val s = it.replace("expires=", "").replace("-", " ")
-                val dateTime = OffsetDateTime.parse(s, DateTimeFormatter.RFC_1123_DATE_TIME)
-                // Exclude year 1970 because there are some cookies which have timestamp just after 1970
-                dateTime.year > 1970 && dateTime.toInstant() <= now
-            }
-    }
-
-    operator fun plus(cookie: Cookie) = Cookies(list + cookie)
-}
-
-fun Request.with(cookies: Cookies): Request =
-    replaceHeader("Cookie", cookies.list.map { "${it.name}=${it.value}" }.joinToString(""))
 
 fun Request.formData(parameters: Parameters) =
     run { body(form().plus(parameters).toBody()) }
@@ -122,5 +127,34 @@ fun <T> retry(exceptionClass: KClass<out Exception>, retries: Int = 3, f: () -> 
         }
     }
 }
+
+
+object Cookies {
+    operator fun invoke(
+        clock: Clock = Clock.systemDefaultZone(),
+        storage: CookieStorage = BasicCookieStorage()
+    ): Filter = Filter { next ->
+        { request ->
+            val now = clock.now()
+            removeExpired(now, storage)
+            val response = next(request.withLocalCookies(storage))
+            storage.store(response.cookies().map { LocalCookie(it, now) })
+            response
+        }
+    }
+
+    private fun Request.withLocalCookies(storage: CookieStorage) =
+        storage.retrieve().map { it.cookie }.fold(this, { r, cookie -> r.cookie(cookie.name, cookie.value) })
+
+    private fun removeExpired(now: LocalDateTime, storage: CookieStorage) =
+        storage.retrieve().filter { it.isExpired(now) }.forEach { storage.remove(it.cookie.name) }
+
+    private fun Clock.now() = LocalDateTime.ofInstant(instant(), zone)
+
+    private fun Request.cookie(name: String, value: String): Request = replaceHeader("Cookie", cookies().plus(Cookie(name, value)).toCookieString())
+
+    private fun List<Cookie>.toCookieString() = map { "${it.name}=${it.value}" }.joinToString("; ")
+}
+
 
 private fun <T> T.ifNull(defaultValue: T): T = this ?: defaultValue

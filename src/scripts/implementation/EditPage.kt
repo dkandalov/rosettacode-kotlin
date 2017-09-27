@@ -16,7 +16,7 @@ data class EditPage(val url: EditPageUrl, val html: String) {
             .mapIndexed { index, code -> WebCodeSnippet.create(url, code, index) }
     }
 
-    fun submitCodeChange(httpClient: HttpHandler, newCode: String, index: Int, cookies: Cookies): SubmitResult {
+    fun submitCodeChange(httpClient: HttpHandler, newCode: String, index: Int): SubmitResult {
         fun String.valueOfTag(tagName: String): String {
             val i1 = indexOf("name=\"$tagName\"")
             if (i1 == -1) return ""
@@ -51,7 +51,6 @@ data class EditPage(val url: EditPageUrl, val html: String) {
         // E.g. http://rosettacode.org//mw/index.php?title=Sort_an_array_of_composite_structures&action=edit&section=39
         // and http://rosettacode.org//mw/index.php?title=Zeckendorf_number_representation&action=edit&section=29
         val request = Request(POST, "https://rosettacode.org/mw/index.php?title=${url.pageId()}&action=submit")
-            .with(cookies)
             .formData(listOf(
                 "wpAntispam" to "",
                 "wpSection" to section,
@@ -86,8 +85,8 @@ data class EditPage(val url: EditPageUrl, val html: String) {
         private val openingTags = listOf("<lang Kotlin>", "<lang kotlin>", "<lang scala>")
         private val closingTag = "</lang>"
 
-        fun getWith(httpClient: HttpHandler, url: EditPageUrl, cookies: Cookies = Cookies()): EditPage {
-            val request = Request(GET, url.value).with(cookies)
+        fun getWith(httpClient: HttpHandler, url: EditPageUrl): EditPage {
+            val request = Request(GET, url.value)
             return EditPage(url, httpClient(request).bodyString())
         }
 

@@ -32,21 +32,23 @@ private val excludedTasks = listOf(
     "Calendar_-_for_%22REAL%22_programmers" // because some code snippets for it are uppercase and not really compilable
 )
 
-fun pushLocalChangesToRosettaCode(httpClient: HttpHandler = newHttpClient()) {
-    val snippetStorage = loadCodeSnippets(excludedTasks, httpClient)
+fun pushLocalChangesToRosettaCode(rcClient: RCClient = newHttpClient().asRCClient()) {
+    val snippetStorage = loadCodeSnippets(excludedTasks, rcClient)
 
     snippetStorage.snippetsWithDiffs.apply {
         if (isEmpty()) return log(">>> Nothing to push. There are no differences between code in local files and rosetta code website.")
 
-        var cookies = cached("loginCookieJar") { loginAndGetCookies(httpClient) }
-        if (cookies.list.isEmpty() || cookies.anyIsExpired()) {
-            log("Login cookies have expired entries. Please login to RosettaCode website again.")
-            cookies = cached("loginCookieJar", replace = true) { loginAndGetCookies(httpClient) }
+        val (userName, password) = showLoginDialog() ?: return
+        if (userName.isEmpty() || password.isEmpty()) {
+            return log("Please specify non-empty user name and password to be able to login into RosettaCode website.")
         }
-        if (cookies.list.isEmpty()) return
+        val loggedIn = LoginPage.getWith(rcClient).login(rcClient, userName, password)
+        if (loggedIn) log("Logged in.") else return
+
+        TODO("implement submitting RC modification reason") // https://github.com/dkandalov/rosettacode-kotlin/issues/5
 
         forEach { (webSnippet, localSnippet) ->
-            val result = webSnippet.submitCodeChange(httpClient, localSnippet.sourceCode, cookies)
+            val result = webSnippet.submitCodeChange(rcClient, localSnippet.sourceCode)
             when (result) {
                 is EditPage.SubmitResult.Success -> {
                     log("Pushed local changes to ${webSnippet.editPageUrl}")
@@ -64,15 +66,6 @@ fun pushLocalChangesToRosettaCode(httpClient: HttpHandler = newHttpClient()) {
             "Therefore, you might want to add the following files manually.")
         forEach { log(it.filePath) }
     }
-}
-
-private fun loginAndGetCookies(httpClient: HttpHandler): Cookies {
-    val (userName, password) = showLoginDialog() ?: return Cookies()
-    if (userName.isEmpty() || password.isEmpty()) {
-        log("Please specify non-empty user name and password to be able to login into RosettaCode website.")
-        return Cookies()
-    }
-    return LoginPage.getWith(httpClient).login(httpClient, userName, password)
 }
 
 fun pullFromRosettaCodeWebsite(overwriteLocalFiles: Boolean = false, httpClient: HttpHandler = newHttpClient()) {
