@@ -17,6 +17,14 @@ data class Credentials(val userName: String, val password: String)
  * Use swing UI for getting user name and password because there seems to be no easy way get stdin when running gradle task.
  */
 fun showLoginDialog(): Credentials? {
+    System.getenv().let { env ->
+        val userName = env["USERNAME"]
+        val password = env["PASSWORD"]
+        if (userName != null && password != null) {
+            return Credentials(userName, password)
+        }
+    }
+
     val result = CompletableFuture<Credentials?>()
     JFrame().apply {
         val jFrame = this
