@@ -27,14 +27,14 @@ val log: (Any?) -> Unit = {
     System.out.println(it)
 }
 
-interface RCClient : HttpHandler {
+interface RCClient: HttpHandler {
     val cookieStorage: BasicCookieStorage
 }
 
 fun HttpHandler.asRCClient(): RCClient {
     val cookieStorage = cached("cookies") { BasicCookieStorage() }
     val httpClient = Cookies(storage = cookieStorage).then(this)
-    return object : RCClient {
+    return object: RCClient {
         override val cookieStorage = cookieStorage
         override fun invoke(request: Request) = httpClient(request).also {
             cached("cookies", replace = true) { cookieStorage }
