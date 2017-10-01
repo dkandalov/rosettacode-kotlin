@@ -127,11 +127,8 @@ fun getWords(n: Int): List<String> {
             val text = numToText(len.toLong())
             val splits = text.split(' ')
             words.addAll(splits)
-            if (words.size >= n) break
             words.add("in")
-            if (words.size == n) break
             words.add("the")
-            if (words.size == n) break
             val text2 = numToText(k.toLong()).toOrdinal() + ","  // add trailing comma
             val splits2 = text2.split(' ')
             words.addAll(splits2)
@@ -139,22 +136,22 @@ fun getWords(n: Int): List<String> {
             k++
         }
     }
-    return words.take(n)
+    return words
 }
 
 fun getLengths(n: Int): Pair<List<Int>, Int> {
     val words = getWords(n)
-    val lengths = words.map { it.adjustedLength }
-    val sentenceLength = words.sumBy { it.length } + n - 1  // includes hyphens, commas & spaces
+    val lengths = words.take(n).map { it.adjustedLength }
+    val sentenceLength = words.sumBy { it.length } + words.size - 1  // includes hyphens, commas & spaces
     return Pair(lengths, sentenceLength)
 }
 
 fun getLastWord(n: Int): Triple<String, Int, Int> {
     val words = getWords(n)
-    val lastWord = words.last()
-    val lastWordLength = lastWord.adjustedLength
-    val sentenceLength = words.sumBy { it.length } + n - 1  // includes hyphens, commas & spaces
-    return Triple(lastWord, lastWordLength, sentenceLength)
+    val nthWord = words[n - 1]
+    val nthWordLength = nthWord.adjustedLength
+    val sentenceLength = words.sumBy { it.length } + words.size - 1  // includes hyphens, commas & spaces
+    return Triple(nthWord, nthWordLength, sentenceLength)
 }
 
 fun main(args: Array<String>) {

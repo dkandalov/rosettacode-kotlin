@@ -2,13 +2,14 @@ package `send_email`
 
 // version 1.1.4-3
 
-import java.util.*
+import java.util.Properties
 import javax.mail.Authenticator
-import javax.mail.Message.RecipientType
 import javax.mail.PasswordAuthentication
 import javax.mail.Session
-import javax.mail.internet.InternetAddress
 import javax.mail.internet.MimeMessage
+import javax.mail.internet.InternetAddress
+import javax.mail.Message.RecipientType
+import javax.mail.Transport
 
 fun sendEmail(user: String, tos: Array<String>, ccs: Array<String>, title: String,
               body: String, password: String) {
