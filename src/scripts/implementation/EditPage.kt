@@ -16,7 +16,13 @@ data class EditPage(val url: EditPageUrl, val html: String) {
             .mapIndexed { index, code -> WebCodeSnippet.create(url, code, index) }
     }
 
-    fun submitCodeChange(httpClient: HttpHandler, newCode: String, index: Int): SubmitResult {
+    fun submitCodeChange(
+        httpClient: HttpHandler,
+        changeSummary: String,
+        newCode: String,
+        isMinorEdit: Boolean,
+        index: Int
+    ): SubmitResult {
         fun String.valueOfTag(tagName: String): String {
             val i1 = indexOf("name=\"$tagName\"")
             if (i1 == -1) return ""
@@ -26,8 +32,9 @@ data class EditPage(val url: EditPageUrl, val html: String) {
             if (i3 == -1) return ""
             return substring(i2, i3)
         }
+        fun String.hasPermissionError() = this.contains("class=\"permissions-errors\"")
 
-        if (html.contains("class=\"permissions-errors\"")) return Failure("permission error; try removing login cookie")
+        if (html.hasPermissionError()) return Failure("permission error; try removing login cookie")
 
         val updatedContent = textAreaContent().unEscapeXml().run {
             val ranges = sourceCodeRanges()
@@ -38,7 +45,6 @@ data class EditPage(val url: EditPageUrl, val html: String) {
         val section = html.valueOfTag("wpSection")
         val startTime = html.valueOfTag("wpStarttime")
         val editTime = html.valueOfTag("wpEdittime")
-        val changeSummary = "/* {{header|Kotlin}} */ Updated example see https://github.com/dkandalov/rosettacode-kotlin for details"
         val parentRevId = html.valueOfTag("parentRevId")
         val oldId = html.valueOfTag("oldid")
         val autoSummary = html.valueOfTag("wpAutoSummary")
@@ -47,31 +53,36 @@ data class EditPage(val url: EditPageUrl, val html: String) {
         val hasMissingFields = listOf(section, startTime, editTime, parentRevId, oldId, autoSummary, editTime).any { it.isEmpty() }
         if (hasMissingFields) return Failure("some of required fields are missing from edit page")
 
+        val formParameters = listOf(
+            "wpAntispam" to "",
+            "wpSection" to section,
+            "wpStarttime" to startTime,
+            "wpEdittime" to editTime,
+            "wpAutoSummary" to autoSummary,
+            "oldId" to oldId,
+            "parentRevId" to parentRevId,
+            "format" to "text/x-wiki",
+            "model" to "wikitext",
+            "wpTextbox1" to updatedContent,
+            "wpSummary" to changeSummary,
+            "wpSave" to "Save page",
+            "wpEditToken" to editToken,
+            "wpUltimateParam" to "1"
+        ).let {
+            if (isMinorEdit) it + Pair("wpMinoredit", "1") else it
+        }
+
         // TODO some pages seem to only work with http instead of https url
-        // E.g. http://rosettacode.org//mw/index.php?title=Sort_an_array_of_composite_structures&action=edit&section=39
+        // E.g. http://rosettacode.org//mw/index.php?title=Sort_an_array_of_composite_structures&action=edit&section=40
         // and http://rosettacode.org//mw/index.php?title=Zeckendorf_number_representation&action=edit&section=29
-        val request = Request(POST, "https://rosettacode.org/mw/index.php?title=${url.pageId()}&action=submit")
-            .formData(listOf(
-                "wpAntispam" to "",
-                "wpSection" to section,
-                "wpStarttime" to startTime,
-                "wpEdittime" to editTime,
-                "wpAutoSummary" to autoSummary,
-                "oldId" to oldId,
-                "parentRevId" to parentRevId,
-                "format" to "text/x-wiki",
-                "model" to "wikitext",
-                "wpTextbox1" to updatedContent,
-                "wpSummary" to changeSummary,
-                "wpSave" to "Save page",
-                "wpEditToken" to editToken,
-                "wpUltimateParam" to "1"
-            ))
+        val request = Request(POST, "https://rosettacode.org/mw/index.php?title=${url.pageId()}&action=submit").formData(formParameters)
         val response = httpClient(request)
 
-        return if (response.status != OK) Failure(response.status.toString())
-        else if (response.bodyString().contains("class=\"permissions-errors\"")) Failure("permission error; try removing login cookie")
-        else Success
+        return when {
+            response.status != OK -> Failure(response.status.toString())
+            response.bodyString().hasPermissionError() -> Failure("permission error; try removing login cookie")
+            else -> Success
+        }
     }
 
     fun textAreaContent(): String {

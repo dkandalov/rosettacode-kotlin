@@ -64,9 +64,9 @@ data class LocalCodeSnippet(val filePath: String) {
 data class WebCodeSnippet(val editPageUrl: EditPageUrl, val sourceCode: String, val index: Int) {
     val id = CodeSnippetId(editPageUrl.pageId().asFileName().postfixedWith(index))
 
-    fun submitCodeChange(httpClient: HttpHandler, newCode: String): EditPage.SubmitResult {
+    fun submitCodeChange(httpClient: HttpHandler, changeSummary: String, newCode: String, isMinorEdit: Boolean): EditPage.SubmitResult {
         val editPage = EditPage.getWith(httpClient, editPageUrl)
-        return editPage.submitCodeChange(httpClient, newCode, index)
+        return editPage.submitCodeChange(httpClient, changeSummary, newCode, isMinorEdit, index)
     }
 
     override fun toString() = "$editPageUrl - $index"

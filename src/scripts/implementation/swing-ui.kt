@@ -8,36 +8,43 @@ import javax.swing.*
 
 
 fun main(args: Array<String>) {
-    println(showLoginDialog())
+    println(showPushChangesDialog())
 }
 
-data class Credentials(val userName: String, val password: String)
+data class DialogData(
+    val userName: String,
+    val password: String,
+    val changeSummary: String,
+    val isMinorEdit: Boolean
+)
 
 /**
  * Use swing UI for getting user name and password because there seems to be no easy way get stdin when running gradle task.
  */
-fun showLoginDialog(): Credentials? {
-    System.getenv().let { env ->
-        val userName = env["USERNAME"]
-        val password = env["PASSWORD"]
-        if (userName != null && password != null) {
-            return Credentials(userName, password)
-        }
-    }
-
-    val result = CompletableFuture<Credentials?>()
+fun showPushChangesDialog(): DialogData? {
+    val result = CompletableFuture<DialogData?>()
     JFrame().apply {
         val jFrame = this
         add(JPanel().apply {
-            val userName = JTextField()
-            val password = JPasswordField()
+            val env = System.getenv()
+            val userName = JTextField().apply { text = env["USERNAME"] }
+            val password = JPasswordField().apply{ text = env["PASSWORD"] }
+            val changeSummary = JTextField().apply { text = "/* {{header|Kotlin}} */ change description" }
+            val isMinorEdit = JCheckBox().apply {
+                text = "this is a minor edit"
+                isSelected = true
+            }
 
-            layout = GridLayout(3, 2)
+            layout = GridLayout(5, 2)
 
             add(JLabel("User name:"))
             add(userName)
             add(JLabel("Password:"))
             add(password)
+            add(JLabel("Change summary:"))
+            add(changeSummary)
+            add(JLabel(""))
+            add(isMinorEdit)
 
             add(JButton("Cancel").apply {
                 addActionListener {
@@ -48,7 +55,12 @@ fun showLoginDialog(): Credentials? {
             add(JButton("Ok").apply {
                 addActionListener {
                     jFrame.dispose()
-                    result.complete(Credentials(userName.text, password.password.joinToString("")))
+                    result.complete(DialogData(
+                        userName.text,
+                        password.password.joinToString(""),
+                        changeSummary.text,
+                        isMinorEdit.isSelected
+                    ))
                 }
             })
         })
@@ -58,7 +70,7 @@ fun showLoginDialog(): Credentials? {
                 result.complete(null)
             }
         })
-        title = "RosettaCode Login"
+        title = "Push changes to RosettaCode"
         pack()
         defaultCloseOperation = JFrame.DISPOSE_ON_CLOSE
         isVisible = true

@@ -38,17 +38,15 @@ fun pushLocalChangesToRosettaCode(rcClient: RCClient = newHttpClient().asRCClien
     snippetStorage.snippetsWithDiffs.apply {
         if (isEmpty()) return log(">>> Nothing to push. There are no differences between code in local files and rosetta code website.")
 
-        val (userName, password) = showLoginDialog() ?: return
+        val (userName, password, changeSummary, isMinorEdit) = showPushChangesDialog() ?: return
         if (userName.isEmpty() || password.isEmpty()) {
             return log("Please specify non-empty user name and password to be able to login into RosettaCode website.")
         }
         val loggedIn = LoginPage.getWith(rcClient).login(rcClient, userName, password)
         if (loggedIn) log("Logged in.") else return
-
-        TODO("implement submitting RC modification reason") // https://github.com/dkandalov/rosettacode-kotlin/issues/5
-
+                      
         forEach { (webSnippet, localSnippet) ->
-            val result = webSnippet.submitCodeChange(rcClient, localSnippet.sourceCode)
+            val result = webSnippet.submitCodeChange(rcClient, changeSummary, localSnippet.sourceCode, isMinorEdit)
             when (result) {
                 is EditPage.SubmitResult.Success -> {
                     log("Pushed local changes to ${webSnippet.editPageUrl}")
