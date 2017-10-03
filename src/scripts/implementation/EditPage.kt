@@ -4,6 +4,7 @@ import org.http4k.core.HttpHandler
 import org.http4k.core.Method.GET
 import org.http4k.core.Method.POST
 import org.http4k.core.Request
+import org.http4k.core.Status
 import org.http4k.core.Status.Companion.OK
 import scripts.implementation.EditPage.SubmitResult.Failure
 import scripts.implementation.EditPage.SubmitResult.Success
@@ -75,8 +76,19 @@ data class EditPage(val url: EditPageUrl, val html: String) {
         // TODO some pages seem to only work with http instead of https url
         // E.g. http://rosettacode.org//mw/index.php?title=Sort_an_array_of_composite_structures&action=edit&section=40
         // and http://rosettacode.org//mw/index.php?title=Zeckendorf_number_representation&action=edit&section=29
-        val request = Request(POST, "https://rosettacode.org/mw/index.php?title=${url.pageId()}&action=submit").formData(formParameters)
-        val response = httpClient(request)
+        val request = Request(POST, "https://rosettacode.org/mw/index.php?title=${url.pageId()}&action=submit")
+            .header("Host", "rosettacode.org")
+            .header("Content-Type", "application/x-www-form-urlencoded")
+            .header("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36")
+            .header("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8")
+            .header("Referer", "http://rosettacode.org/mw/index.php?title=Special:UserLogin")
+            .formData(formParameters)
+
+        var response = httpClient(request)
+        if (!(response.status == Status.FOUND && response.header("Location") != null)) {
+            throw LoginPage.Companion.FailedToLogin("Expected redirect response but was ${response.status} with location ${response.header("Location")}")
+        }
+        response = httpClient(Request(GET, response.header("Location")!!))
 
         return when {
             response.status != OK -> Failure(response.status.toString())
