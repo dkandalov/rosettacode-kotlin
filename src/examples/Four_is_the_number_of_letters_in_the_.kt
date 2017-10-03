@@ -54,7 +54,7 @@ val irregOrdinals = mapOf(
 fun String.toOrdinal(): String {
     if (this == "zero") return "zeroth"  // or alternatively 'zeroeth'
     val splits = this.split(' ', '-')
-    var last = splits[splits.lastIndex]
+    val last = splits[splits.lastIndex]
     return if (irregOrdinals.containsKey(last)) this.dropLast(last.length) + irregOrdinals[last]!!
            else if (last.endsWith("y")) this.dropLast(1) + "ieth"
            else this + "th"
@@ -92,14 +92,14 @@ fun numToText(n: Long, uk: Boolean = false): String {
         return sb.toString()
     }
 
-    val strings = Array<String>(7) { threeDigitsToText(digits3[it]) }
+    val strings = Array(7) { threeDigitsToText(digits3[it]) }
     var text = strings[0]
     var andNeeded = uk && digits3[0] in 1..99
     var big = 1000L
     for (i in 1..6) {
         if (digits3[i] > 0) {
             var text2 = strings[i] + " " + bigNames[big]
-            if (text.length > 0) {
+            if (text.isNotEmpty()) {
                 text2 += if (andNeeded) " and " else " "  // no commas inserted in this version
                 andNeeded = false
             }
