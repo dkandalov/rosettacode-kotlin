@@ -4,6 +4,7 @@ import com.thoughtworks.xstream.XStream
 import com.thoughtworks.xstream.io.xml.XppDriver
 import org.http4k.client.ApacheClient
 import org.http4k.core.*
+import org.http4k.core.Method.POST
 import org.http4k.core.body.form
 import org.http4k.core.body.toBody
 import org.http4k.core.cookie.Cookie
@@ -15,8 +16,10 @@ import org.http4k.filter.cookie.CookieStorage
 import org.http4k.filter.cookie.LocalCookie
 import org.http4k.traffic.ReadWriteCache
 import java.io.File
+import java.security.MessageDigest
 import java.time.Clock
 import java.time.LocalDateTime
+import java.util.*
 import java.util.concurrent.Callable
 import java.util.concurrent.Executors.newFixedThreadPool
 import java.util.concurrent.atomic.AtomicReference
@@ -29,13 +32,83 @@ val log: (Any?) -> Unit = {
 
 interface RCClient: HttpHandler {
     val cookieStorage: BasicCookieStorage
+    val httpCache: HttpCache
+}
+
+interface HttpCache : ReadWriteCache {
+    fun remove(f: (HttpMessage) -> Boolean)
+}
+
+class DiskHttpCache(
+    private val baseDir: String,
+    private val shouldIgnore: (HttpMessage) -> Boolean = { true }
+) : HttpCache {
+
+    override fun set(request: Request, response: Response) {
+        if (shouldIgnore(request) || shouldIgnore(response)) return
+
+        val requestFolder = request.toFolder(baseDir.toBaseFolder())
+        request.writeTo(requestFolder)
+        response.writeTo(requestFolder)
+    }
+
+    override fun get(request: Request): Response? {
+        if (shouldIgnore(request)) return null
+
+        return File(request.toFolder(baseDir.toBaseFolder()), "response.txt").run {
+            if (exists()) Response.parse(String(readBytes())) else null
+        }
+    }
+
+    override fun remove(f: (HttpMessage) -> Boolean) {
+        baseDir.toBaseFolder().listFiles()
+            .filter { it.isDirectory }
+            .forEach { dir ->
+                val request = File(dir, "request.txt").let { if (it.exists()) Request.parse(it.readText()) else null }
+                val response = File(dir, "response.txt").let { if (it.exists()) Response.parse(it.readText()) else null }
+                if ((request != null && f(request)) || (response != null && f(response))) {
+                    dir.deleteRecursively()
+                }
+            }
+    }
+
+    private fun String.toBaseFolder(): File = File(if (isEmpty()) "." else this)
+
+    private fun Request.toFolder(baseDir: File) =
+        File(File(baseDir, uri.path), String(Base64.getEncoder().encode(MessageDigest.getInstance("SHA1").digest(toString().toByteArray())))
+            .replace(File.separatorChar, '_'))
+
+    private fun HttpMessage.writeTo(folder: File) {
+        toFile(folder).apply {
+            folder.mkdirs()
+            createNewFile()
+            writeBytes(this@writeTo.toString().toByteArray())
+        }
+    }
+
+    private fun HttpMessage.toFile(folder: File): File = File(folder, if (this is Request) "request.txt" else "response.txt")
 }
 
 fun HttpHandler.asRCClient(): RCClient {
     val cookieStorage = cached("cookies") { BasicCookieStorage() }
-    val httpClient = Cookies(storage = cookieStorage).then(this)
+
+    val httpCache = DiskHttpCache(
+        baseDir = ".cache/http",
+        shouldIgnore = {
+            (it is Request && it.uri == Uri.of("http://rosettacode.org/wiki/Category:Kotlin")) ||
+            (it is Request && it.method == POST) ||
+            (it is Request && it.uri == Uri.of("http://rosettacode.org/wiki/Special:UserLogin"))
+        }
+    )
+
+    val httpClient = TrafficFilters.ServeCachedFrom(httpCache)
+        .then(TrafficFilters.RecordTo(httpCache))
+        .then(Cookies(storage = cookieStorage))
+        .then(this)
+
     return object: RCClient {
         override val cookieStorage = cookieStorage
+        override val httpCache = httpCache
         override fun invoke(request: Request) = httpClient(request).also {
             cached("cookies", replace = true) { cookieStorage }
         }
@@ -45,13 +118,6 @@ fun HttpHandler.asRCClient(): RCClient {
 fun newHttpClient() = ApacheClient()
 
 fun HttpHandler.withDebug() = DebuggingFilters.PrintRequestAndResponse().then(this)
-
-fun HttpHandler.cached(shouldStore: (HttpMessage) -> Boolean = { true }): HttpHandler {
-    val storage = ReadWriteCache.Disk(".cache/http", shouldStore)
-    return TrafficFilters.ServeCachedFrom(storage)
-        .then(TrafficFilters.RecordTo(storage))
-        .then(this)
-}
 
 
 private val xStream = XStream(XppDriver())

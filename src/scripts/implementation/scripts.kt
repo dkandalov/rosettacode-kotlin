@@ -51,8 +51,14 @@ fun pushLocalChangesToRosettaCode(rcClient: RCClient = newHttpClient().asRCClien
             when (result) {
                 is EditPage.SubmitResult.Success -> {
                     log("Pushed local changes to ${webSnippet.editPageUrl}")
+                    rcClient.httpCache.remove {
+                        it.toMessage().contains(webSnippet.title)
+                    }
                 }
                 is EditPage.SubmitResult.Failure -> {
+                    rcClient.httpCache.remove {
+                        it.toMessage().contains(webSnippet.title)
+                    }
                     log("Failed to push local changes to ${webSnippet.editPageUrl} (Reason: ${result.reason})")
                 }
             }
@@ -107,7 +113,9 @@ fun pullFromRosettaCodeWebsite(overwriteLocalFiles: Boolean = false, httpClient:
             } else {
                 log(">>> Please make necessary changes to keep github repository and rosetta code website in sync.\n")
                 forEach { (webCodeSnippet, localCodeSnippet) ->
-                    log("Differences between ${localCodeSnippet.filePath} and\n ${webCodeSnippet.editPageUrl}\n")
+                    val tempFile = createTempFile("rosetta-code-website-")
+                    tempFile.writeText(webCodeSnippet.sourceCode)
+                    log("idea diff ${localCodeSnippet.filePath} ${tempFile.absolutePath}\n")
                 }
             }
         } else {

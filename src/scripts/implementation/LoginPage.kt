@@ -21,12 +21,12 @@ data class LoginPage(val html: String) {
             Cookie("rosettacodeUserName", URLEncoder.encode(userName, "UTF-8")), LocalDateTime.now()
         )))
 
-        val request = Request(POST, "http://rosettacode.org/mw/index.php?title=Special:UserLogin&action=submitlogin&type=login&returnto=Rosetta+Code")
+        val request = Request(POST, "https://rosettacode.org/mw/index.php?title=Special:UserLogin&action=submitlogin&type=login&returnto=Rosetta+Code")
             .header("Host", "rosettacode.org")
             .header("Content-Type", "application/x-www-form-urlencoded")
             .header("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36")
             .header("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8")
-            .header("Referer", "http://rosettacode.org/mw/index.php?title=Special:UserLogin")
+            .header("Referer", "https://rosettacode.org/mw/index.php?title=Special:UserLogin")
             .formData(listOf(
                 "wpName" to userName,
                 "wpPassword" to password,
@@ -35,7 +35,7 @@ data class LoginPage(val html: String) {
             ))
 
         var response = rcClient(request)
-        if (!(response.status == FOUND && response.header("Location") == "http://rosettacode.org/wiki/Rosetta_Code")) {
+        if (!(response.status == FOUND && response.header("Location") == "https://rosettacode.org/wiki/Rosetta_Code")) {
             throw FailedToLogin("Expected redirect response but was ${response.status} with location ${response.header("Location")}")
         }
         response = rcClient(Request(GET, response.header("Location")!!))
@@ -44,7 +44,7 @@ data class LoginPage(val html: String) {
     }
 
     companion object {
-        fun getWith(httpClient: HttpHandler, url: String = "http://rosettacode.org/wiki/Special:UserLogin") =
+        fun getWith(httpClient: HttpHandler, url: String = "https://rosettacode.org/wiki/Special:UserLogin") =
             httpClient(Request(GET, url)).run {
                 LoginPage(bodyString())
             }

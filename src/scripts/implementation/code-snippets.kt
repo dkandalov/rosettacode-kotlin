@@ -1,6 +1,5 @@
 package scripts.implementation
 
-import org.http4k.core.HttpHandler
 import scripts.implementation.EditPageUrl.Companion.asFileName
 import scripts.implementation.EditPageUrl.Companion.asPackageName
 import scripts.implementation.LocalCodeSnippet.Companion.postfixedWith
@@ -63,10 +62,11 @@ data class LocalCodeSnippet(val filePath: String) {
 
 data class WebCodeSnippet(val editPageUrl: EditPageUrl, val sourceCode: String, val index: Int) {
     val id = CodeSnippetId(editPageUrl.pageId().asFileName().postfixedWith(index))
+    val title = editPageUrl.value.substringAfter("title=").substringBefore("&")
 
-    fun submitCodeChange(httpClient: HttpHandler, changeSummary: String, newCode: String, isMinorEdit: Boolean): EditPage.SubmitResult {
-        val editPage = EditPage.getWith(httpClient, editPageUrl)
-        return editPage.submitCodeChange(httpClient, changeSummary, newCode, isMinorEdit, index)
+    fun submitCodeChange(rcClient: RCClient, changeSummary: String, newCode: String, isMinorEdit: Boolean): EditPage.SubmitResult {
+        val editPage = EditPage.getWith(rcClient, editPageUrl)
+        return editPage.submitCodeChange(rcClient, changeSummary, newCode, isMinorEdit, index)
     }
 
     override fun toString() = "$editPageUrl - $index"

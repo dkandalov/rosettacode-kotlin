@@ -18,7 +18,7 @@ data class EditPage(val url: EditPageUrl, val html: String) {
     }
 
     fun submitCodeChange(
-        httpClient: HttpHandler,
+        rcClient: RCClient,
         changeSummary: String,
         newCode: String,
         isMinorEdit: Boolean,
@@ -81,14 +81,16 @@ data class EditPage(val url: EditPageUrl, val html: String) {
             .header("Content-Type", "application/x-www-form-urlencoded")
             .header("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36")
             .header("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8")
-            .header("Referer", "http://rosettacode.org/mw/index.php?title=Special:UserLogin")
+            .header("Referer", "https://rosettacode.org/mw/index.php?title=Special:UserLogin")
             .formData(formParameters)
 
-        var response = httpClient(request)
-        if (!(response.status == Status.FOUND && response.header("Location") != null)) {
+        var response = rcClient(request)
+        val redirectLocation = response.header("Location")
+        if (!(response.status == Status.FOUND && redirectLocation != null)) {
             throw LoginPage.Companion.FailedToLogin("Expected redirect response but was ${response.status} with location ${response.header("Location")}")
         }
-        response = httpClient(Request(GET, response.header("Location")!!))
+        rcClient.httpCache.remove { it.toMessage().contains(redirectLocation) }
+        response = rcClient(Request(GET, redirectLocation))
 
         return when {
             response.status != OK -> Failure(response.status.toString())
