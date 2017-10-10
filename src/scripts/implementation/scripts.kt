@@ -5,6 +5,8 @@ import java.io.File
 import java.net.SocketTimeoutException
 
 private val excludedTasks = listOf(
+    "Pattern_matching", // TODO locally needs different import instead of "import Color.*"
+
     // kotlin native
     "Address_of_a_variable",
     "Arena_storage_pool",
