@@ -26,8 +26,9 @@ version = "0.0-SNAPSHOT"
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+ext.kotlinVersion = "1.1.51"
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib:1.1.50"
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
     compile "com.thoughtworks.xstream:xstream:1.4.9"
     compile "org.http4k:http4k-core:2.29.3"
     compile "org.http4k:http4k-server-jetty:2.29.3"
@@ -35,7 +36,7 @@ dependencies {
     testCompile "io.kotlintest:kotlintest:2.0.5"
 
     // For Break_OO_privacy.kt and Reflection-List_properties.kt
-    compile "org.jetbrains.kotlin:kotlin-reflect:1.1.50"
+    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
     // For Active_Directory-Connect.kt
     compile "org.apache.directory.api:api-all:1.0.0"
     // For Bernoulli_numbers.kt
