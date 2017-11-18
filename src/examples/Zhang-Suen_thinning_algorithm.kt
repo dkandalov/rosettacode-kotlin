@@ -59,31 +59,23 @@ fun thinImage() {
         }
         for (p in toWhite) grid[p.y][p.x] = ' '
         toWhite.clear()
-    }
-    while (firstStep || hasChanged)
+    } while (firstStep || hasChanged)
     for (row in grid) println(row)
 }
 
-fun numNeighbors(r: Int, c: Int): Int {
-    var count = 0
-    for (i in 0 until nbrs.size - 1) {
-        if (grid[r + nbrs[i][1]][c + nbrs[i][0]] == '#') count++
-    }
-    return count
-}
+fun numNeighbors(r: Int, c: Int) =
+    (0 until nbrs.size - 1)
+        .count { grid[r + nbrs[it][1]][c + nbrs[it][0]] == '#' }
 
-fun numTransitions(r: Int, c: Int): Int {
-    var count = 0
-    for (i in 0 until nbrs.size - 1) {
-        if (grid[r + nbrs[i][1]][c + nbrs[i][0]] == ' ') {
-            if (grid[r + nbrs[i + 1][1]][c + nbrs[i + 1][0]] == '#') count++
+fun numTransitions(r: Int, c: Int) =
+    (0 until nbrs.size - 1)
+        .count {
+            grid[r + nbrs[it][1]][c + nbrs[it][0]] == ' ' &&
+            grid[r + nbrs[it + 1][1]][c + nbrs[it + 1][0]] == '#'
         }
-    }
-    return count
-}
 
 fun atLeastOneIsWhite(r: Int, c: Int, step: Int): Boolean {
-    var count = 0;
+    var count = 0
     val group = nbrGroups[step]
     for (i in 0..1) {
         for (j in 0 until group[i].size) {
