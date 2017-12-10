@@ -14,6 +14,8 @@ data class EditPageUrl(val value: String) {
             .replace("%27", "")
             .replace("%22", "_")
             .replace("%2B", "-plus-")
+            .replace("*", "-star-")
+            .replace("!", "-bang-")
             .replace(".", "")
             .let { if (it.matches(Regex("\\d+.*"))) "_$it" else it } // workaround for https://youtrack.jetbrains.com/issue/KT-10494
 
