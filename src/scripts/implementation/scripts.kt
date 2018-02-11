@@ -11,15 +11,18 @@ private val excludedTasks = listOf(
     "Address_of_a_variable",
     "Arena_storage_pool",
     "Create_an_object_at_a_given_address",
+    "Call_a_function_in_a_shared_library",
     "Call_a_foreign-language_function",
     "Check_input_device_is_a_terminal",
     "Check_output_device_is_a_terminal",
+    "Greed",
     "Machine_code",
     "Musical_scale",
     "OpenGL",
     "Pointers_and_references",
     "Positional_read",
     "Terminal_control-Positional_read",
+    "Snake",
     "Window_creation/X11",
 
     // kotlin js
