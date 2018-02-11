@@ -1,9 +1,9 @@
-package scripts.implementation
+package scripts.implementation.pages
 
 import io.kotlintest.matchers.shouldBe
 import io.kotlintest.specs.StringSpec
-import scripts.implementation.EditPageUrl.Companion.asFileName
-import scripts.implementation.EditPageUrl.Companion.asPackageName
+import scripts.implementation.pages.EditPageUrl.Companion.asFileName
+import scripts.implementation.pages.EditPageUrl.Companion.asPackageName
 
 class EditPageUrlSpec: StringSpec() {
     init {

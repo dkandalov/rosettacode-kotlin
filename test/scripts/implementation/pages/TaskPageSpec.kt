@@ -1,4 +1,4 @@
-package scripts.implementation
+package scripts.implementation.pages
 
 import io.kotlintest.matchers.shouldBe
 import io.kotlintest.specs.StringSpec
@@ -10,7 +10,7 @@ class TaskPageSpec: StringSpec() {
         "extract edit page urls from task page" {
             val html = "array-concatenation-page.txt".readFileText()
             val url = TaskPage(html).extractKotlinEditPageUrl()
-            url shouldBe EditPageUrl("http://rosettacode.org//mw/index.php?title=Array_concatenation&action=edit&section=$kotlinSectionId")
+            url shouldBe EditPageUrl("http://rosettacode.org//mw/index.php?title=Array_concatenation&action=edit&section=${kotlinSectionId}")
         }
     }
 }

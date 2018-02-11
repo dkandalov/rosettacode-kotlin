@@ -1,6 +1,10 @@
 package scripts.implementation
 
 import org.http4k.core.HttpHandler
+import scripts.implementation.pages.EditPage
+import scripts.implementation.pages.LanguagePage
+import scripts.implementation.pages.LoginPage
+import scripts.implementation.pages.TaskPage
 import java.io.File
 import java.net.SocketTimeoutException
 

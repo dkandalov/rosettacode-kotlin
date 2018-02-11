@@ -1,8 +1,9 @@
-package scripts.implementation
+package scripts.implementation.pages
 
 import org.http4k.core.HttpHandler
 import org.http4k.core.Method.GET
 import org.http4k.core.Request
+import scripts.implementation.extractUrl
 
 data class LanguagePage(private val html: String) {
     fun extractTaskPageUrls(): List<String> {

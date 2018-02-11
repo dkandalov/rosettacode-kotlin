@@ -1,8 +1,10 @@
 package scripts.implementation
 
-import scripts.implementation.EditPageUrl.Companion.asFileName
-import scripts.implementation.EditPageUrl.Companion.asPackageName
 import scripts.implementation.LocalCodeSnippet.Companion.postfixedWith
+import scripts.implementation.pages.EditPage
+import scripts.implementation.pages.EditPageUrl
+import scripts.implementation.pages.EditPageUrl.Companion.asFileName
+import scripts.implementation.pages.EditPageUrl.Companion.asPackageName
 import java.io.File
 
 const val examplesPath: String = "src/examples"

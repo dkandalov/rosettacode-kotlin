@@ -1,4 +1,4 @@
-package scripts.implementation
+package scripts.implementation.pages
 
 data class EditPageUrl(val value: String) {
 

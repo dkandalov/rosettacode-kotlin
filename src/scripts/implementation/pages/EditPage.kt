@@ -1,4 +1,4 @@
-package scripts.implementation
+package scripts.implementation.pages
 
 import org.http4k.core.HttpHandler
 import org.http4k.core.Method.GET
@@ -6,8 +6,11 @@ import org.http4k.core.Method.POST
 import org.http4k.core.Request
 import org.http4k.core.Status
 import org.http4k.core.Status.Companion.OK
-import scripts.implementation.EditPage.SubmitResult.Failure
-import scripts.implementation.EditPage.SubmitResult.Success
+import scripts.implementation.RCClient
+import scripts.implementation.WebCodeSnippet
+import scripts.implementation.formData
+import scripts.implementation.pages.EditPage.SubmitResult.Failure
+import scripts.implementation.pages.EditPage.SubmitResult.Success
 
 data class EditPage(val url: EditPageUrl, val html: String) {
     fun extractCodeSnippets(): List<WebCodeSnippet> {

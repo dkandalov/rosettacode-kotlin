@@ -1,4 +1,4 @@
-package scripts.implementation
+package scripts.implementation.pages
 
 import io.kotlintest.matchers.containsAll
 import io.kotlintest.matchers.should
