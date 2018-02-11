@@ -6,7 +6,7 @@ buildscript {
     dependencies {
         // Note that the latest pre-release versions of Kotlin might not work in TravisCI
         // because TravisCI only searches for dependencies in central maven repository and ignores all other repositories.
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.1.4-2"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.2.10"
     }
 }
 
@@ -26,7 +26,7 @@ version = "0.0-SNAPSHOT"
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-ext.kotlinVersion = "1.1.51"
+ext.kotlinVersion = "1.2.10"
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
     compile "com.thoughtworks.xstream:xstream:1.4.9"
