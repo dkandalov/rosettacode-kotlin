@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/dkandalov/rosettacode-kotlin.svg?branch=master)](https://travis-ci.org/dkandalov/rosettacode-kotlin)
 [![Gitter chat](https://badges.gitter.im/rosetta-code-kotlin/chat.svg)](https://gitter.im/rosetta-code-kotlin/Lobby)
 
-## Rosetta Code Kotlin examples
+## Rosetta Code Kotlin
 
 This is a repository with the [Kotlin](https://kotlinlang.org/) source code
 from [RosettaCode wiki](http://rosettacode.org/wiki/Category:Kotlin).
@@ -19,8 +19,8 @@ requests will be considered.
 
 In general, the following things can be improved:
  - clean up code (e.g. using IDE suggestions)
- - add unit tests for existing examples
- - update all examples to the latest version of Kotlin
+ - add unit tests for existing tasks
+ - update all tasks to the latest version of Kotlin
 
 
 ### Step 1: Fork, clone and compile

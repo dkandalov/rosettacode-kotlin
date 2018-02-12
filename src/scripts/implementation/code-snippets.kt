@@ -7,7 +7,7 @@ import scripts.implementation.pages.EditPageUrl.Companion.asFileName
 import scripts.implementation.pages.EditPageUrl.Companion.asPackageName
 import java.io.File
 
-const val examplesPath: String = "src/examples"
+const val tasksPath: String = "src/tasks"
 
 data class CodeSnippetStorage(
     private val webSnippets: List<WebCodeSnippet>,
@@ -44,7 +44,7 @@ data class LocalCodeSnippet(val filePath: String) {
                 if (it.startsWith("package ")) it
                 else "package ${codeSnippet.snippetPackageName()}\n\n" + it
             }
-            val localFile = File("$examplesPath/${localFileName(editPageUrl, index)}")
+            val localFile = File("$tasksPath/${localFileName(editPageUrl, index)}")
             localFile.parentFile.mkdirs()
             localFile.writeText(sourceCode)
             LocalCodeSnippet(localFile.path)
@@ -80,7 +80,7 @@ data class WebCodeSnippet(val editPageUrl: EditPageUrl, val sourceCode: String, 
 
 private fun String.trimPackage() = trim().replace(Regex("^package .*\n"), "").trim()
 
-// Do this because RosettaCode can have examples with trailing spaces which can show up different to local files,
+// Do this because RosettaCode can have tasks with trailing spaces which can show up different to local files,
 // however, when submitting code without trailing spaces RosettaCode seems to ignore it thinking nothing has changed.
 private fun String.trimLineEnds() = split("\n").map(String::trimEnd).joinToString("\n")
 

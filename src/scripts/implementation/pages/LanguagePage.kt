@@ -20,5 +20,5 @@ data class LanguagePage(private val html: String) {
     }
 }
 
-fun HttpHandler.getLanguagePage(url: String = LanguagePage.url) =
+fun HttpHandler.getKotlinLanguagePage(url: String = LanguagePage.url) =
     LanguagePage(this(Request(GET, url)).bodyString())

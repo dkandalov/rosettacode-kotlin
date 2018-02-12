@@ -2,7 +2,7 @@ package scripts.implementation
 
 import org.http4k.core.HttpHandler
 import scripts.implementation.pages.EditPage
-import scripts.implementation.pages.getLanguagePage
+import scripts.implementation.pages.getKotlinLanguagePage
 import scripts.implementation.pages.getLoginPage
 import scripts.implementation.pages.getTaskPage
 import java.io.File
@@ -135,7 +135,7 @@ fun pullFromRosettaCodeWebsite(overwriteLocalFiles: Boolean, httpClient: HttpHan
 
 
 private fun loadCodeSnippets(exclusions: List<String>, httpClient: HttpHandler): CodeSnippetStorage {
-    val kotlinPage = httpClient.getLanguagePage()
+    val kotlinPage = httpClient.getKotlinLanguagePage()
     val editPageUrls = kotlinPage.extractTaskPageUrls().mapParallelWithProgress { url, progress ->
         log("Getting edit page url from $url ($progress)")
         retryOn(SocketTimeoutException::class) {
@@ -154,7 +154,7 @@ private fun loadCodeSnippets(exclusions: List<String>, httpClient: HttpHandler):
             exclusions.none { editPageUrl.value.contains(it) }
         }
 
-    val localCodeSnippets = File(examplesPath).listFiles()
+    val localCodeSnippets = File(tasksPath).listFiles()
         .filter { !it.isDirectory && it.extension == "kt" }
         .map { LocalCodeSnippet(it.path) }
 
