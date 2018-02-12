@@ -14,7 +14,7 @@ class UtilSpec: StringSpec() {
             }
 
             shouldThrow<IllegalStateException> {
-                retry(Exception::class, retries = 3, f = failingFunction)
+                retryOn(Exception::class, retries = 3, f = failingFunction)
             }
 
             attempts shouldEqual 3
