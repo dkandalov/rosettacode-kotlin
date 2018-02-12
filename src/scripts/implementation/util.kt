@@ -2,6 +2,8 @@ package scripts.implementation
 
 import com.thoughtworks.xstream.XStream
 import com.thoughtworks.xstream.io.xml.XppDriver
+import io.github.resilience4j.retry.Retry
+import io.github.resilience4j.retry.RetryConfig
 import org.http4k.client.ApacheClient
 import org.http4k.core.*
 import org.http4k.core.Method.POST
@@ -10,6 +12,7 @@ import org.http4k.core.body.toBody
 import org.http4k.core.cookie.Cookie
 import org.http4k.core.cookie.cookies
 import org.http4k.filter.DebuggingFilters
+import org.http4k.filter.ResilienceFilters
 import org.http4k.filter.TrafficFilters
 import org.http4k.filter.cookie.BasicCookieStorage
 import org.http4k.filter.cookie.CookieStorage
@@ -25,8 +28,6 @@ import java.util.*
 import java.util.concurrent.Callable
 import java.util.concurrent.Executors.newFixedThreadPool
 import java.util.concurrent.atomic.AtomicReference
-import kotlin.reflect.KClass
-import kotlin.reflect.full.isSubclassOf
 
 val log: (Any?) -> Unit = {
     System.out.println(it)
@@ -106,6 +107,7 @@ fun HttpHandler.asRCClient(): RCClient {
     val httpClient = TrafficFilters.ServeCachedFrom(httpCache)
         .then(TrafficFilters.RecordTo(httpCache))
         .then(Cookies(storage = cookieStorage))
+        .then(ResilienceFilters.RetryFailures(retry, isError = { !it.status.successful }))
         .then(this)
 
     return object: RCClient {
@@ -114,6 +116,12 @@ fun HttpHandler.asRCClient(): RCClient {
         override fun invoke(request: Request) = httpClient(request)
     }
 }
+
+private val retry = Retry.of("retrying", RetryConfig.custom()
+    .maxAttempts(3)
+    .intervalFunction { attempt -> (attempt * 2).toLong() }
+    .build()
+)
 
 fun newHttpClient() = ApacheClient()
 
@@ -179,19 +187,6 @@ fun <T, R> List<T>.mapParallelWithProgress(f: (T, Progress) -> R): List<R> {
     val result = futures.map { it.get() }
     executor.shutdown()
     return result
-}
-
-fun <T> retryOn(exceptionClass: KClass<out Exception>, retries: Int = 3, f: () -> T): T {
-    return try {
-        f()
-    } catch (e: Exception) {
-        if (retries == 1) throw IllegalStateException("Exceeded amount of retries", e)
-        if (e.javaClass.kotlin.isSubclassOf(exceptionClass)) {
-            retryOn(exceptionClass, retries - 1, f)
-        } else {
-            throw e
-        }
-    }
 }
 
 

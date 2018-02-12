@@ -6,7 +6,6 @@ import scripts.implementation.pages.getKotlinLanguagePage
 import scripts.implementation.pages.getLoginPage
 import scripts.implementation.pages.getTaskPage
 import java.io.File
-import java.net.SocketTimeoutException
 
 private val excludedTasks = listOf(
     "Pattern_matching", // TODO locally needs different import instead of "import Color.*"
@@ -138,14 +137,12 @@ private fun loadCodeSnippets(exclusions: List<String>, httpClient: HttpHandler):
     val kotlinPage = httpClient.getKotlinLanguagePage()
     val editPageUrls = kotlinPage.extractTaskPageUrls().mapParallelWithProgress { url, progress ->
         log("Getting edit page url from $url ($progress)")
-        retryOn(SocketTimeoutException::class) {
-            httpClient.getTaskPage(url).extractKotlinEditPageUrl()
-        }
+        httpClient.getTaskPage(url).extractKotlinEditPageUrl()
     }
 
     val editPages = editPageUrls.mapParallelWithProgress { url, progress ->
         log("Getting source code from $url ($progress)")
-        retryOn(SocketTimeoutException::class) { EditPage.getWith(httpClient, url) }
+        EditPage.getWith(httpClient, url)
     }
 
     val webCodeSnippets = editPages
