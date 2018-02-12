@@ -15,6 +15,8 @@ import org.http4k.filter.cookie.BasicCookieStorage
 import org.http4k.filter.cookie.CookieStorage
 import org.http4k.filter.cookie.LocalCookie
 import org.http4k.traffic.ReadWriteCache
+import scripts.implementation.pages.LanguagePage
+import scripts.implementation.pages.LoginPage
 import java.io.File
 import java.security.MessageDigest
 import java.time.Clock
@@ -95,9 +97,9 @@ fun HttpHandler.asRCClient(): RCClient {
     val httpCache = DiskHttpCache(
         baseDir = ".cache/http",
         shouldIgnore = {
-            (it is Request && it.uri == Uri.of("http://rosettacode.org/wiki/Category:Kotlin")) ||
+            (it is Request && it.uri == Uri.of(LanguagePage.url)) ||
             (it is Request && it.method == POST) ||
-            (it is Request && it.uri == Uri.of("http://rosettacode.org/wiki/Special:UserLogin"))
+            (it is Request && it.uri == Uri.of(LoginPage.url))
         }
     )
 

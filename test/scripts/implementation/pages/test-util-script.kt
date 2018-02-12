@@ -15,8 +15,7 @@ fun main(args: Array<String>) {
     fun downloadPagesForTestInput() {
         val basePath = "./test/scripts/implementation/pages/"
 
-        File("$basePath/kotlin-page.txt")
-            .writeText("http://rosettacode.org/wiki/Category:Kotlin".getWebPageText())
+        File("$basePath/kotlin-page.txt").writeText(LanguagePage.url.getWebPageText())
 
         File("$basePath/array-concatenation-page.txt")
             .writeText("http://rosettacode.org/wiki/Array_concatenation".getWebPageText())

@@ -46,13 +46,15 @@ data class LoginPage(val html: String) {
     }
 
     companion object {
-        fun getWith(httpClient: HttpHandler, url: String = "https://rosettacode.org/wiki/Special:UserLogin") =
-            httpClient(Request(GET, url)).run {
-                LoginPage(bodyString())
-            }
+        val url = "https://rosettacode.org/wiki/Special:UserLogin"
 
         fun String.isLoggedIn() = !contains(">Log in<") && contains(">Log out<") // Checking for "Log in" link in the top right corner of the web page.
 
         class FailedToLogin(message: String): RuntimeException(message)
     }
 }
+
+fun HttpHandler.getLoginPage() =
+    this(Request(GET, LoginPage.url)).run {
+        LoginPage(bodyString())
+    }

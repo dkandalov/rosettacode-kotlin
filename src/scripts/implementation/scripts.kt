@@ -2,9 +2,9 @@ package scripts.implementation
 
 import org.http4k.core.HttpHandler
 import scripts.implementation.pages.EditPage
-import scripts.implementation.pages.LanguagePage
-import scripts.implementation.pages.LoginPage
 import scripts.implementation.pages.TaskPage
+import scripts.implementation.pages.getLanguagePage
+import scripts.implementation.pages.getLoginPage
 import java.io.File
 import java.net.SocketTimeoutException
 
@@ -52,9 +52,9 @@ fun pushLocalChangesToRosettaCode(rcClient: RCClient = newHttpClient().asRCClien
         if (userName.isEmpty() || password.isEmpty()) {
             return log("Please specify non-empty user name and password to be able to login into RosettaCode website.")
         }
-        val loggedIn = LoginPage.getWith(rcClient).login(rcClient, userName, password)
+        val loggedIn = rcClient.getLoginPage().login(rcClient, userName, password)
         if (loggedIn) log("Logged in.") else return
-                      
+
         forEach { (webSnippet, localSnippet) ->
             val result = webSnippet.submitCodeChange(rcClient, changeSummary, localSnippet.sourceCode, isMinorEdit)
             when (result) {
@@ -82,7 +82,7 @@ fun pushLocalChangesToRosettaCode(rcClient: RCClient = newHttpClient().asRCClien
     }
 }
 
-fun pullFromRosettaCodeWebsite(overwriteLocalFiles: Boolean = false, httpClient: HttpHandler = newHttpClient()) {
+fun pullFromRosettaCodeWebsite(overwriteLocalFiles: Boolean, httpClient: HttpHandler) {
     val snippetStorage = loadCodeSnippets(excludedTasks, httpClient)
 
     snippetStorage.onlyWebSnippets.apply {
@@ -135,7 +135,7 @@ fun pullFromRosettaCodeWebsite(overwriteLocalFiles: Boolean = false, httpClient:
 
 
 private fun loadCodeSnippets(exclusions: List<String>, httpClient: HttpHandler): CodeSnippetStorage {
-    val kotlinPage = cached("kotlinPage") { LanguagePage.getWith(httpClient) }
+    val kotlinPage = cached("kotlinPage") { httpClient.getLanguagePage() }
     val editPageUrls = cached("editPageUrls") {
         kotlinPage.extractTaskPageUrls().mapParallelWithProgress { url, progress ->
             log("Getting edit page url from $url ($progress)")

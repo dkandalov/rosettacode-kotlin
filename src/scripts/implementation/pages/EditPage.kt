@@ -84,7 +84,7 @@ data class EditPage(val url: EditPageUrl, val html: String) {
             .header("Content-Type", "application/x-www-form-urlencoded")
             .header("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36")
             .header("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8")
-            .header("Referer", "https://rosettacode.org/mw/index.php?title=Special:UserLogin")
+            .header("Referer", LoginPage.url)
             .formData(formParameters)
 
         var response = rcClient(request)

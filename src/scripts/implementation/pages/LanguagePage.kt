@@ -16,7 +16,9 @@ data class LanguagePage(private val html: String) {
     }
 
     companion object {
-        fun getWith(httpClient: HttpHandler, url: String = "http://rosettacode.org/wiki/Category:Kotlin") =
-            LanguagePage(httpClient(Request(GET, url)).bodyString())
+        val url = "http://rosettacode.org/wiki/Category:Kotlin"
     }
 }
+
+fun HttpHandler.getLanguagePage(url: String = LanguagePage.url) =
+    LanguagePage(this(Request(GET, url)).bodyString())
