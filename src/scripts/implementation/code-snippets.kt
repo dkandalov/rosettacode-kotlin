@@ -7,8 +7,6 @@ import scripts.implementation.pages.EditPageUrl.Companion.asFileName
 import scripts.implementation.pages.EditPageUrl.Companion.asPackageName
 import java.io.File
 
-const val tasksPath: String = "src/tasks"
-
 data class CodeSnippetStorage(
     private val webSnippets: List<WebCodeSnippet>,
     private val localSnippets: List<LocalCodeSnippet>
@@ -39,6 +37,8 @@ data class LocalCodeSnippet(val filePath: String) {
         get() = File(filePath).readText().trimPackage().trimLineEnds()
 
     companion object {
+        const val tasksPath = "src/tasks"
+
         fun create(codeSnippet: WebCodeSnippet): LocalCodeSnippet = codeSnippet.run {
             val sourceCode = sourceCode.trim().trimLineEnds().let {
                 if (it.startsWith("package ")) it

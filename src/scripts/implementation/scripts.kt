@@ -1,6 +1,7 @@
 package scripts.implementation
 
 import org.http4k.core.HttpHandler
+import scripts.implementation.LocalCodeSnippet.Companion.tasksPath
 import scripts.implementation.pages.EditPage
 import scripts.implementation.pages.getKotlinLanguagePage
 import scripts.implementation.pages.getLoginPage
@@ -42,7 +43,7 @@ private val excludedTasks = listOf(
 )
 
 fun pushLocalChangesToRosettaCode(rcClient: RCClient = newHttpClient().asRCClient()) {
-    val snippetStorage = loadCodeSnippets(excludedTasks, rcClient)
+    val snippetStorage = loadCodeSnippets(rcClient)
 
     snippetStorage.snippetsWithDiffs.apply {
         if (isEmpty()) return log(">>> Nothing to push. There are no differences between code in local files and rosetta code website.")
@@ -82,7 +83,7 @@ fun pushLocalChangesToRosettaCode(rcClient: RCClient = newHttpClient().asRCClien
 }
 
 fun pullFromRosettaCodeWebsite(overwriteLocalFiles: Boolean, httpClient: HttpHandler) {
-    val snippetStorage = loadCodeSnippets(excludedTasks, httpClient)
+    val snippetStorage = loadCodeSnippets(httpClient)
 
     snippetStorage.onlyWebSnippets.apply {
         if (isNotEmpty()) {
@@ -133,7 +134,7 @@ fun pullFromRosettaCodeWebsite(overwriteLocalFiles: Boolean, httpClient: HttpHan
 }
 
 
-private fun loadCodeSnippets(exclusions: List<String>, httpClient: HttpHandler): CodeSnippetStorage {
+private fun loadCodeSnippets(httpClient: HttpHandler): CodeSnippetStorage {
     val kotlinPage = httpClient.getKotlinLanguagePage()
     val editPageUrls = kotlinPage.extractTaskPageUrls().mapParallelWithProgress { url, progress ->
         log("Getting edit page url from $url ($progress)")
@@ -147,12 +148,12 @@ private fun loadCodeSnippets(exclusions: List<String>, httpClient: HttpHandler):
 
     val webCodeSnippets = editPages
         .flatMap { it.extractCodeSnippets() }
-        .filter { (editPageUrl) ->
-            exclusions.none { editPageUrl.value.contains(it) }
+        .filterNot { codeSnippet ->
+            excludedTasks.any { task -> codeSnippet.editPageUrl.value.contains(task) }
         }
 
     val localCodeSnippets = File(tasksPath).listFiles()
-        .filter { !it.isDirectory && it.extension == "kt" }
+        .filter { it.isFile && it.extension == "kt" }
         .map { LocalCodeSnippet(it.path) }
 
     return CodeSnippetStorage(webCodeSnippets, localCodeSnippets)
