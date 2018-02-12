@@ -2,9 +2,9 @@ package scripts.implementation
 
 import org.http4k.core.HttpHandler
 import scripts.implementation.pages.EditPage
-import scripts.implementation.pages.TaskPage
 import scripts.implementation.pages.getLanguagePage
 import scripts.implementation.pages.getLoginPage
+import scripts.implementation.pages.getTaskPage
 import java.io.File
 import java.net.SocketTimeoutException
 
@@ -135,21 +135,17 @@ fun pullFromRosettaCodeWebsite(overwriteLocalFiles: Boolean, httpClient: HttpHan
 
 
 private fun loadCodeSnippets(exclusions: List<String>, httpClient: HttpHandler): CodeSnippetStorage {
-    val kotlinPage = cached("kotlinPage") { httpClient.getLanguagePage() }
-    val editPageUrls = cached("editPageUrls") {
-        kotlinPage.extractTaskPageUrls().mapParallelWithProgress { url, progress ->
-            log("Getting edit page url from $url ($progress)")
-            retry(SocketTimeoutException::class) {
-                TaskPage.getWith(httpClient, url).extractKotlinEditPageUrl()
-            }
+    val kotlinPage = httpClient.getLanguagePage()
+    val editPageUrls = kotlinPage.extractTaskPageUrls().mapParallelWithProgress { url, progress ->
+        log("Getting edit page url from $url ($progress)")
+        retryOn(SocketTimeoutException::class) {
+            httpClient.getTaskPage(url).extractKotlinEditPageUrl()
         }
     }
 
-    val editPages = cached("editPages") {
-        editPageUrls.mapParallelWithProgress { url, progress ->
-            log("Getting source code from $url ($progress)")
-            retry(SocketTimeoutException::class) { EditPage.getWith(httpClient, url) }
-        }
+    val editPages = editPageUrls.mapParallelWithProgress { url, progress ->
+        log("Getting source code from $url ($progress)")
+        retryOn(SocketTimeoutException::class) { EditPage.getWith(httpClient, url) }
     }
 
     val webCodeSnippets = editPages

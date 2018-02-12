@@ -13,9 +13,6 @@ data class TaskPage(private val html: String) {
 
         return EditPageUrl(s.extractUrl().replace("&amp;", "&"))
     }
-
-    companion object {
-        fun getWith(httpClient: HttpHandler, url: String) =
-            TaskPage(httpClient(Request(GET, url)).bodyString())
-    }
 }
+
+fun HttpHandler.getTaskPage(url: String) = TaskPage(this(Request(GET, url)).bodyString())

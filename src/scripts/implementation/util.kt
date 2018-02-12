@@ -111,9 +111,7 @@ fun HttpHandler.asRCClient(): RCClient {
     return object: RCClient {
         override val cookieStorage = cookieStorage
         override val httpCache = httpCache
-        override fun invoke(request: Request) = httpClient(request).also {
-            cached("cookies", replace = true) { cookieStorage }
-        }
+        override fun invoke(request: Request) = httpClient(request)
     }
 }
 
@@ -183,13 +181,13 @@ fun <T, R> List<T>.mapParallelWithProgress(f: (T, Progress) -> R): List<R> {
     return result
 }
 
-fun <T> retry(exceptionClass: KClass<out Exception>, retries: Int = 3, f: () -> T): T {
+fun <T> retryOn(exceptionClass: KClass<out Exception>, retries: Int = 3, f: () -> T): T {
     return try {
         f()
     } catch (e: Exception) {
         if (retries == 1) throw IllegalStateException("Exceeded amount of retries", e)
         if (e.javaClass.kotlin.isSubclassOf(exceptionClass)) {
-            retry(exceptionClass, retries - 1, f)
+            retryOn(exceptionClass, retries - 1, f)
         } else {
             throw e
         }
