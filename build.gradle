@@ -30,10 +30,11 @@ ext.kotlinVersion = "1.2.10"
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
     compile "com.thoughtworks.xstream:xstream:1.4.9"
-    compile "org.http4k:http4k-core:2.29.3"
-    compile "org.http4k:http4k-server-jetty:2.29.3"
-    compile "org.http4k:http4k-client-apache:2.29.3"
-    testCompile "io.kotlintest:kotlintest:2.0.5"
+    compile "org.http4k:http4k-core:3.15.0"
+    compile "org.http4k:http4k-server-jetty:3.15.0"
+    compile "org.http4k:http4k-client-apache:3.15.0"
+	compile "org.http4k:http4k-resilience4j:3.15.0"
+	testCompile "io.kotlintest:kotlintest:2.0.5"
 
     // For Break_OO_privacy.kt and Reflection-List_properties.kt
     compile "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
