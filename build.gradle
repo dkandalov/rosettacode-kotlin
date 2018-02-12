@@ -26,6 +26,10 @@ version = "0.0-SNAPSHOT"
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+compileKotlin.kotlinOptions.jvmTarget = "1.8"
+compileTestKotlin.kotlinOptions.jvmTarget = "1.8"
+kotlin { experimental { coroutines "enable" } }
+
 ext.kotlinVersion = "1.2.10"
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
