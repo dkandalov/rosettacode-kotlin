@@ -33,19 +33,21 @@ val log: (Any?) -> Unit = {
     System.out.println(it)
 }
 
+private val cacheDir = ".cache"
+
 interface RCClient: HttpHandler {
     val cookieStorage: BasicCookieStorage
     val httpCache: HttpCache
 }
 
-interface HttpCache : ReadWriteCache {
+interface HttpCache: ReadWriteCache {
     fun remove(f: (HttpMessage) -> Boolean)
 }
 
 class DiskHttpCache(
     private val baseDir: String,
     private val shouldIgnore: (HttpMessage) -> Boolean = { true }
-) : HttpCache {
+): HttpCache {
 
     override fun set(request: Request, response: Response) {
         if (shouldIgnore(request) || shouldIgnore(response)) return
@@ -96,12 +98,18 @@ fun HttpHandler.asRCClient(): RCClient {
     val cookieStorage = cached("cookies") { BasicCookieStorage() }
 
     val httpCache = DiskHttpCache(
-        baseDir = ".cache/http",
+        baseDir = "$cacheDir/http",
         shouldIgnore = {
             (it is Request && it.uri == Uri.of(LanguagePage.url)) ||
             (it is Request && it.method == POST) ||
             (it is Request && it.uri == Uri.of(LoginPage.url))
         }
+    )
+
+    val retry = Retry.of("retrying", RetryConfig.custom()
+        .maxAttempts(3)
+        .intervalFunction { attempt -> (attempt * 2).toLong() }
+        .build()
     )
 
     val httpClient = TrafficFilters.ServeCachedFrom(httpCache)
@@ -116,12 +124,6 @@ fun HttpHandler.asRCClient(): RCClient {
         override fun invoke(request: Request) = httpClient(request)
     }
 }
-
-private val retry = Retry.of("retrying", RetryConfig.custom()
-    .maxAttempts(3)
-    .intervalFunction { attempt -> (attempt * 2).toLong() }
-    .build()
-)
 
 fun newHttpClient() = ApacheClient()
 
@@ -141,7 +143,7 @@ fun Request.formData(parameters: Parameters) =
  * To "invalidate" cached value modify or remove xml file.
  */
 fun <T> cached(id: String, replace: Boolean = false, f: () -> T): T {
-    val file = File(".cache/$id.xml")
+    val file = File("$cacheDir/$id.xml")
     if (file.exists() && !replace) {
         log("// Using cached value of '$id'")
         @Suppress("UNCHECKED_CAST")
@@ -155,17 +157,14 @@ fun <T> cached(id: String, replace: Boolean = false, f: () -> T): T {
     }
 }
 
-fun clearLocalWebCache(vararg excluding: String = emptyArray()) {
-    val cacheDir = ".cache"
-    log(">>> Deleting files from $cacheDir")
-    File(cacheDir).listFiles().ifNull(emptyArray()).filterNot { excluding.contains(it.name) }.forEach {
-        val wasDeleted = it.delete()
-        if (wasDeleted) {
-            log("Deleted ${it.name}")
-        } else {
-            log("Failed to delete ${it.name}")
+fun clearLocalWebCache(exclusions: List<String> = emptyList(), onFailedDelete: (File) -> (Unit) = {}) {
+    File(cacheDir)
+        .listFiles().ifNull(emptyArray())
+        .filterNot { exclusions.contains(it.name) }
+        .forEach {
+            val wasDeleted = it.delete()
+            if (!wasDeleted) onFailedDelete(it)
         }
-    }
 }
 
 data class Progress(val i: Int, val total: Int) {
