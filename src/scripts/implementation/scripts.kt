@@ -26,6 +26,8 @@ private val excludedTasks = listOf(
     "Pointers_and_references",
     "Positional_read",
     "Terminal_control-Positional_read",
+    "Terminal_control-Restricted_width_positional_input-No_wrapping",
+    "Terminal_control-Restricted_width_positional_input-With_wrapping",
     "Snake",
     "Window_creation/X11",
 
