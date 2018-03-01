@@ -25,11 +25,13 @@ private val excludedTasks = listOf(
     "OpenGL",
     "Pointers_and_references",
     "Positional_read",
+    "SOAP",
     "Terminal_control-Positional_read",
     "Terminal_control-Restricted_width_positional_input-No_wrapping",
     "Terminal_control-Restricted_width_positional_input-With_wrapping",
     "Snake",
     "Window_creation/X11",
+    "Use_another_language_to_call_a_function",
 
     // kotlin js
     "Respond_to_an_unknown_method_call",
