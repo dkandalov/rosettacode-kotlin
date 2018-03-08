@@ -20,6 +20,7 @@ private val excludedTasks = listOf(
     "Check_input_device_is_a_terminal",
     "Check_output_device_is_a_terminal",
     "Greed",
+    "FTP",
     "Machine_code",
     "Musical_scale",
     "OpenGL",
