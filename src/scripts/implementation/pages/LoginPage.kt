@@ -6,11 +6,9 @@ import org.http4k.core.Method.POST
 import org.http4k.core.Request
 import org.http4k.core.Status.Companion.FOUND
 import org.http4k.core.cookie.Cookie
-import org.http4k.filter.cookie.LocalCookie
 import scripts.implementation.RCClient
 import scripts.implementation.formData
 import java.net.URLEncoder
-import java.time.LocalDateTime
 
 data class LoginPage(val html: String) {
 
@@ -19,9 +17,7 @@ data class LoginPage(val html: String) {
         if (html.contains("I'm not a robot")) throw FailedToLogin("Can't login right now because login page has 'I'm not a robot' capture.")
 
         val loginToken = Regex("<input type=\"hidden\" value=\"(.+?)\"").find(html)!!.groups[1]!!.value
-        rcClient.cookieStorage.store(listOf(LocalCookie(
-            Cookie("rosettacodeUserName", URLEncoder.encode(userName, "UTF-8")), LocalDateTime.now()
-        )))
+        rcClient.store(Cookie("rosettacodeUserName", URLEncoder.encode(userName, "UTF-8")))
 
         val request = Request(POST, "https://rosettacode.org/mw/index.php?title=Special:UserLogin&action=submitlogin&type=login&returnto=Rosetta+Code")
             .header("Host", "rosettacode.org")

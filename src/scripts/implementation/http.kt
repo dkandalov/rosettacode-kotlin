@@ -28,8 +28,8 @@ fun HttpHandler.withDebug() = DebuggingFilters.PrintRequestAndResponse().then(th
 
 
 interface RCClient: HttpHandler {
-    val cookieStorage: BasicCookieStorage
     fun removeFromCache(f: (String) -> Boolean)
+    fun store(cookie: Cookie, time: LocalDateTime = LocalDateTime.now())
 }
 
 
@@ -58,9 +58,10 @@ fun HttpHandler.asRCClient(): RCClient {
         .then(this)
 
     return object: RCClient {
-        override val cookieStorage = cookieStorage
         override fun invoke(request: Request) = httpClient(request)
         override fun removeFromCache(f: (String) -> Boolean) = httpCache.remove{ f(it.toMessage()) }
+        override fun store(cookie: Cookie, time: LocalDateTime) =
+            cookieStorage.store(listOf(LocalCookie(cookie, time)))
     }
 }
 
