@@ -66,14 +66,10 @@ fun pushLocalChangesToRosettaCode(rcClient: RCClient = newHttpClient().asRCClien
             when (result) {
                 is EditPage.SubmitResult.Success -> {
                     log("Pushed local changes to ${webSnippet.editPageUrl}")
-                    rcClient.httpCache.remove {
-                        it.toMessage().contains(webSnippet.title)
-                    }
+                    rcClient.removeFromCache { it.contains(webSnippet.title) }
                 }
                 is EditPage.SubmitResult.Failure -> {
-                    rcClient.httpCache.remove {
-                        it.toMessage().contains(webSnippet.title)
-                    }
+                    rcClient.removeFromCache { it.contains(webSnippet.title) }
                     log("Failed to push local changes to ${webSnippet.editPageUrl} (Reason: ${result.reason})")
                 }
             }

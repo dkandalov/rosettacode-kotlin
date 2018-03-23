@@ -4,6 +4,7 @@ import io.github.resilience4j.retry.Retry
 import io.github.resilience4j.retry.RetryConfig
 import org.http4k.client.ApacheClient
 import org.http4k.core.*
+import org.http4k.core.Method.POST
 import org.http4k.core.cookie.Cookie
 import org.http4k.core.cookie.cookies
 import org.http4k.filter.DebuggingFilters
@@ -28,12 +29,7 @@ fun HttpHandler.withDebug() = DebuggingFilters.PrintRequestAndResponse().then(th
 
 interface RCClient: HttpHandler {
     val cookieStorage: BasicCookieStorage
-    val httpCache: HttpCache
-}
-
-
-interface HttpCache: ReadWriteCache {
-    fun remove(f: (HttpMessage) -> Boolean)
+    fun removeFromCache(f: (String) -> Boolean)
 }
 
 
@@ -44,8 +40,8 @@ fun HttpHandler.asRCClient(): RCClient {
         baseDir = "$cacheDir/http",
         shouldIgnore = {
             (it is Request && it.uri == Uri.of(LanguagePage.url)) ||
-                (it is Request && it.method == Method.POST) ||
-                (it is Request && it.uri == Uri.of(LoginPage.url))
+            (it is Request && it.method == POST) ||
+            (it is Request && it.uri == Uri.of(LoginPage.url))
         }
     )
 
@@ -63,16 +59,16 @@ fun HttpHandler.asRCClient(): RCClient {
 
     return object: RCClient {
         override val cookieStorage = cookieStorage
-        override val httpCache = httpCache
         override fun invoke(request: Request) = httpClient(request)
+        override fun removeFromCache(f: (String) -> Boolean) = httpCache.remove{ f(it.toMessage()) }
     }
 }
 
 
-class DiskHttpCache(
+private class DiskHttpCache(
     private val baseDir: String,
     private val shouldIgnore: (HttpMessage) -> Boolean = { true }
-): HttpCache {
+): ReadWriteCache {
 
     override fun set(request: Request, response: Response) {
         if (shouldIgnore(request) || shouldIgnore(response)) return
@@ -90,7 +86,7 @@ class DiskHttpCache(
         }
     }
 
-    override fun remove(f: (HttpMessage) -> Boolean) {
+    fun remove(f: (HttpMessage) -> Boolean) {
         baseDir.toBaseFolder().listFiles()
             .filter { it.isDirectory }
             .forEach { dir ->
@@ -120,7 +116,7 @@ class DiskHttpCache(
 }
 
 
-object Cookies {
+private object Cookies {
     operator fun invoke(
         clock: Clock = Clock.systemDefaultZone(),
         storage: CookieStorage = BasicCookieStorage()

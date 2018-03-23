@@ -92,7 +92,7 @@ data class EditPage(val url: EditPageUrl, val html: String) {
         if (!(response.status == Status.FOUND && redirectLocation != null)) {
             throw LoginPage.Companion.FailedToLogin("Expected redirect response but was ${response.status} with location ${response.header("Location")}")
         }
-        rcClient.httpCache.remove { it.toMessage().contains(redirectLocation) }
+        rcClient.removeFromCache { it.contains(redirectLocation) }
         response = rcClient(Request(GET, redirectLocation))
 
         return when {
