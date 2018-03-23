@@ -28,16 +28,17 @@ private val excludedTasks = listOf(
     "Positional_read",
     "SOAP",
     "Terminal_control-Positional_read",
-    "Terminal_control-Restricted_width_positional_input-No_wrapping",
-    "Terminal_control-Restricted_width_positional_input-With_wrapping",
+    "Terminal_control-Restricted_width_positional_input",
     "Snake",
     "Window_creation/X11",
     "Use_another_language_to_call_a_function",
 
     // kotlin js
+    "JSON",
     "Respond_to_an_unknown_method_call",
     "Runtime_evaluation",
     "Send_an_unknown_method_call",
+    "XML_Validation",
 
     // ignored because there is no code
     "Boolean_values",
