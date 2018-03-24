@@ -1,17 +1,12 @@
 package scripts
 
-import scripts.implementation.*
+import scripts.implementation.asRCClient
+import scripts.implementation.newHttpClient
+import scripts.implementation.pullFromRosettaCodeWebsite
 
 val dirty = System.getProperty("dirty", "false").toBoolean()
 val overwriteLocalFiles = System.getProperty("overwriteLocalFiles", "false").toBoolean()
 
 fun main(args: Array<String>) {
-    if (!dirty) {
-        log(">>> Deleting files from local cache")
-        clearLocalWebCache(exclusions = listOf("loginCookieJar.xml"), onFailedDelete = {
-            log("Failed to delete ${it.name}")
-        })
-    }
-    val httpClient = newHttpClient().asRCClient()
-    pullFromRosettaCodeWebsite(overwriteLocalFiles, httpClient)
+    pullFromRosettaCodeWebsite(overwriteLocalFiles, newHttpClient().asRCClient(), dirty)
 }

@@ -43,16 +43,6 @@ fun <T> cached(id: String, replace: Boolean = false, f: () -> T): T {
     }
 }
 
-fun clearLocalWebCache(exclusions: List<String> = emptyList(), onFailedDelete: (File) -> (Unit) = {}) {
-    File(cacheDir)
-        .listFiles().ifNull(emptyArray())
-        .filterNot { exclusions.contains(it.name) }
-        .forEach {
-            val wasDeleted = it.delete()
-            if (!wasDeleted) onFailedDelete(it)
-        }
-}
-
 data class Progress(val i: Int, val total: Int) {
     fun next() = copy(i = i + 1)
     override fun toString() = "$i of $total"
@@ -74,4 +64,4 @@ fun <T, R> List<T>.mapParallelWithProgress(f: (T, Progress) -> R): List<R> {
     return result
 }
 
-private fun <T> T.ifNull(defaultValue: T): T = this ?: defaultValue
+fun <T> T.ifNull(defaultValue: T): T = this ?: defaultValue

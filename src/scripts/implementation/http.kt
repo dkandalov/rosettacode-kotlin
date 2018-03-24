@@ -29,6 +29,7 @@ fun HttpHandler.withDebug() = DebuggingFilters.PrintRequestAndResponse().then(th
 
 interface RCClient: HttpHandler {
     fun removeFromCache(f: (String) -> Boolean)
+    fun clearCache()
     fun store(cookie: Cookie, time: LocalDateTime = LocalDateTime.now())
 }
 
@@ -59,7 +60,8 @@ fun HttpHandler.asRCClient(): RCClient {
 
     return object: RCClient {
         override fun invoke(request: Request) = httpClient(request)
-        override fun removeFromCache(f: (String) -> Boolean) = httpCache.remove{ f(it.toMessage()) }
+        override fun removeFromCache(f: (String) -> Boolean) = httpCache.remove { f(it.toMessage()) }
+        override fun clearCache() = httpCache.clear()
         override fun store(cookie: Cookie, time: LocalDateTime) =
             cookieStorage.store(listOf(LocalCookie(cookie, time)))
     }
@@ -99,6 +101,15 @@ private class DiskHttpCache(
             }
     }
 
+    fun clear() {
+        File(baseDir)
+            .listFiles().ifNull(emptyArray())
+            .forEach {
+                val wasDeleted = it.delete()
+                if (!wasDeleted) error("Failed to delete ${it.name}")
+            }
+    }
+
     private fun String.toBaseFolder(): File = File(if (isEmpty()) "." else this)
 
     private fun Request.toFolder(baseDir: File) =
@@ -115,7 +126,6 @@ private class DiskHttpCache(
 
     private fun HttpMessage.toFile(folder: File): File = File(folder, if (this is Request) "request.txt" else "response.txt")
 }
-
 
 private object Cookies {
     operator fun invoke(

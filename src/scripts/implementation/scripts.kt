@@ -84,8 +84,13 @@ fun pushLocalChangesToRosettaCode(rcClient: RCClient = newHttpClient().asRCClien
     }
 }
 
-fun pullFromRosettaCodeWebsite(overwriteLocalFiles: Boolean, httpClient: HttpHandler) {
-    val snippetStorage = loadCodeSnippets(httpClient)
+fun pullFromRosettaCodeWebsite(overwriteLocalFiles: Boolean, rcClient: RCClient, dirty: Boolean) {
+    if (!dirty) {
+        log(">>> Clearing local cache")
+        rcClient.clearCache()
+    }
+
+    val snippetStorage = loadCodeSnippets(rcClient)
 
     snippetStorage.onlyWebSnippets.apply {
         if (isNotEmpty()) {
