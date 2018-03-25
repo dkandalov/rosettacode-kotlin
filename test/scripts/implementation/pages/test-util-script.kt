@@ -2,7 +2,7 @@ package scripts.implementation.pages
 
 import org.http4k.core.Method.GET
 import org.http4k.core.Request
-import scripts.implementation.newHttpClient
+import scripts.implementation.http.newHttpClient
 import java.io.File
 
 fun String.trimmed() = trimMargin().trim()

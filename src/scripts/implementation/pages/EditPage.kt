@@ -6,7 +6,7 @@ import org.http4k.core.Method.POST
 import org.http4k.core.Request
 import org.http4k.core.Status
 import org.http4k.core.Status.Companion.OK
-import scripts.implementation.RCClient
+import scripts.implementation.http.RCClient
 import scripts.implementation.WebCodeSnippet
 import scripts.implementation.formData
 import scripts.implementation.pages.EditPage.SubmitResult.Failure

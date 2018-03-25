@@ -2,6 +2,9 @@ package scripts.implementation
 
 import org.http4k.core.HttpHandler
 import scripts.implementation.LocalCodeSnippet.Companion.tasksPath
+import scripts.implementation.http.RCClient
+import scripts.implementation.http.asRCClient
+import scripts.implementation.http.newHttpClient
 import scripts.implementation.pages.EditPage
 import scripts.implementation.pages.getKotlinLanguagePage
 import scripts.implementation.pages.getLoginPage

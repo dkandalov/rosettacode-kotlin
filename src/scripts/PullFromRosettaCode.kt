@@ -1,7 +1,7 @@
 package scripts
 
-import scripts.implementation.asRCClient
-import scripts.implementation.newHttpClient
+import scripts.implementation.http.asRCClient
+import scripts.implementation.http.newHttpClient
 import scripts.implementation.pullFromRosettaCodeWebsite
 
 val dirty = System.getProperty("dirty", "false").toBoolean()

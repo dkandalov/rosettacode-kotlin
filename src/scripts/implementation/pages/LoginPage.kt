@@ -6,7 +6,7 @@ import org.http4k.core.Method.POST
 import org.http4k.core.Request
 import org.http4k.core.Status.Companion.FOUND
 import org.http4k.core.cookie.Cookie
-import scripts.implementation.RCClient
+import scripts.implementation.http.RCClient
 import scripts.implementation.formData
 import java.net.URLEncoder
 
