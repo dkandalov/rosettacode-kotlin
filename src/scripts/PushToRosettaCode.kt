@@ -1,10 +1,9 @@
 package scripts
 
-import scripts.implementation.http.asRCClient
-import scripts.implementation.http.newHttpClient
-import scripts.implementation.pushLocalChangesToRosettaCode
+import scripts.implementation.http.newRCClient
 import scripts.implementation.http.withDebug
+import scripts.implementation.pushLocalChangesToRosettaCode
 
 fun main(args: Array<String>) {
-    pushLocalChangesToRosettaCode(newHttpClient().withDebug().asRCClient())
+    pushLocalChangesToRosettaCode(newRCClient().withDebug())
 }

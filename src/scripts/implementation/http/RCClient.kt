@@ -2,8 +2,10 @@ package scripts.implementation.http
 
 import io.github.resilience4j.retry.Retry
 import io.github.resilience4j.retry.RetryConfig
+import org.http4k.client.ApacheClient
 import org.http4k.core.*
 import org.http4k.core.cookie.Cookie
+import org.http4k.filter.DebuggingFilters
 import org.http4k.filter.ResilienceFilters
 import org.http4k.filter.TrafficFilters
 import org.http4k.filter.cookie.BasicCookieStorage
@@ -20,7 +22,17 @@ interface RCClient: HttpHandler {
     fun store(cookie: Cookie, time: LocalDateTime = LocalDateTime.now())
 }
 
-fun HttpHandler.asRCClient(): RCClient {
+fun newRCClient(): RCClient = ApacheClient().asRCClient()
+
+fun RCClient.withDebug(): RCClient {
+    val delegate = this
+    val filter = DebuggingFilters.PrintRequestAndResponse()
+    return object: RCClient by delegate {
+        override fun invoke(request: Request) = filter(delegate)(request)
+    }
+}
+
+private fun HttpHandler.asRCClient(): RCClient {
     val cookieStorage = cached("cookies") { BasicCookieStorage() }
 
     val httpCache = DiskHttpCache(

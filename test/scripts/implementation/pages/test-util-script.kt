@@ -1,8 +1,8 @@
 package scripts.implementation.pages
 
+import org.http4k.client.ApacheClient
 import org.http4k.core.Method.GET
 import org.http4k.core.Request
-import scripts.implementation.http.newHttpClient
 import java.io.File
 
 fun String.trimmed() = trimMargin().trim()
@@ -10,7 +10,7 @@ fun String.trimmed() = trimMargin().trim()
 fun String.readFileText() = File("./test/scripts/implementation/pages/$this").readText()
 
 fun main(args: Array<String>) {
-    fun String.getWebPageText() = newHttpClient()(Request(GET, this)).bodyString()
+    fun String.getWebPageText() = ApacheClient()(Request(GET, this)).bodyString()
 
     fun downloadPagesForTestInput() {
         val basePath = "./test/scripts/implementation/pages/"

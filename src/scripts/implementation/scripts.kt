@@ -3,8 +3,7 @@ package scripts.implementation
 import org.http4k.core.HttpHandler
 import scripts.implementation.LocalCodeSnippet.Companion.tasksPath
 import scripts.implementation.http.RCClient
-import scripts.implementation.http.asRCClient
-import scripts.implementation.http.newHttpClient
+import scripts.implementation.http.newRCClient
 import scripts.implementation.pages.EditPage
 import scripts.implementation.pages.getKotlinLanguagePage
 import scripts.implementation.pages.getLoginPage
@@ -51,7 +50,7 @@ private val excludedTasks = listOf(
     "Calendar_-_for_%22REAL%22_programmers" // because some code snippets for it are uppercase and not really compilable
 )
 
-fun pushLocalChangesToRosettaCode(rcClient: RCClient = newHttpClient().asRCClient()) {
+fun pushLocalChangesToRosettaCode(rcClient: RCClient = newRCClient()) {
     val snippetStorage = loadCodeSnippets(rcClient)
 
     snippetStorage.snippetsWithDiffs.apply {
