@@ -47,8 +47,8 @@ class DiskHttpCache(
         File(baseDir)
             .listFiles().ifNull(emptyArray())
             .forEach {
-                val wasDeleted = it.delete()
-                if (!wasDeleted) error("Failed to delete ${it.name}")
+                val wasDeleted = it.deleteRecursively()
+                if (!wasDeleted) error("Failed to delete ${it.absolutePath}")
             }
     }
 

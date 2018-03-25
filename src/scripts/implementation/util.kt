@@ -1,12 +1,9 @@
 package scripts.implementation
 
-import com.thoughtworks.xstream.XStream
-import com.thoughtworks.xstream.io.xml.XppDriver
 import org.http4k.core.Parameters
 import org.http4k.core.Request
 import org.http4k.core.body.form
 import org.http4k.core.body.toBody
-import java.io.File
 import java.util.concurrent.Callable
 import java.util.concurrent.Executors.newFixedThreadPool
 import java.util.concurrent.atomic.AtomicReference
@@ -15,33 +12,8 @@ val log: (Any?) -> Unit = {
     System.out.println(it)
 }
 
-val cacheDir = ".cache"
-
-private val xStream = XStream(XppDriver())
-
 fun Request.formData(parameters: Parameters) =
     run { body(form().plus(parameters).toBody()) }
-
-/**
- * Caches result of function `f` in xml file.
- * The main reason for this is to speed up execution.
- *
- * To "invalidate" cached value modify or remove xml file.
- */
-fun <T> cached(id: String, replace: Boolean = false, f: () -> T): T {
-    val file = File("$cacheDir/$id.xml")
-    if (file.exists() && !replace) {
-        log("// Using cached value of '$id'")
-        @Suppress("UNCHECKED_CAST")
-        return xStream.fromXML(file.readText()) as T
-    } else {
-        log("// Recalculating value of '$id'")
-        val result = f()
-        file.parentFile.mkdirs()
-        file.writeText(xStream.toXML(result))
-        return result
-    }
-}
 
 data class Progress(val i: Int, val total: Int) {
     fun next() = copy(i = i + 1)

@@ -8,10 +8,7 @@ import org.http4k.core.cookie.Cookie
 import org.http4k.filter.DebuggingFilters
 import org.http4k.filter.ResilienceFilters
 import org.http4k.filter.TrafficFilters
-import org.http4k.filter.cookie.BasicCookieStorage
 import org.http4k.filter.cookie.LocalCookie
-import scripts.implementation.cacheDir
-import scripts.implementation.cached
 import scripts.implementation.pages.LanguagePage
 import scripts.implementation.pages.LoginPage
 import java.time.LocalDateTime
@@ -33,14 +30,14 @@ fun RCClient.withDebug(): RCClient {
 }
 
 private fun HttpHandler.asRCClient(): RCClient {
-    val cookieStorage = cached("cookies") { BasicCookieStorage() }
+    val cookieStorage = DiskCookieStorage(filePath = ".cookies-cache/cookies.xml")
 
     val httpCache = DiskHttpCache(
-        baseDir = "$cacheDir/http",
+        baseDir = ".http-cache",
         shouldIgnore = {
             (it is Request && it.uri == Uri.of(LanguagePage.url)) ||
-                (it is Request && it.method == Method.POST) ||
-                (it is Request && it.uri == Uri.of(LoginPage.url))
+            (it is Request && it.method == Method.POST) ||
+            (it is Request && it.uri == Uri.of(LoginPage.url))
         }
     )
 

@@ -10,6 +10,9 @@ import org.http4k.filter.cookie.LocalCookie
 import java.time.Clock
 import java.time.LocalDateTime
 
+/**
+ * Modified version of [org.http4k.filter.ClientFilters.Cookies].
+ */
 object Cookies {
     operator fun invoke(
         clock: Clock = Clock.systemDefaultZone(),
