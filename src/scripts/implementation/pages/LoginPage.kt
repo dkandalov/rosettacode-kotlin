@@ -6,8 +6,8 @@ import org.http4k.core.Method.POST
 import org.http4k.core.Request
 import org.http4k.core.Status.Companion.FOUND
 import org.http4k.core.cookie.Cookie
-import scripts.implementation.http.RCClient
 import scripts.implementation.formData
+import scripts.implementation.http.RCClient
 import java.net.URLEncoder
 
 data class LoginPage(val html: String) {
@@ -42,7 +42,7 @@ data class LoginPage(val html: String) {
     }
 
     companion object {
-        val url = "https://rosettacode.org/wiki/Special:UserLogin"
+        const val url = "https://rosettacode.org/wiki/Special:UserLogin"
 
         fun String.isLoggedIn() = !contains(">Log in<") && contains(">Log out<") // Checking for "Log in" link in the top right corner of the web page.
 

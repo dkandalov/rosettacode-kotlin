@@ -16,7 +16,7 @@ data class LanguagePage(private val html: String) {
     }
 
     companion object {
-        val url = "http://rosettacode.org/wiki/Category:Kotlin"
+        const val url = "http://rosettacode.org/wiki/Category:Kotlin"
     }
 }
 
