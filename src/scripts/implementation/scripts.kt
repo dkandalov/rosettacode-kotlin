@@ -29,6 +29,9 @@ private val excludedTasks = listOf(
     "Pointers_and_references",
     "Positional_read",
     "SOAP",
+    "Speech_synthesis",
+    "Terminal_control-Restricted_width_positional_input-No_wrapping",
+    "Terminal_control-Restricted_width_positional_input-With_wrapping",
     "Terminal_control-Positional_read",
     "Terminal_control-Restricted_width_positional_input",
     "Snake",
@@ -37,6 +40,7 @@ private val excludedTasks = listOf(
 
     // kotlin js
     "JSON",
+    "Reflection-Get_source",
     "Respond_to_an_unknown_method_call",
     "Runtime_evaluation",
     "Send_an_unknown_method_call",
