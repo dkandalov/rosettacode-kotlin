@@ -12,8 +12,7 @@ class EditPageSpec: StringSpec() {
             val html = "array-concatenation-edit-page.txt".readFileText()
             val codeSnippets = EditPage(someUrl, html).extractCodeSnippets()
             codeSnippets shouldBe listOf(
-                WebCodeSnippet(someUrl,
-                                                      """
+                WebCodeSnippet(someUrl, """
                     |fun main(args: Array<String>) {
                     |    val a: Array<Int> = arrayOf(1, 2, 3) // initialise a
                     |    val b: Array<Int> = arrayOf(4, 5, 6) // initialise b
@@ -21,14 +20,12 @@ class EditPageSpec: StringSpec() {
                     |    println(c)
                     |}
                     """.trimmed(), 0),
-                WebCodeSnippet(someUrl,
-                                                      """
+                WebCodeSnippet(someUrl, """
                     |fun arrayConcat(a: Array<Any>, b: Array<Any>): Array<Any> {
                     |    return Array(a.size + b.size, { if (it in a.indices) a[it] else b[it - a.size] })
                     |}
                     """.trimmed(), 1),
-                WebCodeSnippet(someUrl,
-                                                      """
+                WebCodeSnippet(someUrl, """
                     |fun main(args: Array<String>) {
                     |    val a: Collection<Int> = listOf(1, 2, 3) // initialise a
                     |    val b: Collection<Int> = listOf(4, 5, 6) // initialise b
