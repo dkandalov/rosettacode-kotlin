@@ -2,7 +2,7 @@ package `sorting_algorithms_tree_sort_on_a_linked_list`
 
 // version 1.1.51
 
-import java.util.*
+import java.util.LinkedList
 
 class BinaryTree<T : Comparable<T>> {
     var node: T? = null

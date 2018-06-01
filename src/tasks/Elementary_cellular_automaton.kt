@@ -2,7 +2,7 @@ package `elementary_cellular_automaton`
 
 // version 1.1.51
 
-import java.util.*
+import java.util.BitSet
 
 const val SIZE  = 32
 const val LINES = SIZE / 2

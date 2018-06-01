@@ -2,7 +2,7 @@ package `p_value_correction`
 
 // version 1.1.51
 
-import java.util.*
+import java.util.Arrays
 
 typealias IAE = IllegalArgumentException
 

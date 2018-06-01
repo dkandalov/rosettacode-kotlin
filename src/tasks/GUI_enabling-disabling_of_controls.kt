@@ -4,7 +4,6 @@ package `gui_enabling_disabling_of_controls`
 
 import javafx.application.Application
 import javafx.beans.property.SimpleLongProperty
-import javafx.event.ActionEvent
 import javafx.scene.Scene
 import javafx.scene.control.Button
 import javafx.scene.control.TextField
@@ -12,6 +11,7 @@ import javafx.scene.layout.HBox
 import javafx.scene.layout.VBox
 import javafx.stage.Stage
 import javafx.util.converter.NumberStringConverter
+import javafx.event.ActionEvent
 
 val digits = Regex("[0-9]*")
 

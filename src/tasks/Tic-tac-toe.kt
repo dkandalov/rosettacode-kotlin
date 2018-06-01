@@ -2,7 +2,7 @@ package `tic_tac_toe`
 
 // version 1.1.51
 
-import java.util.*
+import java.util.Random
 
 val r = Random()
 val b = Array(3) { IntArray(3) }  // board -> 0: blank; -1: computer; 1: human

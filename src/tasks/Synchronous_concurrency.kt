@@ -2,9 +2,9 @@ package `synchronous_concurrency`
 
 // version 1.1.51
 
-import java.io.File
 import java.util.concurrent.SynchronousQueue
 import kotlin.concurrent.thread
+import java.io.File
 
 val queue = SynchronousQueue<String>()
 

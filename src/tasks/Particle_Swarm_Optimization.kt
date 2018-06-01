@@ -2,7 +2,7 @@ package `particle_swarm_optimization`
 
 // version 1.1.51
 
-import java.util.*
+import java.util.Random
 
 typealias Func = (DoubleArray) -> Double
 

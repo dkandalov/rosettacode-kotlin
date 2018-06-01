@@ -3,11 +3,12 @@ package `chaos_game`
 //Version 1.1.51
 
 import java.awt.*
-import java.util.*
-import javax.swing.JFrame
+import java.util.Stack
+import java.util.Random
 import javax.swing.JPanel
-import javax.swing.SwingUtilities
+import javax.swing.JFrame
 import javax.swing.Timer
+import javax.swing.SwingUtilities
 
 class ChaosGame : JPanel() {
 

@@ -2,14 +2,14 @@ package `https_client_authenticated`
 
 // version 1.2.0
 
-import java.io.BufferedReader
-import java.io.FileInputStream
-import java.io.InputStreamReader
-import java.net.URL
 import java.security.KeyStore
-import javax.net.ssl.HttpsURLConnection
 import javax.net.ssl.KeyManagerFactory
 import javax.net.ssl.SSLContext
+import javax.net.ssl.HttpsURLConnection
+import java.net.URL
+import java.io.FileInputStream
+import java.io.InputStreamReader
+import java.io.BufferedReader
 
 fun getSSLContext(p12Path: String, password: String): SSLContext {
     val ks = KeyStore.getInstance("pkcs12")

@@ -2,10 +2,10 @@ package `simple_database`
 
 // version 1.2.31
 
+import java.text.SimpleDateFormat
+import java.util.Date
 import java.io.File
 import java.io.IOException
-import java.text.SimpleDateFormat
-import java.util.*
 
 val file = File("simdb.csv")
 

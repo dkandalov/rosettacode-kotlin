@@ -2,7 +2,7 @@ package `one_of_n_lines_in_a_file`
 
 // version 1.1.51
 
-import java.util.*
+import java.util.Random
 
 val r = Random()
 

@@ -2,8 +2,7 @@ package `active_object`
 
 // version 1.2.0
 
-import kotlin.math.PI
-import kotlin.math.sin
+import kotlin.math.*
 
 typealias Function = (Double) -> Double
 

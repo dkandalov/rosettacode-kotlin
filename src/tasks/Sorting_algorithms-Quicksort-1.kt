@@ -1,13 +1,12 @@
 package `sorting_algorithms_quicksort_1`
 
-fun quicksort(list: List<Int>): List<Int> {
+fun <T : Comparable<T>> quicksort(list: List<T>): List<T> {
     if (list.isEmpty()) return emptyList()
 
     val head = list.first()
     val tail = list.takeLast(list.size - 1)
 
-    val less = quicksort(tail.filter { it < head })
-    val high = quicksort(tail.filter { it >= head })
+    val (less, high) = tail.partition { it < head }
 
     return less + head + high
 }
