@@ -14,6 +14,8 @@ data class EditPageUrl(val value: String) {
             .replace("%27", "")
             .replace("%22", "_")
             .replace("%2B", "-plus-")
+            .replace("%C3%A9", "e")
+            .replace("%C3%A8", "e")
             .replace("*", "-star-")
             .replace("!", "-bang-")
             .replace(".", "")

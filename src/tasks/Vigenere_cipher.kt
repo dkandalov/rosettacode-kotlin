@@ -1,4 +1,4 @@
-package `vigen%c3%a8re_cipher`
+package `vigenere_cipher`
 
 // version 1.1.3
 

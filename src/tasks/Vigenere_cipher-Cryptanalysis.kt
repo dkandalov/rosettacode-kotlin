@@ -1,4 +1,4 @@
-package `vigen%c3%a8re_cipher_cryptanalysis`
+package `vigenere_cipher_cryptanalysis`
 
 // version 1.1.3
 

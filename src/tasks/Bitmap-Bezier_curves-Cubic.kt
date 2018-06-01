@@ -1,4 +1,4 @@
-package `bitmap_b%c3%a9zier_curves_quadratic`
+package `bitmap_bezier_curves_cubic`
 
 // Version 1.2.40
 
@@ -42,16 +42,17 @@ class BasicBitmapStorage(width: Int, height: Int) {
         }
     }
 
-    fun quadraticBezier(p1: Point, p2: Point, p3: Point, clr: Color, n: Int) {
+    fun cubicBezier(p1: Point, p2: Point, p3: Point, p4: Point, clr: Color, n: Int) {
         val pts = List(n + 1) { Point(0, 0) }
         for (i in 0..n) {
             val t = i.toDouble() / n
             val u = 1.0 - t
-            val a = u * u
-            val b = 2.0 * t * u
-            val c = t * t
-            pts[i].x = (a * p1.x + b * p2.x + c * p3.x).toInt()
-            pts[i].y = (a * p1.y + b * p2.y + c * p3.y).toInt()
+            val a = u * u * u
+            val b = 3.0 * t * u * u
+            val c = 3.0 * t * t * u
+            val d = t * t * t
+            pts[i].x = (a * p1.x + b * p2.x + c * p3.x + d * p4.x).toInt()
+            pts[i].y = (a * p1.y + b * p2.y + c * p3.y + d * p4.y).toInt()
             setPixel(pts[i].x, pts[i].y, clr)
         }
         for (i in 0 until n) {
@@ -62,16 +63,17 @@ class BasicBitmapStorage(width: Int, height: Int) {
 }
 
 fun main(args: Array<String>) {
-    val width = 320
-    val height = 320
+    val width = 200
+    val height = 200
     val bbs = BasicBitmapStorage(width, height)
     with (bbs) {
         fill(Color.cyan)
-        val p1 = Point(10, 100)
-        val p2 = Point(250, 270)
-        val p3 = Point(150, 20)
-        quadraticBezier(p1, p2, p3, Color.black, 20)
-        val qbFile = File("quadratic_bezier.jpg")
-        ImageIO.write(image, "jpg", qbFile)
+        val p1 = Point(0, 149)
+        val p2 = Point(30, 50)
+        val p3 = Point(120, 130)
+        val p4 = Point(160, 30)
+        cubicBezier(p1, p2, p3, p4, Color.black, 20)
+        val cbFile = File("cubic_bezier.jpg")
+        ImageIO.write(image, "jpg", cbFile)
     }
 }

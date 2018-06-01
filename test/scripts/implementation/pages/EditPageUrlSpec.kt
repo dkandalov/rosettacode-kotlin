@@ -18,6 +18,12 @@ class EditPageUrlSpec: StringSpec() {
                 pageId().asFileName() shouldBe "A-plus-B"
                 pageId().asPackageName() shouldBe "a_plus_b"
             }
+
+            EditPageUrl("http://rosettacode.org/mw/index.php?title=Bitmap/B%C3%A9zier_curves/Cubic&action=edit&section=15")
+                .pageId().asFileName() shouldBe "Bitmap-Bezier_curves-Cubic"
+
+            EditPageUrl("http://rosettacode.org/mw/index.php?title=Vigen%C3%A8re_cipher&action=edit&section=27")
+                .pageId().asFileName() shouldBe "Vigenere_cipher"
         }
     }
 }

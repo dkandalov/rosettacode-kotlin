@@ -1,6 +1,5 @@
 package scripts.implementation
 
-import scripts.implementation.LocalCodeSnippet.Companion.postfixedWith
 import scripts.implementation.http.RCClient
 import scripts.implementation.pages.EditPage
 import scripts.implementation.pages.EditPageUrl
@@ -58,8 +57,6 @@ data class LocalCodeSnippet(val filePath: String) {
             val postfix = if (index == 0) "" else "_$index" // Add postfix to avoid name conflicts within the same task.
             return "`$packageName$postfix`" // Wrap in "`" so that (almost) any string is still a valid package name.
         }
-
-        fun String.postfixedWith(index: Int): String = if (index == 0) this else "$this-$index"
     }
 }
 
@@ -78,6 +75,8 @@ data class WebCodeSnippet(val editPageUrl: EditPageUrl, val sourceCode: String, 
         fun create(url: EditPageUrl, code: String, index: Int) = WebCodeSnippet(url, code.trim().trimLineEnds(), index)
     }
 }
+
+private fun String.postfixedWith(index: Int): String = if (index == 0) this else "$this-$index"
 
 private fun String.trimPackage() = trim().replace(Regex("^package .*\n"), "").trim()
 
