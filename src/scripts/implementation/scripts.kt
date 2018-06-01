@@ -54,7 +54,7 @@ private val excludedTasks = listOf(
     "Calendar_-_for_%22REAL%22_programmers" // because some code snippets for it are uppercase and not really compilable
 )
 
-fun pushLocalChangesToRosettaCode(rcClient: RCClient = newRCClient()) {
+fun pushLocalChangesToRosettaCode(rcClient: RCClient) {
     val snippetStorage = loadCodeSnippets(rcClient)
 
     snippetStorage.snippetsWithDiffs.apply {
@@ -90,8 +90,8 @@ fun pushLocalChangesToRosettaCode(rcClient: RCClient = newRCClient()) {
     }
 }
 
-fun pullFromRosettaCodeWebsite(overwriteLocalFiles: Boolean, rcClient: RCClient, dirty: Boolean) {
-    if (!dirty) {
+fun pullFromRosettaCodeWebsite(rcClient: RCClient, overwriteLocalFiles: Boolean, useCachedHttpClient: Boolean) {
+    if (!useCachedHttpClient) {
         log(">>> Clearing local cache")
         rcClient.clearCache()
     }

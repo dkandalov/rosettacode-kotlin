@@ -21,7 +21,7 @@ fun main(args: Array<String>) {
             .writeText("http://rosettacode.org/wiki/Array_concatenation".getWebPageText())
 
         File("$basePath/array-concatenation-edit-page.txt")
-            .writeText("http://rosettacode.org//mw/index.php?title=Array_concatenation&action=edit&section=${kotlinSectionId}".getWebPageText())
+            .writeText("http://rosettacode.org//mw/index.php?title=Array_concatenation&action=edit&section=$kotlinSectionId".getWebPageText())
     }
     downloadPagesForTestInput()
 }

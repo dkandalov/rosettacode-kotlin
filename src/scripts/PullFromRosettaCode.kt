@@ -5,8 +5,8 @@ import scripts.implementation.pullFromRosettaCodeWebsite
 
 fun main(args: Array<String>) {
     pullFromRosettaCodeWebsite(
-        overwriteLocalFiles = System.getProperty("overwriteLocalFiles", "false")!!.toBoolean(),
         rcClient = newRCClient(),
-        dirty = System.getProperty("dirty", "true")!!.toBoolean()
+        overwriteLocalFiles = System.getProperty("overwriteLocalFiles", "false")!!.toBoolean(),
+        useCachedHttpClient = System.getProperty("dirty", "true")!!.toBoolean()
     )
 }
