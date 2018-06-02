@@ -23,5 +23,16 @@ class CodeSnippetsSpec: StringSpec() {
                 "package abc\n" +
                 "  class A {}"
         }
+
+        "foo" {
+            val snippet = WebCodeSnippet.create(
+                url = EditPageUrl("http://rosettacode.org//mw/index.php?title=Stable_marriage_problem&action=edit&section=25"),
+                code = "",
+                index = 0
+            )
+            println(snippet.title.contains("marr"))
+//            Getting source code from http://rosettacode.org//mw/index.php?title=Stable_marriage_problem&action=edit&section=25 (843 of 1008)
+
+        }
     }
 }
