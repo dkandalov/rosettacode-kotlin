@@ -3,12 +3,13 @@ package scripts.implementation.pages
 import io.kotlintest.matchers.shouldBe
 import io.kotlintest.specs.StringSpec
 import scripts.implementation.WebCodeSnippet
+import scripts.implementation.http.newRCClient
 
 class EditPageSpec: StringSpec() {
     init {
         val someUrl = EditPageUrl("http://rosettacode.org/something")
 
-        "extract code snippets from task edit page" {
+        "extract code snippets from Rosetta Code task edit page" {
             val html = "array-concatenation-edit-page.txt".readFileText()
             val codeSnippets = EditPage(someUrl, html).extractCodeSnippets()
             codeSnippets shouldBe listOf(
@@ -36,7 +37,15 @@ class EditPageSpec: StringSpec() {
             )
         }
 
-        "extract text area from task edit page" {
+        "extract code snippets even when <lang> tag is not 'kotlin'" {
+            val html = "marriage-problem-edit-page.txt".readFileText()
+            val codeSnippets = EditPage(someUrl, html).extractCodeSnippets()
+            codeSnippets.map { it.copy(sourceCode = it.sourceCode.take(10)) } shouldBe listOf(
+                WebCodeSnippet(someUrl, "data class", 0)
+            )
+        }
+
+        "extract text area from Rosetta Code task edit page" {
             val html = "array-concatenation-edit-page.txt".readFileText()
             val text = EditPage(someUrl, html).textAreaContent().trimmed()
             text shouldBe """

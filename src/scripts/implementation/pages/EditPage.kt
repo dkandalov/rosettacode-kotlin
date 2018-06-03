@@ -103,14 +103,15 @@ data class EditPage(val url: EditPageUrl, val html: String) {
     }
 
     fun textAreaContent(): String {
-        val i1 = html.find(0, "id=\"wpTextbox1\"") ?: return ""
-        val i2 = html.find(i1, ">") ?: return ""
-        val i3 = html.find(i2, "</textarea>") ?: return ""
+        val i1 = html.findIndex(0, "id=\"wpTextbox1\"") ?: return ""
+        val i2 = html.findIndex(i1, ">") ?: return ""
+        val i3 = html.findIndex(i2, "</textarea>") ?: return ""
         return html.substring(i2 + 1, i3)
     }
 
     companion object {
-        private val openingTags = listOf("<lang Kotlin>", "<lang kotlin>", "<lang scala>")
+        // List only specific tags because some examples contain <lang html> or another language by mistake.
+        private val openingTags = listOf("<lang Kotlin>", "<lang kotlin>", "<lang scala>", "<lang java>")
         private val closingTag = "</lang>"
 
         fun getWith(httpClient: HttpHandler, url: EditPageUrl): EditPage {
@@ -119,23 +120,24 @@ data class EditPage(val url: EditPageUrl, val html: String) {
         }
 
         private fun String.sourceCodeRanges(startFrom: Int = 0): List<IntRange> {
-            val i1 = find(startFrom, 20) { s -> openingTags.any { tag -> s.startsWith(tag) } } ?: return emptyList()
-            val i2 = find(i1, ">") ?: return emptyList()
-            val i3 = find(i2, closingTag) ?: return emptyList()
+            val i1 = findIndex(startFrom, openingTags) ?: return emptyList()
+            val i2 = findIndex(i1, ">") ?: return emptyList()
+            val i3 = findIndex(i2, closingTag) ?: return emptyList()
 
             return listOf(IntRange(i2 + 1, i3 - 1)) + sourceCodeRanges(i3 + 1)
         }
 
-        private fun String.find(from: Int, s: String): Int? {
+        private fun String.findIndex(from: Int, s: String): Int? {
             val i = indexOf(s, from)
             return if (i == -1) null else i
         }
 
-        private fun String.find(from: Int, viewSize: Int, predicate: (String) -> Boolean): Int? {
-            return from.until(length).find { i ->
-                val endIndex = i + viewSize
-                predicate(substring(i, Math.min(endIndex, length)))
+        private fun String.findIndex(from: Int, strings: List<String>): Int? {
+            strings.forEach { s ->
+                val i = indexOf(s, from)
+                if (i != -1) return i
             }
+            return null
         }
 
         private fun String.unEscapeXml() = replace("&lt;", "<").replace("&amp;", "&")
