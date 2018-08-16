@@ -26,6 +26,7 @@ class DiskCookieStorage(
 
     private fun saveToFile() {
         val file = File(filePath)
+        if (!file.parentFile.exists()) file.parentFile.mkdirs()
         if (!file.exists()) file.createNewFile()
         file.writeText(xStream.toXML(delegate))
     }
