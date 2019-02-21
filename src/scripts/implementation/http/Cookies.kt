@@ -28,7 +28,7 @@ object Cookies {
     }
 
     private fun Request.withLocalCookies(storage: CookieStorage) =
-        storage.retrieve().map { it.cookie }.fold(this, { r, cookie -> r.cookie(cookie.name, cookie.value) })
+        storage.retrieve().map { it.cookie }.fold(this) { r, cookie -> r.cookie(cookie.name, cookie.value) }
 
     private fun removeExpired(now: LocalDateTime, storage: CookieStorage) =
         storage.retrieve().filter { it.isExpired(now) }.forEach { storage.remove(it.cookie.name) }

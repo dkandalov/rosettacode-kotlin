@@ -112,7 +112,7 @@ data class EditPage(val url: EditPageUrl, val html: String) {
     companion object {
         // List only specific tags because some examples contain <lang html> or another language by mistake.
         private val openingTags = listOf("<lang Kotlin>", "<lang kotlin>", "<lang scala>", "<lang java>", "<lang groovy>")
-        private val closingTag = "</lang>"
+        private const val closingTag = "</lang>"
 
         fun getWith(httpClient: HttpHandler, url: EditPageUrl): EditPage {
             val request = Request(GET, url.value)

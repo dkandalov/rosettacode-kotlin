@@ -4,6 +4,6 @@ import scripts.implementation.http.newRCClient
 import scripts.implementation.http.withDebug
 import scripts.implementation.pushLocalChangesToRosettaCode
 
-fun main(args: Array<String>) {
+fun main() {
     pushLocalChangesToRosettaCode(newRCClient().withDebug())
 }

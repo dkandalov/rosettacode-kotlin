@@ -11,7 +11,7 @@ private val xStream = XStream(XppDriver())
 
 class DiskCookieStorage(
     private val filePath: String,
-    private var delegate: CookieStorage = loadFromFile(filePath)
+    private val delegate: CookieStorage = loadFromFile(filePath)
 ): CookieStorage by delegate {
 
     override fun store(cookies: List<LocalCookie>) {

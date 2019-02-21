@@ -3,7 +3,7 @@ package scripts
 import scripts.implementation.http.newRCClient
 import scripts.implementation.pullFromRosettaCodeWebsite
 
-fun main(args: Array<String>) {
+fun main() {
     pullFromRosettaCodeWebsite(
         rcClient = newRCClient(),
         overwriteLocalFiles = System.getProperty("overwriteLocalFiles", "false")!!.toBoolean(),

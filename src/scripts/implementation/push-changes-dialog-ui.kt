@@ -7,7 +7,7 @@ import java.util.concurrent.CompletableFuture
 import javax.swing.*
 
 
-fun main(args: Array<String>) {
+fun main() {
     println(showPushChangesDialog())
 }
 
