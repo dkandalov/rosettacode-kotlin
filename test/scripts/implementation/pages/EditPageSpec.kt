@@ -3,7 +3,6 @@ package scripts.implementation.pages
 import io.kotlintest.matchers.shouldBe
 import io.kotlintest.specs.StringSpec
 import scripts.implementation.WebCodeSnippet
-import scripts.implementation.http.newRCClient
 
 class EditPageSpec: StringSpec() {
     init {
